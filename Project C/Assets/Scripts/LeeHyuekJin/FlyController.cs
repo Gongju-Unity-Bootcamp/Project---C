@@ -9,6 +9,7 @@ public class RandomMonsterMovement : MonoBehaviour
 
     void Update()
     {
+
         timeSinceLastDirectionChange += Time.deltaTime;
 
         // 일정 시간이 지나면 방향 변경
