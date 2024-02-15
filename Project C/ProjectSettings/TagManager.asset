@@ -11,13 +11,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Bullet
+  - Obstacle
+  - Enemy
+  - FlyEnemy
+  - CameraTrue
+  - CameraFalse
   - 
   - 
   - 
