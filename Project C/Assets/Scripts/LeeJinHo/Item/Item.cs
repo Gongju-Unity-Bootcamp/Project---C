@@ -7,6 +7,7 @@ public class Item : ScriptableObject
 {
     public string name;
     public int cost;
+    public ItemType itemType;
 
     //Item을 프리팹으로 만들어서 활용할 경우 필요 없음.
     //동적으로 Item의 이미지, 사운드를 변경할 경우 사용.

@@ -12,61 +12,69 @@ public enum RandomPosition
 public class MapController : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_rooms;
-    //private BoxCollider2D[] m_roomCollider;
+    [SerializeField] private Transform m_testRoom;
     private RandomPosition m_randomPosition;
 
-    private const int ROOMCOUNT = 10;
+    //private const int ROOMCOUNT = 10;
     private List<Vector3> m_testPosition;
 
     private void Awake()
     {
         m_testPosition = new List<Vector3>();
-        m_rooms = new GameObject[ROOMCOUNT];
-        for ( int index = 0; index < m_rooms.Length; ++index ) 
-        { 
-            GameObject m_room = transform.Find($"TileMap ({index})").gameObject;
-            m_rooms[index] = m_room;
-            //m_roomCollider[index] = GetComponent<BoxCollider2D>();
-            RoomSetting(m_rooms[index]);
-        }
+        m_rooms = new GameObject[transform.childCount];
+        m_testRoom = transform.Find("TestRoom");
+        Init();
     }
 
-    void Start()
+    public int m_Count = 0;
+    void Init()
     {
+        foreach(Transform tile in transform)
+        { 
+            Transform m_room = transform.Find($"BagicRoom ({m_Count})");
+            
+            if (m_room == null) { continue; }
+
+            m_rooms[m_Count] = m_room.gameObject;
+            RoomSetting(m_rooms[m_Count]);
+            m_Count += 1;
+        }
 
     }
 
     void RoomSetting(GameObject room)
     {
         Vector3 rePosition = Vector3.zero;
-        Vector3 m_localPosition = transform.localPosition;
+        int m_mapX = 18;
+        int m_mapY = 10;
 
         m_randomPosition = (RandomPosition)Random.Range(0, 4);
         switch (m_randomPosition)
         {
             case RandomPosition.Left:
-                rePosition = new Vector3(transform.localPosition.x - 18, 0, transform.localPosition.z);
+                rePosition = new Vector3(m_testRoom.position.x - m_mapX, m_testRoom.position.y, 0);
                 break;
             case RandomPosition.Right:
-                rePosition = new Vector3(transform.localPosition.x + 18, 0, transform.localPosition.z);
+                rePosition = new Vector3(m_testRoom.position.x + m_mapX, m_testRoom.position.y, 0);
                 break;
             case RandomPosition.Up:
-                rePosition = new Vector3(transform.localPosition.x, transform.localPosition.z + 10, 0);
+                rePosition = new Vector3(m_testRoom.position.x, m_testRoom.position.y + m_mapY, 0);
                 break;
             case RandomPosition.Down:
-                rePosition = new Vector3(transform.localPosition.x, transform.localPosition.z - 10, 0);
+                rePosition = new Vector3(m_testRoom.position.x, m_testRoom.position.y - m_mapY, 0);
                 break;
         }
 
-        transform.position = rePosition;
+        m_testRoom.position = rePosition;
 
-        if (m_testPosition.Contains(transform.position))
+        if (m_testPosition.Contains(m_testRoom.position))
         {
             RoomSetting(room);
             return;
         }
-        room.transform.position = transform.position;
-        m_testPosition.Add(transform.position);
+
+        room.transform.position = m_testRoom.position;
+        m_testPosition.Add(m_testRoom.position);
     }
 
 }
