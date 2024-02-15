@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 120444805453465572}
   - component: {fileID: 3793420649208011800}
   - component: {fileID: 4136252429322136580}
+  - component: {fileID: -1720428157108328363}
   m_Layer: 9
   m_Name: Horf
   m_TagString: Untagged
@@ -161,4 +162,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf2f518609dc644f8ba4991ca35ed12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 8333793598550204643, guid: fab45d04f48091c4c92d545cf9785b81, type: 3}
+--- !u!114 &-1720428157108328363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543940022398298780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f628c12bc9b376241b986904142a27c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 400
+  knockbackForce: 0.1
