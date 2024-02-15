@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RandomMonsterMovement : MonoBehaviour
+public class FlyController : MonoBehaviour
 {
     public float moveSpeed;
     private float changeDirectionInterval = 2f;
