@@ -8,10 +8,10 @@ public class Player_Controller : MonoBehaviour
 
     float axisHor;
     float axisVer;
-    float moveSpeed = 5.0f;
     float acceleration = 0.5f;
     float deceleration = 0.1f;
-
+    // Ω∫≈»
+    float moveSpeed = 5.0f;
     void Start()
     {
         playerRbody = GetComponent<Rigidbody2D>();
