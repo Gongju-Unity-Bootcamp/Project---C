@@ -23,10 +23,10 @@ public class AttakFlyController : MonoBehaviour
     IEnumerator CollisionPlayer()
     {
         Debug.Log("속도0");
-        _aiPath.maxSpeed = 0;
+        _aiPath.canMove = false;
         yield return new WaitForSeconds(1);
         Debug.Log("원래속도");
-        _aiPath.maxSpeed = originalSpeed;
+        _aiPath.canMove = true;
         yield return null;
     }
 }
