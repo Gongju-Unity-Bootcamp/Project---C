@@ -5,13 +5,12 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int hp;
-    private float knockbackForce = 1.0f;
+    public float knockbackForce;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             TakeDamage(10);
-            ApplyKnockback(collision.transform.position);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
@@ -31,10 +30,11 @@ public class EnemyHealth : MonoBehaviour
 
     private void ApplyKnockback(Vector3 playerPosition)
     {
+        
         Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
+        Debug.Log(knockbackDirection * knockbackForce);
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
     }
 }
