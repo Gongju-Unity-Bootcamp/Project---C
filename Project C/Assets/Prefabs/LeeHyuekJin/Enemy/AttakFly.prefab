@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 5047835742166278869}
   - component: {fileID: 1627283213830309104}
   - component: {fileID: 4609072371593390599}
+  - component: {fileID: 7982630337838724896}
   m_Layer: 10
   m_Name: AttakFly
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 251074617, guid: c6cb148830730364e9ddd4e7e81e7030, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -261,5 +262,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e49054d5afbdc3d4f8d6e8825ee2e461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7982630337838724896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001081003158003912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acd59e5a7107eb4bb49c632e0b420e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
