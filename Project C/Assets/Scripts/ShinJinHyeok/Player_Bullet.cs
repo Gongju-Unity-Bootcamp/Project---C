@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Bullet : MonoBehaviour
 {
+    public float attack = 10.0f;
     float range = 1.2f;
     void OnEnable()
     {
