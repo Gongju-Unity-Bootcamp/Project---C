@@ -24,6 +24,7 @@ public class ItemActionController : MonoBehaviour
             Destroy(collision.gameObject);
 
             //item을 획득시 처리하는 메소드 작성란
+
         }
     }
 }

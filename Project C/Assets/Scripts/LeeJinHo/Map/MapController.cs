@@ -15,7 +15,6 @@ public class MapController : MonoBehaviour
     [SerializeField] private Transform m_testRoom;
     private RandomPosition m_randomPosition;
 
-    //private const int ROOMCOUNT = 10;
     private List<Vector3> m_testPosition;
 
     private void Awake()
