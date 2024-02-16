@@ -23,7 +23,9 @@ public class MapController : MonoBehaviour
         m_rooms = new GameObject[transform.childCount];
         m_testRoom = transform.Find("TestRoom");
         Init();
+
     }
+
 
     public int m_Count = 0;
     void Init()
