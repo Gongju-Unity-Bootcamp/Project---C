@@ -40,5 +40,29 @@ public class Test : MonoBehaviour
                 gridGraph.Scan();
             }
         }
+        if (collision.gameObject.CompareTag("DownDoor"))
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.y -= 10;
+                gridGraph.Scan();
+            }
+        }
+        if (collision.gameObject.CompareTag("RightDoor"))
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.x += 18;
+                gridGraph.Scan();
+            }
+        }
+        if (collision.gameObject.CompareTag("LeftDoor"))
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.x -= 18;
+                gridGraph.Scan();
+            }
+        }
     }
 }
