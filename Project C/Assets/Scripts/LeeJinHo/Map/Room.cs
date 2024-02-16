@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
+/// <summary>
+/// UniRx으로 변경할 스크립트.
+/// </summary>
 public class Room : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private BoxCollider2D m_BoxCollider;
+    [SerializeField] private GameObject m_Camera;
     void Start()
     {
-        
+        m_BoxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+       if(collision.gameObject.CompareTag("Player"))
+       {
+            m_Camera.transform.position = transform.position + new Vector3(0, 0, -10);
+       }
     }
 }
