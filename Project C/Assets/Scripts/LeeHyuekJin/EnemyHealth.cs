@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -13,17 +14,16 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerBullet"))
-        {
-            TakeDamage(100);
-        }
-        else if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("플레이어 충돌");
             ApplyKnockback(collision.transform.position);
         }
+        else if (collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(100);
+        }
     }
-
     public void TakeDamage(int damage)
     {
         hp -= damage;

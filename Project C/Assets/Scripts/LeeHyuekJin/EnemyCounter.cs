@@ -5,21 +5,15 @@ public class EnemyCounter : MonoBehaviour
     private int enemyCount;
     private GameObject[] enemies;
     private Collider2D[] doorColliders;
-    private bool isdoor = true;
 
 
     private void OnDestroy()
     {
-        if(isdoor)
+        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+        doorColliders = new Collider2D[doors.Length];
+        for (int i = 0; i < doors.Length; i++)
         {
-            GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-            doorColliders = new Collider2D[doors.Length];
-            for (int i = 0; i < doors.Length; i++)
-            {
-                doorColliders[i] = doors[i].GetComponent<Collider2D>();
-            }
-            Debug.Log(doors.Length);
-            isdoor = false;
+            doorColliders[i] = doors[i].GetComponent<Collider2D>();
         }
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");

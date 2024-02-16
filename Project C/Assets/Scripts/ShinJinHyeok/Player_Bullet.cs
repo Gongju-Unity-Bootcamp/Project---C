@@ -27,9 +27,12 @@ public class Player_Bullet : MonoBehaviour
         transform.rotation = Quaternion.identity;
         GetComponent<CircleCollider2D>().enabled = true;
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GetComponent<CircleCollider2D>().enabled = false;
         Player_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
+    
+        
+    
 }

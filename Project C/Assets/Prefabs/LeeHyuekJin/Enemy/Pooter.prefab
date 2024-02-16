@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8989985361918390446}
   - component: {fileID: 4229026442124215905}
   - component: {fileID: 7414329434462781220}
+  - component: {fileID: -4862025907171869274}
   m_Layer: 9
   m_Name: Pooter
   m_TagString: Enemy
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -954949860, guid: 2569f56c2f118784eb4665cf782254a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -178,3 +179,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 400
   knockbackForce: 0.1
+--- !u!114 &-4862025907171869274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917419279664065318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3acd59e5a7107eb4bb49c632e0b420e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

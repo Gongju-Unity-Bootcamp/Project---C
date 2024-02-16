@@ -14,6 +14,7 @@ public class NaviTest : MonoBehaviour
     private GameObject navi;
     private AstarPath _astarPath;
     private List<GridGraph> _gridGraphs;
+    private Collider2D[] doorColliders;
 
     void Awake()
     {
@@ -87,6 +88,19 @@ public class NaviTest : MonoBehaviour
                 {
                     gridGraph.center.x -= 18;
                     gridGraph.Scan();
+                }
+            }
+            GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+            doorColliders = new Collider2D[doors.Length];
+            for (int i = 0; i < doors.Length; i++)
+            {
+                doorColliders[i] = doors[i].GetComponent<Collider2D>();
+            }
+            foreach (Collider2D doorCollider in doorColliders)
+            {
+                if (doorCollider != null)
+                {
+                    doorCollider.isTrigger = true;
                 }
             }
         }
