@@ -10,7 +10,7 @@ public class NaviTest : MonoBehaviour
     BoxCollider2D doorCol;
 
     public Vector3 playerInPosition;
-
+    private Vector3 changePosition;
     private GameObject navi;
     private AstarPath _astarPath;
     private List<GridGraph> _gridGraphs;
@@ -22,16 +22,16 @@ public class NaviTest : MonoBehaviour
         switch (gameObject.name)
         {
             case "LeftDoor":
-                playerInPosition = Vector3.right;
-                break;
-            case "RightDoor":
                 playerInPosition = Vector3.left;
                 break;
+            case "RightDoor":
+                playerInPosition = Vector3.right;
+                break;
             case "UpDoor":
-                playerInPosition = Vector3.down;
+                playerInPosition = Vector3.up;
                 break;
             case "DownDoor":
-                playerInPosition = Vector3.up;
+                playerInPosition = Vector3.down;
                 break;
         }
     }
@@ -54,7 +54,7 @@ public class NaviTest : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log(gameObject.name);
+            Debug.Log("πÊ¿Ãµø");
             collision.gameObject.transform.position += playerInPosition * 4;
 
             if (gameObject.name == "UpDoor")
@@ -90,7 +90,6 @@ public class NaviTest : MonoBehaviour
                 }
             }
         }
-
         
     }
 }

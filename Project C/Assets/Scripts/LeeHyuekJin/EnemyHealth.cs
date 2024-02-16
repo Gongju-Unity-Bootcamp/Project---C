@@ -7,9 +7,6 @@ public class EnemyHealth : MonoBehaviour
 {
     public int hp;
     public float knockbackForce;
-
-    
-
     private void Update()
     {
         
@@ -46,6 +43,6 @@ public class EnemyHealth : MonoBehaviour
             Debug.Log(knockbackDirection * knockbackForce);
             rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
-        
     }
+
 }
