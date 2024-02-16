@@ -109,12 +109,36 @@ public class MonstroController : MonoBehaviour
     {
         // 도약 애니메이션
         Vector2 targetPos = player.transform.position;
+
+        float posY = transform.position.y;
         collider.enabled = false;
+        rb.velocity = new Vector2(0, 30f);
 
-        
+        while(true)
+        {
+            if (transform.position.y >= posY + 40)
+            {
+                // 강하 애니메이션
+                rb.velocity = Vector2.zero;
+                break;
+            }
+            yield return null;  // 업데이트 전 무조건 실행, 계속 상승 방지
+        }
 
+        while (true)
+        {
+            transform.position = Vector2.Lerp(transform.position, targetPos - new Vector2(0, 0), Time.deltaTime * 7);
+            if (transform.position.y < targetPos.y + 0.05)
+            {
+                // 착지 애니메이션
+                collider.enabled = true;
+                transform.position = targetPos;
+                break;
+            }
+            yield return null;
+        }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(RandomState());
     }
 
