@@ -13,7 +13,7 @@ public class Wall : MonoBehaviour
         m_body2D = GetComponent<Rigidbody2D>();
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
@@ -21,8 +21,6 @@ public class Wall : MonoBehaviour
             {
                 child.gameObject.SetActive(true);
             }
-            Destroy(m_wallCollider);
-            Destroy(m_body2D);
         }
     }
 }
