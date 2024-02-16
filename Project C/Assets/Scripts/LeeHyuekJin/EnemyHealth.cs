@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            TakeDamage(10);
+            TakeDamage(100);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
