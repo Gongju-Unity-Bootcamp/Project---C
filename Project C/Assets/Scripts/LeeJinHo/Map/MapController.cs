@@ -49,6 +49,26 @@ public class MapController : MonoBehaviour
         int m_mapX = 18;
         int m_mapY = 10;
 
+        //float m_map1 = transform.localPosition.x;
+        //float m_map2 = transform.localPosition.y;
+        //Debug.Log(m_map1);
+        //Debug.Log(m_map2);
+        //switch (m_randomPosition)
+        //{
+        //    case RandomPosition.Left:
+        //        rePosition = new Vector3(m_map1 - 1, m_testRoom.position.y, 0);
+        //        break;
+        //    case RandomPosition.Right:
+        //        rePosition = new Vector3(m_map1 + 1, m_testRoom.position.y, 0);
+        //        break;
+        //    case RandomPosition.Up:
+        //        rePosition = new Vector3(m_testRoom.position.x, m_map2 + 1, 0);
+        //        break;
+        //    case RandomPosition.Down:
+        //        rePosition = new Vector3(m_testRoom.position.x, m_map2 - 1, 0);
+        //        break;
+        //}
+
         m_randomPosition = (RandomPosition)Random.Range(0, 4);
         switch (m_randomPosition)
         {
