@@ -8,24 +8,24 @@ public class Player_Attack : MonoBehaviour
     bool isAttack;
     // Ω∫≈»
     float bulletSpeed = 8.0f;
-    float cooltime = 0.2f;
+    float cooltime = 0.3f;
     void Update()
     {
         Vector2 playerPosition = transform.position;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             Shoot(Vector2.up);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             Shoot(Vector2.down);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             Shoot(Vector2.left);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             Shoot(Vector2.right);
         }

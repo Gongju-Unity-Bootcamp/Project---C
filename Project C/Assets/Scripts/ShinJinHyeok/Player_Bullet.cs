@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Bullet : MonoBehaviour
 {
-    float range = 1.0f;
+    float range = 1.2f;
     void OnEnable()
     {
         StartCoroutine(ReturnBulletAfterRange());
