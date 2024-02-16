@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,13 @@ public class EnemyHealth : MonoBehaviour
 {
     public int hp;
     public float knockbackForce;
+
+    
+
+    private void Update()
+    {
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
@@ -32,9 +40,12 @@ public class EnemyHealth : MonoBehaviour
     {
         
         Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
-
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Debug.Log(knockbackDirection * knockbackForce);
-        rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        if(rb != null )
+        {
+            Debug.Log(knockbackDirection * knockbackForce);
+            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        }
+        
     }
 }

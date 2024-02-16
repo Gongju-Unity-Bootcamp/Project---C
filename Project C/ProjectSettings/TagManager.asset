@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerBullet
-  - UpDoor
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,13 +14,13 @@ TagManager:
   - Water
   - UI
   - Player
-  - Bullet
+  - PlayerBullet
   - Obstacle
   - Enemy
   - FlyEnemy
   - CameraTrue
   - CameraFalse
-  - 
+  - EnemyBullet
   - 
   - 
   - 
