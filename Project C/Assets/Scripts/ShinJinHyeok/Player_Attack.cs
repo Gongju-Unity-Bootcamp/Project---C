@@ -35,7 +35,12 @@ public class Player_Attack : MonoBehaviour
         if (!isAttack)
         {
             GameObject bullet = Player_ObjectPooling.instance.GetBulletPool();
-            bullet.GetComponent<CircleCollider2D>().enabled = true;
+
+            Player_Bullet bulletScript = bullet.GetComponent<Player_Bullet>();
+            if (bullet != null)
+            {
+                bulletScript.ResetBullet();
+            }
 
             bullet.transform.position = transform.position;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

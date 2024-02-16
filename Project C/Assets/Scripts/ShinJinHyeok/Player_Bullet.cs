@@ -5,14 +5,26 @@ using UnityEngine;
 public class Player_Bullet : MonoBehaviour
 {
     float range = 1.0f;
-    void FixedUpdate()
+    void OnEnable()
     {
-        Invoke("ReturnBullet", range);
+        StartCoroutine(ReturnBulletAfterRange());
+    }
+    IEnumerator ReturnBulletAfterRange()
+    {
+        yield return new WaitForSeconds(range);
+        ReturnBullet();
     }
     void ReturnBullet()
     {
         range = 1.0f;
+        ResetBullet();
         Player_ObjectPooling.instance.ReturnBulletPool(gameObject);
+    }
+    public void ResetBullet()
+    {
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        GetComponent<CircleCollider2D>().enabled = true;
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

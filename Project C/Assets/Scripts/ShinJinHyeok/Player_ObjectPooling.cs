@@ -7,7 +7,7 @@ public class Player_ObjectPooling : MonoBehaviour
     public static Player_ObjectPooling instance;
     public GameObject bulletPrefab;
 
-    int bulletAmount = 30;
+    int bulletAmount = 5;
     Queue<GameObject> bulletQueue = new Queue<GameObject>();
     void Start()
     {
