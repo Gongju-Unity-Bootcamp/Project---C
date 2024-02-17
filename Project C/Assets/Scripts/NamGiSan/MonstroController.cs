@@ -7,11 +7,10 @@ public class MonstroController : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    private Collider2D collider;
+    private new Collider2D collider;
 
     public Transform bulletPoint;
-
-    private float bulletSpeed = 4f;
+    public Transform bulletPoint2;
     private int direction;// 기본 이미지스프라이트가 왼쪽을 향함 
 
     void Awake()
@@ -104,7 +103,7 @@ public class MonstroController : MonoBehaviour
     {
         // 도약 애니메이션
         Vector2 targetPos = player.transform.position;
-
+        int spawnBullet = Random.Range(20, 25);
         float posY = transform.position.y;
         collider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
@@ -128,10 +127,23 @@ public class MonstroController : MonoBehaviour
                 // 착지 애니메이션
                 collider.enabled = true;
                 transform.position = targetPos;
+                for (int i = 0; i < spawnBullet; i++)
+                {
+                    int bulletSpeed = Random.Range(6, 8);
+                    GameObject bossBullet = Boss_ObjectPooling.instance.GetBulletPool();
+                    bossBullet.transform.position = bulletPoint2.position;
+                    Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
+                    Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+                    rb.AddForce(ranVec * bulletSpeed, ForceMode2D.Impulse);
+                }
                 break;
             }
             yield return null;
         }
+
+
+        
+
 
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(RandomState());
@@ -160,10 +172,11 @@ public class MonstroController : MonoBehaviour
         // 원거리 공격 자세
         yield return new WaitForSeconds(0.5f);
 
-        int spawnBullet = Random.Range(10, 15);
+        int spawnBullet = Random.Range(20, 25);
 
         for (int i = 0; i < spawnBullet; i++)
         {
+            int bulletSpeed = Random.Range(4, 7);
             GameObject bossBullet = Boss_ObjectPooling.instance.GetBulletPool();
             bossBullet.transform.position = bulletPoint.position;
             Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
