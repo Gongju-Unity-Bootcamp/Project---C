@@ -14,9 +14,6 @@ public class MoveNavi : MonoBehaviour
     private GameObject navi;
     private AstarPath _astarPath;
     private List<GridGraph> _gridGraphs;
-    private Collider2D[] doorColliders;
-    private GameObject[] enemies;
-    private GameObject[] doors;
     void Awake()
     {
         doorCol = GetComponent<BoxCollider2D>();
