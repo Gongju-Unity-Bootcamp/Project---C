@@ -36,7 +36,6 @@ public class DoorController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        // 스크립트가 파괴될 때 이벤트 핸들러 제거
         EnemyCounter enemyCounter = FindObjectOfType<EnemyCounter>();
         if (enemyCounter != null)
         {
@@ -47,14 +46,14 @@ public class DoorController : MonoBehaviour
     // Enemy의 수가 변경될 때 호출되는 함수
     void HandleEnemyCountChange(int newEnemyCount)
     {
-        if(doorColliders != null && newEnemyCount == 0)
+        if(doorColliders != null && doorColliders.Length > 0 && newEnemyCount == 0)
         {
             for (int i = 0; i < doors.Length; i++)
             {
                 doorColliders[i].isTrigger = false;
             }
         }
-        else if(doorColliders != null)
+        else if(doorColliders != null && doorColliders.Length > 0)
         {
             for (int i = 0; i < doors.Length; i++)
             {
