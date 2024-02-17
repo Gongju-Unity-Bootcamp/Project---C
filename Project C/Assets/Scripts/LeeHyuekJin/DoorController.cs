@@ -12,12 +12,12 @@ public class DoorController : MonoBehaviour
     {
         StartCoroutine(CountingDoor());
         // EnemyCounter 스크립트를 참조
-        EnemyCounter enemyCounter2 = FindObjectOfType<EnemyCounter>();
+        EnemyCounter enemyCounter = FindObjectOfType<EnemyCounter>();
 
         // EnemyCounter 스크립트의 OnEnemyCountChange 이벤트에 이벤트 핸들러 등록
-        if (enemyCounter2 != null)
+        if (enemyCounter != null)
         {
-            enemyCounter2.OnEnemyCountChange += HandleEnemyCountChange;
+            enemyCounter.OnEnemyCountChange += HandleEnemyCountChange;
         }
 
         HandleEnemyCountChange(EnemyCounter.enemyCount);
