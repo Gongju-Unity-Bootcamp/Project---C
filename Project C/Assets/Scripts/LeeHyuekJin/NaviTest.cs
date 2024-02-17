@@ -15,7 +15,8 @@ public class NaviTest : MonoBehaviour
     private AstarPath _astarPath;
     private List<GridGraph> _gridGraphs;
     private Collider2D[] doorColliders;
-
+    private GameObject[] enemies;
+    private GameObject[] doors;
     void Awake()
     {
         doorCol = GetComponent<BoxCollider2D>();
@@ -49,61 +50,54 @@ public class NaviTest : MonoBehaviour
                 _gridGraphs.Add(_astarPath.graphs[i] as GridGraph);
             }
         }
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("방이동");
-            collision.gameObject.transform.position += playerInPosition * 4;
+            StartCoroutine(OpenDoor(collision.gameObject));
+        }
+    }
+    IEnumerator OpenDoor(GameObject collision)
+    {
+        yield return new WaitForEndOfFrame();
+        Debug.Log("방이동");
+        collision.gameObject.transform.position += playerInPosition * 4;
 
-            if (gameObject.name == "UpDoor")
+        if (gameObject.name == "UpDoor")
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
             {
-                foreach (GridGraph gridGraph in _gridGraphs)
-                {
-                    gridGraph.center.y += 10;
-                    gridGraph.Scan();
-                }
-            }
-            else if (gameObject.name == "DownDoor")
-            {
-                foreach (GridGraph gridGraph in _gridGraphs)
-                {
-                    gridGraph.center.y -= 10;
-                    gridGraph.Scan();
-                }
-            }
-            else if (gameObject.name == "RightDoor")
-            {
-                foreach (GridGraph gridGraph in _gridGraphs)
-                {
-                    gridGraph.center.x += 18;
-                    gridGraph.Scan();
-                }
-            }
-            else if (gameObject.name == "LeftDoor")
-            {
-                foreach (GridGraph gridGraph in _gridGraphs)
-                {
-                    gridGraph.center.x -= 18;
-                    gridGraph.Scan();
-                }
-            }
-            GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-            doorColliders = new Collider2D[doors.Length];
-            for (int i = 0; i < doors.Length; i++)
-            {
-                doorColliders[i] = doors[i].GetComponent<Collider2D>();
-            }
-            foreach (Collider2D doorCollider in doorColliders)
-            {
-                if (doorCollider != null)
-                {
-                    doorCollider.isTrigger = true;
-                }
+                gridGraph.center.y += 10;
+                gridGraph.Scan();
             }
         }
-        
+        else if (gameObject.name == "DownDoor")
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.y -= 10;
+                gridGraph.Scan();
+            }
+        }
+        else if (gameObject.name == "RightDoor")
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.x += 18;
+                gridGraph.Scan();
+            }
+        }
+        else if (gameObject.name == "LeftDoor")
+        {
+            foreach (GridGraph gridGraph in _gridGraphs)
+            {
+                gridGraph.center.x -= 18;
+                gridGraph.Scan();
+            }
+        }
     }
 }

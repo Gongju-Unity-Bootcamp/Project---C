@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3793420649208011800}
   - component: {fileID: 4136252429322136580}
   - component: {fileID: -1720428157108328363}
-  - component: {fileID: -8745038121638488382}
+  - component: {fileID: 1473616573331253439}
   m_Layer: 9
   m_Name: Horf
   m_TagString: Enemy
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 400
   knockbackForce: 0.1
---- !u!114 &-8745038121638488382
+--- !u!114 &1473616573331253439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
