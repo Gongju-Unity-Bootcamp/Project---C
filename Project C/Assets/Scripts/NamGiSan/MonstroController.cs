@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -12,7 +12,7 @@ public class MonstroController : MonoBehaviour
     public Transform bulletPoint;
 
     private float bulletSpeed = 4f;
-    private int direction;// ±âº» ÀÌ¹ÌÁö½ºÇÁ¶óÀÌÆ®°¡ ¿ŞÂÊÀ» ÇâÇÔ 
+    private int direction;// ê¸°ë³¸ ì´ë¯¸ì§€ìŠ¤í”„ë¼ì´íŠ¸ê°€ ì™¼ìª½ì„ í–¥í•¨ 
 
     void Awake()
     {
@@ -41,9 +41,10 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator RandomState()
     {
+        // ê¸°ë³¸ ëŒ€ê¸° ë™ì‘
         yield return new WaitForSeconds(1f);
 
-        int randomAction = Random.Range(0, 1);
+        int randomAction = Random.Range(0, 2);
 
         switch(randomAction)
         {
@@ -53,16 +54,12 @@ public class MonstroController : MonoBehaviour
             case 1:
                 StartCoroutine(attackReady());
                 break;
-            case 2:
-                break;
-            default: 
-                break;
         }
     }
 
     IEnumerator jumpReady()
     {
-        //Á¡ÇÁ ´ë±â µ¿ÀÛ
+        //ì í”„ ëŒ€ê¸° ë™ì‘
         yield return new WaitForSeconds(0.5f);
 
         int randomJump = Random.Range(0, 2);
@@ -75,14 +72,12 @@ public class MonstroController : MonoBehaviour
             case 1:
                 StartCoroutine(DiveAttack());
                 break;
-            default : 
-                break;
         }
     }
 
     IEnumerator Chase()
     {
-        // ÀÛÀº Á¡ÇÁ ¾Ö´Ï¸ŞÀÌ¼Ç
+        // ì‘ì€ ì í”„ ì• ë‹ˆë©”ì´ì…˜
         Vector2 startPos = transform.position;
         Vector2 targetPos = player.transform.position;
         collider.enabled = false;
@@ -99,7 +94,7 @@ public class MonstroController : MonoBehaviour
 
         transform.position = targetPos;
         collider.enabled = true;
-        // ÂøÁö ¾Ö´Ï¸ŞÀÌ¼Ç
+        // ì°©ì§€ ì• ë‹ˆë©”ì´ì…˜
 
         yield return new WaitForSeconds(1f);
         StartCoroutine(RandomState());
@@ -107,7 +102,7 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator DiveAttack()
     {
-        // µµ¾à ¾Ö´Ï¸ŞÀÌ¼Ç
+        // ë„ì•½ ì• ë‹ˆë©”ì´ì…˜
         Vector2 targetPos = player.transform.position;
 
         float posY = transform.position.y;
@@ -118,11 +113,11 @@ public class MonstroController : MonoBehaviour
         {
             if (transform.position.y >= posY + 40)
             {
-                // °­ÇÏ ¾Ö´Ï¸ŞÀÌ¼Ç
+                // ê°•í•˜ ì• ë‹ˆë©”ì´ì…˜
                 rb.velocity = Vector2.zero;
                 break;
             }
-            yield return null;  // ¾÷µ¥ÀÌÆ® Àü ¹«Á¶°Ç ½ÇÇà, °è¼Ó »ó½Â ¹æÁö
+            yield return null;  // ì—…ë°ì´íŠ¸ ì „ ë¬´ì¡°ê±´ ì‹¤í–‰, ê³„ì† ìƒìŠ¹ ë°©ì§€
         }
 
         while (true)
@@ -130,7 +125,7 @@ public class MonstroController : MonoBehaviour
             transform.position = Vector2.Lerp(transform.position, targetPos - new Vector2(0, 0), Time.deltaTime * 7);
             if (transform.position.y < targetPos.y + 0.05)
             {
-                // ÂøÁö ¾Ö´Ï¸ŞÀÌ¼Ç
+                // ì°©ì§€ ì• ë‹ˆë©”ì´ì…˜
                 collider.enabled = true;
                 transform.position = targetPos;
                 break;
@@ -144,6 +139,41 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator attackReady()
     {
+        // ì›ê±°ë¦¬ ê³µê²© ëŒ€ê¸° ë™ì‘
+        yield return new WaitForSeconds(0.5f);
+
+        int randomJump = Random.Range(0, 2);
+
+        switch (randomJump)
+        {
+            case 0:
+                StartCoroutine(SpitAttack());
+                break;
+            case 1:
+                StartCoroutine(RandomState());
+                break;
+        }
+    }
+
+    IEnumerator SpitAttack()
+    {
+        // ì›ê±°ë¦¬ ê³µê²© ìì„¸
+        yield return new WaitForSeconds(0.5f);
+
+        int spawnBullet = Random.Range(10, 15);
+
+        for (int i = 0; i < spawnBullet; i++)
+        {
+            GameObject bossBullet = Boss_ObjectPooling.instance.GetBulletPool();
+            bossBullet.transform.position = bulletPoint.position;
+            Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
+            Vector2 dirVec = (player.transform.position - transform.position).normalized;
+            Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 0.5f));
+            dirVec += ranVec;
+            rb.AddForce(dirVec * bulletSpeed, ForceMode2D.Impulse);
+        }
+
         yield return new WaitForSeconds(1f);
+        StartCoroutine(RandomState());
     }
 }
