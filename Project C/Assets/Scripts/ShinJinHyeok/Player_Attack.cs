@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Player_Attack : MonoBehaviour
 {
-    public GameObject bulletPrefab;
     bool isAttack;
     // Ω∫≈»
     float bulletSpeed = 8.0f;
     float cooltime = 0.3f;
     void Update()
     {
-        Vector2 playerPosition = transform.position;
-
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Shoot(Vector2.up);
@@ -21,18 +18,18 @@ public class Player_Attack : MonoBehaviour
         {
             Shoot(Vector2.down);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Shoot(Vector2.left);
-        }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             Shoot(Vector2.right);
         }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Shoot(Vector2.left);
+        }
     }
     void Shoot(Vector2 direction)
     {
-        if (!isAttack)
+        if (!isAttack && Player_Move.gameState == "playing")
         {
             GameObject bullet = Player_ObjectPooling.instance.GetBulletPool();
 
@@ -43,8 +40,8 @@ public class Player_Attack : MonoBehaviour
             }
 
             bullet.transform.position = transform.position;
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.velocity = direction * bulletSpeed;
+            Rigidbody2D bulletRbody = bullet.GetComponent<Rigidbody2D>();
+            bulletRbody.velocity = direction * bulletSpeed;
 
             isAttack = true;
             Invoke("AttackDelay", cooltime);

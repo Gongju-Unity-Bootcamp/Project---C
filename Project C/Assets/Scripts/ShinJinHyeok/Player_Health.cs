@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Player_Health : MonoBehaviour
 {
     public static int hp;
+    public static bool isInvincible;
 
-    public abstract void TakeDamage(GameObject gameObject);
+    public abstract void TakeDamage();
 }
