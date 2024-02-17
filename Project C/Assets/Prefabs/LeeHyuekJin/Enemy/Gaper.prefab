@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 6698359140172979390}
   - component: {fileID: 6235537692161021745}
   - component: {fileID: 1297975570804248245}
-  - component: {fileID: -3238326085704747856}
+  - component: {fileID: -7718195493262091642}
   m_Layer: 9
   m_Name: Gaper
   m_TagString: Enemy
@@ -442,7 +442,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-3238326085704747856
+--- !u!114 &-7718195493262091642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8989985361918390446}
   - component: {fileID: 4229026442124215905}
   - component: {fileID: 7414329434462781220}
-  - component: {fileID: -4862025907171869274}
+  - component: {fileID: 4376078521322564123}
   m_Layer: 9
   m_Name: Pooter
   m_TagString: Enemy
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 400
   knockbackForce: 0.1
---- !u!114 &-4862025907171869274
+--- !u!114 &4376078521322564123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

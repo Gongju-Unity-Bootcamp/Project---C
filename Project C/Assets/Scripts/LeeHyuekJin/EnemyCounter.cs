@@ -1,33 +1,42 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCounter : MonoBehaviour
 {
-    private int enemyCount;
-    private GameObject[] enemies;
-    private Collider2D[] doorColliders;
+    // 싱글톤 패턴을 사용하여 Instance 생성
+    public static EnemyCounter Instance { get; private set; }
 
+    // 이벤트 선언
+    public event Action<int> OnEnemyCountChange;
 
-    private void OnDestroy()
+    // Enemy 수를 추적하는 변수
+    public static int enemyCount { get; set; }
+
+    private void Awake()
     {
-        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-        doorColliders = new Collider2D[doors.Length];
-        for (int i = 0; i < doors.Length; i++)
+        // Instance 초기화
+        if (Instance == null)
         {
-            doorColliders[i] = doors[i].GetComponent<Collider2D>();
+            Instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    void Start()
+    {
+        enemyCount = 0;
+        UpdateEnemyCount();
+    }
+
+    public void UpdateEnemyCount()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemyCount = enemies.Length;
-        if (enemyCount == 0)
-        {
-            Debug.Log("적이 없음");
-            foreach (Collider2D doorCollider in doorColliders)
-            {
-                if (doorCollider != null)
-                {
-                    doorCollider.isTrigger = false;
-                }
-            }
-        }
+        OnEnemyCountChange?.Invoke(enemyCount);
     }
 }

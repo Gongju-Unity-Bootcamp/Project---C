@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnManager : MonoBehaviour
+public class EnemySpawnController : MonoBehaviour
 {
     private MonsterFactory monsterFactory;
     public GameObject[] spawn;
@@ -11,13 +11,9 @@ public class SpawnManager : MonoBehaviour
         monsterFactory = new MonsterFactory(spawn);
         _collider2D = GetComponent<Collider2D>();
     }
-
-    private void Update()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //플러스 델타타임해서 0.5초뒤에나오게 
         if (collision.gameObject.CompareTag("Player"))
         {
             _collider2D.GetComponent<Collider2D>().enabled = false;
@@ -43,10 +39,8 @@ public class SpawnManager : MonoBehaviour
     }
 }
 
-public class MonsterFactory : SpawnManager
+public class MonsterFactory : EnemySpawnController
 {
-    private GameObject[] spawn;
-
     public MonsterFactory(GameObject[] spawn)
     {
         this.spawn = spawn;

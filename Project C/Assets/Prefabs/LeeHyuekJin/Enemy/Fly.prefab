@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2593897863111262901}
   - component: {fileID: 6825587807512056427}
   - component: {fileID: 5898368066689083365}
-  - component: {fileID: 5771992912369527373}
+  - component: {fileID: 4224778664442381065}
   m_Layer: 10
   m_Name: Fly
   m_TagString: Enemy
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   knockbackForce: 1
---- !u!114 &5771992912369527373
+--- !u!114 &4224778664442381065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
