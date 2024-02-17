@@ -26,7 +26,9 @@ public class Boss_Bullet : MonoBehaviour
 
     IEnumerator Bam()
     {
-        yield return new WaitForSeconds(0.75f);
+        float ranTime = Random.Range(0.4f, 0.75f);
+
+        yield return new WaitForSeconds(ranTime);
         Destroy(gameObject);
     }
 }

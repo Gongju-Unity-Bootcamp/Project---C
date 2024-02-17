@@ -7,7 +7,7 @@ public class Boss_ObjectPooling : MonoBehaviour
     public static Boss_ObjectPooling instance;
     public GameObject bulletPrefab;
 
-    int bulletAmount = 50;
+    int bulletAmount = 100;
     Queue<GameObject> bulletQueue = new Queue<GameObject>();
 
     void Start()
