@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Json;
 using UnityEngine;
 
 
-public class NaviTest : MonoBehaviour
+public class MoveNavi : MonoBehaviour
 {
     BoxCollider2D doorCol;
 
