@@ -6,20 +6,25 @@ public class EnemySpawnController : MonoBehaviour
     private MonsterFactory monsterFactory;
     public GameObject[] spawn;
     private Collider2D _collider2D;
+    private bool _isSpawning = true;
+
     void Start()
     {
-        monsterFactory = new MonsterFactory(spawn);
+        monsterFactory = gameObject.AddComponent<MonsterFactory>();
+        monsterFactory.Initialize(spawn);
         _collider2D = GetComponent<Collider2D>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //플러스 델타타임해서 0.5초뒤에나오게 
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && _isSpawning)
         {
-            _collider2D.GetComponent<Collider2D>().enabled = false;
-            Invoke("SpawnRandomMonsterPattern", 0.5f);
+            _collider2D.enabled = false;
+            Invoke("SpawnRandomMonsterPattern", 0.2f);
+            _isSpawning = false;
         }
     }
+
     void SpawnRandomMonsterPattern()
     {
         int randomPattern = Random.Range(0, spawn.Length);
@@ -27,15 +32,18 @@ public class EnemySpawnController : MonoBehaviour
     }
 }
 
-public class MonsterFactory : EnemySpawnController
+public class MonsterFactory : MonoBehaviour
 {
-    public MonsterFactory(GameObject[] spawn)
+    private GameObject[] spawn;
+
+    public void Initialize(GameObject[] spawn)
     {
         this.spawn = spawn;
     }
 
     public GameObject SpawnMonsterPattern(int patternIndex, Vector3 spawnPosition)
     {
+        Debug.Log("스폰");
         return Instantiate(spawn[patternIndex], spawnPosition, Quaternion.identity);
     }
 }

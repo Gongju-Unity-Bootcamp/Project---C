@@ -33,6 +33,12 @@ public class EnemyCounter : MonoBehaviour
         UpdateEnemyCount();
     }
 
+    private void OnDestroy()
+    {
+        // OnDestroy에서 이벤트 핸들러 해제
+        OnEnemyCountChange = null;
+    }
+
     public void UpdateEnemyCount()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
