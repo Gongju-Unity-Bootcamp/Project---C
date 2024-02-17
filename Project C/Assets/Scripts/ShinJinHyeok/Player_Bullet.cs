@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Bullet : MonoBehaviour
 {
+    // Ω∫≈»
     public float attack = 10.0f;
     float range = 1.2f;
     void OnEnable()
@@ -27,12 +28,9 @@ public class Player_Bullet : MonoBehaviour
         transform.rotation = Quaternion.identity;
         GetComponent<CircleCollider2D>().enabled = true;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         GetComponent<CircleCollider2D>().enabled = false;
         Player_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
-    
-        
-    
 }

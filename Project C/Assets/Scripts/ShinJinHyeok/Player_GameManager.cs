@@ -32,9 +32,9 @@ public class Player_GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        
-        Debug.Log("Game Over!");
         Debug.Log("»ç¸Á!");
+        Debug.Log("Game Over!");
+
         Player_Move.gameState = "gameover";
 
         Rigidbody2D playerRbody = playerObject.GetComponent<Rigidbody2D>();
