@@ -38,6 +38,6 @@ public class Player_GameManager : MonoBehaviour
         Player_Move.gameState = "gameover";
 
         Rigidbody2D playerRbody = playerObject.GetComponent<Rigidbody2D>();
-        playerRbody.velocity = new Vector2(0, 0);
+        playerRbody.velocity = Vector2.zero;
     }
 }

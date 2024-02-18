@@ -7,7 +7,7 @@ public class Player_Attack : MonoBehaviour
     bool isAttack;
     // Ω∫≈»
     float bulletSpeed = 8.0f;
-    float cooltime = 0.3f;
+    public static float cooltime = 0.4f;
     void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -34,10 +34,6 @@ public class Player_Attack : MonoBehaviour
             GameObject bullet = Player_ObjectPooling.instance.GetBulletPool();
 
             Player_Bullet bulletScript = bullet.GetComponent<Player_Bullet>();
-            if (bullet != null)
-            {
-                bulletScript.ResetBullet();
-            }
 
             bullet.transform.position = transform.position;
             Rigidbody2D bulletRbody = bullet.GetComponent<Rigidbody2D>();

@@ -15,10 +15,10 @@ public class Player_Move : Player_Health
     public static string gameState;
     bool isDamage = false;
     // 스탯
-    float moveSpeed = 5.0f;
+    public static float moveSpeed = 3.0f;
     Player_Move()
     {
-        hp = 8;
+        hp = 7;
         isInvincible = false;
     }
     public IEnumerator NoDamage(float blinkTime, float intervalTime)
@@ -81,7 +81,7 @@ public class Player_Move : Player_Health
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && gameState == "playing")
+        if ((other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("EnemyBullet")) && gameState == "playing")
         {
             TakeDamage();
         }
@@ -95,7 +95,7 @@ public class Player_Move : Player_Health
 
         isDamage = true;
 
-        if (hp > 0)
+        if (hp > 1)
         {
             hp--;
             Debug.Log("현재 체력 : " + hp);

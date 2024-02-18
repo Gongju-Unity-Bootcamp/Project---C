@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 1454293403509733139}
   - component: {fileID: 7871978567550278421}
   - component: {fileID: 6313125711046693677}
-  - component: {fileID: 6872600551541490435}
+  - component: {fileID: 2031865947177835958}
+  - component: {fileID: 5594319408253016648}
+  - component: {fileID: 5153730950685528817}
   m_Layer: 6
   m_Name: Sprite_Player_Body
   m_TagString: Player
@@ -150,7 +152,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6872600551541490435
+--- !u!114 &2031865947177835958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,9 +161,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 4917746235641639003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 093d5011623db6b42b39a3cd20227a02, type: 3}
+  m_Script: {fileID: 11500000, guid: 992cbc3e76b9d53429b64e0e7788b6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5594319408253016648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917746235641639003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8debe92e5d4fd884f9078ad3f9fd6fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  moveSpeed: 0
+  attack: 0
+  cooltime: 0
+  bulletSpeed: 0
+  range: 0
+--- !u!114 &5153730950685528817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4917746235641639003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209414b74a4e1394a8112475fc33e543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_range: 0
+  GrenadeCount: 0
+  CoinCount: 0
+  KeyCount: 0
+  test_Inventory: {fileID: 0}
+  player_Stat: {fileID: 5594319408253016648}
 --- !u!1 &5743560064190205970
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,9 +342,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5607768379659941592}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
