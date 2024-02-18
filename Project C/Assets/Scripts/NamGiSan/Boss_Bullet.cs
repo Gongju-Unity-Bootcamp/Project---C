@@ -23,13 +23,12 @@ public class Boss_Bullet : MonoBehaviour
     {
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
-        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Collider2D>().enabled = true;
         Boss_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GetComponent<Collider2D>().enabled = false;
         Boss_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
 }

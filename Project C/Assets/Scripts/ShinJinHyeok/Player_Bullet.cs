@@ -22,7 +22,6 @@ public class Player_Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        GetComponent<CircleCollider2D>().enabled = false;
         Player_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
 }
