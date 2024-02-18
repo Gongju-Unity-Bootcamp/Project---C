@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4229026442124215905}
   - component: {fileID: 7414329434462781220}
   - component: {fileID: 4376078521322564123}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Pooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}

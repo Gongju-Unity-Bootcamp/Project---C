@@ -8,7 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Door
-  - Item
+  - MiniMap
   layers:
   - Default
   - TransparentFX
