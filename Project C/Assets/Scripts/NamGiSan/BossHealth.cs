@@ -25,7 +25,7 @@ public class BossHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
-        else if (collision.gameObject.CompareTag("Player"))
+        else if (collision.gameObject.CompareTag("Player") && Player_Move.hp > 1)
         {
             Debug.Log("플레이어 충돌");
             Knockback(collision.transform.position);

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Door
   - MiniMap
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
