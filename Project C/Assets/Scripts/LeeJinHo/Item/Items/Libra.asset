@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5523c46a6f4d1d043be460fc1fe8d4e4, type: 3}
   m_Name: Libra
   m_EditorClassIdentifier: 
-  name: 
+  name: Libra
   cost: 0
   itemType: 0
   ability: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: -536527513, guid: 292902998ceb76546b537a427048548b, type: 3}
   clip: {fileID: 0}
   audioSource: {fileID: 0}

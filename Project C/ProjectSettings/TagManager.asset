@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Door
+  - Item
   layers:
   - Default
   - TransparentFX
