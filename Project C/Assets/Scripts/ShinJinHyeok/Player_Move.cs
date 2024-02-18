@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player_Move : Player_Health
 {
-    Rigidbody2D playerRbody;
+    private Rigidbody2D playerRbody;
 
     float _axisHor;
     float _axisVer;

@@ -5,9 +5,9 @@ using UnityEngine;
 public class Boss_ObjectPooling : MonoBehaviour
 {
     public static Boss_ObjectPooling instance;
-    public GameObject bulletPrefab;
+    public GameObject[] bulletPrefab;
 
-    int bulletAmount = 100;
+    int bulletAmount = 50;
     Queue<GameObject> bulletQueue = new Queue<GameObject>();
 
     void Start()
@@ -16,7 +16,7 @@ public class Boss_ObjectPooling : MonoBehaviour
 
         for (int index = 0; index < bulletAmount; index++)
         {
-            GameObject poolBullet = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
+            GameObject poolBullet = Instantiate(bulletPrefab[0], Vector3.zero, Quaternion.identity);
 
             bulletQueue.Enqueue(poolBullet);
             poolBullet.SetActive(false);
