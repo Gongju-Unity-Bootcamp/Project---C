@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d660f6e8f434842849cc74b60e04a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1546093736}
 --- !u!4 &940561978
 Transform:
   m_ObjectHideFlags: 0
@@ -319,6 +319,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1546093736 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4917746235641639003, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
+  m_PrefabInstance: {fileID: 2065679902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2042515418
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,6 +335,10 @@ PrefabInstance:
     - target: {fileID: 917419279664065318, guid: 576923839e1dbdd43aa52af3c9e49780, type: 3}
       propertyPath: m_Name
       value: Pooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 917419279664065318, guid: 576923839e1dbdd43aa52af3c9e49780, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 917419279664065318, guid: 576923839e1dbdd43aa52af3c9e49780, type: 3}
       propertyPath: m_TagString
