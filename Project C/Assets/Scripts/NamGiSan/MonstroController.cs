@@ -7,7 +7,8 @@ public class MonstroController : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    private new Collider2D collider;
+    private new CircleCollider2D collider;
+    private BoxCollider2D minicollider;
 
     public Transform bulletPoint;
     public Transform bulletPoint2;
@@ -17,7 +18,8 @@ public class MonstroController : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<CircleCollider2D>();
+        minicollider = GetComponent<BoxCollider2D>();
     }
 
 
@@ -38,6 +40,20 @@ public class MonstroController : MonoBehaviour
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            collider.enabled = false;
+            minicollider.enabled = true;
+        }
+        else
+        {
+            collider.enabled = true;
+            minicollider.enabled = false;
+        }
+    }
+
     IEnumerator RandomState()
     {
         // 기본 대기 동작
@@ -45,14 +61,22 @@ public class MonstroController : MonoBehaviour
 
         int randomAction = Random.Range(0, 2);
 
-        switch(randomAction)
+        if (player != null && Player_Move.gameState != "gameover")
         {
-            case 0:
-                StartCoroutine(jumpReady());
-                break;
-            case 1:
-                StartCoroutine(attackReady());
-                break;
+            switch (randomAction)
+            {
+                case 0:
+                    StartCoroutine(jumpReady());
+                    break;
+                case 1:
+                    StartCoroutine(attackReady());
+                    break;
+            }
+        }
+        else
+        {
+            collider.enabled = false;
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -63,14 +87,23 @@ public class MonstroController : MonoBehaviour
 
         int randomJump = Random.Range(0, 2);
 
-        switch(randomJump)
+        if (player != null && Player_Move.gameState != "gameover")
         {
-            case 0:
-                StartCoroutine(Chase());
-                break;
-            case 1:
-                StartCoroutine(DiveAttack());
-                break;
+            switch (randomJump)
+            {
+                case 0:
+                    StartCoroutine(Chase());
+                    break;
+                case 1:
+                    StartCoroutine(DiveAttack());
+                    break;
+            }
+        }
+
+        else
+        {
+            collider.enabled = false;
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -80,6 +113,7 @@ public class MonstroController : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 targetPos = player.transform.position;
         collider.enabled = false;
+        minicollider.enabled = false;
 
         float moveTime = 1f;
         float elapsedTime = 0f;
@@ -92,6 +126,7 @@ public class MonstroController : MonoBehaviour
         }
 
         transform.position = targetPos;
+        rb.velocity = Vector2.zero;
         collider.enabled = true;
         // 착지 애니메이션
 
@@ -106,6 +141,7 @@ public class MonstroController : MonoBehaviour
         int spawnBullet = Random.Range(30, 35);
         float posY = transform.position.y;
         collider.enabled = false;
+        minicollider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
 
         while(true)
@@ -126,6 +162,7 @@ public class MonstroController : MonoBehaviour
             {
                 // 착지 애니메이션
                 collider.enabled = true;
+                rb.velocity = Vector2.zero;
                 transform.position = targetPos;
                 for (int i = 0; i < spawnBullet; i++)
                 {
@@ -141,10 +178,6 @@ public class MonstroController : MonoBehaviour
             yield return null;
         }
 
-
-        
-
-
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(RandomState());
     }
@@ -156,14 +189,23 @@ public class MonstroController : MonoBehaviour
 
         int randomJump = Random.Range(0, 2);
 
-        switch (randomJump)
+        if (player != null && Player_Move.gameState != "gameover")
         {
-            case 0:
-                StartCoroutine(SpitAttack());
-                break;
-            case 1:
-                StartCoroutine(RandomState());
-                break;
+            switch (randomJump)
+            {
+                case 0:
+                    StartCoroutine(SpitAttack());
+                    break;
+                case 1:
+                    StartCoroutine(RandomState());
+                    break;
+            }
+        }
+
+        else
+        {
+            collider.enabled = false;
+            rb.velocity = Vector2.zero;
         }
     }
 
