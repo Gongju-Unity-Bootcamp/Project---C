@@ -40,7 +40,7 @@ public class MonstroController : MonoBehaviour
         transform.localScale = new Vector3(direction, 1, 1);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
@@ -52,7 +52,7 @@ public class MonstroController : MonoBehaviour
             collider.enabled = true;
             minicollider.enabled = false;
         }
-    }
+    }*/
 
     IEnumerator RandomState()
     {
@@ -113,7 +113,7 @@ public class MonstroController : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 targetPos = player.transform.position;
         collider.enabled = false;
-        minicollider.enabled = false;
+        //minicollider.enabled = false;
 
         float moveTime = 1f;
         float elapsedTime = 0f;
@@ -141,7 +141,7 @@ public class MonstroController : MonoBehaviour
         int spawnBullet = Random.Range(30, 35);
         float posY = transform.position.y;
         collider.enabled = false;
-        minicollider.enabled = false;
+        //minicollider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
 
         while(true)
