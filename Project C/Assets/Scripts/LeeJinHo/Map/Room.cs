@@ -18,7 +18,7 @@ public class Room : MonoBehaviour
 
     void Start()
     {
-        rend = transform.Find("MiniMap").GetComponent<Renderer>();
+        rend = GameObject.FindWithTag("MiniMap").GetComponent<Renderer>();
         m_BoxCollider = GetComponent<BoxCollider2D>();
     }
 

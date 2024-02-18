@@ -7,23 +7,33 @@ using UnityEngine;
 public class ItemActionController : MonoBehaviour
 {
     [SerializeField] private int m_range;
-
+    [SerializeField] private int GrenadeCount;
+    [SerializeField] private int CoinCount;
+    [SerializeField] private int KeyCount;
+    
+    private CircleCollider2D m_collider;
     private Rigidbody2D m_itemRigidbody;
+
+    [SerializeField] Test_Inventory test_Inventory;
+
 
     private void Awake()
     {
         m_itemRigidbody = GetComponent<Rigidbody2D>();
+        m_collider = GetComponent<CircleCollider2D>();
     }
 
     //Item을 중복 습득시의 처리할 방법에 따라 OnCollisionEnter2D로 변경해야됨.
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("콜라이더");
         if (collision.gameObject.CompareTag("Item"))
         {
-            Item item = collision.gameObject.GetComponent<Item>();
+            Debug.Log("아이템");
+            Item item = collision.transform.GetComponent<ItemPickUp>().item;
             Destroy(collision.gameObject);
 
-            //item을 획득시 처리하는 메소드 작성란
+            test_Inventory.Test_GetItem(item);
 
         }
     }
