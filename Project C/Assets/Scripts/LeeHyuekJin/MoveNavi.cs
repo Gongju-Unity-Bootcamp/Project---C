@@ -67,7 +67,6 @@ public class MoveNavi : MonoBehaviour
             foreach (GridGraph gridGraph in _gridGraphs)
             {
                 gridGraph.center.y += 10;
-                gridGraph.Scan();
             }
         }
         else if (gameObject.name == "DownDoor")
@@ -75,7 +74,6 @@ public class MoveNavi : MonoBehaviour
             foreach (GridGraph gridGraph in _gridGraphs)
             {
                 gridGraph.center.y -= 10;
-                gridGraph.Scan();
             }
         }
         else if (gameObject.name == "RightDoor")
@@ -83,7 +81,6 @@ public class MoveNavi : MonoBehaviour
             foreach (GridGraph gridGraph in _gridGraphs)
             {
                 gridGraph.center.x += 18;
-                gridGraph.Scan();
             }
         }
         else if (gameObject.name == "LeftDoor")
@@ -91,8 +88,12 @@ public class MoveNavi : MonoBehaviour
             foreach (GridGraph gridGraph in _gridGraphs)
             {
                 gridGraph.center.x -= 18;
-                gridGraph.Scan();
             }
+        }
+
+        foreach (GridGraph gridGraph in _gridGraphs)
+        {
+            gridGraph.Scan();
         }
     }
 }

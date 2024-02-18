@@ -16,6 +16,6 @@ MonoBehaviour:
   cost: 2
   itemType: 1
   ability: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 555201741, guid: 292902998ceb76546b537a427048548b, type: 3}
   clip: {fileID: 0}
   audioSource: {fileID: 0}

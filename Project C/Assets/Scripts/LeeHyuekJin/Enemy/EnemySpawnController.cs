@@ -1,18 +1,31 @@
+using Pathfinding;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawnController : MonoBehaviour
 {
-    private MonsterFactory monsterFactory;
     public GameObject[] spawn;
     private Collider2D _collider2D;
     private bool _isSpawning = true;
 
+    private GameObject navi;
+    private AstarPath _astarPath;
+    private List<GridGraph> _gridGraphs;
     void Start()
     {
-        monsterFactory = gameObject.AddComponent<MonsterFactory>();
-        monsterFactory.Initialize(spawn);
         _collider2D = GetComponent<Collider2D>();
+
+        navi = GameObject.FindWithTag("GameController");
+        _astarPath = navi.GetComponent<AstarPath>();
+        _gridGraphs = new List<GridGraph>();
+        for (int i = 0; i < Mathf.Min(2, _astarPath.graphs.Length); i++)
+        {
+            if (_astarPath.graphs[i] is GridGraph)
+            {
+                _gridGraphs.Add(_astarPath.graphs[i] as GridGraph);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,7 +33,7 @@ public class EnemySpawnController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && _isSpawning)
         {
             _collider2D.enabled = false;
-            Invoke("SpawnRandomMonsterPattern", 0.2f);
+            SpawnRandomMonsterPattern();
             _isSpawning = false;
         }
     }
@@ -28,20 +41,14 @@ public class EnemySpawnController : MonoBehaviour
     void SpawnRandomMonsterPattern()
     {
         int randomPattern = Random.Range(0, spawn.Length);
-        monsterFactory.SpawnMonsterPattern(randomPattern, transform.position);
-    }
-}
-
-public class MonsterFactory : MonoBehaviour
-{
-    private GameObject[] spawn;
-
-    public void Initialize(GameObject[] spawn)
-    {
-        this.spawn = spawn;
+        SpawnMonsterPattern(randomPattern, transform.position);
+        foreach (GridGraph gridGraph in _gridGraphs)
+        {
+            gridGraph.Scan();
+        }
     }
 
-    public GameObject SpawnMonsterPattern(int patternIndex, Vector3 spawnPosition)
+    GameObject SpawnMonsterPattern(int patternIndex, Vector3 spawnPosition)
     {
         Debug.Log("½ºÆù");
         return Instantiate(spawn[patternIndex], spawnPosition, Quaternion.identity);
