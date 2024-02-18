@@ -42,29 +42,27 @@ public class MulliganController : MonoBehaviour
         }
         transform.Translate(currentDirection.normalized * moveSpeed * Time.deltaTime);
 
-        float yDifference = Mathf.Abs(player.transform.position.y - transform.position.y);
-        float xDifference = Mathf.Abs(player.transform.position.x - transform.position.x);
-
-        bool noObstacleBetween = !Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacle"));
-        if (noObstacleBetween && Time.time - shootBulletTime > skillCollTime && (Mathf.Approximately(yDifference, 0.0f) || yDifference < 0.01f))
-        {
-            shootBulletTime = Time.time;
-            ShootBullet();
-        }
-        else if (noObstacleBetween && Time.time - shootBulletTime > skillCollTime && (Mathf.Approximately(xDifference, 0.0f) || xDifference < 0.01f))
-        {
-            shootBulletTime = Time.time;
-            ShootBullet();
-        }
+        
     }
 
     void ShootBullet()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
 
-        GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
-        Rigidbody2D Bullet_rb = Bullet.GetComponent<Rigidbody2D>();
-        Bullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
+        GameObject upBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        Rigidbody2D upBullet_rb = upBullet.GetComponent<Rigidbody2D>();
+        upBullet_rb.AddForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
+
+        GameObject downBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        Rigidbody2D downBullet_rb = downBullet.GetComponent<Rigidbody2D>();
+        downBullet_rb.AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
+
+        GameObject rightBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        Rigidbody2D rightBullet_rb = rightBullet.GetComponent<Rigidbody2D>();
+        rightBullet_rb.AddForce(Vector2.right * bulletForce, ForceMode2D.Impulse);
+
+        GameObject leftBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        Rigidbody2D leftBullet_rb = leftBullet.GetComponent<Rigidbody2D>();
+        leftBullet_rb.AddForce(Vector2.left * bulletForce, ForceMode2D.Impulse);
     }
     void RunAwayPlayer()
     {
@@ -79,7 +77,8 @@ public class MulliganController : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Invoke("CreateFlyEnemy", 0.01f);
+            ShootBullet();
+            CreateFlyEnemy();
         }
     }
 
@@ -87,5 +86,6 @@ public class MulliganController : MonoBehaviour
     {
         Instantiate(fly, transform.position, Quaternion.identity);
         Instantiate(fly, transform.position + new Vector3(0.1f, 0.1f, 0), Quaternion.identity);
+        Instantiate(fly, transform.position + new Vector3(-0.1f, -0.1f, 0), Quaternion.identity);
     }
 }

@@ -1,22 +1,21 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
 using UnityEngine;
 
-
-public class MoveNavi : MonoBehaviour
+public class MoveRoom : MonoBehaviour
 {
-    BoxCollider2D doorCol;
+    BoxCollider2D m_doorCol;
+    Transform m_cameraPo;
 
     public Vector3 playerInPosition;
-    private Vector3 changePosition;
     private GameObject navi;
     private AstarPath _astarPath;
     private List<GridGraph> _gridGraphs;
     void Awake()
     {
-        doorCol = GetComponent<BoxCollider2D>();
+        m_cameraPo = GameObject.Find("Main Camera").transform;
+        m_doorCol = GetComponent<BoxCollider2D>();
 
         switch (gameObject.name)
         {
@@ -34,7 +33,6 @@ public class MoveNavi : MonoBehaviour
                 break;
         }
     }
-
     private void Start()
     {
         navi = GameObject.FindWithTag("GameController");
@@ -53,14 +51,17 @@ public class MoveNavi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.transform.position += playerInPosition * 3;
+            m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
+
             StartCoroutine(OpenDoor(collision.gameObject));
         }
     }
+
     IEnumerator OpenDoor(GameObject collision)
     {
         yield return new WaitForEndOfFrame();
         Debug.Log("πÊ¿Ãµø");
-        collision.gameObject.transform.position += playerInPosition * 4;
 
         if (gameObject.name == "UpDoor")
         {
