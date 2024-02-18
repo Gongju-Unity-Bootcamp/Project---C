@@ -4,31 +4,32 @@ using UnityEngine;
 
 public class Boss_Bullet : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public float damage = 1.0f;
 
-    void Awake()
+    void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(ReturnBulletAfterRange());
     }
 
-    private void Start()
+    IEnumerator ReturnBulletAfterRange()
     {
-        StartCoroutine(Bam());
+        float ranTime = Random.Range(0.7f, 1.0f);
+
+        yield return new WaitForSeconds(ranTime);
+        ResetBossBullet();
+    }
+
+    public void ResetBossBullet()
+    {
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        GetComponent<Collider2D>().enabled = false;
+        Boss_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    IEnumerator Bam()
-    {
-        float ranTime = Random.Range(0.4f, 0.75f);
-
-        yield return new WaitForSeconds(ranTime);
-        Destroy(gameObject);
+        GetComponent<Collider2D>().enabled = false;
+        Boss_ObjectPooling.instance.ReturnBulletPool(gameObject);
     }
 }

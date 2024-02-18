@@ -44,12 +44,9 @@ public class BossHealth : MonoBehaviour
     private void Knockback(Vector3 playerPosition)
     {
         Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
-     
-        Debug.Log(knockbackDirection * knockbackForce);
-
+    
         StartCoroutine(BossStop());
         prb.AddForce(knockbackDirection * -knockbackForce, ForceMode2D.Impulse);
-
     }
 
     IEnumerator BossStop()

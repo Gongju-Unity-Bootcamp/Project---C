@@ -103,7 +103,7 @@ public class MonstroController : MonoBehaviour
     {
         // 도약 애니메이션
         Vector2 targetPos = player.transform.position;
-        int spawnBullet = Random.Range(20, 25);
+        int spawnBullet = Random.Range(30, 35);
         float posY = transform.position.y;
         collider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
