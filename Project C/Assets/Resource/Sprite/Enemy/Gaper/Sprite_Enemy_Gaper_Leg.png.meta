@@ -136,631 +136,568 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: legs_0
+      name: Sprite_Enemy_Gaper_Leg_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 7
+        y: 167
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d50695e9f756a2c4a977dc41cf2313d6
-      internalID: -2118249480
+      spriteID: 51989d101a3bfb146ab415f3909c2cdb
+      internalID: -70685737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_1
+      name: Sprite_Enemy_Gaper_Leg_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 39
+        y: 167
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd3e649cb5fa1354b8dfad8001f94f43
-      internalID: -930922857
+      spriteID: fe41504e7407f3f4dbeaac1121c52961
+      internalID: 21074055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_2
+      name: Sprite_Enemy_Gaper_Leg_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 72
+        y: 167
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00ae5b26667214f48b419affb7563fb3
-      internalID: -689335579
+      spriteID: 97ece0d8d51f5ff4bb5251c059160325
+      internalID: -939018542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_3
+      name: Sprite_Enemy_Gaper_Leg_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 103
+        y: 164
+        width: 51
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d749ebf599dd30e45b04ab1ca14f9679
-      internalID: -1619628309
+      spriteID: c34ffc28464c49043b3edcf776859cb6
+      internalID: 1775290968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_4
+      name: Sprite_Enemy_Gaper_Leg_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 168
+        y: 163
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cc58dd6e7ba25242b61225565d9d03a
-      internalID: -1067788552
+      spriteID: 55b51be1e26ac864a8f18d07c94daa6a
+      internalID: 428373689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_5
+      name: Sprite_Enemy_Gaper_Leg_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 7
+        y: 71
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 769a18cfd4f6ff946936f9d3bc96ab07
-      internalID: -561630461
+      spriteID: c892325ec42a2634daee285b28751ed1
+      internalID: 247903387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_6
+      name: Sprite_Enemy_Gaper_Leg_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 7
+        y: 101
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22d77bafe1b3b024b9cad65fda437caa
-      internalID: -1789254226
+      spriteID: 0b7120e5b501aae47ab6c8c9bfc119a8
+      internalID: 906663187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_7
+      name: Sprite_Enemy_Gaper_Leg_7
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 7
+        y: 134
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dce9e04a77983ac47911741af737d5ff
-      internalID: -1435451998
+      spriteID: 89f8ea7c54f23624db51c66ce64b60ea
+      internalID: -432450054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_8
+      name: Sprite_Enemy_Gaper_Leg_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 39
+        y: 71
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40e5c3232c04cd446b9e0b0f2acf0bd6
-      internalID: 1038686858
+      spriteID: e799152b51708074c8e23101e10c8180
+      internalID: -2063256959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_9
+      name: Sprite_Enemy_Gaper_Leg_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 39
+        y: 102
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521e03f211d78e244a3f342d6b043907
-      internalID: -1220963662
+      spriteID: 1dd0ba82dfc136a4cb9919fa13928570
+      internalID: -265499875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_10
+      name: Sprite_Enemy_Gaper_Leg_10
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 39
+        y: 135
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f2e7bb82bbfaaa468f40695797c3217
-      internalID: 1246578156
+      spriteID: 54cdd83f2f0b8a544b85e3c0822947ce
+      internalID: 10377903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_11
+      name: Sprite_Enemy_Gaper_Leg_11
       rect:
         serializedVersion: 2
-        x: 160
-        y: 128
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 71
+        y: 71
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f02729d6d1c6c504fa9faca3f768ae52
-      internalID: 1360826282
+      spriteID: e27c76841f095af4a8c885d626afc765
+      internalID: -596765345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_12
+      name: Sprite_Enemy_Gaper_Leg_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 71
+        y: 135
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7881049e3034b6a47b6738b6241f6e7e
-      internalID: -2036876223
+      spriteID: 04fc6188a5ef12544b75d56c3f4c375e
+      internalID: -1161106595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_13
+      name: Sprite_Enemy_Gaper_Leg_13
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 72
+        y: 103
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f155a4200a46d844eb1ba3a8a264a0be
-      internalID: 1550015679
+      spriteID: f556060a66e252a40ae7eda06b8edb25
+      internalID: -754640277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_14
+      name: Sprite_Enemy_Gaper_Leg_14
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 102
+        y: 135
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d71e1b4182bc5cd448557e02f371f2f7
-      internalID: -2132203430
+      spriteID: f231b68404eaf194e9ff8707f058c63b
+      internalID: -527467254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_15
+      name: Sprite_Enemy_Gaper_Leg_15
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 104
+        y: 71
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cebbda83031564a41a7f0a9c61d70dc2
-      internalID: 280182607
+      spriteID: ae80def438ea6b248ab3e1265db12954
+      internalID: 1092988244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_16
+      name: Sprite_Enemy_Gaper_Leg_16
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 104
+        y: 103
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74d263a55283ecf4b9024daa36d17b98
-      internalID: -423472774
+      spriteID: 1b003b070e312fc46bc5adc22fe91eb0
+      internalID: 1394471921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_17
+      name: Sprite_Enemy_Gaper_Leg_17
       rect:
         serializedVersion: 2
-        x: 160
-        y: 96
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 136
+        y: 69
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf9b2ab6fc32baa44938cdc5a2548f41
-      internalID: 1937864509
+      spriteID: f6e931c9ff2e30d49b081d7431206cdc
+      internalID: -43578878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_18
+      name: Sprite_Enemy_Gaper_Leg_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 137
+        y: 101
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a028931d5c9add840bbcb3aa5fd4218d
-      internalID: -890329126
+      spriteID: f59e53fedb7568d40875f7ca8339c816
+      internalID: -1495847770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_19
+      name: Sprite_Enemy_Gaper_Leg_19
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 139
+        y: 132
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d34bae34d346ce74fbc8feb617aec39e
-      internalID: 1120200222
+      spriteID: 76cc52d6fbb89eb4895507eae80e640f
+      internalID: -1744244430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_20
+      name: Sprite_Enemy_Gaper_Leg_20
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 165
+        y: 68
+        width: 18
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76a10ddaef9e667448b28116b85f1b14
-      internalID: 1167803338
+      spriteID: 5bf736697e1af664c9362c591589b91b
+      internalID: 133249163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_21
+      name: Sprite_Enemy_Gaper_Leg_21
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 8
+        y: 39
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed647c89896c46a479a93e1af368674c
-      internalID: -613107678
+      spriteID: dca16db8afac27c4b82517d2b992fee6
+      internalID: -1691399337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_22
+      name: Sprite_Enemy_Gaper_Leg_22
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 39
+        y: 39
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1c56c72761b4c94d8df7a34734956f5
-      internalID: 639059671
+      spriteID: 07e8611d0e0ce9c41b6870073d61acac
+      internalID: -618730370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_23
+      name: Sprite_Enemy_Gaper_Leg_23
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 71
+        y: 39
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fddeff8cb7e158c44945a6f69561e263
-      internalID: -458110667
+      spriteID: bb674a178b906b54fa72bae30ba4255d
+      internalID: 1961823380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_24
+      name: Sprite_Enemy_Gaper_Leg_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 103
+        y: 39
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9447a036b372f0643884aaea29c2a77d
-      internalID: -161001053
+      spriteID: bf02774243e002b4f916505ec2c1b221
+      internalID: -79130500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_25
+      name: Sprite_Enemy_Gaper_Leg_25
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 9
+        y: 7
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af2f1aec3ffba384c9cf7f27955e8bde
-      internalID: 1726333636
+      spriteID: b6781213d965d5f40bd25f880991ff6e
+      internalID: 1721179554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: legs_26
+      name: Sprite_Enemy_Gaper_Leg_26
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 40
+        y: 7
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba55afa0fc2819f419f7d6afc9c2af8c
-      internalID: -1935991519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: legs_27
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6696d4dbc40ef12489e4e955d0bd47da
-      internalID: -1612739337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: legs_28
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e7c4da7585c43d48b24023a3ac1a7b3
-      internalID: -700171000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: legs_29
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ac45140eb5caa64ab453d48f826168f
-      internalID: 724485488
+      spriteID: a4e1f05ccc5bfdc4ea9a83aab717b672
+      internalID: -371859133
       vertices: []
       indices: 
       edges: []
@@ -776,36 +713,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      legs_0: -2118249480
-      legs_1: -930922857
-      legs_10: 1246578156
-      legs_11: 1360826282
-      legs_12: -2036876223
-      legs_13: 1550015679
-      legs_14: -2132203430
-      legs_15: 280182607
-      legs_16: -423472774
-      legs_17: 1937864509
-      legs_18: -890329126
-      legs_19: 1120200222
-      legs_2: -689335579
-      legs_20: 1167803338
-      legs_21: -613107678
-      legs_22: 639059671
-      legs_23: -458110667
-      legs_24: -161001053
-      legs_25: 1726333636
-      legs_26: -1935991519
-      legs_27: -1612739337
-      legs_28: -700171000
-      legs_29: 724485488
-      legs_3: -1619628309
-      legs_4: -1067788552
-      legs_5: -561630461
-      legs_6: -1789254226
-      legs_7: -1435451998
-      legs_8: 1038686858
-      legs_9: -1220963662
+      Sprite_Enemy_Gaper_Leg_0: -70685737
+      Sprite_Enemy_Gaper_Leg_1: 21074055
+      Sprite_Enemy_Gaper_Leg_10: 10377903
+      Sprite_Enemy_Gaper_Leg_11: -596765345
+      Sprite_Enemy_Gaper_Leg_12: -1161106595
+      Sprite_Enemy_Gaper_Leg_13: -754640277
+      Sprite_Enemy_Gaper_Leg_14: -527467254
+      Sprite_Enemy_Gaper_Leg_15: 1092988244
+      Sprite_Enemy_Gaper_Leg_16: 1394471921
+      Sprite_Enemy_Gaper_Leg_17: -43578878
+      Sprite_Enemy_Gaper_Leg_18: -1495847770
+      Sprite_Enemy_Gaper_Leg_19: -1744244430
+      Sprite_Enemy_Gaper_Leg_2: -939018542
+      Sprite_Enemy_Gaper_Leg_20: 133249163
+      Sprite_Enemy_Gaper_Leg_21: -1691399337
+      Sprite_Enemy_Gaper_Leg_22: -618730370
+      Sprite_Enemy_Gaper_Leg_23: 1961823380
+      Sprite_Enemy_Gaper_Leg_24: -79130500
+      Sprite_Enemy_Gaper_Leg_25: 1721179554
+      Sprite_Enemy_Gaper_Leg_26: -371859133
+      Sprite_Enemy_Gaper_Leg_3: 1775290968
+      Sprite_Enemy_Gaper_Leg_4: 428373689
+      Sprite_Enemy_Gaper_Leg_5: 247903387
+      Sprite_Enemy_Gaper_Leg_6: 906663187
+      Sprite_Enemy_Gaper_Leg_7: -432450054
+      Sprite_Enemy_Gaper_Leg_8: -2063256959
+      Sprite_Enemy_Gaper_Leg_9: -265499875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

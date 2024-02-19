@@ -10,7 +10,8 @@ TagManager:
   - Door
   - MiniMap
   - EnemyBullet
-  - Box
+  - Obstacle
+  - Bomb
   layers:
   - Default
   - TransparentFX

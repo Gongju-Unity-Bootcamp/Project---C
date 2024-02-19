@@ -15,11 +15,11 @@ public class PoopController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("PlayerBullet"))
+        if (collision.gameObject.CompareTag("PlayerBullet") && hitCount < poopSprite.Length)
         {
             _spriteRenderer.sprite = poopSprite[hitCount];
             hitCount++;
-            if(hitCount == poopSprite.Length)
+            if (hitCount == poopSprite.Length)
             {
                 OffCollider();
             }

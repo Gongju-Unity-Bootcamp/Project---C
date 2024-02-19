@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4229026442124215905}
   - component: {fileID: 7414329434462781220}
   - component: {fileID: 4376078521322564123}
+  - component: {fileID: 114480741838103096}
   m_Layer: 10
   m_Name: Pooter
   m_TagString: Enemy
@@ -191,3 +192,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acd59e5a7107eb4bb49c632e0b420e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 7627540823390837481, guid: 0046b9df3aeaf534d95de519f863c42b, type: 3}
+--- !u!95 &114480741838103096
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917419279664065318}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d963842e1047cde42a0d602b2b503b48, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -7,7 +7,6 @@ public class DoorController : MonoBehaviour
 {
     private GameObject[] doors;
     private Collider2D[] doorColliders;
-
     void Start()
     {
         StartCoroutine(CountingDoor());

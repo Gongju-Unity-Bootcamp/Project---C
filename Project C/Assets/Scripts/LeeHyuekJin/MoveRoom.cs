@@ -9,9 +9,10 @@ public class MoveRoom : MonoBehaviour
     Transform m_cameraPo;
 
     public Vector3 playerInPosition;
-    private GameObject navi;
-    private AstarPath _astarPath;
-    private List<GridGraph> _gridGraphs;
+    private GameObject dungeonManager;
+    private NaviController _naviController;
+    private EnemyCounter _enemyCounter;
+    private GameObject subDoor;
     void Awake()
     {
         m_cameraPo = GameObject.Find("Main Camera").transform;
@@ -35,16 +36,12 @@ public class MoveRoom : MonoBehaviour
     }
     private void Start()
     {
-        navi = GameObject.FindWithTag("GameController");
-        _astarPath = navi.GetComponent<AstarPath>();
-        _gridGraphs = new List<GridGraph>();
-        for (int i = 0; i < Mathf.Min(2, _astarPath.graphs.Length); i++)
-        {
-            if (_astarPath.graphs[i] is GridGraph)
-            {
-                _gridGraphs.Add(_astarPath.graphs[i] as GridGraph);
-            }
-        }
+        dungeonManager = GameObject.FindWithTag("GameController");
+        _naviController = dungeonManager.GetComponent<NaviController>();
+        _enemyCounter = dungeonManager.GetComponent<EnemyCounter>();
+
+        Transform subDoor_Transfrom = transform.GetChild(1);
+        subDoor = subDoor_Transfrom.gameObject;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -54,46 +51,39 @@ public class MoveRoom : MonoBehaviour
             collision.gameObject.transform.position += playerInPosition * 3;
             m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
 
-            StartCoroutine(OpenDoor(collision.gameObject));
+            OpenDoor(collision.gameObject);
         }
     }
 
-    IEnumerator OpenDoor(GameObject collision)
+    private void OpenDoor(GameObject collision)
     {
-        yield return new WaitForEndOfFrame();
-        Debug.Log("πÊ¿Ãµø");
-
         if (gameObject.name == "UpDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.y += 10;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(1);
         }
         else if (gameObject.name == "DownDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.y -= 10;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(2);
         }
         else if (gameObject.name == "RightDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.x += 18;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(3);
         }
         else if (gameObject.name == "LeftDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.x -= 18;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(4);
+        }
+    }
+
+    private void Update()
+    {
+        if(EnemyCounter.enemyCount == 0)
+        {
+            subDoor.SetActive(false);
+        }
+        else
+        {
+            subDoor.SetActive(true);
         }
     }
 }
