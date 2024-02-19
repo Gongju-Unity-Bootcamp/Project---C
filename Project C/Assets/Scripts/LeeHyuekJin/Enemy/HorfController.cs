@@ -9,11 +9,13 @@ public class HorfController : MonoBehaviour
     public GameObject bullet;
     private float bulletForce = 5f;
     private float AttakCollTime;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
         AttakCollTime = 1.5f;
         player = GameObject.FindWithTag("Player");
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,8 +38,9 @@ public class HorfController : MonoBehaviour
 
     private void ShootBullet()
     {
+        _animator.SetTrigger("OnAttak");
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject Bullet = Instantiate(bullet, transform.position - new Vector3(0.9f,0.3f ,0), Quaternion.identity);
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }

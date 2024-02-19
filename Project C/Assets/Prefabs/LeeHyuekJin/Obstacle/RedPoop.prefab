@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5872001238467370141}
   - component: {fileID: 7492819766460438119}
   - component: {fileID: 4392955544054480509}
+  - component: {fileID: -629007944418649201}
   m_Layer: 8
   m_Name: RedPoop
   m_TagString: Untagged
@@ -148,3 +149,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fdfd9fc2a4c43894aadeabe11bfb22af, type: 3}
   - {fileID: 21300000, guid: cd66cfe19da396e4db8fbf626abf2beb, type: 3}
   - {fileID: 21300000, guid: aee4b55afc3aac847b97975ee79d20d3, type: 3}
+--- !u!114 &-629007944418649201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382330498249036722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c56956833dce2df41a51e390046fa88f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dregs: {fileID: 7083466029195352272, guid: 0d381f00227ec914db985c704674bebc, type: 3}

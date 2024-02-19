@@ -6,21 +6,27 @@ using UnityEngine;
 public class GaperController : MonoBehaviour
 {
     private AIPath _aipath;
-    private float detectionRange = 8f;
+    private float detectionRange = 4f;
     private GameObject player;
+    private Animator _animator;
+    private bool OnAttak = true;
     private void Start()
     {
         _aipath = GetComponentInParent<AIPath>();
         _aipath.canMove = false;
         player = GameObject.FindWithTag("Player");
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer < detectionRange)
+        if (OnAttak && distanceToPlayer < detectionRange)
         {
+            _animator.SetTrigger("OnDetectedPlayer");
+            _animator.SetBool("OnAttakState", true);
             _aipath.canMove = true;
+            OnAttak = false;
         }
     }
     private void OnDestroy()
@@ -31,10 +37,11 @@ public class GaperController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("PlayerBullet"))
+        if (OnAttak && collision.gameObject.CompareTag("PlayerBullet"))
         {
-            Debug.Log("Ãæµ¹");
+            _animator.SetBool("OnAttakState", true);
             _aipath.canMove = true;
+            OnAttak = false;
         }
     }
 }

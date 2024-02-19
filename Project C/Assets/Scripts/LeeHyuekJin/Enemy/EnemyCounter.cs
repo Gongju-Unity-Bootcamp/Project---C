@@ -45,4 +45,5 @@ public class EnemyCounter : MonoBehaviour
         Debug.Log(enemies.Length);
         OnEnemyCountChange?.Invoke(enemyCount);
     }
+
 }
