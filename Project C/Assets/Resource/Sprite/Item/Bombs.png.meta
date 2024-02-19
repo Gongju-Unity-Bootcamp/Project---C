@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -152,10 +152,10 @@ TextureImporter:
       name: Bombs_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 167
-        width: 20
-        height: 21
+        x: 0
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Bombs_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 166
-        width: 27
-        height: 23
+        x: 32
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,10 +194,10 @@ TextureImporter:
       name: Bombs_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 165
-        width: 24
-        height: 26
+        x: 64
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: Bombs_3
       rect:
         serializedVersion: 2
-        x: 101
-        y: 167
-        width: 20
-        height: 19
+        x: 96
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,10 +236,10 @@ TextureImporter:
       name: Bombs_4
       rect:
         serializedVersion: 2
-        x: 134
-        y: 163
-        width: 20
-        height: 25
+        x: 128
+        y: 160
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: Bombs_5
       rect:
         serializedVersion: 2
-        x: 141
-        y: 183
-        width: 10
-        height: 9
+        x: 0
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,9 +278,9 @@ TextureImporter:
       name: Bombs_6
       rect:
         serializedVersion: 2
-        x: 2
+        x: 32
         y: 128
-        width: 28
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,10 +299,10 @@ TextureImporter:
       name: Bombs_7
       rect:
         serializedVersion: 2
-        x: 35
-        y: 134
-        width: 24
-        height: 25
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,10 +320,10 @@ TextureImporter:
       name: Bombs_8
       rect:
         serializedVersion: 2
-        x: 38
-        y: 101
-        width: 21
-        height: 24
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +341,10 @@ TextureImporter:
       name: Bombs_9
       rect:
         serializedVersion: 2
-        x: 70
-        y: 99
-        width: 20
-        height: 28
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,10 +362,10 @@ TextureImporter:
       name: Bombs_10
       rect:
         serializedVersion: 2
-        x: 75
-        y: 124
-        width: 7
-        height: 4
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,10 +383,10 @@ TextureImporter:
       name: Bombs_11
       rect:
         serializedVersion: 2
-        x: 131
-        y: 101
-        width: 24
-        height: 26
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,10 +404,10 @@ TextureImporter:
       name: Bombs_12
       rect:
         serializedVersion: 2
-        x: 4
-        y: 101
-        width: 23
-        height: 22
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,10 +425,10 @@ TextureImporter:
       name: Bombs_13
       rect:
         serializedVersion: 2
-        x: 102
-        y: 99
-        width: 21
-        height: 21
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,10 +446,10 @@ TextureImporter:
       name: Bombs_14
       rect:
         serializedVersion: 2
-        x: 2
-        y: 69
-        width: 22
-        height: 21
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,10 +467,10 @@ TextureImporter:
       name: Bombs_15
       rect:
         serializedVersion: 2
-        x: 34
-        y: 69
-        width: 22
-        height: 21
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,10 +488,10 @@ TextureImporter:
       name: Bombs_16
       rect:
         serializedVersion: 2
-        x: 66
-        y: 69
-        width: 22
-        height: 21
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,10 +509,10 @@ TextureImporter:
       name: Bombs_17
       rect:
         serializedVersion: 2
-        x: 98
-        y: 69
-        width: 22
-        height: 21
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,10 +530,10 @@ TextureImporter:
       name: Bombs_18
       rect:
         serializedVersion: 2
-        x: 70
-        y: 35
-        width: 20
-        height: 29
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,10 +551,10 @@ TextureImporter:
       name: Bombs_19
       rect:
         serializedVersion: 2
-        x: 102
-        y: 35
-        width: 20
-        height: 29
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,10 +572,10 @@ TextureImporter:
       name: Bombs_20
       rect:
         serializedVersion: 2
-        x: 104
-        y: 59
-        width: 4
-        height: 5
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,10 +593,10 @@ TextureImporter:
       name: Bombs_21
       rect:
         serializedVersion: 2
-        x: 134
-        y: 35
-        width: 20
-        height: 29
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,10 +614,10 @@ TextureImporter:
       name: Bombs_22
       rect:
         serializedVersion: 2
-        x: 2
-        y: 37
-        width: 22
-        height: 21
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -635,10 +635,10 @@ TextureImporter:
       name: Bombs_23
       rect:
         serializedVersion: 2
-        x: 34
-        y: 37
-        width: 22
-        height: 21
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -656,10 +656,10 @@ TextureImporter:
       name: Bombs_24
       rect:
         serializedVersion: 2
-        x: 3
-        y: 7
-        width: 22
-        height: 21
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -669,69 +669,6 @@ TextureImporter:
       bones: []
       spriteID: 8a97f4d5acfd9914aa4e4e673f7772e8
       internalID: -483163197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bombs_25
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 7
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6394970aa41b099449117b86aa81a302
-      internalID: 1974137498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bombs_26
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 7
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bfb34a775f80f544b852cb2f6b3f9b05
-      internalID: 541037571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bombs_27
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 7
-        width: 22
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b6c9a6ccf3fad64cb75db7f154ac074
-      internalID: 842444953
       vertices: []
       indices: 
       edges: []
@@ -765,9 +702,6 @@ TextureImporter:
       Bombs_22: 1354270423
       Bombs_23: -1741310952
       Bombs_24: -483163197
-      Bombs_25: 1974137498
-      Bombs_26: 541037571
-      Bombs_27: 842444953
       Bombs_3: 61608831
       Bombs_4: 989459406
       Bombs_5: -27154356

@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MonstroController : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
-    private new CircleCollider2D collider;
-    private BoxCollider2D minicollider;
+    private new Collider2D collider;
 
     public Transform bulletPoint;
     public Transform bulletPoint2;
@@ -18,8 +16,7 @@ public class MonstroController : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CircleCollider2D>();
-        minicollider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<Collider2D>();
     }
 
 
@@ -39,20 +36,6 @@ public class MonstroController : MonoBehaviour
         direction = (player.GetComponent<Transform>().position.x < transform.position.x ? 1 : -1); 
         transform.localScale = new Vector3(direction, 1, 1);
     }
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            collider.enabled = false;
-            minicollider.enabled = true;
-        }
-        else
-        {
-            collider.enabled = true;
-            minicollider.enabled = false;
-        }
-    }*/
 
     IEnumerator RandomState()
     {
@@ -113,7 +96,6 @@ public class MonstroController : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 targetPos = player.transform.position;
         collider.enabled = false;
-        //minicollider.enabled = false;
 
         float moveTime = 1f;
         float elapsedTime = 0f;
@@ -141,7 +123,6 @@ public class MonstroController : MonoBehaviour
         int spawnBullet = Random.Range(30, 35);
         float posY = transform.position.y;
         collider.enabled = false;
-        //minicollider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
 
         while(true)

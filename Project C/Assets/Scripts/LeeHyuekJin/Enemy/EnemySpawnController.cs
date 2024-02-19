@@ -10,22 +10,14 @@ public class EnemySpawnController : MonoBehaviour
     private bool _isSpawning = true;
 
     private GameObject navi;
-    private AstarPath _astarPath;
-    private List<GridGraph> _gridGraphs;
+    private NaviController _naviController;
     void Start()
     {
         _collider2D = GetComponent<Collider2D>();
 
         navi = GameObject.FindWithTag("GameController");
-        _astarPath = navi.GetComponent<AstarPath>();
-        _gridGraphs = new List<GridGraph>();
-        for (int i = 0; i < Mathf.Min(2, _astarPath.graphs.Length); i++)
-        {
-            if (_astarPath.graphs[i] is GridGraph)
-            {
-                _gridGraphs.Add(_astarPath.graphs[i] as GridGraph);
-            }
-        }
+        _naviController = navi.GetComponent<NaviController>();
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,10 +34,7 @@ public class EnemySpawnController : MonoBehaviour
     {
         int randomPattern = Random.Range(0, spawn.Length);
         SpawnMonsterPattern(randomPattern, transform.position);
-        foreach (GridGraph gridGraph in _gridGraphs)
-        {
-            gridGraph.Scan();
-        }
+        _naviController.Scan(0);
     }
 
     GameObject SpawnMonsterPattern(int patternIndex, Vector3 spawnPosition)

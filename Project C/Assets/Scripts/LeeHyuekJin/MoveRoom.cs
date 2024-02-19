@@ -10,8 +10,7 @@ public class MoveRoom : MonoBehaviour
 
     public Vector3 playerInPosition;
     private GameObject navi;
-    private AstarPath _astarPath;
-    private List<GridGraph> _gridGraphs;
+    private NaviController _naviController;
     void Awake()
     {
         m_cameraPo = GameObject.Find("Main Camera").transform;
@@ -36,64 +35,38 @@ public class MoveRoom : MonoBehaviour
     private void Start()
     {
         navi = GameObject.FindWithTag("GameController");
-        _astarPath = navi.GetComponent<AstarPath>();
-        _gridGraphs = new List<GridGraph>();
-        for (int i = 0; i < Mathf.Min(2, _astarPath.graphs.Length); i++)
-        {
-            if (_astarPath.graphs[i] is GridGraph)
-            {
-                _gridGraphs.Add(_astarPath.graphs[i] as GridGraph);
-            }
-        }
+        _naviController = navi.GetComponent<NaviController>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("플레이어와 문 충돌");
             collision.gameObject.transform.position += playerInPosition * 3;
             m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
 
-            StartCoroutine(OpenDoor(collision.gameObject));
+            OpenDoor(collision.gameObject);
         }
     }
 
-    IEnumerator OpenDoor(GameObject collision)
+    private void OpenDoor(GameObject collision)
     {
-        yield return new WaitForEndOfFrame();
-        Debug.Log("방이동");
-
         if (gameObject.name == "UpDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.y += 10;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(1);
         }
         else if (gameObject.name == "DownDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.y -= 10;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(2);
         }
         else if (gameObject.name == "RightDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.x += 18;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(3);
         }
         else if (gameObject.name == "LeftDoor")
         {
-            foreach (GridGraph gridGraph in _gridGraphs)
-            {
-                gridGraph.center.x -= 18;
-                gridGraph.Scan();
-            }
+            _naviController.Scan(4);
         }
     }
 }
