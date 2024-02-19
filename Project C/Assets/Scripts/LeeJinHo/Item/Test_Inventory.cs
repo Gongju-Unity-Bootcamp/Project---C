@@ -21,8 +21,17 @@ public class Test_Inventory : MonoBehaviour
     [SerializeField] private Transform m_HpController;  // 체력(HP) 관리할 객체
     [SerializeField] private GameObject[] m_Hp;         // 체력 오브젝트들
 
-    [SerializeField] private Test_Player_Move Test_Player_Move;
+    [SerializeField] private Player_Move m_PlayerMove;
 
+    public GameObject bombPrefab;
+
+    IEnumerator ActiveAngel(float invincibleTime)
+    {
+        // 액티브 아이템 '천사' 사용 시 무적 상태를 수행한다
+        Player_Move.isInvincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        Player_Move.isInvincible = false;
+    }
     private void Awake()
     {
         for (int i = 0; i < m_HpController.childCount; ++i)
@@ -66,17 +75,25 @@ public class Test_Inventory : MonoBehaviour
         // 액티브 아이템을 사용할 경우 여기서 아이템을 구분하여 기능을 수행
         if (item.name == "Angel")
         {
-            // 임시로 게임 종료 기능을 넣어놓음
-            Player_GameManager.instance.GameOver();
+            // 액티브 아이템 '천사'
+            Debug.Log("천사 강림!");
+            StartCoroutine(ActiveAngel(5.0f));
+            ItemActionController.m_itemInfo = null;
         }
     }
     public void UseConsumerItem(Item item)
     {
         if (item.name == "Grenade")
         {
-            // 폭탄 프리팹? 이미지를 생성하고 폭발시키는 기능을 수행
-            // 임시로 게임 종료 기능을 넣어놓음
-            Player_GameManager.instance.GameOver();
+            if (m_GrenadeCount > 0)
+            {
+                // 소모형 아이템 '폭탄'
+                Debug.Log("뿌직!");
+                Vector3 bombPosition = m_PlayerMove.GetPlayerPosition();
+                Instantiate(bombPrefab, bombPosition, Quaternion.identity);
+                m_GrenadeCount--;
+                Debug.Log("현재 남은 폭탄 개수 : " + m_GrenadeCount);
+            }
         }
     }
     // Hp 관리
