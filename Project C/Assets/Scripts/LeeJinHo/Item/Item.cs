@@ -5,18 +5,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
 public class Item : ScriptableObject
 {
+    public int ID;
     public string name;
-    public int cost;
     public ItemType itemType;
-    public Ability ability;
+    public float Attack;
+    public float AttackSpeed;
+    public float Speed;
+    public float Range;
+    public int Cost;
+    public string Sprite;
+    public string AcquireSound;
+    public string UseSound;
 
-    //Item을 프리팹으로 만들어서 활용할 경우 필요 없음.
-    //동적으로 Item의 이미지, 사운드를 변경할 경우 사용.
-    #region
     public Sprite sprite;
-    public AudioClip clip;
     public AudioSource audioSource;
-    #endregion
+    //public Ability ability;
+
+    public void init(ItemData ID)
+    {
+
+    }
+
+
 
     public enum ItemType
     {
