@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// 패시브 아이템을 습득하여 캐릭터의 스탯이 변경되는 스크립트
 public class Player_Stat : MonoBehaviour
 {
-    // 스탯
+    // 아직 변경하지 않는 스탯
     public float attack;
     public float bulletSpeed;
 

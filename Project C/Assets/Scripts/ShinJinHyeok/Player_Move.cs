@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// 캐릭터 이동과 피격 시 일정 시간 무적 기능을 구현한 스크립트
 public class Player_Move : Player_Health
 {
     private Rigidbody2D playerRbody;

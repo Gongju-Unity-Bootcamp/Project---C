@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// 플레이어가 발사하는 눈물(공격) 오브젝트를 미리 생성해 두는 오브젝트 풀링 스크립트
 public class Player_ObjectPooling : MonoBehaviour
 {
     public static Player_ObjectPooling instance;
