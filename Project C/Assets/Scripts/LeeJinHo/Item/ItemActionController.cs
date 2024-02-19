@@ -9,10 +9,11 @@ public class ItemActionController : MonoBehaviour
     [SerializeField] private int GrenadeCount;
     [SerializeField] private int CoinCount;
     [SerializeField] private int KeyCount;
-    
+
     private CircleCollider2D m_collider;
     private Rigidbody2D m_itemRigidbody;
-    private Item m_itemInfo;
+
+    public static Item m_itemInfo;
 
     [SerializeField] Test_Inventory test_Inventory;
     [SerializeField] Player_Stat player_Stat;
@@ -57,7 +58,7 @@ public class ItemActionController : MonoBehaviour
 
             Debug.Log("아이템 타입 : " + m_itemInfo.itemType);
             Destroy(collision.gameObject);
-            
+
             // test_Inventory.Test_GetItem(item); 아이템 습득 테스트를 위해 주석 처리
             // 패시브 아이템 습득 시 스탯 변경
             player_Stat.ApplyItemEffect(m_itemInfo);

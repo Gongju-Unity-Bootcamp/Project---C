@@ -106,4 +106,9 @@ public class Player_Move : Player_Health
             Player_GameManager.instance.GameOver();
         }
     }
+    // 플레이어 위치 반환
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }

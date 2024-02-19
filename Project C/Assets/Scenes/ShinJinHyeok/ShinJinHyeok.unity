@@ -2195,7 +2195,8 @@ MonoBehaviour:
   m_Weapon: {fileID: 315888679}
   m_HpController: {fileID: 519564945}
   m_Hp: []
-  Test_Player_Move: {fileID: 0}
+  m_PlayerMove: {fileID: 1546093740}
+  bombPrefab: {fileID: 5073761483503701010, guid: 01ddc430ee445bd479ab6d37538e64cd, type: 3}
 --- !u!114 &1135280999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2748,6 +2749,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4917746235641639003, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
   m_PrefabInstance: {fileID: 2065679902}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1546093740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2031865947177835958, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
+  m_PrefabInstance: {fileID: 2065679902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546093736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992cbc3e76b9d53429b64e0e7788b6a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1593051547
 GameObject:
   m_ObjectHideFlags: 0
