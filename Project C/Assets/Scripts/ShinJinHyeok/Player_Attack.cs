@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// 방향키 입력을 받아 캐릭터 움직임과는 별개로 공격을 실행하는 스크립트
 public class Player_Attack : MonoBehaviour
 {
     bool isAttack;
