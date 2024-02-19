@@ -31,4 +31,9 @@ public class FlyController : MonoBehaviour
     {
         currentDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Fly√Êµπ");
+    }
 }

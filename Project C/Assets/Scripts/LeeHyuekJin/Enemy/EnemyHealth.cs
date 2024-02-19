@@ -8,9 +8,10 @@ public class EnemyHealth : MonoBehaviour
 {
     public int hp;
     public float knockbackForce;
-    private void Update()
+    private Animator _animator;
+    private void Start()
     {
-        
+        _animator = GetComponent<Animator>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
         else if (collision.gameObject.CompareTag("PlayerBullet"))
         {
             TakeDamage(100);
+            _animator.SetTrigger("OnHit");
         }
     }
     public void TakeDamage(int damage)

@@ -9,8 +9,10 @@ public class MoveRoom : MonoBehaviour
     Transform m_cameraPo;
 
     public Vector3 playerInPosition;
-    private GameObject navi;
+    private GameObject dungeonManager;
     private NaviController _naviController;
+    private EnemyCounter _enemyCounter;
+    private GameObject subDoor;
     void Awake()
     {
         m_cameraPo = GameObject.Find("Main Camera").transform;
@@ -34,15 +36,18 @@ public class MoveRoom : MonoBehaviour
     }
     private void Start()
     {
-        navi = GameObject.FindWithTag("GameController");
-        _naviController = navi.GetComponent<NaviController>();
+        dungeonManager = GameObject.FindWithTag("GameController");
+        _naviController = dungeonManager.GetComponent<NaviController>();
+        _enemyCounter = dungeonManager.GetComponent<EnemyCounter>();
+
+        Transform subDoor_Transfrom = transform.GetChild(1);
+        subDoor = subDoor_Transfrom.gameObject;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어와 문 충돌");
             collision.gameObject.transform.position += playerInPosition * 3;
             m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
 
@@ -67,6 +72,18 @@ public class MoveRoom : MonoBehaviour
         else if (gameObject.name == "LeftDoor")
         {
             _naviController.Scan(4);
+        }
+    }
+
+    private void Update()
+    {
+        if(EnemyCounter.enemyCount == 0)
+        {
+            subDoor.SetActive(false);
+        }
+        else
+        {
+            subDoor.SetActive(true);
         }
     }
 }

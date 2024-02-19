@@ -6,6 +6,7 @@ public class Obstacle : MonoBehaviour
 {
     private GameObject navi;
     private NaviController _naviController;
+    public GameObject dregs;
     void Start()
     {
         navi = GameObject.FindWithTag("GameController");
@@ -14,6 +15,12 @@ public class Obstacle : MonoBehaviour
 
     private void OnDestroy()
     {
-        _naviController.Scan(0);
+        if(Application.isPlaying)
+        {
+            Debug.Log("Àå¾Ö¹° ÆÄ±«");
+            _naviController.Scan(0);
+            Instantiate(dregs, transform.position, Quaternion.identity);
+        }
+
     }
 }

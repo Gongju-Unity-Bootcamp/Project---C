@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 3424592064687754501}
   - component: {fileID: 6434471468850631068}
   - component: {fileID: 3559295772650038889}
+  - component: {fileID: 9996719389670653}
   m_Layer: 9
   m_Name: Mulligan
   m_TagString: Enemy
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acd59e5a7107eb4bb49c632e0b420e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blood: {fileID: 1278660364438895117, guid: 187bfcf379a6a8f41b812370a63a2e02, type: 3}
 --- !u!114 &4132481862795687325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +249,7 @@ MonoBehaviour:
   moveSpeed: 1
   bullet: {fileID: 8333793598550204643, guid: fab45d04f48091c4c92d545cf9785b81, type: 3}
   bulletForce: 5
-  fly: {fileID: 7596882562033990132, guid: 636d7538605b1f8498e8b564ff96503f, type: 3}
+  fly: {fileID: 1107445792662683503, guid: 65f8dd91b110dd7469d9820acd805668, type: 3}
 --- !u!70 &6434471468850631068
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -310,3 +312,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &9996719389670653
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562103091097598985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff1e60b90a96b55409be70a58c9a2ad4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
