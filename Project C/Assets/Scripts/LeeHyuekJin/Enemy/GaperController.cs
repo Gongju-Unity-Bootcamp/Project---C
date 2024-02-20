@@ -2,46 +2,56 @@ using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class GaperController : MonoBehaviour
 {
-    private AIPath _aipath;
-    private float detectionRange = 4f;
+    private float detectionRange = 3f;
     private GameObject player;
     private Animator _animator;
-    private bool OnAttak = true;
+    private bool OnAttak = false;
+    public float moveSpeed;
+    private Rigidbody2D _rb;
+    private Vector2 direction;
     private void Start()
     {
-        _aipath = GetComponentInParent<AIPath>();
-        _aipath.canMove = false;
         player = GameObject.FindWithTag("Player");
         _animator = GetComponent<Animator>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (OnAttak && distanceToPlayer < detectionRange)
+        if (!OnAttak && distanceToPlayer < detectionRange)
         {
-            _animator.SetTrigger("OnDetectedPlayer");
-            _animator.SetBool("OnAttakState", true);
-            _aipath.canMove = true;
-            OnAttak = false;
+            Move();
+            _animator.SetTrigger("OnHit");
+            OnAttak = true;
+        }
+        else if(OnAttak)
+        {
+            Move();
+            if (_rb.velocity.x > 0)
+            {
+                _animator.SetTrigger("MoveRight");
+            }
+            else if (_rb.velocity.x < 0)
+            {
+                _animator.SetTrigger("MoveLeft");
+            }
         }
     }
-    private void OnDestroy()
-    {
-        // 부모 오브젝트 파괴
-        Destroy(transform.parent.gameObject);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (OnAttak && collision.gameObject.CompareTag("PlayerBullet"))
+        if (!OnAttak && collision.gameObject.CompareTag("PlayerBullet"))
         {
-            _animator.SetBool("OnAttakState", true);
-            _aipath.canMove = true;
-            OnAttak = false;
+            OnAttak = true;
         }
+    }
+    private void Move()
+    {
+        direction = player.transform.position - transform.position;
+        _rb.velocity = direction.normalized * moveSpeed;
     }
 }

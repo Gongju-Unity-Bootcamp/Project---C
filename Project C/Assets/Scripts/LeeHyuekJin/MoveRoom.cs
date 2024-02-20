@@ -10,7 +10,6 @@ public class MoveRoom : MonoBehaviour
 
     public Vector3 playerInPosition;
     private GameObject dungeonManager;
-    private NaviController _naviController;
     private EnemyCounter _enemyCounter;
     private GameObject subDoor;
     void Awake()
@@ -37,9 +36,7 @@ public class MoveRoom : MonoBehaviour
     private void Start()
     {
         dungeonManager = GameObject.FindWithTag("GameController");
-        _naviController = dungeonManager.GetComponent<NaviController>();
         _enemyCounter = dungeonManager.GetComponent<EnemyCounter>();
-
         Transform subDoor_Transfrom = transform.GetChild(1);
         subDoor = subDoor_Transfrom.gameObject;
     }
@@ -50,30 +47,9 @@ public class MoveRoom : MonoBehaviour
         {
             collision.gameObject.transform.position += playerInPosition * 3;
             m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
-
-            OpenDoor(collision.gameObject);
         }
     }
 
-    private void OpenDoor(GameObject collision)
-    {
-        if (gameObject.name == "UpDoor")
-        {
-            _naviController.Scan(1);
-        }
-        else if (gameObject.name == "DownDoor")
-        {
-            _naviController.Scan(2);
-        }
-        else if (gameObject.name == "RightDoor")
-        {
-            _naviController.Scan(3);
-        }
-        else if (gameObject.name == "LeftDoor")
-        {
-            _naviController.Scan(4);
-        }
-    }
 
     private void Update()
     {
