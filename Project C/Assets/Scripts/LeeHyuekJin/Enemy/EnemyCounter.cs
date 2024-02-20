@@ -42,7 +42,6 @@ public class EnemyCounter : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemyCount = enemies.Length;
-        Debug.Log(enemies.Length);
         OnEnemyCountChange?.Invoke(enemyCount);
     }
 

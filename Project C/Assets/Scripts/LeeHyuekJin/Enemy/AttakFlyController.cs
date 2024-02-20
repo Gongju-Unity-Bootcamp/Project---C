@@ -5,28 +5,24 @@ using UnityEngine;
 
 public class AttakFlyController : MonoBehaviour
 {
-    private AIPath _aiPath;
-    private float originalSpeed;
+    private Rigidbody2D _rb;
+    private GameObject player;
+    private Vector2 direction;
+    public float moveSpeed;
     private void Start()
     {
-        _aiPath = GetComponent<AIPath>();
-        originalSpeed = _aiPath.maxSpeed;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine("CollisionPlayer");
-        }
+        _rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindWithTag("Player");
     }
 
-    IEnumerator CollisionPlayer()
+    private void Update()
     {
-        Debug.Log("속도0");
-        _aiPath.canMove = false;
-        yield return new WaitForSeconds(1);
-        Debug.Log("원래속도");
-        _aiPath.canMove = true;
-        yield return null;
+        Move();   
+    }
+
+    private void Move()
+    {
+        direction = player.transform.position - transform.position;
+        _rb.velocity = direction.normalized * moveSpeed;
     }
 }

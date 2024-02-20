@@ -12,14 +12,16 @@ public class MulliganController : MonoBehaviour
 
     public GameObject fly;
     private GameObject player;
+    private Rigidbody2D _rb;
     private Vector2 currentDirection;
     private float timeSinceLastDirectionChange;
-    private float skillCollTime;
-    private float shootBulletTime;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,9 +42,16 @@ public class MulliganController : MonoBehaviour
                 timeSinceLastDirectionChange = 0;
             }
         }
-        transform.Translate(currentDirection.normalized * moveSpeed * Time.deltaTime);
+        _rb.velocity = currentDirection.normalized * moveSpeed;
+        if (_rb.velocity.x > 0)
+        {
+            _animator.SetTrigger("MoveRight");
+        }
+        else if (_rb.velocity.x < 0)
+        {
+            _animator.SetTrigger("MoveLeft");
+        }
 
-        
     }
 
     void ShootBullet()
