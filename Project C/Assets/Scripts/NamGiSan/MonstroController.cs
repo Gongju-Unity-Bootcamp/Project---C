@@ -6,17 +6,20 @@ public class MonstroController : MonoBehaviour
 {
     private GameObject player;
     private Rigidbody2D rb;
+    private SpriteRenderer renderer;
     private new Collider2D collider;
+    public Animator animaotr;
 
     public Transform bulletPoint;
     public Transform bulletPoint2;
-    private int direction;// 기본 이미지스프라이트가 왼쪽을 향함 
 
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        animaotr = GetComponent<Animator>();
     }
 
 
@@ -25,21 +28,25 @@ public class MonstroController : MonoBehaviour
         StartCoroutine(RandomState());
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Flip();
     }
 
     void Flip()
     {
-        direction = (player.GetComponent<Transform>().position.x < transform.position.x ? 1 : -1); 
-        transform.localScale = new Vector3(direction, 1, 1);
+        if(player.GetComponent<Transform>().position.x > transform.position.x)
+        {
+            renderer.flipX = true;
+        }
+        else
+        {
+            renderer.flipX = false;
+        }
     }
 
     IEnumerator RandomState()
     {
-        // 기본 대기 동작
         yield return new WaitForSeconds(1f);
 
         int randomAction = Random.Range(0, 2);
@@ -65,8 +72,8 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator jumpReady()
     {
-        //점프 대기 동작
-        yield return new WaitForSeconds(0.5f);
+        animaotr.SetTrigger("JumpReady");
+        yield return new WaitForSeconds(0.75f);
 
         int randomJump = Random.Range(0, 2);
 
@@ -92,7 +99,7 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator Chase()
     {
-        // 작은 점프 애니메이션
+        animaotr.SetTrigger("Chase");
         Vector2 startPos = transform.position;
         Vector2 targetPos = player.transform.position;
         collider.enabled = false;
@@ -107,20 +114,19 @@ public class MonstroController : MonoBehaviour
             yield return null;
         }
 
+        animaotr.SetTrigger("ChaseEnd");
         transform.position = targetPos;
         rb.velocity = Vector2.zero;
         collider.enabled = true;
-        // 착지 애니메이션
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(RandomState());
     }
 
     IEnumerator DiveAttack()
     {
-        // 도약 애니메이션
+        animaotr.SetTrigger("HighJump");
         Vector2 targetPos = player.transform.position;
-        int spawnBullet = Random.Range(30, 35);
         float posY = transform.position.y;
         collider.enabled = false;
         rb.velocity = new Vector2(0, 30f);
@@ -129,19 +135,21 @@ public class MonstroController : MonoBehaviour
         {
             if (transform.position.y >= posY + 40)
             {
-                // 강하 애니메이션
+                animaotr.SetTrigger("Dive");
                 rb.velocity = Vector2.zero;
                 break;
             }
             yield return null;  // 업데이트 전 무조건 실행, 계속 상승 방지
         }
 
+        int spawnBullet = Random.Range(30, 35);
+
         while (true)
         {
             transform.position = Vector2.Lerp(transform.position, targetPos - new Vector2(0, 0), Time.deltaTime * 7);
             if (transform.position.y < targetPos.y + 0.05)
             {
-                // 착지 애니메이션
+                animaotr.SetTrigger("Crash");
                 collider.enabled = true;
                 rb.velocity = Vector2.zero;
                 transform.position = targetPos;
@@ -165,8 +173,8 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator attackReady()
     {
-        // 원거리 공격 대기 동작
-        yield return new WaitForSeconds(0.5f);
+        animaotr.SetTrigger("SpitReady");
+        yield return new WaitForSeconds(1.0f);
 
         int randomJump = Random.Range(0, 2);
 
@@ -178,6 +186,7 @@ public class MonstroController : MonoBehaviour
                     StartCoroutine(SpitAttack());
                     break;
                 case 1:
+                    animaotr.SetTrigger("Idle");
                     StartCoroutine(RandomState());
                     break;
             }
@@ -192,8 +201,8 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator SpitAttack()
     {
-        // 원거리 공격 자세
-        yield return new WaitForSeconds(0.5f);
+        animaotr.SetTrigger("Spit");
+        yield return new WaitForSeconds(1.0f);
 
         int spawnBullet = Random.Range(20, 25);
 
@@ -209,7 +218,7 @@ public class MonstroController : MonoBehaviour
             rb.AddForce(dirVec * bulletSpeed, ForceMode2D.Impulse);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         StartCoroutine(RandomState());
     }
 }
