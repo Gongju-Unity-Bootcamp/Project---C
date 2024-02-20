@@ -402,13 +402,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monstro
       objectReference: {fileID: 0}
-    - target: {fileID: 796397492555632462, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 796397492555632462, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
+    - target: {fileID: 824867416980007768, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 824867416980007768, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,8 +447,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1363672849, guid: 56805d9407e630b4bac2d4e860aceb3e, type: 3}
+    - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -658,11 +662,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5607768379659941592, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.31
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 5607768379659941592, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38621205
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5607768379659941592, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_LocalPosition.z
