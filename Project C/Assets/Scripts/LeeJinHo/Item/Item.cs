@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
 public class Item : ScriptableObject
 {
-    public string name;
+    public new string name;
     public int cost;
     public ItemType itemType;
     public Ability ability;

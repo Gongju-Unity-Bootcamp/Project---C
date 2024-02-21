@@ -9,19 +9,18 @@ public class ItemActionController : MonoBehaviour
     [SerializeField] private int GrenadeCount;
     [SerializeField] private int CoinCount;
     [SerializeField] private int KeyCount;
+    [SerializeField] Player_Stat player_Stat;
+    [SerializeField] Test_Inventory test_Inventory;
 
-    private CircleCollider2D m_collider;
-    private Rigidbody2D m_itemRigidbody;
+    // private CircleCollider2D m_collider;
+    // private Rigidbody2D m_itemRigidbody;
 
     public static Item m_itemInfo;
 
-    [SerializeField] Test_Inventory test_Inventory;
-    [SerializeField] Player_Stat player_Stat;
-
     private void Awake()
     {
-        m_itemRigidbody = GetComponent<Rigidbody2D>();
-        m_collider = GetComponent<CircleCollider2D>();
+        // m_itemRigidbody = GetComponent<Rigidbody2D>();
+        // m_collider = GetComponent<CircleCollider2D>();
     }
     private void Update()
     {
@@ -55,11 +54,11 @@ public class ItemActionController : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             m_itemInfo = collision.transform.GetComponent<ItemPickUp>().item;
-
             Debug.Log("아이템 타입 : " + m_itemInfo.itemType);
+
             Destroy(collision.gameObject);
 
-            // test_Inventory.Test_GetItem(item); 아이템 습득 테스트를 위해 주석 처리
+            test_Inventory.Test_GetItem(m_itemInfo);
             // 패시브 아이템 습득 시 스탯 변경
             player_Stat.ApplyItemEffect(m_itemInfo);
         }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
@@ -12,14 +13,14 @@ public class Test_Inventory : MonoBehaviour
     [SerializeField] private Text m_Key;
 
     private int m_CoinCount = 0;
-    private int m_GrenadeCount = 1;
+    [SerializeField] private int m_GrenadeCount = 1;
     private int m_KeyCount = 0;
 
     [SerializeField] private Image m_Active;
     [SerializeField] private Image m_Weapon;
 
     [SerializeField] private Transform m_HpController;  // 체력(HP) 관리할 객체
-    [SerializeField] private GameObject[] m_Hp;         // 체력 오브젝트들
+    [SerializeField] public GameObject[] m_Hp;          // 체력 오브젝트들
 
     [SerializeField] private Player_Move m_PlayerMove;
 
@@ -34,9 +35,8 @@ public class Test_Inventory : MonoBehaviour
     }
     private void Awake()
     {
-        for (int i = 0; i < m_HpController.childCount; ++i)
+        for (int i = 0; i < m_Hp.Length; ++i)
         {
-            if (i == m_HpController.childCount - 2) break;
             GameObject hp = m_HpController.transform.Find($"Life ({i})").gameObject;
             m_Hp[i] = hp;
         }
@@ -76,8 +76,9 @@ public class Test_Inventory : MonoBehaviour
         if (item.name == "Angel")
         {
             // 액티브 아이템 '천사'
-            Debug.Log("천사 강림!");
+            Debug.Log("천사 사용");
             StartCoroutine(ActiveAngel(5.0f));
+            // 아이템 사용여부 bool로 하나 만들기
             ItemActionController.m_itemInfo = null;
         }
     }
@@ -88,8 +89,10 @@ public class Test_Inventory : MonoBehaviour
             if (m_GrenadeCount > 0)
             {
                 // 소모형 아이템 '폭탄'
-                Debug.Log("뿌직!");
-                Vector3 bombPosition = m_PlayerMove.GetPlayerPosition();
+                Debug.Log("폭탄 사용");
+                Transform playerPosition = GameObject.FindWithTag("Player").transform;
+                Vector2 bombPosition = playerPosition.position;
+
                 Instantiate(bombPrefab, bombPosition, Quaternion.identity);
                 m_GrenadeCount--;
                 Debug.Log("현재 남은 폭탄 개수 : " + m_GrenadeCount);
@@ -101,10 +104,10 @@ public class Test_Inventory : MonoBehaviour
     private int m_HpCount = 7;
     public void Test_TakeDamager()
     {
+        Debug.Log("UI 하트 업데이트");
         m_Hp[m_HpCount].SetActive(false);
-        --m_HpCount;
+        m_HpCount--;
     }
-
     public void Test_HpPlus()
     {
         m_Hp[m_HpCount].SetActive(true);

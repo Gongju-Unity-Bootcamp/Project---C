@@ -6,7 +6,7 @@ public class Player_Attack : MonoBehaviour
 {
     bool isAttack;
     // Ω∫≈»
-    float bulletSpeed = 8.0f;
+    [SerializeField]float bulletSpeed = 8.0f;
     public static float cooltime = 0.4f;
     void Update()
     {
@@ -32,11 +32,9 @@ public class Player_Attack : MonoBehaviour
         if (!isAttack && Player_Move.gameState == "playing")
         {
             GameObject bullet = Player_ObjectPooling.instance.GetBulletPool();
-
-            Player_Bullet bulletScript = bullet.GetComponent<Player_Bullet>();
+            Rigidbody2D bulletRbody = bullet.GetComponent<Rigidbody2D>();
 
             bullet.transform.position = transform.position;
-            Rigidbody2D bulletRbody = bullet.GetComponent<Rigidbody2D>();
             bulletRbody.velocity = direction * bulletSpeed;
 
             isAttack = true;

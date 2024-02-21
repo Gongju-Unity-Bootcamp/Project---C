@@ -13,6 +13,9 @@ public class Box : MonoBehaviour
 
     [SerializeField] private bool m_isCheck;
 
+    [SerializeField] private List<GameObject> items;
+    [SerializeField] private Transform itemDropPoint;
+
     void Start()
     {
         m_boxRb = GetComponent<Rigidbody2D>();
@@ -40,6 +43,13 @@ public class Box : MonoBehaviour
         if (m_isCheck)
         {
             m_open.Play("BoxOpen");
+            DropItem();
         }
+    }
+    void DropItem()
+    {
+        int randomIndex = Random.Range(0, items.Count);
+        GameObject randomItem = items[randomIndex];
+        Instantiate(randomItem, itemDropPoint.position, Quaternion.identity);
     }
 }

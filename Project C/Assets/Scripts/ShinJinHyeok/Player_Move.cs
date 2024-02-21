@@ -1,10 +1,15 @@
+using Maps;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 // 캐릭터 이동과 피격 시 일정 시간 무적 기능을 구현한 스크립트
 public class Player_Move : Player_Health
 {
     private Rigidbody2D playerRbody;
+    public GameObject playerHp;
+    public GameObject[] m_Hp;
+    public Transform m_HpController;
 
     float _axisHor;
     float _axisVer;
@@ -12,7 +17,9 @@ public class Player_Move : Player_Health
     float _deceleration = 0.1f;
     float _invincibleTime = 1.5f;   // 무적 시간
     public static string gameState;
-    bool isDamage = false;
+    public static bool isDamage = false;
+    Test_Inventory testinentory;
+    
     // 스탯
     public static float moveSpeed = 3.0f;
     Player_Move()
@@ -37,7 +44,7 @@ public class Player_Move : Player_Health
             }
             yield return new WaitForSeconds(intervalTime);
         }
-
+        // 무적 시간 변경에 대비한 스프라이트 재활성화
         GetComponent<SpriteRenderer>().enabled = true;
         foreach (SpriteRenderer spriteRenderer in GetComponentsInChildren<SpriteRenderer>())
         {
@@ -47,6 +54,22 @@ public class Player_Move : Player_Health
         isInvincible = false;
         isDamage = false;
     }
+
+    private void Awake()
+    {
+
+        // GameObject go = new GameObject(nameof(Test_Inventory));
+        // go.transform.parent = transform;
+
+        testinentory = GameObject.FindObjectOfType<Test_Inventory>();
+        for (int i = 0; i < m_Hp.Length; ++i)
+        {
+            GameObject hp = m_HpController.transform.Find($"Life ({i})").gameObject;
+            m_Hp[i] = hp;
+        }
+    }
+
+
     void Start()
     {
         playerRbody = GetComponent<Rigidbody2D>();
@@ -85,6 +108,7 @@ public class Player_Move : Player_Health
             TakeDamage();
         }
     }
+    
     public override void TakeDamage()
     {
         if (isInvincible)
@@ -93,22 +117,24 @@ public class Player_Move : Player_Health
         }
 
         isDamage = true;
-
-        if (hp > 1)
+        // 체력 업데이트 필요함
+        if (hp > 0)
         {
-            hp--;
+            Test_TakeDamager();
             Debug.Log("현재 체력 : " + hp);
-
             StartCoroutine(NoDamage(_invincibleTime, 0.2f));
         }
         else
         {
+            m_Hp[hp].SetActive(false);
             Player_GameManager.instance.GameOver();
         }
     }
-    // 플레이어 위치 반환
-    public Vector3 GetPlayerPosition()
+    public void Test_TakeDamager()
     {
-        return transform.position;
+        //m_Hp[hp].SetActive(false);
+        //hp--;
+
+        testinentory.Test_TakeDamager();
     }
 }
