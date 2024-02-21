@@ -25,6 +25,6 @@ public class Enemy : MonoBehaviour
 
     private void UpdateEnemyCount()
     {
-        EnemyCounter.Instance.UpdateEnemyCount();
+        RoomManager.Instance.UpdateEnemyCount();
     }
 }
