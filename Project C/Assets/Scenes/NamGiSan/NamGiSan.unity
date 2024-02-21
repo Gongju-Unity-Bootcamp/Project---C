@@ -451,15 +451,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1363672849, guid: 56805d9407e630b4bac2d4e860aceb3e, type: 3}
+      objectReference: {fileID: -573665736, guid: 56805d9407e630b4bac2d4e860aceb3e, type: 3}
     - target: {fileID: 1059126959544946676, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3242261694252160249, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
+      propertyPath: m_Radius
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6943891544324559602, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53557aa09a5535240b8ca4454b484b04, type: 3}
@@ -660,9 +669,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4656445453099075516, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.22
+      objectReference: {fileID: 0}
     - target: {fileID: 5607768379659941592, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.53
+      value: -4.68
       objectReference: {fileID: 0}
     - target: {fileID: 5607768379659941592, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -715,6 +728,10 @@ PrefabInstance:
     - target: {fileID: 6313125711046693677, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871978567550278421, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8943758157442458307, guid: 03422ec55e7e8904e9fddb35cdb0e2f6, type: 3}
       propertyPath: m_Name
