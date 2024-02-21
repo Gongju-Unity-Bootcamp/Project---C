@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_ObjectPooling : MonoBehaviour
+public class BulletManager : MonoBehaviour
 {
-    public static Boss_ObjectPooling instance;
+    public static BulletManager instance;
     public GameObject[] bulletPrefab;
 
     int bulletAmount = 35;

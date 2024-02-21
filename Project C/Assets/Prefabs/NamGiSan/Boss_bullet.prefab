@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2824566158782916125}
   - component: {fileID: 403104276751020060}
-  - component: {fileID: 455923983610720811}
+  - component: {fileID: -6007055956027290175}
   - component: {fileID: 5370102014508616072}
-  - component: {fileID: 2996620483581318871}
+  - component: {fileID: 6870077755099986620}
   m_Layer: 13
   m_Name: Boss_bullet
   m_TagString: EnemyBullet
@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
-  m_Sprite: {fileID: -1101399213, guid: 8d075b1aa9d33aa49981306423423362, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 62490890, guid: 3228f8208f999214186a172d4f69895e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &455923983610720811
+--- !u!58 &-6007055956027290175
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.005, y: 0.02}
   serializedVersion: 2
-  m_Radius: 0.032
+  m_Radius: 0.1
 --- !u!50 &5370102014508616072
 Rigidbody2D:
   serializedVersion: 4
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2996620483581318871
+--- !u!114 &6870077755099986620
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,4 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346bf04a851b57f448594e52f0626ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 10
   damage: 1
