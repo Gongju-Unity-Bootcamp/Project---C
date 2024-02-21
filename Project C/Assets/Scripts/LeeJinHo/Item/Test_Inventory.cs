@@ -46,12 +46,12 @@ public class Test_Inventory : MonoBehaviour
         // 패시브 아이템은 ItemActionController 스크립트에서 Player_Stat 스크립트로 전달한다
 
         // 액티브 아이템
-        if (item.itemType == ItemType.Active)
+        if (item.itemType == ItemTypes.Active)
         {
             m_Active.sprite = item.sprite;
         }
         // 소모형 아이템
-        if (item.itemType == ItemType.Consumer)
+        if (item.itemType == ItemTypes.Consumer)
         {
             if (item.name == "Coin")
             {

@@ -11,8 +11,7 @@ TagManager:
   - MiniMap
   - EnemyBullet
   - Obstacle
-  - Bomb
-  - Item
+  - Box
   layers:
   - Default
   - TransparentFX
