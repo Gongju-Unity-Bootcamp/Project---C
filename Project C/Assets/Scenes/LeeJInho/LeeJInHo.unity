@@ -79901,10 +79901,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NormalBox
       objectReference: {fileID: 0}
-    - target: {fileID: 1165105758498057687, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 5635821266337434911, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.085933

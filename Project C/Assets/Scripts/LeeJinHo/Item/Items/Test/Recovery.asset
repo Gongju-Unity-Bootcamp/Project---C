@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5523c46a6f4d1d043be460fc1fe8d4e4, type: 3}
-  m_Name: CoolTime
+  m_Name: Recovery
   m_EditorClassIdentifier: 
-  name: CoolTime
+  name: Recovery
   cost: 10
   itemType: 0
-  ability: 4
+  ability: 0
   sprite: {fileID: 0}
   clip: {fileID: 0}
   audioSource: {fileID: 0}

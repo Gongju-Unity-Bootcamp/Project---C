@@ -9,9 +9,9 @@ using System.Linq;
 public class DataManager
 {
     public Dictionary<ItemID, ItemData> Item { get; private set; }
-    public Dictionary<IsaacID, IsaacData> Isaac { get; private set; } //ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ
+    public Dictionary<IsaacID, IsaacData> Isaac { get; private set; } //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     //public Dictionary<SoundID, SoundData> Sound { get; private set; } 
-    //¾ÆÀÌÅÛ Å×ÀÌºí ¹øÈ£¸¦ ÀúÀåÇÏ´Â Å×ÀÌºí Ãß°¡
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ß°ï¿½
 
     public void Init()
     {

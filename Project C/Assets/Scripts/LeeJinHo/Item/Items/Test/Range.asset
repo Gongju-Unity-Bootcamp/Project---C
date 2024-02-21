@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Reange
   cost: 10
   itemType: 0
-  ability: 5
+  ability: 0
   sprite: {fileID: 0}
   clip: {fileID: 0}
   audioSource: {fileID: 0}
