@@ -141,12 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a771a332f9e914f90c95aadf2843fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_boxRb: {fileID: 0}
-  m_boxCol: {fileID: 0}
+  itemType: 0
   m_openTimeLine: {fileID: 0}
   m_open: {fileID: 5805454208050116249}
   m_close: {fileID: 3475911814832644725}
   m_isCheck: 0
+  itemDropPoint: {fileID: 0}
 --- !u!1 &2336740292071681933
 GameObject:
   m_ObjectHideFlags: 0
