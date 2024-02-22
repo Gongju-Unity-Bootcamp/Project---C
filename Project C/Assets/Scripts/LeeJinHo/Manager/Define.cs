@@ -9,12 +9,14 @@ namespace Util
     {
         public static class Path
         {
-            public const string PREFAB    = "Assets/Resource/Prefab/";
-            //public const string SOUND   = "Assets/Resource/Sound/";
+
+
+            public const string PREFAB = "Prefab/";
+            public const string SOUND   = "Sound/Item/AcquireSound/";
             //public const string PLAYER  = "Assets/Resource/Player/";
-            //public const string SPRITE  = "Assets/Resource/Sprite/";
-            public const string AUDIOCLIP = "Assets/Resource/AudioClip/";
-            public const string ANIM      = "Assets/Resource/Anim/";
+            public const string SPRITE  = "Sprite/Item/DatatableItem/";
+            public const string AUDIOCLIP = "AudioClip/";
+            public const string ANIM      = "Anim/";
 
         }
 

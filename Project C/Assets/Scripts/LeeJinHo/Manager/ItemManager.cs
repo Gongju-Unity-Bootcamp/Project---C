@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ItemManager
@@ -25,15 +26,15 @@ public class ItemManager
     //플레이어가 상자를 획득 했을때 받는 메소드
     //매개변수를 획득한 상자의 ID를 받아와서 상자의 종류를 구분하고
     //상자의 타입에 따라 뱉어낼 아이템의 타입을 구분짓는다.
-    public ItemID GetBox(ItemType type)
+    public ItemID OpenBox(ItemType type)
     {
         var boxType = type switch
         {
-
             ItemType.NormalBox => GetItemType(ItemType.Passive, ItemType.Consumer),
             ItemType.GoldenBox => GetItemType(ItemType.Active, ItemType.Consumer),
             _ => throw new ArgumentOutOfRangeException(nameof(type)),
         };
+        Debug.Log($"OpenBox: {boxType}");
         return GetBoxItem(boxType);
     }
 
@@ -41,7 +42,7 @@ public class ItemManager
     private ItemType GetItemType(ItemType type1, ItemType type2)
     {
         ItemType type = Random.value < Random.Range(0, 2) ? type1 : type2;
-
+        Debug.Log($"GetItemType: {type}");
         return type;
 
         #region
@@ -78,8 +79,9 @@ public class ItemManager
         };
         ItemID itemId = (ItemID)roll;
 
+        Debug.Log($"GetBoxItem: {roll}");
+        Debug.Log($"GetBoxItem: {itemId}");
         return itemId;
     }
 
-   
 }

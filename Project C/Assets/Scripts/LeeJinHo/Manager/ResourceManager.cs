@@ -4,23 +4,26 @@ using UnityEngine;
 using UnityEngine.Pool;
 using Util;
 
-public class ResourceManager
+public class ResourceManager : MonoBehaviour
 {
 
     public Dictionary<string, GameObject> Prefabs { get; private set; }
     public Dictionary<string, AudioClip> AudioClips { get; private set; }
     public Dictionary<string, AnimationClip> AnimClips { get; private set; }
+    public Dictionary<string, Sprite> Sprite { get; private set; }
 
     public void Init()
     {
         Prefabs = new Dictionary<string, GameObject>();
         AudioClips = new Dictionary<string, AudioClip>();
         AnimClips = new Dictionary<string, AnimationClip>();
+        Sprite = new Dictionary<string, Sprite>();
     }
 
     //다른 클래스에서 오브젝트 요청하는 메소드
     public GameObject LoadPrefab(string path) => Load(Prefabs, string.Concat(Define.Path.PREFAB, path));
     public AudioClip LoadAudioClips(string path) => Load(AudioClips, string.Concat(Define.Path.AUDIOCLIP, path));
+    public Sprite LoadSprite(string path) => Load(Sprite, string.Concat(Define.Path.SPRITE, path));
     public AnimationClip LoadAnimClips(string path) => Load(AnimClips, string.Concat(Define.Path.ANIM, path));
 
 
@@ -29,7 +32,7 @@ public class ResourceManager
     private T Load<T>(Dictionary<string, T> dic, string path) where T : Object
     {
         if (false == dic.ContainsKey(path)) 
-        { 
+        {
             T resource = Resources.Load<T>(path);
             dic.Add(path, resource);
             return dic[path];
@@ -50,7 +53,7 @@ public class ResourceManager
 
     public GameObject Instantiate(GameObject prefab, Transform parent = null)
     {
-        GameObject go = Object.Instantiate(prefab, parent); return go;
+        GameObject go = Object.Instantiate(prefab, parent); 
 
         go.name = prefab.name;
 
