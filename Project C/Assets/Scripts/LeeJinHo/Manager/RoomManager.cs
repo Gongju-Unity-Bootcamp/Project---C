@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // 룸 상태
@@ -29,7 +28,8 @@ public class RoomManager : MonoBehaviour
     private Renderer rend;
 
     private RoomState m_roomState;
-
+    private RoomRating m_roomRating;
+    
     event Action<RoomState> RoomAppearance_See;
     public static RoomManager Instance { get; private set; }
     public event Action<int> OnEnemyCountChange;
@@ -38,17 +38,14 @@ public class RoomManager : MonoBehaviour
     private GameObject[] doors;
     private Collider2D[] doorColliders;
 
-    private int doorCount;
+    public bool isBossRoom { get; set; }
 
-    public GameObject normalBox;
-    public GameObject goldenBox;
-
-
+    public Sprite bossRoomDoor;
 
     //룸 상태 변경요청이 오면 처리
     public RoomState RoomAppearance
-    {
-        get => m_roomState;
+    { 
+        get => m_roomState; 
         set
         {
             Debug.Log("RoomState");
@@ -61,18 +58,18 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        Instance = this;
+        isBossRoom = false;
         Init();
+        Invoke("CheckBossRoom", 0.1f);
     }
     private void CountingDoor()
     {
         rend = transform.Find("MiniMap").GetComponent<Renderer>();
 
-        doors = transform.GetComponentsInChildren<Transform>(true)
-       .Where(child => child.CompareTag("Door"))
-       .Select(child => child.gameObject)
-       .ToArray();
-        Debug.Log($"도어 숫자 = {doors.Length}");
+        doors = transform.GetComponentsInChildren<Transform>()
+                   .Where(child => child.CompareTag("Door"))
+                   .Select(child => child.gameObject)
+                   .ToArray();
         doorColliders = new Collider2D[doors.Length];
 
 
@@ -80,14 +77,30 @@ public class RoomManager : MonoBehaviour
         {
             doorColliders[i] = doors[i].GetComponent<Collider2D>();
         }
+        Debug.Log($"활성화된 도어콜라이더{doorColliders.Length}");
     }
     private void Init()
     {
-
+        //이벤트에 메소드 등록
         RoomAppearance_See += RoomAppearanceChanged;
         RoomAppearance = RoomState.None;
         Debug.Log("매서드 시작");
-
+        //룸 태그에 따라 방등급을 변경
+        /* m_roomRating = gameObject.tag switch
+         {
+             "NormalRoom" => RoomRating.Normal,
+             "KeyRoom" => RoomRating.Key,
+             "BossRoom" => RoomRating.Boss,
+             _ => throw new ArgumentOutOfRangeException(nameof(gameObject.name)),
+         };*/
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
 
         UpdateEnemyCount();
 
@@ -125,7 +138,7 @@ public class RoomManager : MonoBehaviour
             RoomAppearance = RoomState.Clear;
         }
     }
-
+    
     //룸 상태가 변경되어 이벤트가 발생하면 실행할 메소드
     private void RoomAppearanceChanged(RoomState state)
     {
@@ -141,38 +154,29 @@ public class RoomManager : MonoBehaviour
                 OpenDoor();
                 DropBox();
                 break;
-            default:
+            default: 
                 throw new ArgumentOutOfRangeException(nameof(state));
+
         }
 
     }
 
+    // 클리어시 방 등급에 따라 드롭할 박스 타입을 정해주고 스폰요청.
     private void DropBox()
     {
-        int randomNumber = new System.Random().Next(100);
-        Debug.Log($"randomNumber = {randomNumber}");
-
-
-        if (randomNumber < 7)
+        ItemType type = m_roomRating switch
         {
-            if (goldenBox != null)
-            {
-                Instantiate(goldenBox, transform.position, Quaternion.identity);
-            }
-        }
-        else if (randomNumber < 91)
-        {
-            if (normalBox != null)
-            {
-                Instantiate(goldenBox, transform.position, Quaternion.identity);
-            }
-        }
+            RoomRating.Normal => (ItemType)4,
+            RoomRating.Key    => (ItemType)5,
+            RoomRating.Boss   => (ItemType)5
+        };
+        Manager.Spawn.SpawnBox(type);
     }
     private void OpenDoor()
     {
         Debug.Log("오픈도어");
         //문 열리는 내용
-        for (int i = 0; i < doors.Length; i++)
+        for (int i = 0; i < doors.Length - 2; i++)
         {
             Debug.Log("문열기");
             doorColliders[i].isTrigger = false;
@@ -197,6 +201,30 @@ public class RoomManager : MonoBehaviour
         Debug.Log($"현재 적 수 : {enemyCount}");
     }
 
+    private void CheckBossRoom()
+    {
+        if(!isBossRoom && doors.Length ==1)
+        {
+            isBossRoom = true;
+            Debug.Log($"{gameObject.name}은 보스룸입니다.");
+        }
 
+        if(isBossRoom)
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
 
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag("Door"))
+                {
+                    SpriteRenderer doorSprite = collider.GetComponent<SpriteRenderer>();
+                    if (doorSprite != null)
+                    {
+                        doorSprite.sprite = bossRoomDoor;
+                    }
+                }
+            }
+        }
+    }
+    
 }

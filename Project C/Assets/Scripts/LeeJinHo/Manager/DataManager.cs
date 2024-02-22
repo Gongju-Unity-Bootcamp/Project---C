@@ -1,22 +1,27 @@
 using CsvHelper;
 using System;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
-public class DataManager
+public class DataManager : MonoBehaviour
 {
     public Dictionary<ItemID, ItemData> Item { get; private set; }
-    public Dictionary<IsaacID, IsaacData> Isaac { get; private set; } //플레이어 데이터
-    //public Dictionary<SoundID, SoundData> Sound { get; private set; } 
-    //아이템 테이블 번호를 저장하는 테이블 추가
+    public Dictionary<IsaacID, IsaacData> Isaac { get; private set; }
+    public Dictionary<SoundID, SoundData> Sound { get; private set; } 
 
+    private void Start()
+    {
+        Init();
+    }
     public void Init()
     {
-        Item = ParseToDict<ItemID, ItemData>("Assets/Resource/Data/Item.csv", data => data.ID);
-        Isaac = ParseToDict<IsaacID, IsaacData>("Assets/Resource/Data/Isaac.csv", data => data.ID);
+        Item = ParseToDict<ItemID, ItemData>("Assets/Resources/Data/Item.csv", data => data.Id);
+        //Isaac = ParseToDict<IsaacID, IsaacData>("Assets/Resource/Data/Isaac.csv", data => data.ID);
         //Sound = ParseToDict<SoundID, SoundData>("Assets/Resource/Data/Sound", data => data.ID);
     }
 

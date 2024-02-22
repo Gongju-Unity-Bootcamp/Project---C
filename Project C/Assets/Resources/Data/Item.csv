@@ -1,0 +1,25 @@
+Id,Name,ItemType,AttakAdd,AttakMulti,AttakSpeedAdd,AttakSpeedMulti,Speed,Range,Cost,Sprite,AcquireSound,UseSound
+1001,양파,1,0,1,7,1,0,0,0,Item_Passive_Onion,Item_Get_DamageUp,Null
+1002,내면의눈,1,0,1,0,0.51,0,0,0,Item_Passive_Eye,Item_Get_DamageUp,Null
+1003,크리켓의 머리,1,0.5,1.5,0,1,0,0,0,Item_Passive_DogHead,Item_Get_DamageUp,Null
+1004,거울상,1,1.5,1,0,1,0,1.5,0,Item_Passive_Mirror,Item_Get_DamageUp,Null
+1005,오줌싸개,1,0,1,1.5,1,0,-1.5,0,Item_Passive_Tear,Item_Get_AttakSpeedUp,Null
+1006,순교자의 피 ,1,1,1,0,1,0,0,0,Item_Passive_HeadBand,Item_Get_DamageUp,Null
+1007,요술 버섯,1,0.3,1.5,0,1,0.3,2.5,0,Item_Passive_BadMushroom,Item_Get_AllStatsUp,Null
+1008,바이러스,1,0,1,0,1,0.2,0,0,Item_Passive_RedSyringe,Item_Get_SpeedUp,Null
+1009,불량 스테로이드,1,0,1,0,1,0.3,2.5,0,Item_Passive_GreenSyringe,Item_Get_RangeUp,Null
+1010,나무 숟가락,1,0,1,0,1,0.3,0,0,Item_Passive_WoodSpoon,Item_Get_SpeedUp,Null
+1011,벨트,1,0,1,0,1,0.3,0,0,Item_Passive_Belt,Item_Get_SpeedUp,Null
+1012,엄마의 속옷,1,0,1,0,1,0,2.5,0,Item_Passive_Panty,Item_Get_RangeUp,Null
+1013,엄마의 하이일,1,0,1,0,1,0,2.5,0,Item_Passive_RedHighHeel,Item_Get_RangeUp,Null
+1014,엄마의 립스틱,1,0,1,0,1,0,3.75,0,Item_Passive_RedLipstick,Item_Get_RangeUp,Null
+1015,철제 옷걸이,1,0,1,0.7,1,0,0,0,Item_Passive_Hanger,Item_Get_DamageUp,Null
+1016,스티븐,1,1,1,0,1,0,0,0,Item_Passive_BlackFace,Item_Get_DamageUp,Null
+1017,오망성,1,1,1,0,1,0,0,0,Item_Passive_Magnitude,Item_Get_DamageUp,Null
+1018,태아박사,1,0,1,0,0.4,0,0,0,Item_Passive_FeedingBottle,Item_Get_AttakSpeedUp,Null
+1019,흡혈귀의 부적,1,0.3,1,0,1,0,0,0,Item_Passive_Bat,Item_Get_DamageUp,Null
+1020,성장호르몬,1,1,1,0,1,0.2,0,0,Item_Passive_PurpleSyringe,Item_Get_DamageUp,Null
+1021,미니 버섯,1,0,1,0,1,0.3,2.5,0,Item_Passive_SkyMushroom,Item_Get_RangeUp,Null
+2001,The D6O,2,0,1,0,1,0,0,6,Item_Active_Dice,Item_Get_Dice,Item_Use_Dice
+3001,키,3,0,1,0,1,0,0,1,Item_Consume_Key,Item_Get_ConsumableItem,Item_Use_Key
+3002,폭탄,3,0,1,0,1,0,0,1,Item_Consume_Bomb,Item_Get_ConsumableItem,Item_Use_Bomb

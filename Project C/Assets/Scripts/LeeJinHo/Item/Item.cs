@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//없애야 되는 클래스
+
 [CreateAssetMenu(fileName = "New Item", menuName = "New Item/item")]
 public class Item : ScriptableObject
 {
