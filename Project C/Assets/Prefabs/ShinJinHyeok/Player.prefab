@@ -87,7 +87,7 @@ SpriteRenderer:
   m_Size: {x: 0.18, y: 0.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &7871978567550278421
@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992cbc3e76b9d53429b64e0e7788b6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: {fileID: 0}
+  m_Hp: []
+  m_HpController: {fileID: 0}
 --- !u!114 &5594319408253016648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,12 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debe92e5d4fd884f9078ad3f9fd6fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  moveSpeed: 0
   attack: 0
-  cooltime: 0
   bulletSpeed: 0
-  range: 0
 --- !u!114 &5153730950685528817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +197,8 @@ MonoBehaviour:
   GrenadeCount: 0
   CoinCount: 0
   KeyCount: 0
-  test_Inventory: {fileID: 0}
   player_Stat: {fileID: 5594319408253016648}
+  test_Inventory: {fileID: 0}
 --- !u!1 &5743560064190205970
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +282,7 @@ SpriteRenderer:
   m_Size: {x: 0.28, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &6031371908327508198
@@ -333,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0ffaac888f1ff41880e4781a76453d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 8
 --- !u!1 &8943758157442458307
 GameObject:
   m_ObjectHideFlags: 0
