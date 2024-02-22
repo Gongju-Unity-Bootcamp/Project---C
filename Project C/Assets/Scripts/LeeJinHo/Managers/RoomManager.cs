@@ -117,7 +117,7 @@ public class RoomManager : MonoBehaviour
     //방 상태를 체크하고 있다가 클리어를 하면 상태변경
     private void Update()
     {
-        if (enemyCount == 0 && m_roomState == RoomState.NotClear)
+        if (enemyCount == 0 && (m_roomState == RoomState.NotClear || m_roomState == RoomState.None))
         {
             Debug.Log("클리어 O");
             RoomAppearance = RoomState.Clear;

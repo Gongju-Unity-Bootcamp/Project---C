@@ -17,13 +17,12 @@ public class PooterController : MonoBehaviour
     public GameObject bullet;
     void Start()
     {
-        AttakCollTime = 1.5f;
+        AttakCollTime = 3f;
         bulletForce = 5f;
         player = GameObject.FindWithTag("Player");
     }
-    void Update()
+    private void Update()
     {
-
         timeSinceLastDirectionChange += Time.deltaTime;
 
         if (timeSinceLastDirectionChange >= changeDirectionInterval)
@@ -34,15 +33,10 @@ public class PooterController : MonoBehaviour
 
         MoveRandomly();
 
-        float yDifference = Mathf.Abs(player.transform.position.y - transform.position.y);
-        float xDifference = Mathf.Abs(player.transform.position.x - transform.position.x);
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
         bool noObstacleBetween = !Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacle"));
-        if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(yDifference, -5f) || yDifference < 5f))
-        {
-            ShootBullet();
-            shootBulletTime = Time.time;
-        }
-        else if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(xDifference, -5f) || xDifference < 5f))
+
+        if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && distanceToPlayer < 5f)
         {
             ShootBullet();
             shootBulletTime = Time.time;
@@ -55,12 +49,12 @@ public class PooterController : MonoBehaviour
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }
-    void MoveRandomly()
+    private void MoveRandomly()
     {
         transform.Translate(currentDirection.normalized * moveSpeed * Time.deltaTime);
     }
 
-    void ChangeDirection()
+    private void ChangeDirection()
     {
         currentDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
     }

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f628c12bc9b376241b986904142a27c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 400
+  hp: 12
   knockbackForce: 1
 --- !u!70 &89105047982854794
 CapsuleCollider2D:

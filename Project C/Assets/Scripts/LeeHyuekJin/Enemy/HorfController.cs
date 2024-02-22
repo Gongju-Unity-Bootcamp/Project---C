@@ -24,12 +24,12 @@ public class HorfController : MonoBehaviour
         float yDifference = Mathf.Abs(player.transform.position.y - transform.position.y);
         float xDifference = Mathf.Abs(player.transform.position.x - transform.position.x);
         bool noObstacleBetween = !Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacle"));
-        if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(yDifference, -5f) || yDifference < 5f))
+        if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(yDifference, -3f) || yDifference < 3f))
         {
             ShootBullet();
             shootBulletTime = Time.time;
         }
-        else if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(xDifference, -5f) || xDifference < 5f))
+        else if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(xDifference, -3f) || xDifference < 3f))
         {
             ShootBullet();
             shootBulletTime = Time.time;

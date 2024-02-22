@@ -7,9 +7,16 @@ public class Player_Attack : MonoBehaviour
     bool isAttack;
     // Ω∫≈»
     [SerializeField]float bulletSpeed = 8.0f;
-    public static float cooltime = 0.4f;
+    private PlayerStats playerStats;
+    public static float cooltime;
+
+    private void Start()
+    {
+        playerStats = GetComponentInParent<PlayerStats>();
+    }
     void Update()
     {
+        cooltime = playerStats.attackDelayTime;
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Shoot(Vector2.up);

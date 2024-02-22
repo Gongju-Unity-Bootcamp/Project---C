@@ -6,6 +6,7 @@ using UnityEngine;
 // 캐릭터 이동과 피격 시 일정 시간 무적 기능을 구현한 스크립트
 public class Player_Move : Player_Health
 {
+    private PlayerStats playerstats;
     private Rigidbody2D playerRbody;
     public GameObject playerHp;
     public GameObject[] m_Hp;
@@ -21,7 +22,7 @@ public class Player_Move : Player_Health
     Test_Inventory testinentory;
     
     // 스탯
-    public static float moveSpeed = 3.0f;
+    public static float moveSpeed { get; set; }
     Player_Move()
     {
         hp = 7;
@@ -73,7 +74,13 @@ public class Player_Move : Player_Health
     void Start()
     {
         playerRbody = GetComponent<Rigidbody2D>();
+        playerstats = GetComponent<PlayerStats>();
+        
         gameState = "playing";
+    }
+    private void Update()
+    {
+        moveSpeed = playerstats.moveSpeed;
     }
     void FixedUpdate()
     {
