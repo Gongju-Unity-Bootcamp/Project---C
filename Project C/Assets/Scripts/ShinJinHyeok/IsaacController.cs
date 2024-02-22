@@ -25,6 +25,7 @@ public class IsaacController : MonoBehaviour
 
     int _hp = 3;
     float _moveSpeed = 6;
+
     private void Awake()
     {
         _head = transform.Find("Head");
@@ -38,10 +39,6 @@ public class IsaacController : MonoBehaviour
         _bodyAnimator = _body.GetComponent<Animator>();
 
         _hitSpriteRenderer = _hit.GetComponent<SpriteRenderer>();
-        _pickUpSpriteRenderer = _pickUp.GetComponent<SpriteRenderer>();
-        _getItemSpriteRenderer = _getItem.GetComponent<SpriteRenderer>();
-
-        _isaacRbody = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -62,7 +59,7 @@ public class IsaacController : MonoBehaviour
         {
             direction.Normalize();
         }
-        // ¹Ì²ô·¯Áö´Â ¿òÁ÷ÀÓ ±¸Çö
+        // ë¯¸ë„ëŸ¬ì§€ëŠ” ì›€ì§ì„ êµ¬í˜„
         if (h != 0 || v != 0)
         {
             _isaacRbody.velocity = Vector2.Lerp(_isaacRbody.velocity, direction * _moveSpeed, 0.5f);
@@ -72,7 +69,7 @@ public class IsaacController : MonoBehaviour
             _isaacRbody.velocity = Vector2.Lerp(_isaacRbody.velocity, Vector2.zero, 0.05f);
         }
 
-        // ÇÇ°İ ±â´É È£Ãâ
+        // í”¼ê²© ê¸°ëŠ¥ í˜¸ì¶œ
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_hp <= 1)
@@ -89,12 +86,12 @@ public class IsaacController : MonoBehaviour
             else
             {
                 _hp--;
-                Debug.Log("Ã¼·Â : " + _hp);
+                Debug.Log("ì²´ë ¥ : " + _hp);
 
                 StartCoroutine(DamagedCoroutine());
             }
         }
-        // ¾ÆÀÌÅÛ ÇÈ¾÷ ±â´É È£Ãâ
+        // ì•„ì´í…œ í”½ì—… ê¸°ëŠ¥ í˜¸ì¶œ
         if (Input.GetKeyDown(KeyCode.F))
         {
             Damage();
@@ -104,7 +101,7 @@ public class IsaacController : MonoBehaviour
     {
         StartCoroutine(PickUpItemCoroutine());
     }
-    // ÇÇ°İ »óÅÂ
+    // í”¼ê²© ìƒíƒœ
     IEnumerator DamagedCoroutine()
     {
         _head.gameObject.SetActive(false);
@@ -113,7 +110,7 @@ public class IsaacController : MonoBehaviour
         _dead.gameObject.SetActive(false);
         _pickUp.gameObject.SetActive(false);
         _getItem.gameObject.SetActive(false);
-        #region ½ºÇÁ¶óÀÌÆ® ±ôºıÀÓ
+        #region ìŠ¤í”„ë¼ì´íŠ¸ ê¹œë¹¡ì„
         yield return new WaitForSeconds(0.2f);
         _hitSpriteRenderer.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(0.2f);
@@ -130,7 +127,7 @@ public class IsaacController : MonoBehaviour
         _pickUp.gameObject.SetActive(false);
         _getItem.gameObject.SetActive(false);
     }
-    // ¾ÆÀÌÅÛ ÇÈ¾÷ »óÅÂ
+    // ì•„ì´í…œ í”½ì—… ìƒíƒœ
     IEnumerator PickUpItemCoroutine()
     {
         _head.gameObject.SetActive(false);
