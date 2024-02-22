@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-/// <summary>
-/// UniRx으로 변경할 스크립트.
-/// </summary>
 public class Room : MonoBehaviour
 {
     private BoxCollider2D m_BoxCollider;
