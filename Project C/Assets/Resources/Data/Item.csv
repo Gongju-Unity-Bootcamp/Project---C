@@ -20,6 +20,6 @@ Id,Name,ItemType,AttakAdd,AttakMulti,AttakSpeedAdd,AttakSpeedMulti,Speed,Range,C
 1019,흡혈귀의 부적,1,0.3,1,0,1,0,0,0,Item_Passive_Bat,Item_Get_DamageUp,Null
 1020,성장호르몬,1,1,1,0,1,0.2,0,0,Item_Passive_PurpleSyringe,Item_Get_DamageUp,Null
 1021,미니 버섯,1,0,1,0,1,0.3,2.5,0,Item_Passive_SkyMushroom,Item_Get_RangeUp,Null
-2001,The D6O,2,0,1,0,1,0,0,6,Item_Active_Dice,Item_Get_Dice,Item_Use_Dice
+1022,The D6O,2,0,1,0,1,0,0,6,Item_Active_Dice,Item_Get_Dice,Item_Use_Dice
 3001,키,3,0,1,0,1,0,0,1,Item_Consume_Key,Item_Get_ConsumableItem,Item_Use_Key
 3002,폭탄,3,0,1,0,1,0,0,1,Item_Consume_Bomb,Item_Get_ConsumableItem,Item_Use_Bomb
