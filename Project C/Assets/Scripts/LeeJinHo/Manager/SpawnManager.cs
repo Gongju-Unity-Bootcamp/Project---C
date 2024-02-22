@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnBox(ItemType type)
     {
-        CreatItem(Manager.Item.OpenBox(type));
+        CreatItem(Manager.Item.BoxClassification(type));
     }
 
     private GameObject CreatItem(ItemID id)
