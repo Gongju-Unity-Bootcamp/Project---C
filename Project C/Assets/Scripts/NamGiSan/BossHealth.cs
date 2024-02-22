@@ -8,6 +8,8 @@ public class BossHealth : MonoBehaviour
     private Rigidbody2D prb;
     private Rigidbody2D rb;
     private GameObject player;
+    private Collider2D col;
+    private Animator animator;
 
     public int hp;
     public float knockbackForce;
@@ -17,6 +19,8 @@ public class BossHealth : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         prb = player.GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,6 +41,8 @@ public class BossHealth : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
+            col.enabled = false;
+            // 사망 애니메이션
             Destroy(gameObject);
         }
     }

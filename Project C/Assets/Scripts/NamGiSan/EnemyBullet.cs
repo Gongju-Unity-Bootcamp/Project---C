@@ -25,37 +25,29 @@ public class EnemyBullet : MonoBehaviour
 
     IEnumerator ReturnBulletAfterRange()
     {
-        float ranTime = Random.Range(0.7f, 1.0f);
+        BossHealth boss = FindObjectOfType<BossHealth>();
 
-        yield return new WaitForSeconds(ranTime);
-        ResetBossBullet();
+        if(boss != null)
+        {
+            float ranTime = Random.Range(0.5f, 1.0f);
+            yield return new WaitForSeconds(ranTime);
+            StartCoroutine(ResetBossBullet());
+        }
     }
 
-    public void ResetBossBullet()
+    IEnumerator ResetBossBullet()
     {
-        transform.position = Vector3.zero;
-        transform.rotation = Quaternion.identity;
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("pop");
+        yield return new WaitForSeconds(0.5f);
         BulletManager.instance.ReturnBulletPool(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //animator.SetTrigger("Pop");
-        BulletManager.instance.ReturnBulletPool(gameObject);
-    }
-
-    public void StraightShot()
-    {
-
-    }
-
-    public void SpreadShot()
-    {
-
-    }
-
-    public void RandomShot()
-    {
-        
+        if (!collision.gameObject.CompareTag("PlayerBullet") || !collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            StartCoroutine(ResetBossBullet());
+        }
     }
 }
