@@ -199,23 +199,28 @@ public class MonstroController : MonoBehaviour
     IEnumerator SpitAttack()
     {
         animaotr.SetTrigger("Spit");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.0f);  // 원거리 공격 전 대기 동작
         
 
         int spawnBullet = Random.Range(20, 25);
 
-        for (int i = 0; i < spawnBullet; i++)
+        while (true)
         {
-            int bulletSpeed = Random.Range(10, 12);
+            for (int i = 0; i < spawnBullet; i++)
+            {
+                int bulletSpeed = Random.Range(6, 13);
 
-            GameObject bossBullet = BulletManager.instance.GetBulletPool();
-            bossBullet.transform.position = bulletPoint.position;
-            Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
-            Vector2 dirVec = (player.transform.position - transform.position).normalized;
-            Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 0.5f));
-            dirVec += ranVec;
-            rb.AddForce(dirVec * bulletSpeed, ForceMode2D.Impulse);
+                GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                bossBullet.transform.position = bulletPoint.position;
+                Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
+                Vector2 dirVec = (player.transform.position - transform.position).normalized;
+                Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 0.5f));
+                dirVec += ranVec;
+                rb.AddForce(dirVec * bulletSpeed, ForceMode2D.Impulse);
+            }
+            break;
         }
+        
 
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(RandomState());
