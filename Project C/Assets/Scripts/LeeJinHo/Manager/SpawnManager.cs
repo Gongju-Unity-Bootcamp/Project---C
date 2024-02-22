@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Util;
 using Util.pool;
 
 public class SpawnManager : MonoBehaviour
 {
-    //public Pool<OpenBox> Item { get; private set; }
-
+    ObjectPool<GameObject> ItemPool;
+    ObjectPool<AudioClip> ClipPool;
+    ObjectPool<AnimationClip> AinmClip;
 
     public void Init()
     {
@@ -16,9 +18,18 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnBox(ItemType type)
     {
-        ItemID id = Manager.Item.GetBox(type);
-        //if (Item.id의 프리팹이 풀안에 있으면)
-        //{ 활성화 시킴 return;}
-        //else { Manager.Resource.에서 새로 생성 후 풀에 넣기 }
+        CreatItem(Manager.Item.BoxClassification(type));
+    }
+
+    private GameObject CreatItem(ItemID id)
+    {
+        Debug.Log($"CreatItem :{id}");
+        ItemData data = Manager.Data.Item[id];
+        Debug.Log($"CreatItem :{data}");
+        GameObject go = Manager.Resource.Instantiate(data.Sprite);
+        ItemTest itemTest = go.AddComponent<ItemTest>();
+        itemTest.Init(id);
+
+        return go;
     }
 }

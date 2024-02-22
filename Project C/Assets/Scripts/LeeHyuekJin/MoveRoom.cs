@@ -9,8 +9,8 @@ public class MoveRoom : MonoBehaviour
     Transform m_cameraPo;
 
     public Vector3 playerInPosition;
-    private GameObject dungeonManager;
-    private EnemyCounter _enemyCounter;
+    private GameObject room;
+    private RoomManager _roomManager;
     private GameObject subDoor;
     void Awake()
     {
@@ -35,8 +35,8 @@ public class MoveRoom : MonoBehaviour
     }
     private void Start()
     {
-        dungeonManager = GameObject.FindWithTag("GameController");
-        _enemyCounter = dungeonManager.GetComponent<EnemyCounter>();
+        room = transform.parent.gameObject;
+        _roomManager = room.GetComponent<RoomManager>();
         Transform subDoor_Transfrom = transform.GetChild(1);
         subDoor = subDoor_Transfrom.gameObject;
     }
@@ -53,7 +53,7 @@ public class MoveRoom : MonoBehaviour
 
     private void Update()
     {
-        if(EnemyCounter.enemyCount == 0)
+        if (RoomManager.enemyCount == 0)
         {
             subDoor.SetActive(false);
         }

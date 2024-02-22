@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D m_boxRb;
-    [SerializeField] private BoxCollider2D m_boxCol;
+    private Rigidbody2D m_boxRb;
+    private BoxCollider2D m_boxCol;
+    public ItemType itemType;
+
     [SerializeField] private GameObject m_openTimeLine;
 
     [SerializeField] private Animator m_open;
@@ -13,14 +15,18 @@ public class Box : MonoBehaviour
 
     [SerializeField] private bool m_isCheck;
 
-    [SerializeField] private List<GameObject> items;
+    //[SerializeField] private List<GameObject> items;
     [SerializeField] private Transform itemDropPoint;
+
 
     void Start()
     {
         m_boxRb = GetComponent<Rigidbody2D>();
         m_boxCol = GetComponent<BoxCollider2D>();
         m_openTimeLine = transform.Find("BoxOpen").gameObject;
+        //m_open = GetComponent<Animator>();
+        //m_close = GetComponent<Animator>();
+        //itemType = ItemType.NormalBox;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -28,28 +34,25 @@ public class Box : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             m_openTimeLine.SetActive(true);
-            BoxOpen();
+            itemType = ItemType.NormalBox;
+            BoxOpen(itemType);
         }
     }
 
-    void BoxOpen()
+    void BoxOpen(ItemType type)
     {
+        ItemType Itype = ItemType.NormalBox;
         if (!m_isCheck) 
         {
             m_close.SetBool("Open", true);
             m_isCheck = true;
+            Manager.Spawn.SpawnBox(type);
         }
 
         if (m_isCheck)
         {
             m_open.Play("BoxOpen");
-            DropItem();
+
         }
-    }
-    void DropItem()
-    {
-        int randomIndex = Random.Range(0, items.Count);
-        GameObject randomItem = items[randomIndex];
-        Instantiate(randomItem, itemDropPoint.position, Quaternion.identity);
     }
 }

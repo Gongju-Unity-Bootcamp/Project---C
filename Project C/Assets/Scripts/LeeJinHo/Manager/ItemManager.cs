@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ItemManager
@@ -9,9 +10,9 @@ public class ItemManager
     /// 아이템 갯수 체크하는 테이블 추가시 변경 예정
     /// </summary>
     private const int PASSIVE_ITEM_TABLE_ID_START = 1001;
-    private const int PASSIVE_ITEM_TABLE_ID_END = 1022;
-    private const int ACTIVE_ITEM_TABLE_ID_START = 2001;
-    private const int ACTIVE_ITEM_TABLE_ID_END = 2002;
+    //private const int PASSIVE_ITEM_TABLE_ID_END = 1022;
+    //private const int ACTIVE_ITEM_TABLE_ID_START = 2001;
+    private const int ACTIVE_ITEM_TABLE_ID_END = 1022;
     private const int CONSUMER_ITEM_TABLE_ID_START = 3001;
     private const int CONSUMER_ITEM_TABLE_ID_END = 3003;
 
@@ -25,23 +26,26 @@ public class ItemManager
     //플레이어가 상자를 획득 했을때 받는 메소드
     //매개변수를 획득한 상자의 ID를 받아와서 상자의 종류를 구분하고
     //상자의 타입에 따라 뱉어낼 아이템의 타입을 구분짓는다.
-    public ItemID GetBox(ItemType type)
+    public ItemID BoxClassification(ItemType type)
     {
         var boxType = type switch
         {
-
-            ItemType.NormalBox => GetItemType(ItemType.Passive, ItemType.Consumer),
-            ItemType.GoldenBox => GetItemType(ItemType.Active, ItemType.Consumer),
+            ItemType.NormalBox => GetItemType(ItemType.Consumer),
+            ItemType.GoldenBox => GetItemType(ItemType.Active, ItemType.Passive),
             _ => throw new ArgumentOutOfRangeException(nameof(type)),
         };
-        return GetBoxItem(boxType);
+        return GetItemID(boxType);
     }
 
     //위에서 정해진 2가지 타입중 랜덤으로 하나를 골라서 선택한 뒤 선택한 
-    private ItemType GetItemType(ItemType type1, ItemType type2)
+    private ItemType GetItemType(ItemType type1, ItemType type2 = ItemType.None)
     {
-        ItemType type = Random.value < Random.Range(0, 2) ? type1 : type2;
+        if (type2 == ItemType.None)
+        {
+            return type1;
+        }
 
+        ItemType type = Random.value < Random.Range(0, 2) ? type1 : type2;
         return type;
 
         #region
@@ -67,19 +71,20 @@ public class ItemManager
 
 
     //정해진 타입에 따라 
-    private ItemID GetBoxItem(ItemType type) 
+    private ItemID GetItemID(ItemType type) 
     {
         int roll = type switch
         {
-            ItemType.Passive => Random.Range(PASSIVE_ITEM_TABLE_ID_START, PASSIVE_ITEM_TABLE_ID_END),
-            ItemType.Active => Random.Range(ACTIVE_ITEM_TABLE_ID_START, ACTIVE_ITEM_TABLE_ID_END),
+            ItemType.Passive => Random.Range(PASSIVE_ITEM_TABLE_ID_START, ACTIVE_ITEM_TABLE_ID_END),
+            ItemType.Active => Random.Range(PASSIVE_ITEM_TABLE_ID_START, ACTIVE_ITEM_TABLE_ID_END),
             ItemType.Consumer => Random.Range(CONSUMER_ITEM_TABLE_ID_START, CONSUMER_ITEM_TABLE_ID_END),
             _ => throw new ArgumentOutOfRangeException(nameof(type)),
         };
         ItemID itemId = (ItemID)roll;
 
+        Debug.Log($"GetBoxItem: {roll}");
+        Debug.Log($"GetBoxItem: {itemId}");
         return itemId;
     }
 
-   
 }
