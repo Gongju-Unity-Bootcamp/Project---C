@@ -5,15 +5,26 @@ using UnityEngine;
 public class Player_Bullet : MonoBehaviour
 {
     // Ω∫≈»
-    public float attack = 10.0f;
-    public static float range = 1.2f;
+    public float attackDamage;
+    public static float bulletSurvieTime { get; set; }
+
+    private PlayerStats playerStats;
+    private void Start()
+    {
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+    }
+    private void Update()
+    {
+        attackDamage = playerStats.attackDamage;
+        bulletSurvieTime = playerStats.bulletSurviveTime;
+    }
     void OnEnable()
     {
         StartCoroutine(ReturnBulletAfterRange());
     }
     IEnumerator ReturnBulletAfterRange()
     {
-        yield return new WaitForSeconds(range);
+        yield return new WaitForSeconds(bulletSurvieTime);
         ReturnBullet();
     }
     void ReturnBullet()

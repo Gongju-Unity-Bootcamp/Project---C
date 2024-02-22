@@ -35,8 +35,8 @@ public class Player_Stat : MonoBehaviour
                 Debug.Log("쿨타임 : " + Player_Attack.cooltime);
                 break;
             case Item.Ability.Range:
-                Player_Bullet.range += 0.2f;
-                Debug.Log("사거리 : " + Player_Bullet.range);
+                Player_Bullet.bulletSurvieTime += 0.2f;
+                Debug.Log("사거리 : " + Player_Bullet.bulletSurvieTime);
                 break;
             default:
                 break;
