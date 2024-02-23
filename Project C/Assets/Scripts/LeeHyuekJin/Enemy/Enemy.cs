@@ -6,9 +6,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject blood;
+
+    public static event Action OnEnemySpawned;
+    public static event Action OnEnemyDestroyed;
     private void Start()
     {
-        UpdateEnemyCount();
+        OnEnemySpawned?.Invoke();
     }
 
     private void OnDestroy()
@@ -19,12 +22,8 @@ public class Enemy : MonoBehaviour
             {
                 Instantiate(blood, transform.position, Quaternion.identity);
             }
-            UpdateEnemyCount();
+            OnEnemyDestroyed?.Invoke();
         }
     }
 
-    private void UpdateEnemyCount()
-    {
-        RoomManager.Instance.UpdateEnemyCount();
-    }
 }
