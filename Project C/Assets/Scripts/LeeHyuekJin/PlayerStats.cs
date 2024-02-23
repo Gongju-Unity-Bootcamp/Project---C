@@ -19,15 +19,21 @@ public class PlayerStats : MonoBehaviour
     public float moveSpeed { get; set; }
     public float bulletSurviveTime { get; set; }
 
+    public int cost { get; set; }
 
+    public int key { get; set; }
+    public int bomb { get; set; }
     private void Start()
     {
-        playerAttackStats = 3.5f;
-        playerAttackDelayStats = 2.73f;
-        playerSpeedStats = 3.5f;
+        cost = 4;
+        key = 1;
+        bomb = 1;
+        playerAttackStats = 0;
+        playerAttackDelayStats = 0;
+        playerSpeedStats = 0f;
         playerRangeStats = 1;
 
-        totalAttackStats = 1 + Mathf.Sqrt((float)(playerAttackStats * 1.2 + 1)) + 1;
+        totalAttackStats = 3.5f * Mathf.Sqrt((float)(playerAttackStats * 1.2 + 1)) + 1;
         attackDamage = totalAttackStats;
 
         totalAttackDelayStats = 16 - 6 * Mathf.Sqrt((float)(playerAttackDelayStats * 1.3 + 1));
@@ -37,7 +43,7 @@ public class PlayerStats : MonoBehaviour
         moveSpeed = Mathf.Sqrt((float)(totalSpeedStats * 2 + 12));
 
         totalRangeStats = 1 + playerRangeStats;
-        bulletSurviveTime = Mathf.Sqrt((float)(totalRangeStats - 4));
+        bulletSurviveTime = Mathf.Sqrt((float)totalRangeStats);
     }
 
     public void UpdateStats(float attakAdd, float attakMulti, float attakSpeedAdd, float attakSpeedMulti, float speed, float range)
@@ -47,7 +53,7 @@ public class PlayerStats : MonoBehaviour
 
 
 
-        totalAttackStats = ((float)3.5 * Mathf.Sqrt((float)(playerAttackStats * 1.2 + 1))) * attakMulti;
+        totalAttackStats = (3.5f * Mathf.Sqrt((float)(playerAttackStats * 1.2 + 1))) * attakMulti;
         attackDamage = totalAttackStats;
 
         totalAttackDelayStats = 16 - 6 * Mathf.Sqrt((float)(attakSpeedMulti * (playerAttackDelayStats + attakSpeedAdd) * 1.3 + 1));
@@ -59,11 +65,30 @@ public class PlayerStats : MonoBehaviour
         totalRangeStats += range;
         bulletSurviveTime = Mathf.Sqrt((float)(totalRangeStats - 4)); //사거리 스탯을 유니티 스탯으로 전환
 
-        UpdateStatUI();
+    }
+    public void GetKey()
+    {
+        key++;
+    }
+    public void UseKey()
+    {
+        key--;
+    }
+    public void GetBomb()
+    {
+        bomb++;
+    }
+    public void UseBomb()
+    {
+        bomb--;
+    }
+    public void ClearRoom()
+    {
+        cost++;
+    }
+    public void UpdateAcitiveItem()
+    {
+
     }
 
-    private void UpdateStatUI()
-    {
-        //totalState로 표시
-    }
 }
