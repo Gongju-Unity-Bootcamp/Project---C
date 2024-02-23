@@ -12,8 +12,10 @@ public class GaperController : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D _rb;
     private Vector2 direction;
+    private AudioSource _audioSource;
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         player = GameObject.FindWithTag("Player");
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
@@ -50,6 +52,7 @@ public class GaperController : MonoBehaviour
     }
     private void Move()
     {
+        _audioSource.Play();
         direction = player.transform.position - transform.position;
         _rb.velocity = direction.normalized * moveSpeed;
     }

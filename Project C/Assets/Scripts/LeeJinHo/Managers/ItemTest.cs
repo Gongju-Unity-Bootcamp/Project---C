@@ -25,7 +25,6 @@ public class ItemTest : MonoBehaviour
     private CircleCollider2D collider2D;
     private SpriteRenderer spriteRenderer;
     private AudioSource audio;
-
     private void Aeake()
     {
         Debug.Log("아이템 어웨이크");
@@ -90,6 +89,36 @@ public class ItemTest : MonoBehaviour
 
     //플레이어와 아이템이 닿았을때 파괴되는거는 플레이어에서 전달? 아니면 아이템에서 전달?
     //파괴 처리는 리소스매니저?, 아이템?, 플레이어?
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player")&& this.itemType == ItemType.Passive)
+        {
+            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
+
+            if(this.itemType == ItemType.Passive)
+            {
+                transform.Rotate(90, 0, 0);
+                playerStats.UpdateStats(AttakAdd, AttakMulti, AttakSpeedAdd, AttakSpeedMulti, Speed, Range);
+                //소리재생
+            }
+
+            if(this.itemType == ItemType.Active)
+            {
+                transform.Rotate(90, 0, 0);
+                //액티브아이템 업데이트
+                //소리재생
+            }
+
+            if(this.itemType == ItemType.Consumer)
+            {
+                transform.Rotate(90, 0, 0);
+                //소지품 +1 업데이트
+                //소리재생
+            }
+
+        }
+    }
 
 
 }
