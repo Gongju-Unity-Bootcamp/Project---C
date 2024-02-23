@@ -75,6 +75,7 @@ public class ItemManager
     {
         int roll = type switch
         {
+            ItemType.None => 0,
             ItemType.Passive => Random.Range(PASSIVE_ITEM_TABLE_ID_START, ACTIVE_ITEM_TABLE_ID_END),
             ItemType.Active => Random.Range(PASSIVE_ITEM_TABLE_ID_START, ACTIVE_ITEM_TABLE_ID_END),
             ItemType.Consumer => Random.Range(CONSUMER_ITEM_TABLE_ID_START, CONSUMER_ITEM_TABLE_ID_END),

@@ -9,7 +9,7 @@ public class ItemTest : MonoBehaviour
     public ItemData itemData;
 
     public string Name { get; private set; }
-    public ItemType ItemType { get; private set; }
+    public ItemType itemType { get; private set; }
     public float AttakAdd { get; private set; }
     public float AttakMulti { get; private set; }
     public float AttakSpeedAdd { get; private set; }
@@ -26,11 +26,19 @@ public class ItemTest : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private AudioSource audio;
 
-    public void Init(ItemID id)
+    private void Aeake()
     {
-        Id = id;
-        itemData = Managers.Data.Item[Id];
+        Debug.Log("아이템 어웨이크");
+        //Init(ItemID.NormalBox, transform.position);
+    }
 
+    const int m_isBoxType = 4000;
+    public void Init(ItemID id, Vector3 po)
+    {
+        if ((int)id > m_isBoxType)
+        {
+            return;
+        }
         rb = gameObject.AddComponent<Rigidbody2D>();
         collider2D = gameObject.AddComponent<CircleCollider2D>();
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
@@ -39,14 +47,13 @@ public class ItemTest : MonoBehaviour
         rb.mass = 3;
         rb.drag = 999999;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        gameObject.tag = "Item";
 
-        StatSetting();
-    }
+        Id = id;
+        itemData = Managers.Data.Item[Id];
 
-    void StatSetting()
-    {
         this.Name = itemData.Name;
-        this.ItemType = (ItemType)itemData.ItemType;
+        this.itemType = (ItemType)itemData.ItemType;
         this.AttakAdd = itemData.AttakAdd;
         this.AttakMulti = itemData.AttakMulti;
         this.AttakSpeedAdd = itemData.AttakSpeedAdd;
@@ -57,13 +64,32 @@ public class ItemTest : MonoBehaviour
         this.Sprite = itemData.Sprite;
         this.AcquireSound = itemData.AcquireSound;
         this.UseSound = itemData.UseSound;
+
+        transform.position = po - Vector3.forward;
+        transform.localScale = new Vector2(8, 8);
+        collider2D.radius = 0.05f;
+        spriteRenderer.sprite = Managers.Resource.LoadSprite(Sprite);
+        audio.clip = Managers.Resource.LoadAudioClips(AcquireSound);
+        if (this.itemType == ItemType.Active)
+        {
+            //UseSound를 설정해주는 곳
+        }
+        Debug.Log($"{gameObject},{Id.ToString()}");
+
+}
+    
+    //파괴시 실행할 메소드
+    private void OnDisable()
+    {
+
+        audio.Play();
+        Managers.Spawn.m_Items.Push(this.gameObject);
+        gameObject.SetActive(false);
     }
 
-    private void OnDestroy()
-    {
-        Managers.Sound.EffectSoundChange(AcquireSound);
-    }
 
     //플레이어와 아이템이 닿았을때 파괴되는거는 플레이어에서 전달? 아니면 아이템에서 전달?
     //파괴 처리는 리소스매니저?, 아이템?, 플레이어?
+
+
 }

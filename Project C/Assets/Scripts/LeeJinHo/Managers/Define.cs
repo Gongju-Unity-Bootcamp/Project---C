@@ -9,9 +9,9 @@ namespace Util
     {
         public static class Path
         {
-            public const string PREFAB = "Prefab/";
+            public const string PREFAB    = "Prefab/";
             //public const string PLAYER  = "Assets/Resource/Player/";
-            public const string SPRITE  = "Sprite/Item/DatatableItem/";
+            public const string SPRITE    = "Sprite/";
             public const string AUDIOCLIP = "AudioClip/";
             public const string ANIM      = "Anim/";
         }

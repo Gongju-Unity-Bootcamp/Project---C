@@ -15,8 +15,6 @@ public class Box : MonoBehaviour
 
     [SerializeField] private bool m_isCheck;
 
-    //[SerializeField] private List<GameObject> items;
-    [SerializeField] private Transform itemDropPoint;
 
 
     void Start()
@@ -24,33 +22,34 @@ public class Box : MonoBehaviour
         m_boxRb = GetComponent<Rigidbody2D>();
         m_boxCol = GetComponent<BoxCollider2D>();
         m_openTimeLine = transform.Find("BoxOpen").gameObject;
-        //m_open = GetComponent<Animator>();
-        //m_close = GetComponent<Animator>();
-        //itemType = ItemType.NormalBox;
-    }
 
+    }
+    ItemID id;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+           
             m_openTimeLine.SetActive(true);
-            itemType = ItemType.NormalBox;
+            id = transform.GetComponent<ItemTest>().Id;
             BoxOpen(itemType);
         }
     }
 
     void BoxOpen(ItemType type)
     {
-        ItemType Itype = ItemType.NormalBox;
         if (!m_isCheck)
         {
             m_close.SetBool("Open", true);
             m_isCheck = true;
+
             Managers.Spawn.SpawnBox(type, transform.position);
+
         }
 
         if (m_isCheck)
         {
+            Debug.Log("¹Ú½º ´ÝÇû´Ù");
             m_open.Play("BoxOpen");
 
         }
