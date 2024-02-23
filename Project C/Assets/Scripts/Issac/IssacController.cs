@@ -10,9 +10,11 @@ public class IsaacController : MonoBehaviour
     public float StopMove = 0.05f;
 
     public float MoveSpeed = 6.0f;
+    public float CoolTime = 0.4f;
 
     public Sprite HitSprite;
     public Sprite PickUpSprite;
+    public GameObject BulletPrefab;
 
     Transform _head;
     Transform _body;
@@ -25,11 +27,14 @@ public class IsaacController : MonoBehaviour
     SpriteRenderer _totalSpriteRenderer;
 
     Rigidbody2D _playerRbody;
+    Rigidbody2D _bulletRbody;
+    GameObject _playerBullet;
     Vector2 _moveDirection;
 
     int _hp = 3;
     float _horizontal;
     float _vertical;
+    bool _isAttack;
 
     void Awake()
     {
@@ -44,6 +49,7 @@ public class IsaacController : MonoBehaviour
         _totalSpriteRenderer = _total.GetComponent<SpriteRenderer>();
 
         _playerRbody = GetComponent<Rigidbody2D>();
+        _bulletRbody = BulletPrefab.GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -56,6 +62,7 @@ public class IsaacController : MonoBehaviour
         _bodyAnimator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
 
         PlayerMove();
+        AttackDirection();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -155,5 +162,40 @@ public class IsaacController : MonoBehaviour
         {
             _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, Vector2.zero, StopMove);
         }
+    }
+    public void AttackDirection()
+    {
+        if (_isAttack == false)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                ShootBullet(Vector2.up);
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                ShootBullet(Vector2.down);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                ShootBullet(Vector2.right);
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                ShootBullet(Vector2.left);
+            }
+        }
+    }
+    public void ShootBullet(Vector2 direction)
+    {
+            _isAttack = true;
+            _playerBullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+            _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * 8.0f;
+
+            Invoke("AttackDelay", CoolTime);
+    }
+    void AttackDelay()
+    {
+        _isAttack = false;
+        Destroy(_playerBullet);
     }
 }
