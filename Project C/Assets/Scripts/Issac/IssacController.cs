@@ -11,10 +11,6 @@ public class IsaacController : MonoBehaviour
     public float StopMove = 0.05f;
     public float BulletSpeed = 9.0f;
 
-    public float MoveSpeed = 5.0f;
-    public float CoolTime = 0.5f;
-    public float Range = 1.5f;
-
     public Sprite HitSprite;
     public Sprite PickUpSprite;
     public GameObject BulletPrefab; // 프리팹을 가져온다
@@ -41,8 +37,10 @@ public class IsaacController : MonoBehaviour
     // 쿨타임 기능 구현에 사용한다
     bool _isAttack;
 
+    PlayerStats playerStats;
     void Awake()
     {
+        playerStats = GetComponent<PlayerStats>();
         _head = transform.Find("Head");
         _body = transform.Find("Body");
         _total = transform.Find("Total");
@@ -164,7 +162,7 @@ public class IsaacController : MonoBehaviour
         
         if (_horizontal != 0 || _vertical != 0)
         {
-            _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, _moveDirection * MoveSpeed, 0.5f);
+            _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, _moveDirection * playerStats.moveSpeed, 0.5f);
         }
         else
         {
@@ -200,14 +198,14 @@ public class IsaacController : MonoBehaviour
         DestroyBullet();
 
         // 공격 상태를 변환하는 구조를 사용하여 쿨타임을 구현하였다
-        Invoke("AttackCoolTime", CoolTime);
+        Invoke("AttackCoolTime", playerStats.attackDelayTime);
     }
     void DestroyBullet()
     {
         // 설정한 시간 이후에 불렛 오브젝트를 파괴하여 사거리를 구현하였다
         // 총알이 파괴되기 전에 애니메이션을 재생하여야 한다
         // 생성(Instantiate) > 총알이 날아간다(velocity) > 파괴될 시점(사거리) > 총알 정지 후 애니메이션 재생 > 총알 오브젝트 파괴
-        Destroy(_playerBullet, Range);
+        Destroy(_playerBullet, playerStats.bulletSurviveTime);
     }
     void AttackCoolTime()
     {

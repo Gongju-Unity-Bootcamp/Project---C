@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int hp;
+    public float hp;
     public float knockbackForce;
     private Animator _animator;
+    private GameObject _player;
+    private PlayerStats _playerStats;
     private void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerStats = _player.GetComponent<PlayerStats>();
         _animator = GetComponent<Animator>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -21,11 +25,11 @@ public class EnemyHealth : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            TakeDamage(100);
+            TakeDamage(_playerStats.attackDamage);
             _animator.SetTrigger("OnHit");
         }
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         hp -= damage;
         if(hp <= 0)

@@ -10,9 +10,11 @@ public class HorfController : MonoBehaviour
     private float bulletForce = 5f;
     private float AttakCollTime;
     private Animator _animator;
+    private AudioSource _audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         AttakCollTime = 1.5f;
         player = GameObject.FindWithTag("Player");
         _animator = GetComponent<Animator>();
@@ -27,11 +29,13 @@ public class HorfController : MonoBehaviour
         if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(yDifference, -3f) || yDifference < 3f))
         {
             ShootBullet();
+            _audioSource.Play();
             shootBulletTime = Time.time;
         }
         else if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(xDifference, -3f) || xDifference < 3f))
         {
             ShootBullet();
+            _audioSource.Play();
             shootBulletTime = Time.time;
         }
     }
