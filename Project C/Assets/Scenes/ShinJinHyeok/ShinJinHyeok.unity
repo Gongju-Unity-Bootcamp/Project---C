@@ -342,10 +342,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1062275345972140597, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1752942339790961377, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834788533784815899, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046440717527536767, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: Range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2046440717527536767, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: CoolTime
+      value: 0.46
+      objectReference: {fileID: 0}
     - target: {fileID: 2046440717527536767, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
       propertyPath: HitSprite
       value: 
       objectReference: {fileID: 793701858, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
+    - target: {fileID: 2046440717527536767, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
+      propertyPath: MoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2046440717527536767, guid: 7cc9a640c2b3f304b86ffcd171719961, type: 3}
       propertyPath: PickUpSprite
       value: 
