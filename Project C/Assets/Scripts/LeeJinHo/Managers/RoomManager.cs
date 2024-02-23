@@ -32,20 +32,7 @@ public class RoomManager : MonoBehaviour
     private RoomState m_roomState;
 
     event Action<RoomState> RoomAppearance_See;
-    private static RoomManager _instance;
-    public static RoomManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<RoomManager>();
 
-            }
-            return _instance;
-        }
-    }
-    public event Action<int> OnEnemyCountChange;
     public static int enemyCount { get; set; }
 
     private GameObject[] doors;
@@ -75,6 +62,11 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
+        enemyCount = 0;
+        Debug.Log($"적숫자 : {enemyCount}");
+        Enemy.OnEnemySpawned += HandleEnemySpawned;
+        Enemy.OnEnemyDestroyed += HandleEnemyDestroyed;
+
         isBossRoom = false;
         Init();
         Invoke("CheckBossRoom", 1.1f);
@@ -88,10 +80,24 @@ public class RoomManager : MonoBehaviour
         Debug.Log("매서드 시작");
         rend = transform.Find("MiniMap").GetComponent<Renderer>();
 
-        UpdateEnemyCount();
 
     }
-
+    private void HandleEnemySpawned()
+    {
+        enemyCount++;
+    }
+    private void HandleEnemyDestroyed()
+    {
+        if (enemyCount > 0)
+        {
+            enemyCount--;
+        }
+    }
+    private void OnDestroy()
+    {
+        Enemy.OnEnemySpawned -= HandleEnemySpawned;
+        Enemy.OnEnemyDestroyed -= HandleEnemyDestroyed;
+    }
     //방이 비활성화 되었는데 플레이어가 방에 입장하면 방의 상태를 변경
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,6 +128,12 @@ public class RoomManager : MonoBehaviour
             Debug.Log("클리어 O");
             RoomAppearance = RoomState.Clear;
         }
+        if (enemyCount != 0 && (m_roomState == RoomState.None || m_roomState == RoomState.Clear))
+        {
+            Debug.Log("클리어 O");
+            RoomAppearance = RoomState.NotClear;
+        }
+
     }
 
     //룸 상태가 변경되어 이벤트가 발생하면 실행할 메소드
@@ -209,15 +221,4 @@ public class RoomManager : MonoBehaviour
             doorColliders[i].isTrigger = true;
         }
     }
-
-    public void UpdateEnemyCount()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemyCount = enemies.Length;
-        OnEnemyCountChange?.Invoke(enemyCount);
-        Debug.Log($"현재 적 수 : {enemyCount}");
-    }
-
-
-
 }
