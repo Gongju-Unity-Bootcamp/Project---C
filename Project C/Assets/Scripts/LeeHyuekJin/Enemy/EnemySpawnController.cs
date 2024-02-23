@@ -13,7 +13,7 @@ public class EnemySpawnController : MonoBehaviour
         _collider2D = GetComponent<Collider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && _isSpawning)
         {
@@ -22,15 +22,9 @@ public class EnemySpawnController : MonoBehaviour
             _isSpawning = false;
         }
     }
-
-    void SpawnRandomMonsterPattern()
+    private void SpawnRandomMonsterPattern()
     {
         int randomPattern = Random.Range(0, spawn.Length);
-        SpawnMonsterPattern(randomPattern, transform.position);
-    }
-
-    GameObject SpawnMonsterPattern(int patternIndex, Vector3 spawnPosition)
-    {
-        return Instantiate(spawn[patternIndex], spawnPosition, Quaternion.identity);
+        Instantiate(spawn[randomPattern], transform.position, Quaternion.identity);
     }
 }

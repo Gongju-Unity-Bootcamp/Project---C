@@ -44,7 +44,8 @@ public class RoomManager : MonoBehaviour
     public GameObject normalBox;
     public GameObject goldenBox;
 
-
+    public GameObject[] spawnEnemy;
+    private bool isClear;
 
     //룸 상태 변경요청이 오면 처리
     public RoomState RoomAppearance
@@ -52,18 +53,14 @@ public class RoomManager : MonoBehaviour
         get => m_roomState;
         set
         {
-            Debug.Log("RoomState");
-
             m_roomState = value;
             RoomAppearance_See?.Invoke(RoomAppearance);
-            Debug.Log("룸 상태 변경");
         }
     }
 
     private void Start()
     {
         enemyCount = 0;
-        Debug.Log($"적숫자 : {enemyCount}");
         Enemy.OnEnemySpawned += HandleEnemySpawned;
         Enemy.OnEnemyDestroyed += HandleEnemyDestroyed;
 
@@ -74,13 +71,9 @@ public class RoomManager : MonoBehaviour
 
     private void Init()
     {
-
         RoomAppearance_See += RoomAppearanceChanged;
         RoomAppearance = RoomState.None;
-        Debug.Log("매서드 시작");
         rend = transform.Find("MiniMap").GetComponent<Renderer>();
-
-
     }
     private void HandleEnemySpawned()
     {
@@ -103,7 +96,6 @@ public class RoomManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && m_roomState == RoomState.None)
         {
-            Debug.Log("클리어 X");
             m_Camera.transform.position = transform.position + new Vector3(0, 0, -10);
             if (rend != null)
             {
@@ -125,21 +117,20 @@ public class RoomManager : MonoBehaviour
     {
         if (enemyCount == 0 && (m_roomState == RoomState.NotClear || m_roomState == RoomState.None))
         {
-            Debug.Log("클리어 O");
             RoomAppearance = RoomState.Clear;
+            GameObject player = GameObject.FindWithTag("Player");
+            PlayerStats _playerStats = player.GetComponent<PlayerStats>();
+            _playerStats.ClearRoom();
         }
         if (enemyCount != 0 && (m_roomState == RoomState.None || m_roomState == RoomState.Clear))
         {
-            Debug.Log("클리어 O");
             RoomAppearance = RoomState.NotClear;
         }
-
     }
 
     //룸 상태가 변경되어 이벤트가 발생하면 실행할 메소드
     private void RoomAppearanceChanged(RoomState state)
     {
-        Debug.Log("룸상태 변경");
         switch (state)
         {
             case RoomState.None:
@@ -154,7 +145,6 @@ public class RoomManager : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException(nameof(state));
         }
-
     }
 
     [Obsolete("드랍확률 확인하세요. Goldenbox: 7, NormalBox: 21")]
@@ -162,7 +152,6 @@ public class RoomManager : MonoBehaviour
     {
         int randomNumber = new System.Random().Next(100);
         Debug.Log($"randomNumber = {randomNumber}");
-
 
         if (randomNumber < 50)
         {
@@ -186,17 +175,14 @@ public class RoomManager : MonoBehaviour
                    .Select(child => child.gameObject)
                    .ToArray();
         doorColliders = new Collider2D[doors.Length];
-        Debug.Log($"도어숫자 : {doors.Length}");
 
         for (int i = 0; i < doors.Length; i++)
         {
             doorColliders[i] = doors[i].GetComponent<Collider2D>();
         }
-        Debug.Log("오픈도어");
         //문 열리는 내용
         for (int i = 0; i < doors.Length; i++)
         {
-            Debug.Log("문열기");
             doorColliders[i].isTrigger = false;
         }
     }
@@ -214,7 +200,6 @@ public class RoomManager : MonoBehaviour
         {
             doorColliders[i] = doors[i].GetComponent<Collider2D>();
         }
-        Debug.Log("클로스도어");
         //문 닫히는 내용
         for (int i = 0; i < doors.Length; i++)
         {

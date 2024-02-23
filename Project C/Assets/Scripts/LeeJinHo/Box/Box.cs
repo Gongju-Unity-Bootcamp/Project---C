@@ -21,37 +21,34 @@ public class Box : MonoBehaviour
     {
         m_boxRb = GetComponent<Rigidbody2D>();
         m_boxCol = GetComponent<BoxCollider2D>();
-        m_openTimeLine = transform.Find("BoxOpen").gameObject;
-
     }
     ItemID id;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !m_isCheck)
         {
-           
-            m_openTimeLine.SetActive(true);
-            id = transform.GetComponent<ItemTest>().Id;
-            BoxOpen(itemType);
+            PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
+            if (itemType == ItemType.GoldenBox && playerStats.key >0)
+            {
+                m_openTimeLine.SetActive(true);
+                id = transform.GetComponent<ItemTest>().Id;
+                BoxOpen(itemType);
+                playerStats.UseKey();
+            }        
+            else if(itemType == ItemType.NormalBox)
+            {
+                m_openTimeLine.SetActive(true);
+                id = transform.GetComponent<ItemTest>().Id;
+                BoxOpen(itemType);
+            }
         }
     }
 
     void BoxOpen(ItemType type)
     {
-        if (!m_isCheck)
-        {
-            m_close.SetBool("Open", true);
-            m_isCheck = true;
-
-            Managers.Spawn.SpawnBox(type, transform.position);
-
-        }
-
-        if (m_isCheck)
-        {
-            Debug.Log("¹Ú½º ´ÝÇû´Ù");
-            m_open.Play("BoxOpen");
-
-        }
+        m_isCheck = true;
+        m_close.SetBool("Open", true);
+        Managers.Spawn.SpawnBox(type, transform.position);
+        m_open.Play("BoxOpen");
     }
 }
