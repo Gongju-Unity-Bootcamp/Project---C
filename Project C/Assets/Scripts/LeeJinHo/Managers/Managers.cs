@@ -14,6 +14,9 @@ public class Managers : MonoBehaviour
     public static SpawnManager Spawn { get; private set; }
     public static ResourceManager Resource {  get; private set; }
 
+    //플레이어 스탯관리
+    public static PlayerStats PlayerStats { get; private set; }
+
     private void Awake()
     {
         if (s_instance == null) 
@@ -53,6 +56,9 @@ public class Managers : MonoBehaviour
         go = new GameObject(nameof(ResourceManager));
         go.transform.parent = transform;
         Resource = go.AddComponent<ResourceManager>();
+
+        //플레이어 스탯 관리
+        PlayerStats = Transform.FindObjectOfType<PlayerStats>();
 
         //Data.Init();
         //UI.Init();

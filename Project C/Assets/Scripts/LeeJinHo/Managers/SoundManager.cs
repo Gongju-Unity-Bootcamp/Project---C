@@ -21,8 +21,6 @@ public class SoundManager : MonoBehaviour
     {
         string sd = "basementLoop";
         BGM.clip = Managers.Resource.LoadAudioClips("basementLoop");
-
-        Debug.Log(BGM.clip);
         PlayBGM();
     }
 
@@ -40,7 +38,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM()
     {
-        Debug.Log("PlayBGM");
         BGM.Play();
     }
 }
