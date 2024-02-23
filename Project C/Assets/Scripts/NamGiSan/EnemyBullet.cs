@@ -29,7 +29,7 @@ public class EnemyBullet : MonoBehaviour
 
         if(boss != null)
         {
-            float ranTime = Random.Range(0.5f, 1.0f);
+            float ranTime = Random.Range(0.3f, 1.5f);
             yield return new WaitForSeconds(ranTime);
             StartCoroutine(ResetBossBullet());
         }

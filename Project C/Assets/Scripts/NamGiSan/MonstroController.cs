@@ -11,6 +11,7 @@ public class MonstroController : MonoBehaviour
     private Animator animaotr;
 
     public Transform bulletPoint;
+    [SerializeField] private float shockwaveTime = 0.75f;
 
     void Awake()
     {
@@ -144,7 +145,7 @@ public class MonstroController : MonoBehaviour
 
 
             int spawnBullet = Random.Range(30, 35);
-
+            
             if (transform.position.y == targetPos.y)
             {
                 collider.enabled = true;
@@ -154,6 +155,8 @@ public class MonstroController : MonoBehaviour
                 {
                     int bulletSpeed = Random.Range(10, 12);
                     GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                    GameObject shockWave = transform.GetChild(1).gameObject;
+                    shockWave.GetComponent<ShockWave>().CallShockWave();
                     bossBullet.transform.position = bulletPoint.position;
                     Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
                     Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
@@ -201,16 +204,16 @@ public class MonstroController : MonoBehaviour
         animaotr.SetTrigger("Spit");
         yield return new WaitForSeconds(1.0f);  // 원거리 공격 전 대기 동작
         
-
-        int spawnBullet = Random.Range(20, 25);
+        int spawnBullet = Random.Range(30, 35);
 
         while (true)
         {
             for (int i = 0; i < spawnBullet; i++)
             {
-                int bulletSpeed = Random.Range(6, 13);
-
+                int bulletSpeed = Random.Range(6, 10);
                 GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                //GameObject shockWave = transform.GetChild(1).gameObject;
+                //shockWave.GetComponent<ShockWave>().CallShockWave();
                 bossBullet.transform.position = bulletPoint.position;
                 Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
                 Vector2 dirVec = (player.transform.position - transform.position).normalized;
