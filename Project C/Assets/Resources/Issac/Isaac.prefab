@@ -79,8 +79,10 @@ MonoBehaviour:
   PickUpTime: 1
   StopMove: 0.05
   MoveSpeed: 7
+  CoolTime: 1.2
   HitSprite: {fileID: 793701858, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   PickUpSprite: {fileID: 159882967, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
+  BulletPrefab: {fileID: 3056395816801717927, guid: 2947732d62e5d5e46b0131b374fc967a, type: 3}
 --- !u!1 &1062275345972140597
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +94,9 @@ GameObject:
   - component: {fileID: 3301634867205251830}
   - component: {fileID: 6639048114754979862}
   - component: {fileID: 7916132085941704943}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,9 +200,9 @@ GameObject:
   - component: {fileID: 8183859444952625651}
   - component: {fileID: 2407212660784195991}
   - component: {fileID: 6804695883723534093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,9 +306,9 @@ GameObject:
   - component: {fileID: 7884302617465536210}
   - component: {fileID: 376187689720869368}
   - component: {fileID: 6243922416900320243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Total
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
