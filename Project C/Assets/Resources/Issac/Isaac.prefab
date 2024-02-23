@@ -77,6 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlinkDurationForHit: 0.2
   PickUpTime: 1
+  StopMove: 0.05
+  MoveSpeed: 7
   HitSprite: {fileID: 793701858, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   PickUpSprite: {fileID: 159882967, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
 --- !u!1 &1062275345972140597
@@ -152,7 +154,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: -980467746, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -258,7 +260,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -712402503, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -364,7 +366,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 793701858, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
