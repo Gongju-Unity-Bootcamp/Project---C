@@ -95,6 +95,7 @@ MonoBehaviour:
   HitSprite: {fileID: 793701858, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   PickUpSprite: {fileID: 159882967, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   BulletPrefab: {fileID: 3056395816801717927, guid: 2947732d62e5d5e46b0131b374fc967a, type: 3}
+  BombPrefab: {fileID: 5073761483503701010, guid: 01ddc430ee445bd479ab6d37538e64cd, type: 3}
 --- !u!1 &1062275345972140597
 GameObject:
   m_ObjectHideFlags: 0

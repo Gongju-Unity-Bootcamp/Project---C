@@ -14,6 +14,7 @@ public class IsaacController : MonoBehaviour
     public Sprite HitSprite;
     public Sprite PickUpSprite;
     public GameObject BulletPrefab;
+    public GameObject BombPrefab;
 
     Transform _head;
     Transform _body;
@@ -30,6 +31,7 @@ public class IsaacController : MonoBehaviour
     Vector2 _moveDirection;
 
     int _hp = 3;
+    int _bombCount = 3;
     float _horizontal;
     float _vertical;
     bool _isAttack;
@@ -67,6 +69,10 @@ public class IsaacController : MonoBehaviour
             AttackDirection();
         }
 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseBomb();
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GetHit();
@@ -145,6 +151,15 @@ public class IsaacController : MonoBehaviour
         _total.gameObject.SetActive(false);
     }
     #endregion
+    public void UseBomb()
+    {
+        if (_bombCount > 0)
+        {
+            _bombCount--;
+            Instantiate(BombPrefab, transform.position, Quaternion.identity);
+            Debug.Log("남은 폭탄 개수 : " + _bombCount);
+        }
+    }
     public void PlayerMove()
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
@@ -195,12 +210,12 @@ public class IsaacController : MonoBehaviour
 
         Invoke("AttackCoolTime", playerStats.attackDelayTime);
     }
-    void DestroyBullet()
+    public void DestroyBullet()
     {
         // 애니메이션 재생 시간 0.5f
         StartCoroutine(DestroyBulletAnimation(_playerBullet, playerStats.bulletSurviveTime + 0.5f));
     }
-    void AttackCoolTime()
+    public void AttackCoolTime()
     {
         _isAttack = false;
     }
