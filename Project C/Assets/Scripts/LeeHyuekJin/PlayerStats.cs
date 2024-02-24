@@ -76,6 +76,7 @@ public class PlayerStats : MonoBehaviour
     }
     public void GetBomb()
     {
+        Debug.Log("ÆøÅºÈ¹µæ");
         bomb++;
     }
     public void UseBomb()

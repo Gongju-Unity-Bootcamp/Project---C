@@ -93,11 +93,11 @@ public class ItemTest : MonoBehaviour
             {
                 //액티브아이템 업데이트
             }
-            else if(this.itemType == ItemType.Consumer && this.Name == "Key")
+            else if(this.itemType == ItemType.Consumer && (int)Id == 3001)
             {
                 playerStats.GetKey();
             }
-            else if (this.itemType == ItemType.Consumer && this.Name == "Bomb")
+            else if (this.itemType == ItemType.Consumer && (int)Id == 3002)
             {
                 playerStats.GetBomb();
             }
