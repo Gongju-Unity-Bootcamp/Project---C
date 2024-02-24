@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 403104276751020060}
   - component: {fileID: 455923983610720811}
   - component: {fileID: 5370102014508616072}
-  - component: {fileID: 2165524857913386850}
+  - component: {fileID: 6245942456166601487}
   m_Layer: 13
   m_Name: Bullet
   m_TagString: EnemyBullet
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &455923983610720811
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2165524857913386850
+--- !u!114 &6245942456166601487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,6 +158,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8333793598550204643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5c871dd6efddd458dc12a3abed908d, type: 3}
+  m_Script: {fileID: 11500000, guid: 346bf04a851b57f448594e52f0626ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  damage: 1

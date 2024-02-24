@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_0
+      name: MoveIdle_0
       rect:
         serializedVersion: 2
         x: 7
@@ -157,7 +157,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_1
+      name: MoveIdle_1
       rect:
         serializedVersion: 2
         x: 39
@@ -178,7 +178,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_2
+      name: MoveIdle_2
       rect:
         serializedVersion: 2
         x: 72
@@ -199,7 +199,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,15 +212,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_3
+      name: MoveIdle_3
       rect:
         serializedVersion: 2
         x: 103
-        y: 164
-        width: 51
-        height: 16
+        y: 165
+        width: 18
+        height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,28 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_4
-      rect:
-        serializedVersion: 2
-        x: 168
-        y: 163
-        width: 13
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55b51be1e26ac864a8f18d07c94daa6a
-      internalID: 428373689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_5
+      name: MoveSide_3
       rect:
         serializedVersion: 2
         x: 7
@@ -262,7 +241,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,7 +254,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_6
+      name: MoveIdle_8
       rect:
         serializedVersion: 2
         x: 7
@@ -283,7 +262,7 @@ TextureImporter:
         width: 18
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,7 +275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_7
+      name: MoveIdle_4
       rect:
         serializedVersion: 2
         x: 7
@@ -304,7 +283,7 @@ TextureImporter:
         width: 18
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_8
+      name: MoveSide_4
       rect:
         serializedVersion: 2
         x: 39
@@ -325,7 +304,7 @@ TextureImporter:
         width: 17
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_9
+      name: MoveIdle_9
       rect:
         serializedVersion: 2
         x: 39
@@ -346,7 +325,7 @@ TextureImporter:
         width: 18
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_10
+      name: MoveIdle_5
       rect:
         serializedVersion: 2
         x: 39
@@ -367,7 +346,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_11
+      name: MoveSide_5
       rect:
         serializedVersion: 2
         x: 71
@@ -388,7 +367,7 @@ TextureImporter:
         width: 17
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,7 +380,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_12
+      name: MoveIdle_6
       rect:
         serializedVersion: 2
         x: 71
@@ -409,7 +388,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_13
+      name: MoveSide_0
       rect:
         serializedVersion: 2
         x: 72
@@ -430,7 +409,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -443,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_14
+      name: MoveIdle_7
       rect:
         serializedVersion: 2
         x: 102
@@ -451,7 +430,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -464,7 +443,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_15
+      name: MoveSide_6
       rect:
         serializedVersion: 2
         x: 104
@@ -472,7 +451,7 @@ TextureImporter:
         width: 15
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,7 +464,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_16
+      name: MoveSide_2
       rect:
         serializedVersion: 2
         x: 104
@@ -493,7 +472,7 @@ TextureImporter:
         width: 15
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -506,91 +485,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_17
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 69
-        width: 10
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6e931c9ff2e30d49b081d7431206cdc
-      internalID: -43578878
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_18
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 101
-        width: 8
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f59e53fedb7568d40875f7ca8339c816
-      internalID: -1495847770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_19
-      rect:
-        serializedVersion: 2
-        x: 139
-        y: 132
-        width: 16
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76cc52d6fbb89eb4895507eae80e640f
-      internalID: -1744244430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_20
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 68
-        width: 18
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5bf736697e1af664c9362c591589b91b
-      internalID: 133249163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_21
+      name: MoveSide_7
       rect:
         serializedVersion: 2
         x: 8
@@ -598,7 +493,7 @@ TextureImporter:
         width: 15
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -611,7 +506,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_22
+      name: MoveSide_8
       rect:
         serializedVersion: 2
         x: 39
@@ -619,7 +514,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -632,7 +527,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_23
+      name: MoveSide_9
       rect:
         serializedVersion: 2
         x: 71
@@ -640,7 +535,7 @@ TextureImporter:
         width: 18
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -653,7 +548,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemy_Gaper_Leg_24
+      name: MoveSide_10
       rect:
         serializedVersion: 2
         x: 103
@@ -661,7 +556,7 @@ TextureImporter:
         width: 18
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -682,7 +577,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -703,7 +598,7 @@ TextureImporter:
         width: 16
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -726,33 +621,33 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite_Enemy_Gaper_Leg_0: -70685737
-      Sprite_Enemy_Gaper_Leg_1: 21074055
-      Sprite_Enemy_Gaper_Leg_10: 10377903
-      Sprite_Enemy_Gaper_Leg_11: -596765345
-      Sprite_Enemy_Gaper_Leg_12: -1161106595
-      Sprite_Enemy_Gaper_Leg_13: -754640277
-      Sprite_Enemy_Gaper_Leg_14: -527467254
-      Sprite_Enemy_Gaper_Leg_15: 1092988244
-      Sprite_Enemy_Gaper_Leg_16: 1394471921
+      MoveIdle_0: -70685737
+      MoveIdle_1: 21074055
+      MoveIdle_2: -939018542
+      MoveIdle_3: 1775290968
+      MoveIdle_4: -432450054
+      MoveIdle_5: 10377903
+      MoveIdle_6: -1161106595
+      MoveIdle_7: -527467254
+      MoveIdle_8: 906663187
+      MoveIdle_9: -265499875
+      MoveSide_0: -754640277
+      MoveSide_10: -79130500
+      MoveSide_2: 1394471921
+      MoveSide_3: 247903387
+      MoveSide_4: -2063256959
+      MoveSide_5: -596765345
+      MoveSide_6: 1092988244
+      MoveSide_7: -1691399337
+      MoveSide_8: -618730370
+      MoveSide_9: 1961823380
       Sprite_Enemy_Gaper_Leg_17: -43578878
       Sprite_Enemy_Gaper_Leg_18: -1495847770
       Sprite_Enemy_Gaper_Leg_19: -1744244430
-      Sprite_Enemy_Gaper_Leg_2: -939018542
       Sprite_Enemy_Gaper_Leg_20: 133249163
-      Sprite_Enemy_Gaper_Leg_21: -1691399337
-      Sprite_Enemy_Gaper_Leg_22: -618730370
-      Sprite_Enemy_Gaper_Leg_23: 1961823380
-      Sprite_Enemy_Gaper_Leg_24: -79130500
       Sprite_Enemy_Gaper_Leg_25: 1721179554
       Sprite_Enemy_Gaper_Leg_26: -371859133
-      Sprite_Enemy_Gaper_Leg_3: 1775290968
-      Sprite_Enemy_Gaper_Leg_4: 428373689
-      Sprite_Enemy_Gaper_Leg_5: 247903387
-      Sprite_Enemy_Gaper_Leg_6: 906663187
-      Sprite_Enemy_Gaper_Leg_7: -432450054
-      Sprite_Enemy_Gaper_Leg_8: -2063256959
-      Sprite_Enemy_Gaper_Leg_9: -265499875
+      Sprite_Enemy_Gaper_Leg_27: -1843243655
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
