@@ -31,7 +31,6 @@ public class IsaacController : MonoBehaviour
     Vector2 _moveDirection;
 
     int _hp = 3;
-    int _bombCount = 3;
     float _horizontal;
     float _vertical;
     bool _isAttack;
@@ -153,11 +152,11 @@ public class IsaacController : MonoBehaviour
     #endregion
     public void UseBomb()
     {
-        if (_bombCount > 0)
+        if (playerStats.bomb > 0)
         {
-            _bombCount--;
+            playerStats.bomb--;
             Instantiate(BombPrefab, transform.position, Quaternion.identity);
-            Debug.Log("³²Àº ÆøÅº °³¼ö : " + _bombCount);
+            Debug.Log("³²Àº ÆøÅº °³¼ö : " + playerStats.bomb);
         }
     }
     public void PlayerMove()

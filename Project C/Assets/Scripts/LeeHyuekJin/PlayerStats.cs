@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour
         moveSpeed = Mathf.Sqrt((float)(totalSpeedStats * 2 + 12));
 
         totalRangeStats = 1 + playerRangeStats;
-        bulletSurviveTime = Mathf.Sqrt((float)totalRangeStats);
+        bulletSurviveTime = Mathf.Sqrt((float)totalRangeStats/2);
     }
 
     public void UpdateStats(float attakAdd, float attakMulti, float attakSpeedAdd, float attakSpeedMulti, float speed, float range)
@@ -57,13 +57,13 @@ public class PlayerStats : MonoBehaviour
         attackDamage = totalAttackStats;
 
         totalAttackDelayStats = 16 - 6 * Mathf.Sqrt((float)(attakSpeedMulti * (playerAttackDelayStats + attakSpeedAdd) * 1.3 + 1));
-        attackDelayTime = totalAttackDelayStats * 0.05f;  //어택딜레이 스탯을 유니티 스탯으로 전환
+        attackDelayTime = totalAttackDelayStats * 0.05f;
 
         totalSpeedStats += speed;
-        moveSpeed = Mathf.Sqrt((float)(totalSpeedStats * 2 + 12)); //이동속도 스탯을 유니티 스탯으로 전환
+        moveSpeed = Mathf.Sqrt((float)(totalSpeedStats * 2 + 12));
 
         totalRangeStats += range;
-        bulletSurviveTime = Mathf.Sqrt((float)(totalRangeStats - 4)); //사거리 스탯을 유니티 스탯으로 전환
+        bulletSurviveTime = Mathf.Sqrt((float)(totalRangeStats)/2);
 
     }
     public void GetKey()

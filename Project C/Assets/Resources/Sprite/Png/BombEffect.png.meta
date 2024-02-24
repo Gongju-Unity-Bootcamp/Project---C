@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aece498cbdd4012439cea35daac1f0b3
+guid: 57c0f8bd22e2e6945adca646c1423054
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,30 +132,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bloodroom_0
+      name: BombEffect_0
       rect:
         serializedVersion: 2
-        x: 76
-        y: 358
-        width: 221
-        height: 143
+        x: 0
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f52f438e8b3c1544aa191a3c3f1140e5
-      internalID: -441538190
+      spriteID: f8e0a38e128a6b7419484cbc527f83c2
+      internalID: -157186486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_1
+      name: BombEffect_1
       rect:
         serializedVersion: 2
-        x: 381
-        y: 222
-        width: 280
-        height: 270
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f144e79ccbe144c40a0c175d49b8bcda
-      internalID: -310808333
+      spriteID: 6e4728cdfc2218e409bd167d10625a48
+      internalID: -984356520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_2
+      name: BombEffect_2
       rect:
         serializedVersion: 2
-        x: 791
-        y: 442
-        width: 90
-        height: 54
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c200e7679723e0f4d9b1f5e1a0dc3c19
-      internalID: 1007843046
+      spriteID: 63a15661251be0848ad524cf287d620f
+      internalID: -330339898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_3
+      name: BombEffect_3
       rect:
         serializedVersion: 2
-        x: 202
-        y: 313
-        width: 26
-        height: 28
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e40e198bcbd3d314fb138149e9c5a61a
-      internalID: -1418877113
+      spriteID: 6ae52cad86672a04f85f8e8bdce223e8
+      internalID: -1432245120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_4
+      name: BombEffect_4
       rect:
         serializedVersion: 2
-        x: 640
-        y: 328
-        width: 49
-        height: 30
+        x: 0
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f05645a1bd72b14f90888aededde4ae
-      internalID: 243596106
+      spriteID: 272ca0fe6b30a5940af863e57e464a6b
+      internalID: -1812612325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_5
+      name: BombEffect_5
       rect:
         serializedVersion: 2
-        x: 830
-        y: 340
-        width: 49
-        height: 30
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c496539be1e12ec45937536c476208e5
-      internalID: 1516832759
+      spriteID: 709b60f20df06724ebd3b9f60fc817c7
+      internalID: 658858637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_6
+      name: BombEffect_6
       rect:
         serializedVersion: 2
-        x: 214
-        y: 297
-        width: 38
-        height: 17
+        x: 128
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba481b83e46e6d8419a6f7cd13f30859
-      internalID: 1042900733
+      spriteID: 7b09c3a3c3da3e04e8b6fbda035c8118
+      internalID: 882227569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_7
+      name: BombEffect_7
       rect:
         serializedVersion: 2
-        x: 241
-        y: 302
-        width: 33
-        height: 15
+        x: 192
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c50f5621be18738429693432de1780e0
-      internalID: 2087186072
+      spriteID: b5abd3e980213e6408343c0a37c6cd15
+      internalID: 1133545948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_8
+      name: BombEffect_8
       rect:
         serializedVersion: 2
-        x: 278
-        y: 312
-        width: 75
-        height: 24
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,20 +318,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2650b512aade894469cc4a6f40f161b2
-      internalID: -1523342390
+      spriteID: 9ca2cab788455de4ebfdb5fcc0a88615
+      internalID: 1193819767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_9
+      name: BombEffect_9
       rect:
         serializedVersion: 2
-        x: 765
-        y: 274
-        width: 90
-        height: 66
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,20 +339,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fa0ee8fa38113a43bc718bccc5d3add
-      internalID: -1509689001
+      spriteID: af18df29bc09573479ad5185843762aa
+      internalID: 1247463874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_10
+      name: BombEffect_10
       rect:
         serializedVersion: 2
-        x: 245
-        y: 282
-        width: 8
-        height: 7
+        x: 128
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,20 +360,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efcf6180c6f3ffb469fd62731b54c254
-      internalID: -156277451
+      spriteID: f667e0ef11e77c1489539ae94d20961d
+      internalID: 1224273214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_11
+      name: BombEffect_11
       rect:
         serializedVersion: 2
-        x: 291
-        y: 282
-        width: 32
-        height: 12
+        x: 192
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,20 +381,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08360fbbb2ac6f24ca2378393e69671b
-      internalID: -1895972924
+      spriteID: 270da4e9fbd0198449a1d8210f10fbb9
+      internalID: 335255249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_12
+      name: BombEffect_12
       rect:
         serializedVersion: 2
-        x: 101
-        y: 89
-        width: 281
-        height: 160
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,20 +402,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cec646707c77b9244bdeaf071f0fa714
-      internalID: -223959490
+      spriteID: 6a61aa73551af7c49af1b7eac5c15d91
+      internalID: 1249693058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_13
+      name: BombEffect_13
       rect:
         serializedVersion: 2
-        x: 649
-        y: 227
-        width: 62
-        height: 18
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,20 +423,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bade7d2967d3414f9b92ed350683e9a
-      internalID: -1054092009
+      spriteID: d782da5d78f433c429e208d8cf556d5b
+      internalID: 1816521400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bloodroom_14
+      name: BombEffect_14
       rect:
         serializedVersion: 2
-        x: 843
-        y: 239
-        width: 58
-        height: 19
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,71 +444,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93c01bc5509402b4882b7395c2bf8193
-      internalID: -1719971996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodroom_15
-      rect:
-        serializedVersion: 2
-        x: 523
-        y: 178
-        width: 49
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fe32b32f5d22f044be8c93730946ec3
-      internalID: -261725882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodroom_16
-      rect:
-        serializedVersion: 2
-        x: 634
-        y: 78
-        width: 229
-        height: 116
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 437e61db89dd6614bbe4313383d92088
-      internalID: 729518579
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bloodroom_17
-      rect:
-        serializedVersion: 2
-        x: 536
-        y: 78
-        width: 59
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c8c1089ce7e1884fbcbe5df0896bf2d
-      internalID: 298941424
+      spriteID: 3e1022022b0cc444e8382b5c9ba5db2d
+      internalID: 1865482506
       vertices: []
       indices: 
       edges: []
@@ -537,24 +461,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bloodroom_0: -441538190
-      bloodroom_1: -310808333
-      bloodroom_10: -156277451
-      bloodroom_11: -1895972924
-      bloodroom_12: -223959490
-      bloodroom_13: -1054092009
-      bloodroom_14: -1719971996
-      bloodroom_15: -261725882
-      bloodroom_16: 729518579
-      bloodroom_17: 298941424
-      bloodroom_2: 1007843046
-      bloodroom_3: -1418877113
-      bloodroom_4: 243596106
-      bloodroom_5: 1516832759
-      bloodroom_6: 1042900733
-      bloodroom_7: 2087186072
-      bloodroom_8: -1523342390
-      bloodroom_9: -1509689001
+      BombEffect_0: -157186486
+      BombEffect_1: -984356520
+      BombEffect_10: 1224273214
+      BombEffect_11: 335255249
+      BombEffect_12: 1249693058
+      BombEffect_13: 1816521400
+      BombEffect_14: 1865482506
+      BombEffect_2: -330339898
+      BombEffect_3: -1432245120
+      BombEffect_4: -1812612325
+      BombEffect_5: 658858637
+      BombEffect_6: 882227569
+      BombEffect_7: 1133545948
+      BombEffect_8: 1193819767
+      BombEffect_9: 1247463874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
