@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MulliganController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MulliganController : MonoBehaviour
     private Vector2 currentDirection;
     private float timeSinceLastDirectionChange;
     private Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,17 @@ public class MulliganController : MonoBehaviour
         _rb.velocity = currentDirection.normalized * moveSpeed;
         if (_rb.velocity.x > 0 || _rb.velocity.x < 0)
         {
-            _animator.SetTrigger("MoveSide");
+            if(_rb.velocity.x != 0)
+            {
+                if(_rb.velocity.x > 0)
+                {
+                    _animator.SetTrigger("MoveRight");
+                }
+                else
+                {
+                    _animator.SetTrigger("MoveLeft");
+                }
+            }
         }
     }
 
