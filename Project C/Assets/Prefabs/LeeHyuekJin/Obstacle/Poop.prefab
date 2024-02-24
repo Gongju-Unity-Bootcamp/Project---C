@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5272672480222238480}
   m_Layer: 8
   m_Name: Poop
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56956833dce2df41a51e390046fa88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dregs: {fileID: 7382243662269123374, guid: 4c242e3a6ee170e4c9d09e078211fc87, type: 3}
+  dreg: {fileID: 250563144, guid: 2fa8f12d5d36d6a40bcce040d3b2eb3d, type: 3}
 --- !u!114 &5272672480222238480
 MonoBehaviour:
   m_ObjectHideFlags: 0

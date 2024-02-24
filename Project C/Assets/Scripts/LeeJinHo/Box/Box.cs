@@ -30,6 +30,7 @@ public class Box : MonoBehaviour
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             if (itemType == ItemType.GoldenBox && playerStats.key >0)
             {
+                playerStats.key--;
                 m_openTimeLine.SetActive(true);
                 id = transform.GetComponent<ItemTest>().Id;
                 BoxOpen(itemType);

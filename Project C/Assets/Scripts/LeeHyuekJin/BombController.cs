@@ -8,6 +8,7 @@ public class BombController : MonoBehaviour
     public float detonationTime;
     private GameObject _player;
     private Player_Health _player_Health;
+    private Obstacle _obstacle;
     void Start()
     {
         Invoke("Detonate", detonationTime);
@@ -22,7 +23,8 @@ public class BombController : MonoBehaviour
         {
             if (collider.CompareTag("Obstacle"))
             {
-                Destroy(collider.gameObject);
+                _obstacle = collider.GetComponent<Obstacle>();
+                _obstacle.Destroyed();
             }
             if(collider.CompareTag("Enemy"))
             {
@@ -33,8 +35,15 @@ public class BombController : MonoBehaviour
                 _player_Health.TakeDamage();
             }
         }
-
-        // ÆøÅº ÆÄ±«
+        Collider2D _collider = GetComponent<Collider2D>();
+        _collider.enabled = false;
+        AudioSource audio;
+        audio = GetComponent<AudioSource>();
+        audio.Play();
+        Invoke("Destroyed", 1f);
+    }
+    private void Destroyed()
+    {
         Destroy(gameObject);
     }
 }

@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public GameObject dregs;
+    public Sprite dreg;
 
-    private void OnDestroy()
+    private SpriteRenderer _spriteRenderer;
+    Collider2D _collider2D;
+
+    private void Start()
     {
-        if(Application.isPlaying)
-        {
-            Debug.Log("Àå¾Ö¹° ÆÄ±«");
-            GameObject obj = Instantiate(dregs, transform.position, Quaternion.identity) as GameObject;
-        }
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2D = GetComponent<Collider2D>();
+    }
 
+    public void Destroyed()
+    {
+        _spriteRenderer.sprite = dreg;
+
+        _collider2D.enabled = false;
     }
 }
