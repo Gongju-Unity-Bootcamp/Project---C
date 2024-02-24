@@ -6,17 +6,28 @@ public class BombController : MonoBehaviour
 {
     public float explosionRadius;
     public float detonationTime;
+    public GameObject explosionEffect;
     private GameObject _player;
     private Player_Health _player_Health;
     private Obstacle _obstacle;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         Invoke("Detonate", detonationTime);
         _player = GameObject.FindWithTag("Player");
         _player_Health = _player.GetComponent<Player_Health>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Detonate()
+    void Update()
+    {
+        if(explosionEffect == null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void  Detonate()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach (Collider2D collider in colliders)
@@ -39,11 +50,15 @@ public class BombController : MonoBehaviour
         _collider.enabled = false;
         AudioSource audio;
         audio = GetComponent<AudioSource>();
-        audio.Play();
-        Invoke("Destroyed", 1f);
+        //audio.Play();
+        StartCoroutine(Explosion());
+
     }
-    private void Destroyed()
+
+    IEnumerator Explosion()
     {
-        Destroy(gameObject);
+        explosionEffect.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Destroy(explosionEffect);
     }
 }
