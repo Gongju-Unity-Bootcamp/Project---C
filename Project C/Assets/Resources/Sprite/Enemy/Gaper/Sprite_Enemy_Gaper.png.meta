@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,85 +149,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gaper_0
+      name: Sprite_Enemy_Gaper_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 2
+        y: 33
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed5558dc12053734996783ff1ef28095
-      internalID: 1192661339
+      spriteID: bacbe16ac1360dc45a4feaf23197d297
+      internalID: 483065881
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gaper_1
+      name: Sprite_Enemy_Gaper_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 34
+        y: 36
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5644a4723b9b584ca58f7f6cca4ce92
-      internalID: 319165038
+      spriteID: 9c6caa76d33bed24d813f1fd349e2f00
+      internalID: 55501026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gaper_2
+      name: Sprite_Enemy_Gaper_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 2
+        y: 1
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c9a367f2519a2943ab7b8940c751218
-      internalID: -64681355
+      spriteID: 4a78e8d69296e7a4f81f56891b563cfe
+      internalID: 1537548527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gaper_3
+      name: Sprite_Enemy_Gaper_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 34
+        y: 1
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2f662522682acd4c9ff91019bf9d0d4
-      internalID: 1189375844
+      spriteID: b3e5b04b02f640040968b787c2e1ced4
+      internalID: 1705602891
       vertices: []
       indices: 
       edges: []
@@ -243,10 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      gaper_0: 1192661339
-      gaper_1: 319165038
-      gaper_2: -64681355
-      gaper_3: 1189375844
+      Sprite_Enemy_Gaper_0: 483065881
+      Sprite_Enemy_Gaper_1: 55501026
+      Sprite_Enemy_Gaper_2: 1537548527
+      Sprite_Enemy_Gaper_3: 1705602891
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -14,12 +14,14 @@ public class PooterController : MonoBehaviour
     private Vector2 currentDirection;
    
     private GameObject player;
+    private Animator animator;
     public GameObject bullet;
     void Start()
     {
         AttakCollTime = 3f;
         bulletForce = 5f;
         player = GameObject.FindWithTag("Player");
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -44,6 +46,7 @@ public class PooterController : MonoBehaviour
     }
     private void ShootBullet()
     {
+        animator.SetTrigger("OnAttack");
         Vector3 direction = (player.transform.position - transform.position).normalized;
         GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
@@ -51,6 +54,7 @@ public class PooterController : MonoBehaviour
     }
     private void MoveRandomly()
     {
+        animator.SetTrigger("OnMove");
         transform.Translate(currentDirection.normalized * moveSpeed * Time.deltaTime);
     }
 

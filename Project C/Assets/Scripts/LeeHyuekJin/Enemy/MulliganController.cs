@@ -43,15 +43,10 @@ public class MulliganController : MonoBehaviour
             }
         }
         _rb.velocity = currentDirection.normalized * moveSpeed;
-        if (_rb.velocity.x > 0)
+        if (_rb.velocity.x > 0 || _rb.velocity.x < 0)
         {
-            _animator.SetTrigger("MoveRight");
+            _animator.SetTrigger("MoveSide");
         }
-        else if (_rb.velocity.x < 0)
-        {
-            _animator.SetTrigger("MoveLeft");
-        }
-
     }
 
     void ShootBullet()

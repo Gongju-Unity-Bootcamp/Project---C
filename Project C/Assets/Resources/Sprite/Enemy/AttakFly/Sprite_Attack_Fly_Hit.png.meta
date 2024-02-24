@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9bb93d29f4eaab44288f94bca7e0b3b0
+guid: 0c4f60f96f733c443bf31503eb4c99b0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,19 +69,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -136,13 +123,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ebodyanimationleft_0
+      name: Sprite_Attack_Fly_Hit_0
       rect:
         serializedVersion: 2
-        x: 17
+        x: 10
+        y: 2
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6030eb62509fbfb4996acc9d352e84a4
+      internalID: -558207859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_Attack_Fly_Hit_1
+      rect:
+        serializedVersion: 2
+        x: 50
         y: 1
-        width: 69
-        height: 79
+        width: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc947bbca38dd2140ac2622922b04c83
-      internalID: 417095689
+      spriteID: 2e49b0bf7990ad049b8e34aca2307507
+      internalID: -576976038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ebodyanimationleft_1
+      name: Sprite_Attack_Fly_Hit_2
       rect:
         serializedVersion: 2
-        x: 114
+        x: 110
         y: 2
-        width: 75
-        height: 68
+        width: 28
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4406a2b2b5623d4787bd50524aa99d3
-      internalID: -1228622327
+      spriteID: a0dcd26e597345d4694b41d9a313e9d4
+      internalID: -1957955165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ebodyanimationleft_2
+      name: Sprite_Attack_Fly_Hit_3
       rect:
         serializedVersion: 2
-        x: 214
+        x: 150
         y: 2
-        width: 74
-        height: 69
+        width: 50
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,155 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 962f0e103b6c13e42a4e2213b28db9ca
-      internalID: 2025485623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_3
-      rect:
-        serializedVersion: 2
-        x: 311
-        y: 1
-        width: 80
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eeec6aa5853e0ab4a88e45cabf4470a5
-      internalID: -2043318089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_4
-      rect:
-        serializedVersion: 2
-        x: 406
-        y: 1
-        width: 91
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: edd39484fe7b672408b56c13bbb548b0
-      internalID: 468365738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_5
-      rect:
-        serializedVersion: 2
-        x: 511
-        y: 2
-        width: 77
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b5b0cd981116d5408f66787bcd4c4bc
-      internalID: -642358517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_6
-      rect:
-        serializedVersion: 2
-        x: 611
-        y: 2
-        width: 75
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50e28ad3dd68061478df030bb3fca5b9
-      internalID: 2004777044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_7
-      rect:
-        serializedVersion: 2
-        x: 710
-        y: 2
-        width: 74
-        height: 69
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a057f0399b7819342870b303a8bd9cd9
-      internalID: 1327849171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_8
-      rect:
-        serializedVersion: 2
-        x: 807
-        y: 2
-        width: 80
-        height: 73
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6fde9d66a0ff31845b4e170d0b99c1ee
-      internalID: -686092243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ebodyanimationleft_9
-      rect:
-        serializedVersion: 2
-        x: 905
-        y: 1
-        width: 91
-        height: 62
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8310fa710d929ce4bbbf2b7376e0f4fd
-      internalID: 113702480
+      spriteID: 64c76e55b97b79b479291d91331c4071
+      internalID: -570816643
       vertices: []
       indices: 
       edges: []
@@ -356,16 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ebodyanimationleft_0: 417095689
-      ebodyanimationleft_1: -1228622327
-      ebodyanimationleft_2: 2025485623
-      ebodyanimationleft_3: -2043318089
-      ebodyanimationleft_4: 468365738
-      ebodyanimationleft_5: -642358517
-      ebodyanimationleft_6: 2004777044
-      ebodyanimationleft_7: 1327849171
-      ebodyanimationleft_8: -686092243
-      ebodyanimationleft_9: 113702480
+      Sprite_Attack_Fly_Hit_0: -558207859
+      Sprite_Attack_Fly_Hit_1: -576976038
+      Sprite_Attack_Fly_Hit_2: -1957955165
+      Sprite_Attack_Fly_Hit_3: -570816643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

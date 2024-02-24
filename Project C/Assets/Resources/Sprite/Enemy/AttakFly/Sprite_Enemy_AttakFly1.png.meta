@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,85 +149,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flyanim_0
+      name: Sprite_Enemy_AttakFly1_0
       rect:
         serializedVersion: 2
         x: 10
         y: 2
         width: 28
         height: 47
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9874ffaf9d972541b6f43b9c27f87eb
-      internalID: -242869804
+      spriteID: 1f5f8eab4e1665b4885bfea4e4b8b54c
+      internalID: -518528537
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyanim_1
+      name: Sprite_Enemy_AttakFly1_1
       rect:
         serializedVersion: 2
         x: 50
         y: 1
         width: 50
         height: 44
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f62c7ccf8be7cb41a25ee2a2af682ef
-      internalID: 251074617
+      spriteID: 238ebc1d7eaac8144859de338c379cbe
+      internalID: 1786608737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyanim_2
+      name: Sprite_Enemy_AttakFly1_2
       rect:
         serializedVersion: 2
         x: 110
         y: 2
         width: 28
         height: 47
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34389f9ba70c16544af56c9053caa5a2
-      internalID: 1613838476
+      spriteID: f564da0738dd1b44bb5d93e76ac05a58
+      internalID: 457239817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flyanim_3
+      name: Sprite_Enemy_AttakFly1_3
       rect:
         serializedVersion: 2
         x: 150
         y: 2
         width: 50
         height: 44
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2633950007a72bf4394793221c1589ac
-      internalID: -25188580
+      spriteID: 53df4c1797800e44ba4fb88a9a298c8d
+      internalID: -34714610
       vertices: []
       indices: 
       edges: []
@@ -243,10 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      flyanim_0: -242869804
-      flyanim_1: 251074617
-      flyanim_2: 1613838476
-      flyanim_3: -25188580
+      Sprite_Enemy_AttakFly1_0: -518528537
+      Sprite_Enemy_AttakFly1_1: 1786608737
+      Sprite_Enemy_AttakFly1_2: 457239817
+      Sprite_Enemy_AttakFly1_3: -34714610
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

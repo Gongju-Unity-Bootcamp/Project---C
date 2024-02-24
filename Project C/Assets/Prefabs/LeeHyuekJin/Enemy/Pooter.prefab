@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6522496145079108730}
   - component: {fileID: 7401997016839986043}
+  - component: {fileID: 114480741838103096}
   - component: {fileID: 4555546074957002445}
   - component: {fileID: 8989985361918390446}
   - component: {fileID: 4229026442124215905}
   - component: {fileID: 7414329434462781220}
   - component: {fileID: 4376078521322564123}
-  - component: {fileID: 114480741838103096}
   m_Layer: 10
   m_Name: Pooter
   m_TagString: Enemy
@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 917419279664065318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.83, y: 0.81, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,17 +79,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -954949860, guid: 2569f56c2f118784eb4665cf782254a0, type: 3}
+  m_Sprite: {fileID: -1930388362, guid: 2569f56c2f118784eb4665cf782254a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.328125, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &114480741838103096
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917419279664065318}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d963842e1047cde42a0d602b2b503b48, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &4555546074957002445
 Rigidbody2D:
   serializedVersion: 4
@@ -149,8 +170,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1692957, y: 0.035588503}
-  m_Size: {x: 0.15720922, y: 0.21256417}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.3, y: 0.4}
   m_Direction: 0
 --- !u!114 &4229026442124215905
 MonoBehaviour:
@@ -193,24 +214,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 7627540823390837481, guid: 0046b9df3aeaf534d95de519f863c42b, type: 3}
---- !u!95 &114480741838103096
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917419279664065318}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d963842e1047cde42a0d602b2b503b48, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
