@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4920832256903350935}
   - component: {fileID: 5842066799336154065}
   - component: {fileID: 4477278122677669722}
+  - component: {fileID: 5986567301579493424}
   m_Layer: 7
   m_Name: Tear
   m_TagString: PlayerBullet
@@ -170,3 +171,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5986567301579493424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3056395816801717927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2300e69e07035b049930135c6ad5fa56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

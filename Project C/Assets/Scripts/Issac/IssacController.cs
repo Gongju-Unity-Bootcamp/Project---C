@@ -30,10 +30,11 @@ public class IsaacController : MonoBehaviour
     GameObject _playerBullet;
     Vector2 _moveDirection;
 
-    int _hp = 3;
     float _horizontal;
     float _vertical;
-    bool _isAttack;
+    int _hp = 3;
+    bool _isHit = false;
+    bool _isAttack = false;
 
     PlayerStats playerStats;
     void Awake()
@@ -67,14 +68,9 @@ public class IsaacController : MonoBehaviour
         {
             AttackDirection();
         }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             UseBomb();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GetHit();
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -84,7 +80,6 @@ public class IsaacController : MonoBehaviour
     }
 
     #region 피격, 사망, 아이템 픽업 상태 구현
-    bool _isHit = false;
     public void GetHit()
     {
         if (_isHit == false)
@@ -124,6 +119,7 @@ public class IsaacController : MonoBehaviour
     }
     public void Dead()
     {
+        _playerRbody.velocity = Vector2.zero;
         _head.gameObject.SetActive(false);
         _body.gameObject.SetActive(false);
 
@@ -164,20 +160,23 @@ public class IsaacController : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
 
-        _moveDirection = new Vector2(_horizontal, _vertical);
+        if (_hp > 0)
+        {
+            _moveDirection = new Vector2(_horizontal, _vertical);
 
-        if (_moveDirection.sqrMagnitude > 1)
-        {
-            _moveDirection.Normalize();
-        }
-        
-        if (_horizontal != 0 || _vertical != 0)
-        {
-            _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, _moveDirection * playerStats.moveSpeed, 0.5f);
-        }
-        else
-        {
-            _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, Vector2.zero, StopMove);
+            if (_moveDirection.sqrMagnitude > 1)
+            {
+                _moveDirection.Normalize();
+            }
+
+            if (_horizontal != 0 || _vertical != 0)
+            {
+                _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, _moveDirection * playerStats.moveSpeed, 0.5f);
+            }
+            else
+            {
+                _playerRbody.velocity = Vector2.Lerp(_playerRbody.velocity, Vector2.zero, StopMove);
+            }
         }
     }
     public void AttackDirection()
@@ -233,6 +232,15 @@ public class IsaacController : MonoBehaviour
             {
                 Destroy(bullet);
             }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 캐릭터 피격 판정
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            // 캐릭터 체력이 감소한다
+            GetHit();
         }
     }
 }
