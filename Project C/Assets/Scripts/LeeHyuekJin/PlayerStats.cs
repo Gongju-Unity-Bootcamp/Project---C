@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     public int cost { get; set; }
     public event System.Action StatsChanged;
     public event System.Action KeyBombChanged;
-
+    UIManager _UIManager;
     private int _key;
     public int key
     {
@@ -71,7 +71,10 @@ public class PlayerStats : MonoBehaviour
         totalRangeStats = 1 + playerRangeStats;
         bulletSurviveTime = Mathf.Sqrt((float)totalRangeStats/2);
     }
-
+    private void Start()
+    {
+        _UIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+    }
     public void UpdateStats(float attakAdd, float attakMulti, float attakSpeedAdd, float attakSpeedMulti, float speed, float range)
     {
         playerAttackStats += attakAdd;
@@ -121,13 +124,11 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage()
     {
         hp--;
-        UIManager uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        uIManager.HPController(-1);
+        _UIManager.HPController(-1);
     }
     public void GetHp(int amount)
     {
         hp += amount;
-        UIManager uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        uIManager.HPController(amount);
+        _UIManager.HPController(amount);
     }
 }

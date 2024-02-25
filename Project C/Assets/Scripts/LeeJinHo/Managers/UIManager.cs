@@ -79,23 +79,26 @@ public class UIManager : MonoBehaviour
 
         Debug.Log(HpBar + hp);
         Debug.Log(MAX_HP_BAR + 1);
-        if (HpBar + hp >= MAX_HP_BAR +1) { hp = 1; }
+        if (HpBar + hp > 7) { hp = 1; }
         
-        
-        Debug.Log($"추가되는hp = {hp}");
         switch (hp)
         {
             case -1:
-                Debug.Log("피해입음");
                 m_HpImage[HpBar].SetActive(false);
                 break;
             case 1:
+                HpBar++;
                 m_HpImage[HpBar].SetActive(true);
+                HpBar--;
                 break;
             case 2:
+                HpBar++;
+                Debug.Log($"케이스2-1{HpBar}");
                 m_HpImage[HpBar].SetActive(true);
-                ++HpBar;
+                HpBar++;
+                Debug.Log($"케이스2-2{HpBar}");
                 m_HpImage[HpBar].SetActive(true);
+                HpBar -= 2;
                 break;
         }
         HpBar += hp;
