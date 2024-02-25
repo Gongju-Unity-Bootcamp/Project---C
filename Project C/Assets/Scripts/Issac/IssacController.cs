@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class IsaacController : MonoBehaviour
 {
-    public float BlinkDurationForHit = 0.3f; // 수정
+    public float BlinkDurationForHit = 0.3f;
     public float PickUpTime = 1.0f;
     public float StopMove = 0.2f;
     public float BulletSpeed = 9.0f;
 
     public Sprite HitSprite;
     public Sprite PickUpSprite;
+    public Sprite UpHeadSprite;
+    public Sprite DownHeadSprite;
+    public Sprite LeftHeadSprite;
+    public Sprite RightHeadSprite;
     public GameObject BulletPrefab;
     public GameObject BombPrefab;
-    public Transform _firePoint1; // 추가
-    public Transform _firePoint2; // 추가
+    public Transform _firePoint1;
+    public Transform _firePoint2;
 
     Transform _head;
     Transform _body;
@@ -25,6 +29,7 @@ public class IsaacController : MonoBehaviour
     Animator _bodyAnimator;
     Animator _totalAnimator;
 
+    SpriteRenderer _headRenderer;
     SpriteRenderer _totalSpriteRenderer;
     SpriteRenderer _pickupSpriteRenderer;
 
@@ -37,8 +42,8 @@ public class IsaacController : MonoBehaviour
     int _hp = 3;
     bool _isHit = false;
     bool _isAttack = false;
-    bool _useFirstPoint = true;     // 추가
-    bool _isOrderInLayer = false;   // 추가
+    bool _useFirstPoint = true;
+    bool _isOrderInLayer = false;
 
     PlayerStats playerStats;
     void Awake()
@@ -53,6 +58,7 @@ public class IsaacController : MonoBehaviour
         _bodyAnimator = _body.GetComponent<Animator>();
         _totalAnimator = _total.GetComponent<Animator>();
 
+        _headRenderer = _head.GetComponent<SpriteRenderer>();
         _totalSpriteRenderer = _total.GetComponent<SpriteRenderer>();
         _pickupSpriteRenderer = _pickup.GetComponent<SpriteRenderer>();
 
@@ -85,7 +91,6 @@ public class IsaacController : MonoBehaviour
     {
         if (_isHit == false)
         {
-
             _isHit = true;
 
             playerStats.TakeDamage();
@@ -102,8 +107,8 @@ public class IsaacController : MonoBehaviour
     }
     IEnumerator GetHitCo()
     {
-         _head.gameObject.SetActive(false);
-         _body.gameObject.SetActive(false);
+        _head.gameObject.SetActive(false);
+        _body.gameObject.SetActive(false);
         _total.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = HitSprite;
@@ -114,16 +119,16 @@ public class IsaacController : MonoBehaviour
         }
         _totalSpriteRenderer.enabled = true;
 
-         _head.gameObject.SetActive(true);
-         _body.gameObject.SetActive(true);
+        _head.gameObject.SetActive(true);
+        _body.gameObject.SetActive(true);
         _total.gameObject.SetActive(false);
         _isHit = false;
     }
     public void Dead()
     {
-        _playerRbody.velocity = Vector2.zero;
-         _head.gameObject.SetActive(false);
-         _body.gameObject.SetActive(false);
+        _playerRbody.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        _head.gameObject.SetActive(false);
+        _body.gameObject.SetActive(false);
 
         _total.gameObject.SetActive(true);
         _totalAnimator.enabled = true;
@@ -131,24 +136,22 @@ public class IsaacController : MonoBehaviour
     }
     public void PickUpItem()
     {
-        _isHit = true;
         StartCoroutine(PickUpCo());
     }
     IEnumerator PickUpCo()
     {
-         _head.gameObject.SetActive(false);
-         _body.gameObject.SetActive(false);
+        _head.gameObject.SetActive(false);
+        _body.gameObject.SetActive(false);
         _total.gameObject.SetActive(true);
-       _pickup.gameObject.SetActive(true);
+        _pickup.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = PickUpSprite;
         yield return new WaitForSeconds(PickUpTime);
 
-         _head.gameObject.SetActive(true);
-         _body.gameObject.SetActive(true);
+        _head.gameObject.SetActive(true);
+        _body.gameObject.SetActive(true);
         _total.gameObject.SetActive(false);
-       _pickup.gameObject.SetActive(false);
-        _isHit = false;
+        _pickup.gameObject.SetActive(false);
     }
     #endregion
     public void UseBomb()
@@ -164,6 +167,35 @@ public class IsaacController : MonoBehaviour
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKey(KeyCode.UpArrow) == false && Input.GetKey(KeyCode.DownArrow) == false &&
+            Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false)
+        {
+            if (_vertical > 0)
+            {
+                _headAnimator.enabled = false;
+                _headRenderer.sprite = UpHeadSprite;
+            }
+            else if (_horizontal < 0)
+            {
+                _headAnimator.enabled = false;
+                _headRenderer.sprite = LeftHeadSprite;
+            }
+            else if (_horizontal > 0)
+            {
+                _headAnimator.enabled = false;
+                _headRenderer.sprite = RightHeadSprite;
+            }
+            else
+            {
+                _headAnimator.enabled = false;
+                _headRenderer.sprite = DownHeadSprite;
+            }
+        }
+        else
+        {
+            _headAnimator.enabled = true;
+        }
 
         if (_hp > 0)
         {
@@ -188,11 +220,11 @@ public class IsaacController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            FrontBackBullet(Vector2.up);    // 수정
+            FrontBackBullet(Vector2.up);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            FrontBackBullet(Vector2.down);  // 수정
+            FrontBackBullet(Vector2.down);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -203,7 +235,7 @@ public class IsaacController : MonoBehaviour
             ShootBullet(Vector2.left);
         }
     }
-    public void ShootBullet(Vector2 direction) // 수정
+    public void ShootBullet(Vector2 direction)
     {
         _isAttack = true;
 
@@ -214,12 +246,12 @@ public class IsaacController : MonoBehaviour
         _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
         _playerBullet.GetComponent<PlayerBulletController>().attakDamage = playerStats.attackDamage;
-        
+
         DestroyBullet();
 
         Invoke("AttackCoolTime", playerStats.attackDelayTime);
     }
-    public void FrontBackBullet(Vector2 direction) // 수정
+    public void FrontBackBullet(Vector2 direction)
     {
         _isAttack = true;
 
@@ -268,7 +300,7 @@ public class IsaacController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss")) // 피격 태그에 보스 추가
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss"))
         {
             GetHit();
         }
