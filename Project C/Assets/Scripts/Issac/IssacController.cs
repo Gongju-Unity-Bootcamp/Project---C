@@ -85,9 +85,10 @@ public class IsaacController : MonoBehaviour
     {
         if (_isHit == false)
         {
+
             _isHit = true;
 
-            _hp--;
+            playerStats.TakeDamage();
 
             if (_hp <= 0)
             {

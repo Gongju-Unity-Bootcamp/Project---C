@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     private const int MAX_HP_BAR = 8;
     private int HpBar = MAX_HP_BAR - 1;
 
-    public void Init()
+    public void Init(PlayerStats playerStats)
     {
         UIController = GameObject.FindWithTag("UIController");
         Sprites = UIController.transform.Find("Sprites").gameObject;
@@ -42,18 +42,15 @@ public class UIManager : MonoBehaviour
         m_Active = Sprites.transform.Find("ActiveSprite").GetComponent<Image>();
 
         m_PlayerHp = UIController.transform.Find("PlayerHp");
-
+        m_HpImage = new GameObject[MAX_HP_BAR];
         for (int i = 0; i < MAX_HP_BAR; ++i)
         {
             GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
             m_HpImage[i] = go;
         }
-        //m_HpConTroller�� ����Ƽ �ν�����â���� PlayerHp������Ʈ �巡�׾� ���
-        /*for (int i = 0; i < m_PlayerHp.childCount - 2; ++i)
-        {
-            GameObject hp = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
-            m_HpImage[i] = hp;
-        }*/
+        
+        playerStats.KeyBombChanged += GetConsumer;
+        playerStats.StatsChanged += GetPassive;
     }
 
     public void GetConsumer()
@@ -71,25 +68,37 @@ public class UIManager : MonoBehaviour
         AttackSpeed = Managers.PlayerStats.totalAttackDelayStats;
         Speed = Managers.PlayerStats.totalSpeedStats;
         Range = Managers.PlayerStats.totalRangeStats;
+
     }
 
 
     public void HPController(int hp)
     {
-        if (HpBar + hp == MAX_HP_BAR)
-        { return; }
+        Debug.Log($"hp : {hp}");
 
-        HpBar += hp;
 
+        Debug.Log(HpBar + hp);
+        Debug.Log(MAX_HP_BAR + 1);
+        if (HpBar + hp >= MAX_HP_BAR +1) { hp = 1; }
+        
+        
+        Debug.Log($"추가되는hp = {hp}");
         switch (hp)
         {
             case -1:
+                Debug.Log("피해입음");
                 m_HpImage[HpBar].SetActive(false);
                 break;
             case 1:
                 m_HpImage[HpBar].SetActive(true);
                 break;
+            case 2:
+                m_HpImage[HpBar].SetActive(true);
+                ++HpBar;
+                m_HpImage[HpBar].SetActive(true);
+                break;
         }
+        HpBar += hp;
     }
 
 
