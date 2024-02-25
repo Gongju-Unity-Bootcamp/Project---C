@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IsaacController : MonoBehaviour
 {
-    public float BlinkDurationForHit = 0.3f;
+    public float BlinkDurationForHit = 0.2f;
     public float PickUpTime = 1.0f;
     public float StopMove = 0.2f;
     public float BulletSpeed = 9.0f;
@@ -39,7 +39,6 @@ public class IsaacController : MonoBehaviour
 
     float _horizontal;
     float _vertical;
-    int _hp = 3;
     bool _isHit = false;
     bool _isAttack = false;
     bool _useFirstPoint = true;
@@ -48,7 +47,6 @@ public class IsaacController : MonoBehaviour
     PlayerStats playerStats;
     void Awake()
     {
-        playerStats = GetComponent<PlayerStats>();
         _head = transform.Find("Head");
         _body = transform.Find("Body");
         _total = transform.Find("Total");
@@ -63,6 +61,10 @@ public class IsaacController : MonoBehaviour
         _pickupSpriteRenderer = _pickup.GetComponent<SpriteRenderer>();
 
         _playerRbody = GetComponent<Rigidbody2D>();
+    }
+    void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
     }
     void Update()
     {
@@ -95,13 +97,13 @@ public class IsaacController : MonoBehaviour
 
             playerStats.TakeDamage();
 
-            if (_hp <= 0)
+            if (playerStats.hp > 0)
             {
-                Dead();
+                StartCoroutine(GetHitCo());
             }
             else
             {
-                StartCoroutine(GetHitCo());
+                Dead();
             }
         }
     }
@@ -112,7 +114,7 @@ public class IsaacController : MonoBehaviour
         _total.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = HitSprite;
-        for (int counter = 1; counter <= 5; ++counter)
+        for (int counter = 1; counter <= 10; ++counter)
         {
             _totalSpriteRenderer.enabled = !_totalSpriteRenderer.enabled;
             yield return new WaitForSeconds(BlinkDurationForHit);
@@ -197,7 +199,7 @@ public class IsaacController : MonoBehaviour
             _headAnimator.enabled = true;
         }
 
-        if (_hp > 0)
+        if (playerStats.hp > 0)
         {
             _moveDirection = new Vector2(_horizontal, _vertical);
 
@@ -303,6 +305,7 @@ public class IsaacController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss"))
         {
             GetHit();
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Item"))
         {
