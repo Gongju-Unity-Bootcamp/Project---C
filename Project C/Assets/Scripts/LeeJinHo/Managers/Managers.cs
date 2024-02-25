@@ -73,7 +73,7 @@ public class Managers : MonoBehaviour
         //Dunjeon.Init();
         Spawn.Init();
         Sound.Init();
-        UI.Init();
+        UI.Init(PlayerStats);
 
 
     }

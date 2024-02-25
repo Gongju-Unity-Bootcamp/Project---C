@@ -21,10 +21,32 @@ public class PlayerStats : MonoBehaviour
     public float bulletSurviveTime { get; set; }
 
     public int cost { get; set; }
+    public event System.Action StatsChanged;
+    public event System.Action KeyBombChanged;
 
-    public int key { get; set; }
-    public int bomb { get; set; }
+    private int _key;
+    public int key
+    {
+        get { return _key; }
+        set
+        {
+            _key = value;
+            KeyBombChanged?.Invoke();
+        }
+    }
+    private int _bomb;
+    public int bomb
+    {
+        get { return _bomb; }
+        set
+        {
+            _bomb = value;
+            KeyBombChanged?.Invoke();
+        }
+    }
     public int hp { get; set; }
+
+    
 
     private void Awake()
     {
@@ -55,8 +77,6 @@ public class PlayerStats : MonoBehaviour
         playerAttackStats += attakAdd;
         playerAttackDelayStats += attakSpeedAdd;
 
-
-
         totalAttackStats = (3.5f * Mathf.Sqrt((float)(playerAttackStats * 1.2 + 1))) * attakMulti;
         attackDamage = totalAttackStats;
 
@@ -72,6 +92,7 @@ public class PlayerStats : MonoBehaviour
         totalRangeStats += range;
         bulletSurviveTime = Mathf.Sqrt((float)(totalRangeStats)/2);
 
+        StatsChanged?.Invoke();
     }
     public void GetKey()
     {
@@ -100,9 +121,13 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage()
     {
         hp--;
+        UIManager uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uIManager.HPController(-1);
     }
     public void GetHp(int amount)
     {
         hp += amount;
+        UIManager uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        uIManager.HPController(amount);
     }
 }
