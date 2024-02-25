@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Android.Types;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class IsaacController : MonoBehaviour
 {
@@ -19,12 +17,14 @@ public class IsaacController : MonoBehaviour
     Transform _head;
     Transform _body;
     Transform _total;
+    Transform _pickup;
 
     Animator _headAnimator;
     Animator _bodyAnimator;
     Animator _totalAnimator;
 
     SpriteRenderer _totalSpriteRenderer;
+    SpriteRenderer _pickupSpriteRenderer;
 
     Rigidbody2D _playerRbody;
     GameObject _playerBullet;
@@ -43,12 +43,14 @@ public class IsaacController : MonoBehaviour
         _head = transform.Find("Head");
         _body = transform.Find("Body");
         _total = transform.Find("Total");
+        _pickup = transform.Find("PickupItem");
 
         _headAnimator = _head.GetComponent<Animator>();
         _bodyAnimator = _body.GetComponent<Animator>();
         _totalAnimator = _total.GetComponent<Animator>();
 
         _totalSpriteRenderer = _total.GetComponent<SpriteRenderer>();
+        _pickupSpriteRenderer = _pickup.GetComponent<SpriteRenderer>();
 
         _playerRbody = GetComponent<Rigidbody2D>();
     }
@@ -71,11 +73,6 @@ public class IsaacController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             UseBomb();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PickUpItem();
         }
     }
 
@@ -100,8 +97,8 @@ public class IsaacController : MonoBehaviour
     }
     IEnumerator GetHitCo()
     {
-        _head.gameObject.SetActive(false);
-        _body.gameObject.SetActive(false);
+         _head.gameObject.SetActive(false);
+         _body.gameObject.SetActive(false);
         _total.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = HitSprite;
@@ -112,38 +109,41 @@ public class IsaacController : MonoBehaviour
         }
         _totalSpriteRenderer.enabled = true;
 
-        _head.gameObject.SetActive(true);
-        _body.gameObject.SetActive(true);
+         _head.gameObject.SetActive(true);
+         _body.gameObject.SetActive(true);
         _total.gameObject.SetActive(false);
         _isHit = false;
     }
     public void Dead()
     {
         _playerRbody.velocity = Vector2.zero;
-        _head.gameObject.SetActive(false);
-        _body.gameObject.SetActive(false);
+         _head.gameObject.SetActive(false);
+         _body.gameObject.SetActive(false);
 
         _total.gameObject.SetActive(true);
         _totalAnimator.enabled = true;
         _totalAnimator.Play("Dead");
     }
-
     public void PickUpItem()
     {
+        _isHit = true;
         StartCoroutine(PickUpCo());
     }
     IEnumerator PickUpCo()
     {
-        _head.gameObject.SetActive(false);
-        _body.gameObject.SetActive(false);
+         _head.gameObject.SetActive(false);
+         _body.gameObject.SetActive(false);
         _total.gameObject.SetActive(true);
+       _pickup.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = PickUpSprite;
         yield return new WaitForSeconds(PickUpTime);
 
-        _head.gameObject.SetActive(true);
-        _body.gameObject.SetActive(true);
+         _head.gameObject.SetActive(true);
+         _body.gameObject.SetActive(true);
         _total.gameObject.SetActive(false);
+       _pickup.gameObject.SetActive(false);
+        _isHit = false;
     }
     #endregion
     public void UseBomb()
@@ -241,6 +241,12 @@ public class IsaacController : MonoBehaviour
         {
             // 캐릭터 체력이 감소한다
             GetHit();
+        }
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            _pickupSpriteRenderer.sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
+            PickUpItem();
+            Destroy(collision.gameObject);
         }
     }
 }

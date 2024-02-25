@@ -16,7 +16,7 @@ public class PlayerBulletController : MonoBehaviour
         {
             StartCoroutine(CollisionBullet(_playerBullet));
         }
-        if(collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(attakDamage);
