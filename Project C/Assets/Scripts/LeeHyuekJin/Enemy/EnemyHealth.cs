@@ -34,7 +34,10 @@ public class EnemyHealth : MonoBehaviour
         hp -= damage;
         if(hp <= 0)
         {
-            Destroy(gameObject);
+            Collider2D collider = GetComponent<Collider2D>();
+            collider.enabled = false;
+            _animator.SetTrigger("Dead");
+            Invoke("Dead", 0.3f);
         }
     }
 
@@ -49,5 +52,8 @@ public class EnemyHealth : MonoBehaviour
             rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
-
+    private void Dead()
+    {
+        Destroy(gameObject);
+    }
 }

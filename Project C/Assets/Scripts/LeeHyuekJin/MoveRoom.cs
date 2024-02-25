@@ -44,7 +44,7 @@ public class MoveRoom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.transform.position += playerInPosition * 3;
+            collision.gameObject.transform.position += playerInPosition * 2.5f;
             m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
         }
     }
