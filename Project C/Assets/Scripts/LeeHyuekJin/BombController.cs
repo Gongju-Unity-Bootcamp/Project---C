@@ -7,16 +7,9 @@ public class BombController : MonoBehaviour
     public float explosionRadius;
     public float detonationTime;
     public GameObject explosionEffect;
-    private GameObject _player;
-    private Player_Health _player_Health;
-    private Obstacle _obstacle;
-    private SpriteRenderer spriteRenderer;
     void Start()
     {
         Invoke("Detonate", detonationTime);
-        _player = GameObject.FindWithTag("Player");
-        _player_Health = _player.GetComponent<Player_Health>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -34,23 +27,26 @@ public class BombController : MonoBehaviour
         {
             if (collider.CompareTag("Obstacle"))
             {
-                _obstacle = collider.GetComponent<Obstacle>();
+                Obstacle _obstacle = collider.GetComponent<Obstacle>();
                 _obstacle.Destroyed();
             }
             if(collider.CompareTag("Enemy"))
             {
-
+                EnemyHealth _EnemyHp = collider.GetComponent<EnemyHealth>();
+                _EnemyHp.TakeDamage(10);
             }
             if(collider.CompareTag("Player"))
             {
-                _player_Health.TakeDamage();
+                Debug.Log("ÇÃ·¹ÀÌ¾îÃæµ¹ÆøÅº");
+                IsaacController _playerHp = collider.GetComponent<IsaacController>();
+                _playerHp.GetHit();
             }
         }
         Collider2D _collider = GetComponent<Collider2D>();
         _collider.enabled = false;
         AudioSource audio;
         audio = GetComponent<AudioSource>();
-        //audio.Play();
+        audio.Play();
         StartCoroutine(Explosion());
 
     }
