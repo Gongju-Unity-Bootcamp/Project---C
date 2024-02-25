@@ -15,11 +15,13 @@ public class BossHealth : MonoBehaviour
 
     private GameObject _player;
     private PlayerStats _playerStats;
+    private IsaacController isaac;
 
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _playerStats = _player.GetComponent<PlayerStats>();
+        isaac = GetComponent<IsaacController>();
 
         _prb = _player.GetComponent<Rigidbody2D>();
         _rb = GetComponent<Rigidbody2D>();
@@ -34,7 +36,7 @@ public class BossHealth : MonoBehaviour
             TakeDamage(_playerStats.attackDamage);
             _animator.SetTrigger("OnHit");
         }
-        else if (collision.gameObject.CompareTag("Player") && Player_Move.hp > 1)
+        else if (collision.gameObject.CompareTag("Player") && isaac._hp > 0)
         {
             Debug.Log("플레이어 충돌");
             Knockback(collision.transform.position);
