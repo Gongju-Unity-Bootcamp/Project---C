@@ -7,14 +7,13 @@ using static UnityEditor.Progress;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject UIController;
+    [SerializeField] private GameObject Sprites;
+    [SerializeField] private GameObject Texts;
+
     [SerializeField] private Text m_Coin;
     [SerializeField] private Text m_Bomb;
     [SerializeField] private Text m_Key;
-
-    [SerializeField] private float Attack;
-    [SerializeField] private float AttackSpeed;
-    [SerializeField] private float Speed;
-    [SerializeField] private float Range;
 
     [SerializeField] private Image m_Weapon;
     [SerializeField] private Image m_Active;
@@ -22,9 +21,34 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform m_PlayerHp;
     [SerializeField] private GameObject[] m_HpImage;
 
+    [SerializeField] private float Attack;
+    [SerializeField] private float AttackSpeed;
+    [SerializeField] private float Speed;
+    [SerializeField] private float Range;
+    private const int MAX_HP_BAR = 8;
+    private int HpBar = MAX_HP_BAR - 1;
+
     public void Init()
     {
-        //m_HpConTroller´Â À¯´ÏÆ¼ ÀÎ½ºÆåÅÍÃ¢¿¡¼­ PlayerHp¿ÀºêÁ§Æ® µå·¡±×¾Ø µå¶ø
+        UIController = GameObject.FindWithTag("UIController");
+        Sprites = UIController.transform.Find("Sprites").gameObject;
+        Texts   = UIController.transform.Find("Texts").gameObject;
+
+        m_Coin = Texts.transform.Find("CoinText").GetComponent<Text>();
+        m_Bomb = Texts.transform.Find("BombText").GetComponent<Text>();
+        m_Key  = Texts.transform.Find("KeyText").GetComponent<Text>();
+
+        m_Weapon = Sprites.transform.Find("WeaponSprite").GetComponent<Image>();
+        m_Active = Sprites.transform.Find("ActiveSprite").GetComponent<Image>();
+
+        m_PlayerHp = UIController.transform.Find("PlayerHp");
+
+        for (int i = 0; i < MAX_HP_BAR; ++i)
+        {
+            GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
+            m_HpImage[i] = go;
+        }
+        //m_HpConTrollerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ PlayerHpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½å·¡ï¿½×¾ï¿½ ï¿½ï¿½ï¿½
         /*for (int i = 0; i < m_PlayerHp.childCount - 2; ++i)
         {
             GameObject hp = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
@@ -49,8 +73,7 @@ public class UIManager : MonoBehaviour
         Range = Managers.PlayerStats.totalRangeStats;
     }
 
-    private const int MAX_HP_BAR = 8;
-    private int HpBar = MAX_HP_BAR - 1;
+
     public void HPController(int hp)
     {
         if (HpBar + hp == MAX_HP_BAR)

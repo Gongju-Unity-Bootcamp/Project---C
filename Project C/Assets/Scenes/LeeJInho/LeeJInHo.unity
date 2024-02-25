@@ -12388,7 +12388,7 @@ GameObject:
   - component: {fileID: 491590533}
   m_Layer: 0
   m_Name: BagicRoom (1)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14642,6 +14642,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &492748215
 GameObject:
   m_ObjectHideFlags: 0
@@ -19803,7 +19804,6 @@ GameObject:
   - component: {fileID: 615910746}
   - component: {fileID: 615910745}
   - component: {fileID: 615910744}
-  - component: {fileID: 615910743}
   m_Layer: 5
   m_Name: InGameCanvas
   m_TagString: Untagged
@@ -19811,28 +19811,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &615910743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615910742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52bb3713d5d1ac14fab386b23a93391e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Coin: {fileID: 980559264}
-  m_Grenade: {fileID: 0}
-  m_Key: {fileID: 0}
-  m_GrenadeCount: 1
-  m_Active: {fileID: 2079347736}
-  m_Weapon: {fileID: 0}
-  m_HpController: {fileID: 1403664422}
-  m_Hp: []
-  m_PlayerMove: {fileID: 0}
-  bombPrefab: {fileID: 0}
 --- !u!114 &615910744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22469,7 +22447,7 @@ GameObject:
   - component: {fileID: 701509847}
   m_Layer: 0
   m_Name: BagicRoom (2)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24723,6 +24701,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &704717962
 GameObject:
   m_ObjectHideFlags: 0
@@ -26175,7 +26154,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &768562321
@@ -28081,7 +28060,7 @@ GameObject:
   - component: {fileID: 815501474}
   m_Layer: 0
   m_Name: BagicRoom (7)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30335,6 +30314,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &818432680
 GameObject:
   m_ObjectHideFlags: 0
@@ -46918,7 +46898,7 @@ GameObject:
   - component: {fileID: 1330121935}
   m_Layer: 0
   m_Name: BagicRoom (8)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49172,6 +49152,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1335336703
 GameObject:
   m_ObjectHideFlags: 0
@@ -51553,11 +51534,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!95 &1412863816 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3475911814832644725, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
-  m_PrefabInstance: {fileID: 7895313394022696595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419061448
 GameObject:
   m_ObjectHideFlags: 0
@@ -51642,11 +51618,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1419831273 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5805454208050116249, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
-  m_PrefabInstance: {fileID: 7895313394022696595}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1420297548
 GameObject:
   m_ObjectHideFlags: 0
@@ -52127,7 +52098,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1438990694
@@ -54649,7 +54620,7 @@ GameObject:
   - component: {fileID: 1557709711}
   m_Layer: 0
   m_Name: BagicRoom (6)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56903,6 +56874,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1569177000
 GameObject:
   m_ObjectHideFlags: 0
@@ -57409,7 +57381,7 @@ GameObject:
   - component: {fileID: 1593377215}
   m_Layer: 0
   m_Name: BagicRoom (3)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59663,6 +59635,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!213 &1594548627
 Sprite:
   m_ObjectHideFlags: 0
@@ -62866,7 +62839,7 @@ GameObject:
   - component: {fileID: 1655698414}
   m_Layer: 0
   m_Name: BagicRoom (4)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65120,6 +65093,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1657299683
 GameObject:
   m_ObjectHideFlags: 0
@@ -65135,7 +65109,7 @@ GameObject:
   - component: {fileID: 1657299689}
   m_Layer: 0
   m_Name: BagicRoom (9)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67389,6 +67363,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1661141469
 GameObject:
   m_ObjectHideFlags: 0
@@ -69231,7 +69206,7 @@ GameObject:
   - component: {fileID: 1716604886}
   m_Layer: 0
   m_Name: BagicRoom (Start)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71485,6 +71460,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1722374973
 GameObject:
   m_ObjectHideFlags: 0
@@ -71498,7 +71474,6 @@ GameObject:
   - component: {fileID: 1722374976}
   - component: {fileID: 1722374978}
   - component: {fileID: 1722374979}
-  - component: {fileID: 1722374980}
   - component: {fileID: 1722374981}
   m_Layer: 6
   m_Name: Sprite_Player_Body
@@ -71653,24 +71628,6 @@ MonoBehaviour:
   playerHp: {fileID: 0}
   m_Hp: []
   m_HpController: {fileID: 0}
---- !u!114 &1722374980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722374973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209414b74a4e1394a8112475fc33e543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_range: 0
-  GrenadeCount: 0
-  CoinCount: 0
-  KeyCount: 0
-  player_Stat: {fileID: 0}
-  test_Inventory: {fileID: 0}
 --- !u!114 &1722374981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72124,7 +72081,7 @@ GameObject:
   - component: {fileID: 1739011883}
   m_Layer: 0
   m_Name: BagicRoom (5)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74378,6 +74335,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1746824825
 GameObject:
   m_ObjectHideFlags: 0
@@ -78499,7 +78457,7 @@ GameObject:
   - component: {fileID: 1924491439}
   m_Layer: 0
   m_Name: BagicRoom (0)
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80753,6 +80711,7 @@ MonoBehaviour:
   m_Camera: {fileID: 124520954}
   normalBox: {fileID: 0}
   goldenBox: {fileID: 0}
+  spawnEnemy: []
 --- !u!1 &1933575024
 GameObject:
   m_ObjectHideFlags: 0
@@ -85669,33 +85628,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1165105758498057687, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7895313394022696597}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
---- !u!1 &7895313394022696596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1165105758498057687, guid: 52fb4df9ad0bf2144ae7c890a313d695, type: 3}
-  m_PrefabInstance: {fileID: 7895313394022696595}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7895313394022696597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895313394022696596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1a86cd70d5ad448b3a41d14ef42dfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 4
-  m_openTimeLine: {fileID: 0}
-  m_open: {fileID: 1412863816}
-  m_close: {fileID: 1419831273}
-  m_isCheck: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
