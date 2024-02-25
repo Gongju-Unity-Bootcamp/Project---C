@@ -19,7 +19,6 @@ public class Player_Move : Player_Health
     float _invincibleTime = 1.5f;   // 무적 시간
     public static string gameState;
     public static bool isDamage = false;
-    Test_Inventory testinentory;
     
     // 스탯
     public static float moveSpeed { get; set; }
@@ -62,7 +61,6 @@ public class Player_Move : Player_Health
         // GameObject go = new GameObject(nameof(Test_Inventory));
         // go.transform.parent = transform;
 
-        testinentory = GameObject.FindObjectOfType<Test_Inventory>();
         for (int i = 0; i < m_Hp.Length; ++i)
         {
             GameObject hp = m_HpController.transform.Find($"Life ({i})").gameObject;
@@ -127,7 +125,6 @@ public class Player_Move : Player_Health
         // 체력 업데이트 필요함
         if (hp > 0)
         {
-            Test_TakeDamager();
             Debug.Log("현재 체력 : " + hp);
             StartCoroutine(NoDamage(_invincibleTime, 0.2f));
         }
@@ -136,12 +133,5 @@ public class Player_Move : Player_Health
             m_Hp[hp].SetActive(false);
             Player_GameManager.instance.GameOver();
         }
-    }
-    public void Test_TakeDamager()
-    {
-        //m_Hp[hp].SetActive(false);
-        //hp--;
-
-        testinentory.Test_TakeDamager();
     }
 }

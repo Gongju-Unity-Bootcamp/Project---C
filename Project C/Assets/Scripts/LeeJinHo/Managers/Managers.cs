@@ -13,6 +13,7 @@ public class Managers : MonoBehaviour
     //public static DungeonManager Dunjeon {  get; private set; } 
     public static SpawnManager Spawn { get; private set; }
     public static ResourceManager Resource {  get; private set; }
+    public static UIManager UI { get; private set; }
 
     //플레이어 스탯관리
     public static PlayerStats PlayerStats { get; private set; }
@@ -57,8 +58,13 @@ public class Managers : MonoBehaviour
         go.transform.parent = transform;
         Resource = go.AddComponent<ResourceManager>();
 
+        go = new GameObject(nameof(UIManager));
+        go.transform.parent = transform;
+        UI = go.AddComponent<UIManager>();
+
+
         //플레이어 스탯 관리
-        PlayerStats = Transform.FindObjectOfType<PlayerStats>();
+        PlayerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
 
         //Data.Init();
         //UI.Init();
@@ -67,6 +73,7 @@ public class Managers : MonoBehaviour
         //Dunjeon.Init();
         Spawn.Init();
         Sound.Init();
+        UI.Init();
 
 
     }

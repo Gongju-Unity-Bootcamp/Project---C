@@ -27,9 +27,9 @@ public class SpawnManager : MonoBehaviour
     {
         ItemData data = Managers.Data.Item[id];
         GameObject go = Managers.Resource.Instantiate(data.Sprite);
-        ItemTest itemTest = go.AddComponent<ItemTest>();
+        Item item = go.AddComponent<Item>();
         go.transform.position = po;
-        itemTest.Init(id, po);
+        item.Init(id, po);
 
         return go;
     }
@@ -40,13 +40,12 @@ public class SpawnManager : MonoBehaviour
         
         if (m_Items.Count == 0) 
         {
-            go = new GameObject(nameof(ItemTest));
-            go.AddComponent<ItemTest>().Init(id, (Vector3)po);
+            go = new GameObject(nameof(Item));
+            go.AddComponent<Item>().Init(id, (Vector3)po);
             return;
         }
-
         go = m_Items.Pop();
         go.SetActive(true);
-        go.GetComponent<ItemTest>().Init(id, (Vector3)po);
+        go.GetComponent<Item>().Init(id, (Vector3)po);
     }
 }
