@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IsaacController : MonoBehaviour
 {
-    public float BlinkDurationForHit = 0.2f;
+    public float BlinkDurationForHit = 0.3f; // 수정
     public float PickUpTime = 1.0f;
     public float StopMove = 0.2f;
     public float BulletSpeed = 9.0f;
@@ -13,6 +13,8 @@ public class IsaacController : MonoBehaviour
     public Sprite PickUpSprite;
     public GameObject BulletPrefab;
     public GameObject BombPrefab;
+    public Transform _firePoint1; // 추가
+    public Transform _firePoint2; // 추가
 
     Transform _head;
     Transform _body;
@@ -35,6 +37,8 @@ public class IsaacController : MonoBehaviour
     int _hp = 3;
     bool _isHit = false;
     bool _isAttack = false;
+    bool _useFirstPoint = true;     // 추가
+    bool _isOrderInLayer = false;   // 추가
 
     PlayerStats playerStats;
     void Awake()
@@ -183,11 +187,11 @@ public class IsaacController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            ShootBullet(Vector2.up);
+            FrontBackBullet(Vector2.up);    // 수정
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            ShootBullet(Vector2.down);
+            FrontBackBullet(Vector2.down);  // 수정
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -198,10 +202,37 @@ public class IsaacController : MonoBehaviour
             ShootBullet(Vector2.left);
         }
     }
-    public void ShootBullet(Vector2 direction)
+    public void ShootBullet(Vector2 direction) // 수정
     {
         _isAttack = true;
+
+        int orderInLayer = _isOrderInLayer ? 5 : 3;
+        _isOrderInLayer = !_isOrderInLayer;
+
         _playerBullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+        _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+        _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
+        _playerBullet.GetComponent<PlayerBulletController>().attakDamage = playerStats.attackDamage;
+        
+        DestroyBullet();
+
+        Invoke("AttackCoolTime", playerStats.attackDelayTime);
+    }
+    public void FrontBackBullet(Vector2 direction) // 수정
+    {
+        _isAttack = true;
+
+        Transform selectedFirePoint = _useFirstPoint ? _firePoint1 : _firePoint2;
+        _useFirstPoint = !_useFirstPoint;
+
+        _playerBullet = Instantiate(BulletPrefab, selectedFirePoint.position, Quaternion.identity);
+
+        if (direction == Vector2.up)
+        {
+            int orderInLayer = 3;
+            _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+        }
+
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
         _playerBullet.GetComponent<PlayerBulletController>().attakDamage = playerStats.attackDamage;
         DestroyBullet();
@@ -236,10 +267,8 @@ public class IsaacController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 캐릭터 피격 판정
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss")) // 피격 태그에 보스 추가
         {
-            // 캐릭터 체력이 감소한다
             GetHit();
         }
         if (collision.gameObject.CompareTag("Item"))
