@@ -36,7 +36,7 @@ public class MoveRoom : MonoBehaviour
     {
         room = transform.parent.gameObject;
         _roomManager = room.GetComponent<RoomManager>();
-        Transform subDoor_Transfrom = transform.GetChild(1);
+        Transform subDoor_Transfrom = transform.Find("Doors");
         subDoor = subDoor_Transfrom.gameObject;
     }
 

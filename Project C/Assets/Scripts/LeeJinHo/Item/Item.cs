@@ -7,15 +7,6 @@ using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public interface IItem
-{
-    IItem m_Iitem { get; set; }
-
-    ItemType Type { get; set; }
-    void UsingItems();
-
-}
-
 
 public class Item : MonoBehaviour
 {

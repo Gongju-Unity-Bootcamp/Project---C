@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum RandomPosition
 {
@@ -12,11 +14,13 @@ public enum RandomPosition
 public class MainMap : MonoBehaviour
 {
     [SerializeField] private GameObject[] m_rooms;
+    [SerializeField] private Queue<GameObject> m_bossRooms;
     [SerializeField] private Transform m_testRoom;
     [SerializeField] private MiniMap m_miniMap;
     private RandomPosition m_randomPosition;
 
     private List<Vector3> m_testPosition;
+
     bool m_isRoomCheck;
 
     private void Awake()
@@ -24,7 +28,6 @@ public class MainMap : MonoBehaviour
         m_testPosition = new List<Vector3>();
         m_rooms = new GameObject[transform.childCount];
         m_testRoom = transform.Find("TestRoom");
-        //m_miniMap = FindObjectOfType<MiniMap>();
         m_testPosition.Add(m_testRoom.position);
     }
 
@@ -48,6 +51,13 @@ public class MainMap : MonoBehaviour
             m_Count += 1;
         }
 
+        for (int i = 0; i < m_rooms.Length; i++)
+        {
+            GameObject go = transform.Find($"BossRoom ({i})").gameObject;
+            m_bossRooms.Enqueue(go);
+            BossRoomSetting(m_bossRooms.Dequeue());
+        }
+
     }
 
     void RoomSetting(GameObject room)
@@ -55,9 +65,6 @@ public class MainMap : MonoBehaviour
         Vector3 rePosition = Vector3.zero;
         int m_mapX = 18;
         int m_mapY = 10;
-
-        //float m_mapX = transform.localScale.x;
-        //float m_mapY = transform.localScale.y;
 
         m_randomPosition = (RandomPosition)Random.Range(0, 4);
         switch (m_randomPosition)
@@ -102,4 +109,39 @@ public class MainMap : MonoBehaviour
         room.transform.position = m_testRoom.position;
     }
 
+    Vector3 criteriaVector;
+    float criteriafloat;
+    bool isXY;
+    private void BossRoomSetting(GameObject bossroom)
+    {
+        float mapSizeX = 18f;
+        float mapSizeY = 10f;
+        foreach(Vector3 vector in m_testPosition)
+        {
+            float bossPoX = Mathf.Abs(m_testPosition[0].x + vector.x) / mapSizeX;
+            float bossPoY = Mathf.Abs(m_testPosition[0].y + vector.y) / mapSizeY;
+            float Po = bossPoX > bossPoY ? bossPoX : bossPoY;
+
+            if (criteriafloat > Po)
+            {
+                continue;
+            }
+            
+            criteriafloat = Po;
+            criteriaVector = vector;
+            if(bossPoX > bossPoY)
+            {
+                isXY = true;
+            }
+        }
+
+        criteriaVector += isXY switch
+        {
+            true => criteriaVector.x > 0 ? new Vector3(mapSizeX, 0, 0) : new Vector3(-mapSizeX, 0, 0),
+            false => criteriaVector.y > 0 ? new Vector3(0, mapSizeY, 0) : new Vector3(0, mapSizeY, 0)
+        };
+
+        bossroom.transform.position = criteriaVector;
+
+    }
 }
