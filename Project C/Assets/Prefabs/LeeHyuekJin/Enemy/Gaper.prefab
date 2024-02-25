@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 7273002253127593433}
   - component: {fileID: 8753846257462130978}
   - component: {fileID: 7800783112936804826}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gaper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

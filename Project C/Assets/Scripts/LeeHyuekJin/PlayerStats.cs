@@ -1,13 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float totalAttackStats;
-    private float totalAttackDelayStats;
-    private float totalSpeedStats;
-    private float totalRangeStats;
+    public float totalAttackStats { get; set; }
+    public float totalAttackDelayStats { get; set; }
+    public float totalSpeedStats { get; set; }
+    public float totalRangeStats { get; set; }
 
     private float playerAttackStats;
     private float playerAttackDelayStats;
@@ -23,8 +24,11 @@ public class PlayerStats : MonoBehaviour
 
     public int key { get; set; }
     public int bomb { get; set; }
-    private void Start()
+    public int hp { get; set; }
+
+    private void Awake()
     {
+        hp = 8;
         cost = 4;
         key = 1;
         bomb = 1;
@@ -76,7 +80,6 @@ public class PlayerStats : MonoBehaviour
     }
     public void GetBomb()
     {
-        Debug.Log("ÆøÅºÈ¹µæ");
         bomb++;
     }
     public void UseBomb()
@@ -87,9 +90,16 @@ public class PlayerStats : MonoBehaviour
     {
         cost++;
     }
-    public void UpdateAcitiveItem()
+    public void UseActiveItem()
     {
-
+        cost = 0;
     }
-
+    public void TakeDamage()
+    {
+        hp--;
+    }
+    public void GetHp(int amount)
+    {
+        hp += amount;
+    }
 }
