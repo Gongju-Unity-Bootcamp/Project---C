@@ -203,7 +203,7 @@ public class IsaacController : MonoBehaviour
         _isAttack = true;
         _playerBullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
-
+        _playerBullet.GetComponent<PlayerBulletController>().attakDamage = playerStats.attackDamage;
         DestroyBullet();
 
         Invoke("AttackCoolTime", playerStats.attackDelayTime);
