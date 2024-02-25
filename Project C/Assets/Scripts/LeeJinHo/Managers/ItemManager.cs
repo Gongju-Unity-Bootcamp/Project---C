@@ -84,5 +84,4 @@ public class ItemManager
         ItemID itemId = (ItemID)roll;
         return itemId;
     }
-
 }

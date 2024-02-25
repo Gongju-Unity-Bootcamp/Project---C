@@ -32,14 +32,14 @@ public class Box : MonoBehaviour
             {
                 playerStats.key--;
                 m_openTimeLine.SetActive(true);
-                id = transform.GetComponent<ItemTest>().Id;
+                id = transform.GetComponent<Item>().Id;
                 BoxOpen(itemType);
                 playerStats.UseKey();
             }        
             else if(itemType == ItemType.NormalBox)
             {
                 m_openTimeLine.SetActive(true);
-                id = transform.GetComponent<ItemTest>().Id;
+                id = transform.GetComponent<Item>().Id;
                 BoxOpen(itemType);
             }
         }

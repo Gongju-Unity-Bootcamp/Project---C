@@ -73,13 +73,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ba58828fd95ab9a4686e964b2f582143, type: 2}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: bf91053188230124bb07716a3266a328, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 8778281504781280152}
   - component: {fileID: 7342699588126712510}
   - component: {fileID: 3371407164832743638}
-  - component: {fileID: 7256856259268767915}
+  - component: {fileID: 7563665886781951583}
   m_Layer: 0
   m_Name: GoldenBox
   m_TagString: Untagged
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -334,23 +334,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1a86cd70d5ad448b3a41d14ef42dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemType: 5
   m_openTimeLine: {fileID: 5635878935159712999}
   m_open: {fileID: 1903880196761789652}
   m_close: {fileID: 8089384459435844757}
   m_isCheck: 0
---- !u!114 &7256856259268767915
+--- !u!114 &7563665886781951583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5685679088296774677}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488a26a80e4db1640b2c3f7ab3ee56e0, type: 3}
+  m_Script: {fileID: 11500000, guid: cca4a57a0eaf87f42a208294de076623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShakeDuration: 0.25
 --- !u!1 &6648735416094994508
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,13 +425,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0f09e1531530abe45a2b3ba60b8691ba, type: 2}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 8b69328b1be865e45bbaa0b3980e935b, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.28, y: 0.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

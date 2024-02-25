@@ -1,12 +1,29 @@
+
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEditor.Progress;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class ItemTest : MonoBehaviour
+public interface IItem
 {
+    IItem m_Iitem { get; set; }
+
+    ItemType Type { get; set; }
+    void UsingItems();
+
+}
+
+
+public class Item : MonoBehaviour
+{
+    public float ShakeDuration = 0.25f;
     public ItemID Id { get; private set; }
     public ItemData itemData;
+    private IItem Iitem;
+    private string m_ActieisItemName;
 
     public string Name { get; private set; }
     public ItemType itemType { get; private set; }
@@ -23,8 +40,10 @@ public class ItemTest : MonoBehaviour
 
     private Rigidbody2D rb;
     private CircleCollider2D collider2D;
+    private Collider2D _collider2D;
     private SpriteRenderer spriteRenderer;
-    private AudioSource audio;
+    private SpriteRenderer _spriteRenderer;
+    private AudioClip clip;
 
     const int m_isBoxType = 4000;
     public void Init(ItemID id, Vector3 po)
@@ -36,8 +55,7 @@ public class ItemTest : MonoBehaviour
         rb = gameObject.AddComponent<Rigidbody2D>();
         collider2D = gameObject.AddComponent<CircleCollider2D>();
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        audio = gameObject.AddComponent<AudioSource>();
-
+        
         rb.mass = 3;
         rb.drag = 999999;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -59,49 +77,45 @@ public class ItemTest : MonoBehaviour
         this.AcquireSound = itemData.AcquireSound;
         this.UseSound = itemData.UseSound;
 
-        transform.position = po - Vector3.forward;
-        transform.localScale = new Vector2(8, 8);
+        transform.position = po + Vector3.up;
+        transform.localScale = new Vector2(2f, 2f);
+        collider2D.enabled = true;
         collider2D.radius = 0.05f;
         spriteRenderer.sprite = Managers.Resource.LoadSprite(Sprite);
-        audio.clip = Managers.Resource.LoadAudioClips(AcquireSound);
-        if (this.itemType == ItemType.Active)
-        {
-            //UseSound를 설정해주는 곳
-        }
-        Debug.Log($"{gameObject},{Id.ToString()}");
 
-}
-    
-    //파괴시 실행할 메소드
-
-    //플레이어와 아이템이 닿았을때 파괴되는거는 플레이어에서 전달? 아니면 아이템에서 전달?
-    //파괴 처리는 리소스매니저?, 아이템?, 플레이어?
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && ((int)Id < 4000)) //박스에는 적용되면 안되는데 적용됨
         {
-            audio.Play();
+            Managers.Sound.EffectSoundChange(AcquireSound);
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
-            Debug.Log("아이템획득");
-            transform.Rotate(90, 0, 0);
-
+            _collider2D = GetComponent<Collider2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer.enabled = false;
+            _collider2D.enabled = false;
             if (this.itemType == ItemType.Passive)
             {
                 playerStats.UpdateStats(AttakAdd, AttakMulti, AttakSpeedAdd, AttakSpeedMulti, Speed, Range);
+
             }
             else if (this.itemType == ItemType.Active)
             {
-                // 액티브아이템 업데이트
+                m_ActieisItemName = string.Concat("Item_", Name);
+                //매게변수로 전달하는 transform에게 액티브기능의 클래스를 부착하므로, 부착할 오브젝트로 지정해주면됨.
+                //Managers.Item.AddComponent(m_ActieisItemName, transform);
+                Managers.UI.GetPassive();
             }
             else if (this.itemType == ItemType.Consumer)
             {
                 GetConsumerItem((int)Id, playerStats);
             }
-
-            collider2D.enabled = false;
+            
+            //Destroy(Managers.Item.DeathComponent(m_ActieisItemName));
         }
-        
+
     }
     private void GetConsumerItem(int itemId, PlayerStats playerStats)
     {
@@ -121,6 +135,42 @@ public class ItemTest : MonoBehaviour
                     playerStats.GetHp(healAmount);
                 break;
         }
-        collider2D.enabled = false;
+        Managers.UI.GetConsumer();
     }
+
+    //게임오브젝트가 활성화 되면 그 위아래로 왔다 갔다 할 메소드(미완)
+    #region
+    //private void OnEnable()
+    //{
+    //    DoShake();
+    //}
+
+    //private void DoShake()
+    //{
+    //    var sequence = DOTween.Sequence();
+    //    sequence.Append(transform.DOLocalMoveY(0.1f, ShakeDuration))
+    //        .Append(transform.DOLocalMoveY(-0.1f, ShakeDuration))
+    //        .SetLoops(-1);
+    //}
+
+    //private Transform[] _trasnformsForShaking;
+    //private IEnumerator ShakeCo()
+    //{
+    //    float elapsedTime = 0;
+    //    while (true)
+    //    {
+
+    //        // 1. 위로 간다.
+    //        transform.position = Vector3.Lerp(_trasnformsForShaking[0].position,
+    //            _trasnformsForShaking[1].position,
+    //            elapsedTime / ShakeDuration);
+
+
+
+    //        elapsedTime += Time.deltaTime;
+
+
+    //    }
+    //}
+    #endregion
 }
