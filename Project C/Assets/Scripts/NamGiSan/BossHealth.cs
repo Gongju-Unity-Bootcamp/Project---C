@@ -5,29 +5,34 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    private Rigidbody2D prb;
-    private Rigidbody2D rb;
-    private GameObject player;
-    private Collider2D col;
-    private Animator animator;
+    private Rigidbody2D _prb;
+    private Rigidbody2D _rb;
+    private Collider2D _col;
+    private Animator _animator;
 
-    public int hp;
+    public float hp;
     public float knockbackForce;
+
+    private GameObject _player;
+    private PlayerStats _playerStats;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        prb = player.GetComponent<Rigidbody2D>();
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        animator = GetComponent<Animator>();
+        _player = GameObject.FindWithTag("Player");
+        _playerStats = _player.GetComponent<PlayerStats>();
+
+        _prb = _player.GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        _col = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            TakeDamage(10);
+            TakeDamage(_playerStats.attackDamage);
+            _animator.SetTrigger("OnHit");
         }
         else if (collision.gameObject.CompareTag("Player") && Player_Move.hp > 1)
         {
@@ -36,29 +41,54 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        hp -= damage;
-        if (hp <= 0)
-        {
-            col.enabled = false;
-            // 사망 애니메이션
-            Destroy(gameObject);
-        }
-    }
-
     private void Knockback(Vector3 playerPosition)
     {
         Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
-    
+
         StartCoroutine(BossStop());
-        prb.AddForce(knockbackDirection * -knockbackForce, ForceMode2D.Impulse);
+        _prb.AddForce(knockbackDirection * -knockbackForce, ForceMode2D.Impulse);
     }
 
     IEnumerator BossStop()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        _rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         yield return null;
-        rb.constraints = ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        _rb.constraints = ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+
+
+        if (hp <= 0)
+        {
+            StartCoroutine(BossStop());
+            _col.enabled = false;
+            _animator.SetTrigger("Dead");
+
+            StartCoroutine(BloodEffect());  
+
+            Invoke("Dead", 2.1f);
+        }
+    }
+
+    IEnumerator BloodEffect()
+    {
+        GameObject bloodBag = transform.GetChild(2).gameObject;
+
+        for (int i = 0; i < 17; i++)
+        {
+            GameObject bloodEffect = bloodBag.transform.GetChild(i).gameObject;
+            bloodEffect.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void Dead()
+    {
+        Destroy(gameObject);
+    }  
+
+
 }

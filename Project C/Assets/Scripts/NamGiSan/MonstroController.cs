@@ -9,6 +9,7 @@ public class MonstroController : MonoBehaviour
     private new SpriteRenderer renderer;
     private new Collider2D collider;
     private Animator animaotr;
+    private BossHealth bossHp;
 
     public Transform bulletPoint;
     [SerializeField] private float shockwaveTime = 0.75f;
@@ -20,6 +21,7 @@ public class MonstroController : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
         animaotr = GetComponent<Animator>();
+        bossHp = GetComponent<BossHealth>();
     }
 
 
@@ -51,7 +53,7 @@ public class MonstroController : MonoBehaviour
 
         int randomAction = Random.Range(0, 3);
 
-        if (player != null && Player_Move.gameState != "gameover")
+        if (player != null && Player_Move.gameState != "gameover" && bossHp.hp > 0)
         {
             switch (randomAction)
             {
@@ -210,7 +212,7 @@ public class MonstroController : MonoBehaviour
         {
             for (int i = 0; i < spawnBullet; i++)
             {
-                int bulletSpeed = Random.Range(6, 10);
+                int bulletSpeed = Random.Range(6, 8);
                 GameObject bossBullet = BulletManager.instance.GetBulletPool();
                 //GameObject shockWave = transform.GetChild(1).gameObject;
                 //shockWave.GetComponent<ShockWave>().CallShockWave();
