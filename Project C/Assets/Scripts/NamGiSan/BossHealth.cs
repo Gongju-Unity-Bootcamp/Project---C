@@ -36,7 +36,7 @@ public class BossHealth : MonoBehaviour
             TakeDamage(_playerStats.attackDamage);
             _animator.SetTrigger("OnHit");
         }
-        else if (collision.gameObject.CompareTag("Player") && isaac._hp > 0)
+        else if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("플레이어 충돌");
             Knockback(collision.transform.position);
