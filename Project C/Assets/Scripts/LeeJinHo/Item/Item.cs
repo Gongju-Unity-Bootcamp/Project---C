@@ -127,38 +127,22 @@ public class Item : MonoBehaviour
     }
     //게임오브젝트가 활성화 되면 그 위아래로 왔다 갔다 할 메소드(미완)
     #region
-    //private Vector3[] _transformsForShaking;
-    //public float ShakeDuration = 0.6f;
+    public float ShakeY = 0.2f;
+    public float ShakeDuration = 0.8f;
+    private void Update()
+    {
+        if (itemType != 0)
+        {
+            Shake();
+        }
+    }
 
-    //private void OnEnable()
-    //{
-    //    if (gameObject.name != "NormalBox" && gameObject.name != "GoldenBox")
-    //    {
-    //        _transformsForShaking = new Vector3[2];
-    //        _transformsForShaking[0] = transform.position;
-    //        _transformsForShaking[1] = transform.position + new Vector3(0, 0.2f, 0);
-
-    //        DoShake();
-    //    }
-    //}
-
-    //private void DoShake()
-    //{
-    //    var sequence = DOTween.Sequence();
-    //    sequence.Append(transform.DOPath(GetWaypointPositions(), ShakeDuration, PathType.CatmullRom))
-    //            .SetEase(Ease.Linear)
-    //            .SetLoops(-1, LoopType.Yoyo);
-    //}
-
-    //private Vector3[] GetWaypointPositions()
-    //{
-    //    Vector3[] positions = new Vector3[_transformsForShaking.Length * 2];
-    //    for (int i = 0; i < _transformsForShaking.Length; i++)
-    //    {
-    //        positions[i * 2] = _transformsForShaking[i] + new Vector3(0, 0.1f, 0);
-    //        positions[i * 2 + 1] = _transformsForShaking[i] - new Vector3(0, 0.1f, 0);
-    //    }
-    //    return positions;
-    //}
+    private void Shake()
+    {
+        float newY = Mathf.Abs(Mathf.Sin(Time.time * Mathf.PI / ShakeDuration)) * ShakeY;
+        var newLocalPosition = transform.localPosition;
+        newLocalPosition.y = newY;
+        transform.localPosition = newLocalPosition;
+    }
     #endregion
 }
