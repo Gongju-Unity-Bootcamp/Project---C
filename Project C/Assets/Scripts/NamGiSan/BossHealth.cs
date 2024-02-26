@@ -9,36 +9,36 @@ public class BossHealth : MonoBehaviour
     private Rigidbody2D _rb;
     private Collider2D _col;
     private Animator _animator;
+    private SpriteRenderer _sprite;
 
     public float hp;
     public float knockbackForce;
 
     private GameObject _player;
     private PlayerStats _playerStats;
-    private IsaacController isaac;
+    private Vector2 savePos;
 
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _playerStats = _player.GetComponent<PlayerStats>();
-        isaac = GetComponent<IsaacController>();
 
         _prb = _player.GetComponent<Rigidbody2D>();
         _rb = GetComponent<Rigidbody2D>();
         _col = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
-            TakeDamage(_playerStats.attackDamage);
-            _animator.SetTrigger("OnHit");
+            StartCoroutine(TakeDamage(_playerStats.attackDamage));
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("플레이어 충돌");
             Knockback(collision.transform.position);
         }
     }
@@ -47,32 +47,25 @@ public class BossHealth : MonoBehaviour
     {
         Vector2 knockbackDirection = (transform.position - playerPosition).normalized;
 
-        StartCoroutine(BossStop());
         _prb.AddForce(knockbackDirection * -knockbackForce, ForceMode2D.Impulse);
     }
 
-    IEnumerator BossStop()
+    IEnumerator TakeDamage(float damage)
     {
-        _rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
-        yield return null;
-        _rb.constraints = ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+
+        hp -= damage;
+        savePos = transform.position;
+        _sprite.color = new Color(1, 0.2f, 0.2f);
+        CheckHp();
+        yield return new WaitForSeconds(0.15f);
+        _sprite.color = new Color(1, 1, 1);
     }
 
-    public void TakeDamage(float damage)
+    private void CheckHp()
     {
-        hp -= damage;
+        if (hp > 0) return;
 
-
-        if (hp <= 0)
-        {
-            StartCoroutine(BossStop());
-            _col.enabled = false;
-            _animator.SetTrigger("Dead");
-
-            StartCoroutine(BloodEffect());  
-
-            Invoke("Dead", 2.1f);
-        }
+        StartCoroutine(Dead());
     }
 
     IEnumerator BloodEffect()
@@ -87,7 +80,20 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    private void Dead()
+    IEnumerator Dead()
+    {
+        transform.position = savePos;
+        _col.enabled = false;
+        _rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+        _animator.SetTrigger("Dead");
+        StartCoroutine(BloodEffect());
+        yield return new WaitForSeconds(1.75f);
+        _sprite.color = new Color(0, 0, 0, 0);    
+
+        Invoke("DistroyBoss", 2.1f);
+    }
+
+    private void DistroyBoss()
     {
         Destroy(gameObject);
     }  
