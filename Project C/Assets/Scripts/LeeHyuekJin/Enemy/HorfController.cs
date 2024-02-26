@@ -28,23 +28,23 @@ public class HorfController : MonoBehaviour
         bool noObstacleBetween = !Physics2D.Linecast(transform.position, player.transform.position, LayerMask.GetMask("Obstacle"));
         if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(yDifference, -3f) || yDifference < 3f))
         {
-            ShootBullet();
-            _audioSource.Play();
+            StartCoroutine(ShootBullet());
             shootBulletTime = Time.time;
         }
         else if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && (Mathf.Approximately(xDifference, -3f) || xDifference < 3f))
         {
-            ShootBullet();
-            _audioSource.Play();
+            StartCoroutine(ShootBullet());
             shootBulletTime = Time.time;
         }
     }
 
-    private void ShootBullet()
+    IEnumerator ShootBullet()
     {
         _animator.SetTrigger("OnAttak");
+        yield return new WaitForSeconds(0.6f);
+        _audioSource.Play();
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        GameObject Bullet = Instantiate(bullet, transform.position - new Vector3(0.9f,0.3f ,0), Quaternion.identity);
+        GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }
