@@ -77,8 +77,9 @@ public class Item : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && ((int)Id < 4000)) //박스에는 적용되면 안되는데 적용됨
+        if (collision.gameObject.CompareTag("Player") && !gameObject.CompareTag("Box")) 
         {
+            Debug.Log("아이템획득");
             Managers.Sound.EffectSoundChange(AcquireSound);
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             _collider2D = GetComponent<Collider2D>();
@@ -101,8 +102,6 @@ public class Item : MonoBehaviour
             {
                 GetConsumerItem((int)Id, playerStats);
             }
-
-
         }
 
     }
