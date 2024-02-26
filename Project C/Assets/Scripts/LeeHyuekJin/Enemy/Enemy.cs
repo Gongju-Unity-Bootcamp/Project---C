@@ -24,11 +24,11 @@ public class Enemy : MonoBehaviour
             {
                 Instantiate(blood, transform.position, Quaternion.identity);
             }
-            if(heart !=null && randomNum < 3)
+            if(heart.Length > 0 && randomNum < 3)
             {
                 Instantiate(heart[0], transform.position, Quaternion.identity);
             }
-            else if(heart != null && randomNum < 10)
+            else if(heart.Length > 0 && randomNum < 10)
             {
                 Instantiate(heart[1], transform.position, Quaternion.identity);
             }
