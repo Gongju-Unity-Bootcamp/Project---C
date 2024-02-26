@@ -7,14 +7,12 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] public AudioSource BGM;
-    [SerializeField] private AudioSource SoundEffect;
-    [SerializeField] private AudioListener Slistenert;
+    [SerializeField] public AudioSource SoundEffect;
 
     public void Init()
     {
         BGM = gameObject.AddComponent<AudioSource>();
         SoundEffect = gameObject.AddComponent<AudioSource>();
-        Slistenert = gameObject.AddComponent<AudioListener>();
         MugicQ();
     }
     private void MugicQ()
@@ -51,5 +49,10 @@ public class SoundManager : MonoBehaviour
     {
         float bgmVolume = Mathf.Clamp01(volume); // 볼륨이 0에서 1 사이에 있도록 보장
         BGM.volume = bgmVolume;
+    }
+    public void SetSFXVolume(float volume)
+    {
+        float bgmVolume = Mathf.Clamp01(volume); // 볼륨이 0에서 1 사이에 있도록 보장
+        SoundEffect.volume = bgmVolume;
     }
 }
