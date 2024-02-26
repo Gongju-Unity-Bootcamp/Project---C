@@ -50,7 +50,7 @@ public class ResourceManager : MonoBehaviour
         GameObject prefab = LoadPrefab(path);
 
         Debug.Assert(prefab != null);
-
+        
         return Instantiate(prefab, parent);
     }
 

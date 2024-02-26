@@ -87,19 +87,18 @@ public class Item : MonoBehaviour
             }
             else if (this.itemType == ItemType.Active)
             {
-                //클래스명을 지정함.
                 m_ActieisItemName = string.Concat("Item_", Name);
-                //매게변수로 전달하는 transform에게 액티브기능의 클래스를 부착하므로, 부착할 오브젝트로 지정해주면됨.
-                //Managers.Item.AddComponent(m_ActieisItemName, transform);
-                Managers.UI.GetPassive();
+                Managers.Item.AddComponent(m_ActieisItemName, transform);
+                Managers.UI.GetActive(Sprite);
             }
+        
             else if (this.itemType == ItemType.Consumer)
             {
                 GetConsumerItem((int)Id, playerStats);
             }
         }
-
     }
+
     private void GetConsumerItem(int itemId, PlayerStats playerStats)
     {
         switch (itemId)

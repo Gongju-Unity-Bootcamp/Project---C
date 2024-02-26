@@ -77,9 +77,9 @@ public class UIManager : MonoBehaviour
         m_Key.text = $"X {Managers.PlayerStats.key}";
         m_Bomb.text = $"X {Managers.PlayerStats.bomb}";
     }
-    public void GetActive(Item item)
+    public void GetActive(string item)
     {
-        m_Active.sprite = Managers.Resource.LoadSprite(item.Sprite);
+        m_Active.sprite = Managers.Resource.LoadSprite(item);
     }
     public void GetPassive()
     {

@@ -84,4 +84,23 @@ public class ItemManager
         ItemID itemId = (ItemID)roll;
         return itemId;
     }
+
+    public void AddComponent(string classname, Transform trans)
+    {
+        Type component = Type.GetType(classname);
+        trans.gameObject.AddComponent(component);
+    }
+
+    public UnityEngine.Object DeathComponent(string classname)
+    {
+        Type component = Type.GetType(classname);
+
+        if (typeof(IItem).IsAssignableFrom(component))
+        {
+            IItem newItem = (IItem)Activator.CreateInstance(component);
+            return (UnityEngine.Object)newItem;
+        }
+
+        return null;
+    }
 }
