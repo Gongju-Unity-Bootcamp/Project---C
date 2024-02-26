@@ -244,6 +244,7 @@ public class IsaacController : MonoBehaviour
         _isOrderInLayer = !_isOrderInLayer;
 
         _playerBullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+
         _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
         _playerBullet.GetComponent<PlayerBulletController>().attakDamage = playerStats.attackDamage;
@@ -276,7 +277,7 @@ public class IsaacController : MonoBehaviour
     public void DestroyBullet()
     {
         // 애니메이션 재생 시간 0.5f
-        StartCoroutine(DestroyBulletAnimation(_playerBullet, playerStats.bulletSurviveTime + 0.5f));
+        StartCoroutine(DestroyBulletAnimation(_playerBullet, playerStats.bulletSurviveTime + 0.7f));
     }
     public void AttackCoolTime()
     {
@@ -284,11 +285,14 @@ public class IsaacController : MonoBehaviour
     }
     IEnumerator DestroyBulletAnimation(GameObject bullet, float BulSurviveTime)
     {
-        yield return new WaitForSeconds(BulSurviveTime - 0.5f);
+        yield return new WaitForSeconds(BulSurviveTime - 0.7f);
 
+        bullet.GetComponent<Rigidbody2D>().gravityScale = 3;
+        yield return new WaitForSeconds(0.2f);
         if (bullet != null)
         {
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            bullet.GetComponent<Rigidbody2D>().gravityScale = 0;
             bullet.GetComponent<Animator>().enabled = true;
 
             yield return new WaitForSeconds(0.5f);
@@ -304,7 +308,6 @@ public class IsaacController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss"))
         {
             GetHit();
-            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Item"))
         {
