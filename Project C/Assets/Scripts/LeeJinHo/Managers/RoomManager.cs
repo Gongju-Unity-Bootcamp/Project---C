@@ -139,7 +139,16 @@ public class RoomManager : MonoBehaviour
                 }
                 isEnemy = true;
             }
-        }
+
+            PlayerPrefs.SetString("gameObject", gameObject.name);
+            Debug.Log($"{PlayerPrefs.GetString("gameObject")}");
+            }
+            if (collision.gameObject.CompareTag("Item"))
+            {
+                Debug.Log("아이템과 방");
+                collision.transform.parent = transform;
+            }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -147,7 +156,14 @@ public class RoomManager : MonoBehaviour
         {
             rend.material.color = whiteColor;
         }
+
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
+
+
 
     //방 상태를 체크하고 있다가 클리어를 하면 상태변경
     private void Update()

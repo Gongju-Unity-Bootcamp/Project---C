@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -8,23 +9,25 @@ class Item_Dice : MonoBehaviour, IItem
     public IItem m_Iitem { get; set; }
     public ItemType Type { get; set; }
 
-    [SerializeField] private Camera m_Camara = Camera.main;
-
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            UsingItems();
+        }
+    }
 
     public void UsingItems()
     {
+        Transform go = GameObject.Find(PlayerPrefs.GetString("gameObject")).transform;
 
-        Item[] items = FindObjectsOfType<Item>();
-
-        Rect cameraRect = m_Camara.rect;
-        foreach (Item id in items) 
+        Debug.Log(go.name);
+        foreach(Transform child in go)
         {
-            Vector3 viewportPos = m_Camara.WorldToViewportPoint(id.transform.position);
-            if (cameraRect.Contains(viewportPos))
+            if(child.CompareTag("Item"))
             {
-                Type = id.itemType;
-                Managers.Spawn.SpawnBox(Type, id.transform.position);
-
+                Managers.Spawn.SpawnBox(ItemType.GoldenBox, go.position);
+                Destroy(child.gameObject);
             }
         }
     }
