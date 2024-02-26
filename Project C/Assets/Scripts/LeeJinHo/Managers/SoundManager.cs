@@ -40,4 +40,10 @@ public class SoundManager : MonoBehaviour
     {
         BGM.Play();
     }
+
+    public void SetBGMVolume(float volume)
+    {
+        float bgmVolume = Mathf.Clamp01(volume); // 볼륨이 0에서 1 사이에 있도록 보장
+        BGM.volume = bgmVolume;
+    }
 }
