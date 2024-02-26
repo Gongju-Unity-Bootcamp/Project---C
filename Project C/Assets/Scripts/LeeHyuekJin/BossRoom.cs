@@ -19,7 +19,6 @@ public class BossRoom : MonoBehaviour
         {
             //ÄÆ¾À »ðÀÔ
             Managers.UI.BossHp.SetActive(true);
-            Managers.Sound.ChangeBGM("BGM_BossRoom");
             isCheck = true;
         }
     }

@@ -99,10 +99,10 @@ public class RoomManager : MonoBehaviour
     //방이 비활성화 되었는데 플레이어가 방에 입장하면 방의 상태를 변경
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string roomName = gameObject.name.Substring(0, 8); 
+        //string roomName = gameObject.name.Substring(0, 8); 
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (roomName == "BossRoom")
+            if (gameObject.name == "BossRoom (1)")
             {
                 if (Managers.Sound.BGM.clip.name != "Sound_Map_BossFight")
                 {
