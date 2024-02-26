@@ -214,6 +214,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 9017377789814017642, guid: 2e679ac923f781b40a7aa22cc5ba0b78, type: 3}
+  heart:
+  - {fileID: 1652427791571332555, guid: 3d85dafec2c70c84cae376850cdf1126, type: 3}
+  - {fileID: 7751864998892106970, guid: 0c68fad5dd565e44394c299c70b1fc0d, type: 3}
 --- !u!82 &6158434031889822145
 AudioSource:
   m_ObjectHideFlags: 0

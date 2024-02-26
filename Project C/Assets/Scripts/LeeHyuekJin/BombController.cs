@@ -37,7 +37,6 @@ public class BombController : MonoBehaviour
             }
             if(collider.CompareTag("Player"))
             {
-                Debug.Log("ÇÃ·¹ÀÌ¾îÃæµ¹ÆøÅº");
                 IsaacController _playerHp = collider.GetComponent<IsaacController>();
                 _playerHp.GetHit();
             }

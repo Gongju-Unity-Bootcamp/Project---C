@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 3763720430216899168}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.023, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -158,12 +158,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9e3d3d60a62e005479e4fd12a76d7cc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d538f15cde60ec441aeea6fc7a2b5e61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.77}
+  m_Size: {x: 0.375, y: 0.385}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -319,6 +319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 1278660364438895117, guid: 187bfcf379a6a8f41b812370a63a2e02, type: 3}
+  heart:
+  - {fileID: 1652427791571332555, guid: 3d85dafec2c70c84cae376850cdf1126, type: 3}
+  - {fileID: 7751864998892106970, guid: 0c68fad5dd565e44394c299c70b1fc0d, type: 3}
 --- !u!114 &4132481862795687325
 MonoBehaviour:
   m_ObjectHideFlags: 0
