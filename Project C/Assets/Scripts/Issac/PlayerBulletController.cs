@@ -5,17 +5,19 @@ using UnityEngine;
 public class PlayerBulletController : MonoBehaviour
 {
     GameObject _playerBullet;
+
     public float attakDamage;
+
     void Start()
     {
         _playerBullet = this.gameObject;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_playerBullet != null)
-        {
-            StartCoroutine(CollisionBullet(_playerBullet));
-        }
+        Managers.Sound.EffectSoundChange("TearImpacts2");
+
+        StartCoroutine(CollisionBullet(_playerBullet));
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
