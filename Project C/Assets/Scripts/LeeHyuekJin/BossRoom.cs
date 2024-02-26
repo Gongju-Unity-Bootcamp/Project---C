@@ -18,7 +18,7 @@ public class BossRoom : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && !isCheck)
         {
             //ÄÆ¾À »ðÀÔ
-
+            Managers.UI.BossHp.SetActive(true);
             Managers.Sound.ChangeBGM("BGM_BossRoom");
             isCheck = true;
         }
@@ -31,6 +31,7 @@ public class BossRoom : MonoBehaviour
             Debug.Log("º¸½º·ëÅ¬¸®¾î");
             Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.position);
             isGetItem = true;
+            Managers.UI.BossHp.SetActive(false);
         }
     }
 }

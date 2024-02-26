@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject Sprites;
     [SerializeField] private GameObject Texts;
     [SerializeField] private GameObject Stats;
+    
 
     [SerializeField] private Text m_Coin;
     [SerializeField] private Text m_Bomb;
@@ -26,6 +27,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text AttackCoolTime;
     [SerializeField] private Text Speed;
     [SerializeField] private Text Range;
+
+    [SerializeField] private Slider bossHPSlider;
+    public GameObject BossHp { get; set; }
     private const int MAX_HP_BAR = 8;
     private int HpBar = MAX_HP_BAR - 1;
 
@@ -34,6 +38,7 @@ public class UIManager : MonoBehaviour
         UIController = GameObject.FindWithTag("UIController");
         Sprites = UIController.transform.Find("Sprites").gameObject;
         Texts   = UIController.transform.Find("Texts").gameObject;
+        BossHp = UIController.transform.Find("BoosHp").gameObject;
 
         m_Coin = Texts.transform.Find("CoinText").GetComponent<Text>();
         m_Bomb = Texts.transform.Find("BombText").GetComponent<Text>();
@@ -52,7 +57,7 @@ public class UIManager : MonoBehaviour
         Speed = Stats.transform.Find("moveSpeed").GetComponent<Text>();
         Range = Stats.transform.Find("range").GetComponent<Text>();
 
-
+        bossHPSlider = BossHp.GetComponent<Slider>();
         for (int i = 0; i < MAX_HP_BAR; ++i)
         {
             GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
@@ -63,6 +68,7 @@ public class UIManager : MonoBehaviour
         playerStats.StatsChanged += GetPassive;
 
         GameObject pasue = GameObject.Find("Pause");
+        BossHp.SetActive(false);
         pasue.SetActive(false);
     }
 
@@ -113,5 +119,8 @@ public class UIManager : MonoBehaviour
         HpBar += hp;
     }
 
-
+    public void UpdateBossHP(float currentHP, float maxHP)
+    {
+        bossHPSlider.value = Mathf.Clamp01(currentHP / maxHP);
+    }
 }

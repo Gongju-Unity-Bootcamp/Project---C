@@ -17,9 +17,10 @@ public class BossHealth : MonoBehaviour
     private GameObject _player;
     private PlayerStats _playerStats;
     private Vector2 savePos;
-
+    private float maxHp;
     void Start()
     {
+        maxHp = hp;
         _player = GameObject.FindWithTag("Player");
         _playerStats = _player.GetComponent<PlayerStats>();
 
@@ -63,7 +64,11 @@ public class BossHealth : MonoBehaviour
 
     private void CheckHp()
     {
-        if (hp > 0) return;
+        if (hp > 0)
+        {
+            Managers.UI.UpdateBossHP(hp, maxHp);
+            return;
+        }
 
         StartCoroutine(Dead());
     }
