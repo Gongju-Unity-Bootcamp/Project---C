@@ -162,7 +162,6 @@ public class IsaacController : MonoBehaviour
         {
             playerStats.bomb--;
             Instantiate(BombPrefab, transform.position, Quaternion.identity);
-            Debug.Log("³²Àº ÆøÅº °³¼ö : " + playerStats.bomb);
         }
     }
     public void PlayerMove()

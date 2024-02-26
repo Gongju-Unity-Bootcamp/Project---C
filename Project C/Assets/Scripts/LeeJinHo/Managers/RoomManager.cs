@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 // 룸 상태
 public enum RoomState
@@ -45,8 +44,9 @@ public class RoomManager : MonoBehaviour
     public GameObject goldenBox;
 
     public GameObject[] spawnEnemy;
-    private bool isClear;
-
+    private bool isCheck = false;
+    private bool isEnemy = false;
+    private bool isOpenBox = false;
     //룸 상태 변경요청이 오면 처리
     public RoomState RoomAppearance
     {
@@ -58,21 +58,26 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        RoomAppearance = RoomState.None;
+    }
     private void Start()
     {
+
         enemyCount = 0;
         Enemy.OnEnemySpawned += HandleEnemySpawned;
         Enemy.OnEnemyDestroyed += HandleEnemyDestroyed;
 
         isBossRoom = false;
         Init();
-        Invoke("CheckBossRoom", 1.1f);
+        Invoke("OpenDoor", 0.2f);
     }
 
     private void Init()
     {
         RoomAppearance_See += RoomAppearanceChanged;
-        RoomAppearance = RoomState.None;
+        
         rend = transform.Find("MiniMap").GetComponent<Renderer>();
     }
     private void HandleEnemySpawned()
@@ -96,12 +101,20 @@ public class RoomManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log(m_roomState);
             m_Camera.transform.position = transform.position + new Vector3(0, 0, -10);
             if (rend != null)
             {
                 rend.material.color = redColor;
             }
-            RoomAppearance = RoomState.NotClear;
+            RoomAppearance = RoomState.None;
+
+            if(!isCheck && spawnEnemy.Length>0)
+            {
+                Debug.Log("몬스터생성");
+                int spawnNum = UnityEngine.Random.Range(0, spawnEnemy.Length);
+                Instantiate(spawnEnemy[spawnNum], transform.position, Quaternion.identity);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -115,31 +128,41 @@ public class RoomManager : MonoBehaviour
     //방 상태를 체크하고 있다가 클리어를 하면 상태변경
     private void Update()
     {
-        if (enemyCount == 0 && (m_roomState == RoomState.NotClear || m_roomState == RoomState.None))
+        if (enemyCount != 0)
+        {
+            RoomAppearance = RoomState.NotClear;
+        }
+        else if (enemyCount == 0 && isEnemy)
         {
             RoomAppearance = RoomState.Clear;
             GameObject player = GameObject.FindWithTag("Player");
             PlayerStats _playerStats = player.GetComponent<PlayerStats>();
+            isEnemy = false;
             _playerStats.ClearRoom();
         }
-        if (enemyCount != 0 && (m_roomState == RoomState.None || m_roomState == RoomState.Clear))
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            RoomAppearance = RoomState.NotClear;
+            Debug.Log("적스폰중");
+            isEnemy = true;
         }
     }
-
     //룸 상태가 변경되어 이벤트가 발생하면 실행할 메소드
     private void RoomAppearanceChanged(RoomState state)
     {
         switch (state)
         {
             case RoomState.None:
+                OpenDoor();
                 break;
             case RoomState.NotClear:
                 CloseDoor();
                 break;
             case RoomState.Clear:
                 OpenDoor();
+                if(!isOpenBox)
                 DropBox();
                 break;
             default:
@@ -150,30 +173,34 @@ public class RoomManager : MonoBehaviour
     [Obsolete("드랍확률 확인하세요. Goldenbox: 7, NormalBox: 21")]
     private void DropBox()
     {
-        int randomNumber = new System.Random().Next(100);
-        Debug.Log($"randomNumber = {randomNumber}");
+        if(isOpenBox)
+        {
+            int randomNumber = new System.Random().Next(100);
 
-        if (randomNumber < 50)
-        {
-            if (goldenBox != null)
+            if (randomNumber < 15)
             {
-                Instantiate(goldenBox, transform.position, Quaternion.identity);
+                if (goldenBox != null)
+                {
+                    Instantiate(goldenBox, transform.position, Quaternion.identity);
+                }
+            }
+            else if (randomNumber < 30)
+            {
+                if (normalBox != null)
+                {
+                    Instantiate(normalBox, transform.position, Quaternion.identity);
+                }
             }
         }
-        else if (randomNumber < 100)
-        {
-            if (normalBox != null)
-            {
-                Instantiate(normalBox, transform.position, Quaternion.identity);
-            }
-        }
+        isOpenBox = true;
     }
     private void OpenDoor()
     {
+
         doors = transform.GetComponentsInChildren<Transform>()
-                   .Where(child => child.CompareTag("Door"))
-                   .Select(child => child.gameObject)
-                   .ToArray();
+               .Where(child => child.CompareTag("Door"))
+               .Select(child => child.gameObject)
+               .ToArray();
         doorColliders = new Collider2D[doors.Length];
 
         for (int i = 0; i < doors.Length; i++)
@@ -185,6 +212,7 @@ public class RoomManager : MonoBehaviour
         {
             doorColliders[i].isTrigger = false;
         }
+        
     }
 
     private void CloseDoor()

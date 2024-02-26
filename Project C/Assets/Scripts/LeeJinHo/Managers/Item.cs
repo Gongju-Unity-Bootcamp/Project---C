@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public interface IItem
 {
@@ -42,7 +40,6 @@ public class Item : MonoBehaviour
     private CircleCollider2D collider2D;
     private Collider2D _collider2D;
     private SpriteRenderer spriteRenderer;
-    private SpriteRenderer _spriteRenderer;
     private AudioClip clip;
 
     const int m_isBoxType = 4000;
@@ -93,8 +90,7 @@ public class Item : MonoBehaviour
             Managers.Sound.EffectSoundChange(AcquireSound);
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             _collider2D = GetComponent<Collider2D>();
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-            _spriteRenderer.enabled = false;
+            transform.Rotate(90, 0, 0);
             _collider2D.enabled = false;
             if (this.itemType == ItemType.Passive)
             {
@@ -137,7 +133,6 @@ public class Item : MonoBehaviour
         }
         Managers.UI.GetConsumer();
     }
-
     //게임오브젝트가 활성화 되면 그 위아래로 왔다 갔다 할 메소드(미완)
     #region
     //private void OnEnable()

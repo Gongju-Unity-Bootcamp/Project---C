@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 
 public class UIManager : MonoBehaviour
@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject UIController;
     [SerializeField] private GameObject Sprites;
     [SerializeField] private GameObject Texts;
+    [SerializeField] private GameObject Stats;
 
     [SerializeField] private Text m_Coin;
     [SerializeField] private Text m_Bomb;
@@ -21,10 +22,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Transform m_PlayerHp;
     [SerializeField] private GameObject[] m_HpImage;
 
-    [SerializeField] private float Attack;
-    [SerializeField] private float AttackSpeed;
-    [SerializeField] private float Speed;
-    [SerializeField] private float Range;
+    [SerializeField] private Text Attack;
+    [SerializeField] private Text AttackCoolTime;
+    [SerializeField] private Text Speed;
+    [SerializeField] private Text Range;
     private const int MAX_HP_BAR = 8;
     private int HpBar = MAX_HP_BAR - 1;
 
@@ -43,6 +44,14 @@ public class UIManager : MonoBehaviour
 
         m_PlayerHp = UIController.transform.Find("PlayerHp");
         m_HpImage = new GameObject[MAX_HP_BAR];
+
+        Stats = GameObject.Find("Stats");
+
+        Attack = Stats.transform.Find("attack").GetComponent<Text>();
+        AttackCoolTime = Stats.transform.Find("cooltime").GetComponent<Text>();
+        Speed = Stats.transform.Find("moveSpeed").GetComponent<Text>();
+        Range = Stats.transform.Find("range").GetComponent<Text>();
+
         for (int i = 0; i < MAX_HP_BAR; ++i)
         {
             GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
@@ -64,11 +73,10 @@ public class UIManager : MonoBehaviour
     }
     public void GetPassive()
     {
-        Attack = Managers.PlayerStats.totalAttackStats;
-        AttackSpeed = Managers.PlayerStats.totalAttackDelayStats;
-        Speed = Managers.PlayerStats.totalSpeedStats;
-        Range = Managers.PlayerStats.totalRangeStats;
-
+        Attack.text = $"{Managers.PlayerStats.totalAttackStats}";
+        AttackCoolTime.text = $"{Managers.PlayerStats.totalAttackDelayStats}";
+        Speed.text = $"{Managers.PlayerStats.totalSpeedStats}";
+        Range.text = $"{Managers.PlayerStats.totalRangeStats}";
     }
 
 
@@ -93,10 +101,8 @@ public class UIManager : MonoBehaviour
                 break;
             case 2:
                 HpBar++;
-                Debug.Log($"케이스2-1{HpBar}");
                 m_HpImage[HpBar].SetActive(true);
                 HpBar++;
-                Debug.Log($"케이스2-2{HpBar}");
                 m_HpImage[HpBar].SetActive(true);
                 HpBar -= 2;
                 break;
