@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/LeeJInho/MainMenu.unity
-    guid: 29c09a29b294ceb4c9e66e44153f80a9
-  - enabled: 1
-    path: Assets/Scenes/LeeHyeukJin/NaviTest.unity
+  - enabled: 0
+    path: Assets/Scenes/LeeHyeukJin/Stage1.unity
     guid: 3578e20715854f143b58309343907677
   m_configObjects: {}
