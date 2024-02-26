@@ -51,7 +51,8 @@ public class PooterController : MonoBehaviour
         animator.SetTrigger("OnAttack");
         yield return new WaitForSeconds(0.4f);
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        var Bullet = EnemyBulletPoolManager.instance.Pool.Get();
+        Bullet.transform.position = transform.position;
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class HorfController : MonoBehaviour
 {
@@ -44,7 +45,8 @@ public class HorfController : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         _audioSource.Play();
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject Bullet = EnemyBulletPoolManager.instance.Pool.Get();
+        Bullet.transform.position = transform.position;
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }
