@@ -16,12 +16,14 @@ public class PooterController : MonoBehaviour
     private GameObject player;
     private Animator animator;
     public GameObject bullet;
+    private AudioSource _audioSource;
     void Start()
     {
         AttakCollTime = 3f;
         bulletForce = 5f;
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -40,13 +42,14 @@ public class PooterController : MonoBehaviour
 
         if (noObstacleBetween && Time.time - shootBulletTime > AttakCollTime && distanceToPlayer < 5f)
         {
-            ShootBullet();
+            StartCoroutine(ShootBullet());
             shootBulletTime = Time.time;
         }
     }
-    private void ShootBullet()
+    IEnumerator ShootBullet()
     {
         animator.SetTrigger("OnAttack");
+        yield return new WaitForSeconds(0.4f);
         Vector3 direction = (player.transform.position - transform.position).normalized;
         GameObject Bullet = Instantiate(bullet, transform.position, Quaternion.identity);
         Rigidbody2D rightBullet_rb = Bullet.GetComponent<Rigidbody2D>();
