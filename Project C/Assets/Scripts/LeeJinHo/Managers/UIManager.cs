@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
         Speed = Stats.transform.Find("moveSpeed").GetComponent<Text>();
         Range = Stats.transform.Find("range").GetComponent<Text>();
 
+
         for (int i = 0; i < MAX_HP_BAR; ++i)
         {
             GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
@@ -60,6 +61,9 @@ public class UIManager : MonoBehaviour
         
         playerStats.KeyBombChanged += GetConsumer;
         playerStats.StatsChanged += GetPassive;
+
+        GameObject pasue = GameObject.Find("Pause");
+        pasue.SetActive(false);
     }
 
     public void GetConsumer()
@@ -86,8 +90,7 @@ public class UIManager : MonoBehaviour
 
 
         Debug.Log(HpBar + hp);
-        Debug.Log(MAX_HP_BAR + 1);
-        if (HpBar + hp > 7) { hp = 1; }
+        if (HpBar + hp > MAX_HP_BAR-1) { hp = 1; }
         
         switch (hp)
         {
