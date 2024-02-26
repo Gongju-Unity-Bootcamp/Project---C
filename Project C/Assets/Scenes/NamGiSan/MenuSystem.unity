@@ -238,7 +238,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 35936898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 808601690}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OffFullScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &35936898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1621,7 +1633,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 145606898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 808601690}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OnFullScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &145606898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10836,7 +10860,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17613399dcf2bad4abeaf5cd77e0ffdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MenuSet: {fileID: 492843317}
+  Pause: {fileID: 492843317}
+  Option: {fileID: 2074660733}
+  fullScreenOnBtn: {fileID: 145606897}
+  fullScreenOffBtn: {fileID: 35936897}
 --- !u!1 &832666741
 GameObject:
   m_ObjectHideFlags: 0
@@ -13576,7 +13603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 808601690}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: CheckPause
+        m_MethodName: OffPause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20049,9 +20076,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 808601684}
+      - m_Target: {fileID: 808601690}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26716,7 +26743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2074660734
 RectTransform:
   m_ObjectHideFlags: 0

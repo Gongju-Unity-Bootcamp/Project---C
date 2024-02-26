@@ -32,6 +32,11 @@ public class MonstroController : MonoBehaviour
         StartCoroutine(RandomState());
     }
 
+    private void Update()
+    {
+        CheckHp();
+    }
+
     void FixedUpdate()
     {
         Flip();
