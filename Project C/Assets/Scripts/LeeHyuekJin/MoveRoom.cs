@@ -11,10 +11,15 @@ public class MoveRoom : MonoBehaviour
     private GameObject room;
     private RoomManager _roomManager;
     private GameObject subDoor;
-    void Awake()
+    public void Init()
     {
+        Debug.Log($"{name} Init");
         m_cameraPo = GameObject.Find("Main Camera").transform;
         m_doorCol = GetComponent<BoxCollider2D>();
+        room = transform.parent.gameObject;
+        _roomManager = room.GetComponent<RoomManager>();
+        Transform subDoor_Transfrom = transform.Find("Doors");
+        subDoor = subDoor_Transfrom.gameObject;
 
         switch (gameObject.name)
         {
@@ -32,19 +37,13 @@ public class MoveRoom : MonoBehaviour
                 break;
         }
     }
-    private void Start()
-    {
-        room = transform.parent.gameObject;
-        _roomManager = room.GetComponent<RoomManager>();
-        Transform subDoor_Transfrom = transform.Find("Doors");
-        subDoor = subDoor_Transfrom.gameObject;
-    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.transform.position += playerInPosition * 2.5f;
+            collision.gameObject.transform.position += playerInPosition * 1.5f;
             //m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
         }
     }

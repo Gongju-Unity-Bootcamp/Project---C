@@ -1,16 +1,15 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+
+using DG.Tweening;
+using UnityEngine.UIElements;
 
 
 public class Item : MonoBehaviour
 {
-    public float ShakeDuration = 0.25f;
     public ItemID Id { get; private set; }
     public ItemData itemData;
     private IItem Iitem;
@@ -46,7 +45,7 @@ public class Item : MonoBehaviour
         rb = gameObject.AddComponent<Rigidbody2D>();
         collider2D = gameObject.AddComponent<CircleCollider2D>();
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-        
+
         rb.mass = 3;
         rb.drag = 999999;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -74,7 +73,7 @@ public class Item : MonoBehaviour
         collider2D.radius = 0.05f;
         spriteRenderer.sprite = Managers.Resource.LoadSprite(Sprite);
 
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -94,6 +93,7 @@ public class Item : MonoBehaviour
             }
             else if (this.itemType == ItemType.Active)
             {
+                //클래스명을 지정함.
                 m_ActieisItemName = string.Concat("Item_", Name);
                 //매게변수로 전달하는 transform에게 액티브기능의 클래스를 부착하므로, 부착할 오브젝트로 지정해주면됨.
                 //Managers.Item.AddComponent(m_ActieisItemName, transform);
@@ -103,8 +103,8 @@ public class Item : MonoBehaviour
             {
                 GetConsumerItem((int)Id, playerStats);
             }
-            
-            //Destroy(Managers.Item.DeathComponent(m_ActieisItemName));
+
+
         }
 
     }
@@ -131,37 +131,38 @@ public class Item : MonoBehaviour
 
     //게임오브젝트가 활성화 되면 그 위아래로 왔다 갔다 할 메소드(미완)
     #region
+    //private Vector3[] _transformsForShaking;
+    //public float ShakeDuration = 0.6f;
+
     //private void OnEnable()
     //{
-    //    DoShake();
+    //    if (gameObject.name != "NormalBox" && gameObject.name != "GoldenBox")
+    //    {
+    //        _transformsForShaking = new Vector3[2];
+    //        _transformsForShaking[0] = transform.position;
+    //        _transformsForShaking[1] = transform.position + new Vector3(0, 0.2f, 0);
+
+    //        DoShake();
+    //    }
     //}
 
     //private void DoShake()
     //{
     //    var sequence = DOTween.Sequence();
-    //    sequence.Append(transform.DOLocalMoveY(0.1f, ShakeDuration))
-    //        .Append(transform.DOLocalMoveY(-0.1f, ShakeDuration))
-    //        .SetLoops(-1);
+    //    sequence.Append(transform.DOPath(GetWaypointPositions(), ShakeDuration, PathType.CatmullRom))
+    //            .SetEase(Ease.Linear)
+    //            .SetLoops(-1, LoopType.Yoyo);
     //}
 
-    //private Transform[] _trasnformsForShaking;
-    //private IEnumerator ShakeCo()
+    //private Vector3[] GetWaypointPositions()
     //{
-    //    float elapsedTime = 0;
-    //    while (true)
+    //    Vector3[] positions = new Vector3[_transformsForShaking.Length * 2];
+    //    for (int i = 0; i < _transformsForShaking.Length; i++)
     //    {
-
-    //        // 1. 위로 간다.
-    //        transform.position = Vector3.Lerp(_trasnformsForShaking[0].position,
-    //            _trasnformsForShaking[1].position,
-    //            elapsedTime / ShakeDuration);
-
-
-
-    //        elapsedTime += Time.deltaTime;
-
-
+    //        positions[i * 2] = _transformsForShaking[i] + new Vector3(0, 0.1f, 0);
+    //        positions[i * 2 + 1] = _transformsForShaking[i] - new Vector3(0, 0.1f, 0);
     //    }
+    //    return positions;
     //}
     #endregion
 }

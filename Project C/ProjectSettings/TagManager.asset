@@ -15,6 +15,9 @@ TagManager:
   - Item
   - Bomb
   - Boss
+  - UIController
+  - Room
+  - BossWall
   layers:
   - Default
   - TransparentFX
