@@ -15,6 +15,7 @@ public class IsaacController : MonoBehaviour
     public Sprite DownHeadSprite;
     public Sprite LeftHeadSprite;
     public Sprite RightHeadSprite;
+    public Sprite DiceSprite;
     public GameObject BulletPrefab;
     public GameObject BombPrefab;
     public Transform _firePoint1;
@@ -86,6 +87,11 @@ public class IsaacController : MonoBehaviour
         {
             UseBomb();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PickUpItem();
+            // 주사위 사용으로 발생하는 리롤 효과 추가
+        }
     }
 
     #region 피격, 사망, 아이템 픽업 상태 구현
@@ -99,10 +105,12 @@ public class IsaacController : MonoBehaviour
 
             if (playerStats.hp > 0)
             {
+                Managers.Sound.EffectSoundChange("Sound_Player_Hit");
                 StartCoroutine(GetHitCo());
             }
             else
             {
+                Managers.Sound.EffectSoundChange("Sound_Player_Dead");
                 Dead();
             }
         }
@@ -135,6 +143,8 @@ public class IsaacController : MonoBehaviour
         _total.gameObject.SetActive(true);
         _totalAnimator.enabled = true;
         _totalAnimator.Play("Dead");
+        _isAttack = true;
+        _isHit = true;
     }
     public void PickUpItem()
     {
@@ -148,6 +158,11 @@ public class IsaacController : MonoBehaviour
         _pickup.gameObject.SetActive(true);
 
         _totalSpriteRenderer.sprite = PickUpSprite;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // 주사위 스프라이트를 머리 위에 띄움
+            _pickupSpriteRenderer.sprite = DiceSprite;
+        }
         yield return new WaitForSeconds(PickUpTime);
 
         _head.gameObject.SetActive(true);
@@ -239,6 +254,7 @@ public class IsaacController : MonoBehaviour
     public void ShootBullet(Vector2 direction)
     {
         _isAttack = true;
+        Managers.Sound.EffectSoundChange("Sound_Player_AttackTears");
 
         int orderInLayer = _isOrderInLayer ? 5 : 3;
         _isOrderInLayer = !_isOrderInLayer;
@@ -256,6 +272,7 @@ public class IsaacController : MonoBehaviour
     public void FrontBackBullet(Vector2 direction)
     {
         _isAttack = true;
+        Managers.Sound.EffectSoundChange("Sound_Player_AttackTears");
 
         Transform selectedFirePoint = _useFirstPoint ? _firePoint1 : _firePoint2;
         _useFirstPoint = !_useFirstPoint;
@@ -276,30 +293,35 @@ public class IsaacController : MonoBehaviour
     }
     public void DestroyBullet()
     {
-        // 애니메이션 재생 시간 0.5f
-        StartCoroutine(DestroyBulletAnimation(_playerBullet, playerStats.bulletSurviveTime + 0.7f));
+        StartCoroutine(DestroyBulletAnimation(_playerBullet, playerStats.bulletSurviveTime + 0.5f));
     }
     public void AttackCoolTime()
     {
         _isAttack = false;
     }
-    IEnumerator DestroyBulletAnimation(GameObject bullet, float BulSurviveTime)
+    public IEnumerator DestroyBulletAnimation(GameObject bullet, float BulSurviveTime)
     {
-        yield return new WaitForSeconds(BulSurviveTime - 0.7f);
+        yield return new WaitForSeconds(BulSurviveTime - 0.6f);
 
-        bullet.GetComponent<Rigidbody2D>().gravityScale = 3;
-        yield return new WaitForSeconds(0.2f);
         if (bullet != null)
         {
-            bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            bullet.GetComponent<Rigidbody2D>().gravityScale = 0;
-            bullet.GetComponent<Animator>().enabled = true;
-
-            yield return new WaitForSeconds(0.5f);
+            bullet.GetComponent<Rigidbody2D>().gravityScale = 5;
+            yield return new WaitForSeconds(0.1f);
 
             if (bullet != null)
             {
-                Destroy(bullet);
+                Managers.Sound.EffectSoundChange("TearImpacts2");
+
+                bullet.GetComponent<Rigidbody2D>().gravityScale = 0;
+                bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                bullet.GetComponent<Animator>().enabled = true;
+
+                yield return new WaitForSeconds(0.5f);
+
+                if (bullet != null)
+                {
+                    Destroy(bullet);
+                }
             }
         }
     }
