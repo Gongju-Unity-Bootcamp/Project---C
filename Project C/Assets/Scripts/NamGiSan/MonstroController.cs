@@ -165,13 +165,14 @@ public class MonstroController : MonoBehaviour
                     for (int i = 0; i < spawnBullet; i++)
                     {
                         int bulletSpeed = Random.Range(10, 12);
-                        GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                        var bossBullet = EnemyBulletPoolManager.instance.Pool.Get();
                         GameObject shockWave = transform.GetChild(1).gameObject;
                         shockWave.GetComponent<ShockWave>().CallShockWave();
                         bossBullet.transform.position = bulletPoint.position;
                         Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
                         Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
                         rb.AddForce(ranVec * bulletSpeed, ForceMode2D.Impulse);
+                        rb.gravityScale = 0.3f;
                     }
                     break;
                 }
@@ -223,13 +224,14 @@ public class MonstroController : MonoBehaviour
             for (int i = 0; i < spawnBullet; i++)
             {
                 int bulletSpeed = Random.Range(6, 8);
-                GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                var bossBullet = EnemyBulletPoolManager.instance.Pool.Get();
                 bossBullet.transform.position = bulletPoint.position;
                 Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
                 Vector2 dirVec = (player.transform.position - transform.position).normalized;
                 Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 0.5f));
                 dirVec += ranVec;
                 rb.AddForce(dirVec * bulletSpeed, ForceMode2D.Impulse);
+                rb.gravityScale = 0.5f;
             }
             break;
         }

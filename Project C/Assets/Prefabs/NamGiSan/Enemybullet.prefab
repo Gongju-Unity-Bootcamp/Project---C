@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8577939134357182104}
   - component: {fileID: -6007055956027290175}
   - component: {fileID: 5370102014508616072}
-  - component: {fileID: 6870077755099986620}
+  - component: {fileID: 743543867859472882}
   m_Layer: 13
-  m_Name: Enemy_bullet
+  m_Name: Enemybullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6870077755099986620
+--- !u!114 &743543867859472882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,8 +180,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8333793598550204643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 346bf04a851b57f448594e52f0626ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: 75dd86389d625d443865818d41192dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 10
-  damage: 1

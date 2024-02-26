@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.UIElements;
 
 public class MulliganController : MonoBehaviour
 {
-    
     public float moveSpeed;
     public GameObject bullet;
     public float bulletForce;
@@ -63,20 +63,23 @@ public class MulliganController : MonoBehaviour
 
     void ShootBullet()
     {
-
-        GameObject upBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject upBullet = EnemyBulletPoolManager.instance.Pool.Get();
+        upBullet.transform.position = transform.position;
         Rigidbody2D upBullet_rb = upBullet.GetComponent<Rigidbody2D>();
         upBullet_rb.AddForce(Vector2.up * bulletForce, ForceMode2D.Impulse);
 
-        GameObject downBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject downBullet = EnemyBulletPoolManager.instance.Pool.Get();
+        downBullet.transform.position = transform.position;
         Rigidbody2D downBullet_rb = downBullet.GetComponent<Rigidbody2D>();
         downBullet_rb.AddForce(Vector2.down * bulletForce, ForceMode2D.Impulse);
 
-        GameObject rightBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject rightBullet = EnemyBulletPoolManager.instance.Pool.Get();
+        rightBullet.transform.position = transform.position;
         Rigidbody2D rightBullet_rb = rightBullet.GetComponent<Rigidbody2D>();
         rightBullet_rb.AddForce(Vector2.right * bulletForce, ForceMode2D.Impulse);
 
-        GameObject leftBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        GameObject leftBullet = EnemyBulletPoolManager.instance.Pool.Get();
+        leftBullet.transform.position = transform.position;
         Rigidbody2D leftBullet_rb = leftBullet.GetComponent<Rigidbody2D>();
         leftBullet_rb.AddForce(Vector2.left * bulletForce, ForceMode2D.Impulse);
     }

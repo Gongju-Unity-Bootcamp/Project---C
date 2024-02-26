@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  bullet: {fileID: 8333793598550204643, guid: 35331e4fcc80e024595fda8df1fb581a, type: 3}
+  bullet: {fileID: 8333793598550204643, guid: 46b8fdb07aafc4d40980f9b679422c9d, type: 3}
   bulletForce: 5
   fly: {fileID: 1107445792662683503, guid: 65f8dd91b110dd7469d9820acd805668, type: 3}
 --- !u!114 &2113958663026972835
