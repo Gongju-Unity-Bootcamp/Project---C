@@ -48,4 +48,15 @@ public class SpawnManager : MonoBehaviour
         go.SetActive(true);
         go.GetComponent<Item>().Init(id, (Vector3)po);
     }
+
+    public void CreatDoor(string name, Transform trans)
+    {
+        Debug.Log(name,trans);
+        GameObject go = Managers.Resource.Instantiate(name, trans);
+        go.AddComponent<MoveRoom>().Init();
+        Debug.Log("CreatDoor");
+        go.name = name;
+        go.transform.parent = trans;
+    }
+
 }
