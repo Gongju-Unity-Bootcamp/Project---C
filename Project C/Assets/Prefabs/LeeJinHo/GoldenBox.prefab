@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 7563665886781951583}
   m_Layer: 0
   m_Name: GoldenBox
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1a86cd70d5ad448b3a41d14ef42dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 5
+  itemType: 0
   m_openTimeLine: {fileID: 5635878935159712999}
   m_open: {fileID: 1903880196761789652}
   m_close: {fileID: 8089384459435844757}
@@ -351,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca4a57a0eaf87f42a208294de076623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShakeDuration: 0.25
 --- !u!1 &6648735416094994508
 GameObject:
   m_ObjectHideFlags: 0
