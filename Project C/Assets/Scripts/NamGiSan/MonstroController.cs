@@ -10,6 +10,7 @@ public class MonstroController : MonoBehaviour
     private new Collider2D collider;
     private Animator animaotr;
     private BossHealth bossHp;
+    private Vector2 savePos;
 
     public Transform bulletPoint;
     [SerializeField] private float shockwaveTime = 0.75f;
@@ -48,6 +49,7 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator RandomState()
     {
+        savePos = transform.position;
         yield return null;
 
         int randomAction = Random.Range(0, 3);
@@ -69,98 +71,116 @@ public class MonstroController : MonoBehaviour
 
     IEnumerator Chase()
     {
-        animaotr.SetTrigger("Chase");
-
-        // 대기동작 시간
-        yield return new WaitForSeconds(0.125f);
-
-        collider.enabled = false;
-        Vector2 startPos = transform.position;
-        Vector2 targetPos = player.transform.position;
-
-        float moveTime = 0.5f;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < moveTime)
+        if(GetComponent<BossHealth>().hp <= 0)
         {
-            transform.position = Vector2.Lerp(startPos, targetPos, elapsedTime / moveTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            transform.position = savePos;
+            StartCoroutine(RandomState());
         }
 
-        // 공중동작 시간
-        yield return new WaitForSeconds(0.5f);
-        
-        transform.position = targetPos;
-        rb.velocity = Vector2.zero;
-        collider.enabled = true;
-
-        yield return new WaitForSeconds(0.75f);  // 착지동작 시간
-        StartCoroutine(RandomState());
-    }
-
-    IEnumerator HighJump()
-    {  
-        animaotr.SetTrigger("HighJump");
-        yield return new WaitForSeconds(0.5f); // 준비 동작 대기시간
-
-        collider.enabled = false;
-        rb.velocity = new Vector2(0, 70f);
-        yield return new WaitForSeconds(0.25f); // 점프 애니메이션 시간
-
-        Vector2 targetPos = player.transform.position;
-
-        while (true)
+        else
         {
-            if (transform.position.y >= 70)
-            {
-                rb.velocity = Vector2.zero;
-                break;
-            }
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.5f); // 공중 대기시간
+            animaotr.SetTrigger("Chase");
 
-        Vector2 airPos = new Vector2(targetPos.x, transform.position.y);
+            // 대기동작 시간
+            yield return new WaitForSeconds(0.125f);
 
-        while (true)
-        {
+            collider.enabled = false;
+            Vector2 startPos = transform.position;
+            Vector2 targetPos = player.transform.position;
+
             float moveTime = 0.5f;
             float elapsedTime = 0f;
 
             while (elapsedTime < moveTime)
             {
-                transform.position = Vector2.Lerp(airPos, targetPos, elapsedTime / moveTime);
+                transform.position = Vector2.Lerp(startPos, targetPos, elapsedTime / moveTime);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            transform.position = new Vector2(targetPos.x, targetPos.y); // 완전한 착지
 
-            int spawnBullet = Random.Range(30, 35);
+            // 공중동작 시간
+            yield return new WaitForSeconds(0.5f);
 
-            if (transform.position.y == targetPos.y)
-            {
-                collider.enabled = true;
-                rb.velocity = Vector2.zero;
-                transform.position = targetPos;
-                for (int i = 0; i < spawnBullet; i++)
-                {
-                    int bulletSpeed = Random.Range(10, 12);
-                    GameObject bossBullet = BulletManager.instance.GetBulletPool();
-                    GameObject shockWave = transform.GetChild(1).gameObject;
-                    shockWave.GetComponent<ShockWave>().CallShockWave();
-                    bossBullet.transform.position = bulletPoint.position;
-                    Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
-                    Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-                    rb.AddForce(ranVec * bulletSpeed, ForceMode2D.Impulse);
-                }
-                break;
-            }
-            yield return null;
+            transform.position = targetPos;
+            rb.velocity = Vector2.zero;
+            collider.enabled = true;
+
+            yield return new WaitForSeconds(0.75f);  // 착지동작 시간
+            StartCoroutine(RandomState());
+        }       
+    }
+
+    IEnumerator HighJump()
+    {
+        if (GetComponent<BossHealth>().hp <= 0)
+        {
+            transform.position = savePos;
+            StartCoroutine(RandomState());
         }
 
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(RandomState());
+        else
+        {
+            animaotr.SetTrigger("HighJump");
+            yield return new WaitForSeconds(0.5f); // 준비 동작 대기시간
+
+            collider.enabled = false;
+            rb.velocity = new Vector2(0, 70f);
+            yield return new WaitForSeconds(0.25f); // 점프 애니메이션 시간
+
+            Vector2 targetPos = player.transform.position;
+
+            while (true)
+            {
+                if (transform.position.y >= 70)
+                {
+                    rb.velocity = Vector2.zero;
+                    break;
+                }
+                yield return null;
+            }
+            yield return new WaitForSeconds(0.5f); // 공중 대기시간
+
+            Vector2 airPos = new Vector2(targetPos.x, transform.position.y);
+
+            while (true)
+            {
+                float moveTime = 0.5f;
+                float elapsedTime = 0f;
+
+                while (elapsedTime < moveTime)
+                {
+                    transform.position = Vector2.Lerp(airPos, targetPos, elapsedTime / moveTime);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+                transform.position = new Vector2(targetPos.x, targetPos.y); // 완전한 착지
+
+                int spawnBullet = Random.Range(30, 35);
+
+                if (transform.position.y == targetPos.y)
+                {
+                    collider.enabled = true;
+                    rb.velocity = Vector2.zero;
+                    transform.position = targetPos;
+                    for (int i = 0; i < spawnBullet; i++)
+                    {
+                        int bulletSpeed = Random.Range(10, 12);
+                        GameObject bossBullet = BulletManager.instance.GetBulletPool();
+                        GameObject shockWave = transform.GetChild(1).gameObject;
+                        shockWave.GetComponent<ShockWave>().CallShockWave();
+                        bossBullet.transform.position = bulletPoint.position;
+                        Rigidbody2D rb = bossBullet.GetComponent<Rigidbody2D>();
+                        Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+                        rb.AddForce(ranVec * bulletSpeed, ForceMode2D.Impulse);
+                    }
+                    break;
+                }
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(RandomState());
+        }      
     }
 
     IEnumerator attackReady()
