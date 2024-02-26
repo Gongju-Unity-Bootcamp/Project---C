@@ -24,6 +24,12 @@ public class SoundManager : MonoBehaviour
         PlayBGM();
     }
 
+    public void ChangeBGM(string BGMName)
+    {
+        BGM.clip = Managers.Resource.LoadAudioClips($"{BGMName}");
+        PlayBGM();
+    }
+
     public void EffectSoundChange(string sound)
     {
         SoundEffect.Stop();

@@ -30,7 +30,6 @@ public class Box : MonoBehaviour
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             if (itemType == ItemType.GoldenBox && playerStats.key >0)
             {
-                playerStats.key--;
                 m_openTimeLine.SetActive(true);
                 id = transform.GetComponent<Item>().Id;
                 BoxOpen(itemType);
@@ -48,8 +47,6 @@ public class Box : MonoBehaviour
     void BoxOpen(ItemType type)
     {
         m_isCheck = true;
-        m_close.SetBool("Open", true);
         Managers.Spawn.SpawnBox(type, transform.position);
-        m_open.Play("BoxOpen");
     }
 }

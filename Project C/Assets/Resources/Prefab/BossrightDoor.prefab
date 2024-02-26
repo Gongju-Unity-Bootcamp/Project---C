@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 344524287925693941}
   - component: {fileID: 5413098255225450838}
   m_Layer: 0
-  m_Name: BossrightDoor
+  m_Name: BossRightDoor
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

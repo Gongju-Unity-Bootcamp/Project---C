@@ -71,7 +71,7 @@ public class Item : MonoBehaviour
         collider2D.enabled = true;
         collider2D.radius = 0.05f;
         spriteRenderer.sprite = Managers.Resource.LoadSprite(Sprite);
-
+        spriteRenderer.sortingOrder = 2;
 
     }
 
