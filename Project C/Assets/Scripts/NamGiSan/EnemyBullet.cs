@@ -45,7 +45,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("PlayerBullet") || !collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("Player")||!collision.gameObject.CompareTag("PlayerBullet") || !collision.gameObject.CompareTag("EnemyBullet"))
         {
             StartCoroutine(ResetBossBullet());
         }
