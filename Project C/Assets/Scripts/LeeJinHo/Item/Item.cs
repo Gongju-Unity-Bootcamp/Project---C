@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.Rendering;
-
-using DG.Tweening;
-using UnityEngine.UIElements;
 
 
 public class Item : MonoBehaviour
@@ -35,6 +28,7 @@ public class Item : MonoBehaviour
     private AudioClip clip;
 
     const int m_isBoxType = 4000;
+    private Vector3 initialPosition;
     public void Init(ItemID id, Vector3 po)
     {
         if ((int)id > m_isBoxType)
@@ -67,6 +61,7 @@ public class Item : MonoBehaviour
         this.UseSound = itemData.UseSound;
 
         transform.position = po + Vector3.up;
+        initialPosition = po + Vector3.up;
         transform.localScale = new Vector2(2f, 2f);
         collider2D.enabled = true;
         collider2D.radius = 0.05f;
@@ -140,9 +135,11 @@ public class Item : MonoBehaviour
     private void Shake()
     {
         float newY = Mathf.Abs(Mathf.Sin(Time.time * Mathf.PI / ShakeDuration)) * ShakeY;
-        var newLocalPosition = transform.localPosition;
-        newLocalPosition.y = newY;
-        transform.localPosition = newLocalPosition;
+
+        var newPosition = initialPosition;
+        newPosition.y += newY;
+
+        transform.position = newPosition;
     }
     #endregion
 }
