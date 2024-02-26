@@ -64,7 +64,7 @@ public class RoomManager : MonoBehaviour
     }
     private void Start()
     {
-
+        m_Camera = GameObject.FindWithTag("MainCamera");
         enemyCount = 0;
         Enemy.OnEnemySpawned += HandleEnemySpawned;
         Enemy.OnEnemyDestroyed += HandleEnemyDestroyed;
@@ -96,11 +96,32 @@ public class RoomManager : MonoBehaviour
         Enemy.OnEnemySpawned -= HandleEnemySpawned;
         Enemy.OnEnemyDestroyed -= HandleEnemyDestroyed;
     }
+
     //방이 비활성화 되었는데 플레이어가 방에 입장하면 방의 상태를 변경
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        string roomName = gameObject.name.Substring(0, 8); 
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (roomName == "BossRoom")
+            {
+                if (Managers.Sound.BGM.clip.name != "Sound_Map_BossFight")
+                {
+                    Managers.Sound.StopBGM();
+                    Managers.Sound.BGM.clip = Managers.Resource.LoadAudioClips("Sound_Map_BossFight");
+                    Managers.Sound.PlayBGM();
+                }
+            }
+
+            else 
+            {
+                if (Managers.Sound.BGM.clip.name != "basementLoop")
+                {
+                    Managers.Sound.StopBGM();
+                    Managers.Sound.BGM.clip = Managers.Resource.LoadAudioClips("basementLoop");
+                    Managers.Sound.PlayBGM();
+                }
+            }
             Debug.Log(m_roomState);
             m_Camera.transform.position = transform.position + new Vector3(0, 0, -10);
             if (rend != null)

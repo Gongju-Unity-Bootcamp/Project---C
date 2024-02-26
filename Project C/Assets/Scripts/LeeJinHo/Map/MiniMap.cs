@@ -17,10 +17,6 @@ public class MiniMap : MonoBehaviour
         Init();
     }
 
-    private void Start()
-    { 
-
-    }
 
     private int m_Count = 0;
     void Init()

@@ -36,7 +36,6 @@ public class ResourceManager : MonoBehaviour
         Debug.Log(Define.Path.AUDIOCLIP.ToString());
         if (false == dic.ContainsKey(path)) 
         {
-        Debug.Log(path.ToString());
             T resource = Resources.Load<T>(path);
             dic.Add(path, resource);
             return dic[path];

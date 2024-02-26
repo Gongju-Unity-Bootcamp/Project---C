@@ -30,18 +30,21 @@ public class Wall : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Wall"))
         {
-            doorName = gameObject.name switch
+            if (transform.childCount == 0)
             {
-                "UpDoor" => "UpDoor",
-                "DownDoor" => "DownDoor",
-                "RightDoor" => "RightDoor",
-                "LeftDoor" => "LeftDoor",
-                "BossUpDoor" => "UpDoor",
-                "BossDownDoor" => "DownDoor",
-                "BossRightDoor" => "RightDoor",
-                "BossLeftDoor" => "LeftDoor"
-            };
-            Managers.Spawn.CreatDoor(doorName, transform);
+                gameObject.name = gameObject.name switch
+                {
+                    "UpDoor" => "UpDoor",
+                    "DownDoor" => "DownDoor",
+                    "RightDoor" => "RightDoor",
+                    "LeftDoor" => "LeftDoor",
+                    "BossUpDoor" => "UpDoor",
+                    "BossDownDoor" => "DownDoor",
+                    "BossRightDoor" => "RightDoor",
+                    "BossLeftDoor" => "LeftDoor"
+                };
+                Managers.Spawn.CreatDoor(name, transform);
+            }
         }
     }
 }

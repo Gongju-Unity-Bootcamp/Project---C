@@ -5,37 +5,17 @@ using UnityEngine;
 public class MoveRoom : MonoBehaviour
 {
     BoxCollider2D m_doorCol;
-    Transform m_cameraPo;
 
-    public Vector3 playerInPosition;
-    private GameObject room;
-    private RoomManager _roomManager;
+    public Transform playerInPosition;
     private GameObject subDoor;
     public void Init()
     {
-        Debug.Log($"{name} Init");
-        m_cameraPo = GameObject.Find("Main Camera").transform;
         m_doorCol = GetComponent<BoxCollider2D>();
-        room = transform.parent.gameObject;
-        _roomManager = room.GetComponent<RoomManager>();
+
+        playerInPosition = transform.Find("Position");
+
         Transform subDoor_Transfrom = transform.Find("Doors");
         subDoor = subDoor_Transfrom.gameObject;
-
-        switch (gameObject.name)
-        {
-            case "LeftDoor":
-                playerInPosition = Vector3.left;
-                break;
-            case "RightDoor":
-                playerInPosition = Vector3.right;
-                break;
-            case "UpDoor":
-                playerInPosition = Vector3.up;
-                break;
-            case "DownDoor":
-                playerInPosition = Vector3.down;
-                break;
-        }
     }
 
 
@@ -43,21 +23,24 @@ public class MoveRoom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.transform.position += playerInPosition * 1.5f;
-            //m_cameraPo.position = transform.parent.position + new Vector3(0, 0, -10);
+            collision.gameObject.transform.position = playerInPosition.position;
         }
+
     }
 
 
     private void Update()
     {
-        if (RoomManager.enemyCount == 0)
+        if (subDoor != null)
         {
-            subDoor.SetActive(false);
-        }
-        else
-        {
-            subDoor.SetActive(true);
+            if (RoomManager.enemyCount == 0)
+            {
+                subDoor.SetActive(false);
+            }
+            else
+            {
+                subDoor.SetActive(true);
+            }
         }
     }
 }

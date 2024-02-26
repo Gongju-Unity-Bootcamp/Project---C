@@ -53,7 +53,6 @@ public class MainMap : MonoBehaviour
             m_rooms[m_Count] = m_room.gameObject;
             RoomSetting(m_rooms[m_Count]);
             m_Count += 1;
-            
         }
         Debug.Log(criteriaVector);
 
@@ -117,7 +116,6 @@ public class MainMap : MonoBehaviour
     bool isXY;
     private void BossRoomSetting(Transform boss1, Transform boss2)
     {
-        Debug.Log("BossRoomSetting");
         float mapSizeX = 18f;
         float mapSizeY = 10f;
         foreach(Vector3 vector in m_testPosition)
@@ -139,7 +137,7 @@ public class MainMap : MonoBehaviour
                 isXY = true;
             }
         }
-        Debug.Log("°è»ê ³¡");
+
         Vector3 plusVector = isXY switch
         {
             true => criteriaVector.x > 0 ? new Vector3(mapSizeX, 0, 0) : new Vector3(-mapSizeX, 0, 0),

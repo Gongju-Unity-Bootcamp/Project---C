@@ -55,7 +55,7 @@ public class SpawnManager : MonoBehaviour
         GameObject go = Managers.Resource.Instantiate(name, trans);
         go.AddComponent<MoveRoom>().Init();
         Debug.Log("CreatDoor");
-        go.name = name;
+        //go.name = name;
         go.transform.parent = trans;
     }
 
