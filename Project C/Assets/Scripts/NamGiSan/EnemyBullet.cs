@@ -40,12 +40,13 @@ public class EnemyBullet : MonoBehaviour
         rb.velocity = Vector2.zero;
         animator.SetTrigger("pop");
         yield return new WaitForSeconds(0.5f);
-        BulletManager.instance.ReturnBulletPool(gameObject);
+        BulletManager.instance.ReturnBulletPool(gameObject);    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")||!collision.gameObject.CompareTag("PlayerBullet") || !collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("Player")||!collision.gameObject.CompareTag("PlayerBullet") || !collision.gameObject.CompareTag("EnemyBullet")
+            || collision.gameObject.CompareTag("Box"))
         {
             StartCoroutine(ResetBossBullet());
         }

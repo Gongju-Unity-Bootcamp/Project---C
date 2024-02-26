@@ -5,37 +5,15 @@ using UnityEngine;
 
 public class BossRoom : MonoBehaviour
 {
-    public GameObject boosSpawn;
-    public GameObject nextStage;
-    public static int enemyCount { get; set; }
-    public event Action<int> OnEnemyCountChange;
-    // Start is called before the first frame update
-    void Start()
+    private bool isCheck = false;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateEnemyCount()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemyCount = enemies.Length;
-        OnEnemyCountChange?.Invoke(enemyCount);
-
-        if(enemyCount == 0 )
+        if(collision.gameObject.CompareTag("Player") && !isCheck)
         {
-            BossRoomClear();
-        }
-    }
+            //ÄÆ¾À »ðÀÔ
 
-    private void BossRoomClear()
-    {
-        Instantiate(nextStage,transform.position - new Vector3(0f,4f,0f), Quaternion.identity);
-        Debug.Log("¾ÆÀÌÅÛ »ý¼º");
+            Managers.Sound.ChangeBGM("BGM_BossRoom");
+            isCheck = true;
+        }
     }
 }

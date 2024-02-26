@@ -44,7 +44,6 @@ public class RoomManager : MonoBehaviour
     public GameObject goldenBox;
 
     public GameObject[] spawnEnemy;
-    private bool isCheck = false;
     private bool isEnemy = false;
     private bool isOpenBox = false;
     //룸 상태 변경요청이 오면 처리
@@ -130,11 +129,15 @@ public class RoomManager : MonoBehaviour
             }
             RoomAppearance = RoomState.None;
 
-            if(!isCheck && spawnEnemy.Length>0)
+            if(!isEnemy)
             {
                 Debug.Log("몬스터생성");
-                int spawnNum = UnityEngine.Random.Range(0, spawnEnemy.Length);
-                Instantiate(spawnEnemy[spawnNum], transform.position, Quaternion.identity);
+                if(spawnEnemy.Length != 0)
+                {
+                    int spawnNum = UnityEngine.Random.Range(0, spawnEnemy.Length);
+                    Instantiate(spawnEnemy[spawnNum], transform.position, Quaternion.identity);
+                }
+                isEnemy = true;
             }
         }
     }
@@ -158,18 +161,10 @@ public class RoomManager : MonoBehaviour
             RoomAppearance = RoomState.Clear;
             GameObject player = GameObject.FindWithTag("Player");
             PlayerStats _playerStats = player.GetComponent<PlayerStats>();
-            isEnemy = false;
             _playerStats.ClearRoom();
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("적스폰중");
-            isEnemy = true;
-        }
-    }
+
     //룸 상태가 변경되어 이벤트가 발생하면 실행할 메소드
     private void RoomAppearanceChanged(RoomState state)
     {
@@ -183,7 +178,6 @@ public class RoomManager : MonoBehaviour
                 break;
             case RoomState.Clear:
                 OpenDoor();
-                if(!isOpenBox)
                 DropBox();
                 break;
             default:
@@ -194,7 +188,7 @@ public class RoomManager : MonoBehaviour
     [Obsolete("드랍확률 확인하세요. Goldenbox: 7, NormalBox: 21")]
     private void DropBox()
     {
-        if(isOpenBox)
+        if(!isOpenBox)
         {
             int randomNumber = new System.Random().Next(100);
 
