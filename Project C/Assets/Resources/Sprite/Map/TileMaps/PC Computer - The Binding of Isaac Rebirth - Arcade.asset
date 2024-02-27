@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: basement_TileMap_44
+  m_Name: PC Computer - The Binding of Isaac Rebirth - Arcade
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1273824834, guid: 90d5c7085ceb8fe45a962f1736833f90, type: 3}
-  m_Color: {r: 0.9622642, g: 0.7462086, b: 0.7462086, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 99a7573921ffe5f458cd66c015050601, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
