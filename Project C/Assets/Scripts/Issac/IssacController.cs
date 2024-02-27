@@ -76,31 +76,33 @@ public class IsaacController : MonoBehaviour
 
     void Update()
     {
-        _headAnimator.SetBool("Up", Input.GetKey(KeyCode.UpArrow));
-        _headAnimator.SetBool("Down", Input.GetKey(KeyCode.DownArrow));
-        _headAnimator.SetBool("Left", Input.GetKey(KeyCode.LeftArrow));
-        _headAnimator.SetBool("Right", Input.GetKey(KeyCode.RightArrow));
+        UpdateHeadAnimator();
+        UpdateBodyAnimator();
 
-        _bodyAnimator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
-        _bodyAnimator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+        Move();
 
-        PlayerMove();
+        Attack();
 
-        if (_isAttack == false)
-        {
-            AttackDirection();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            UseBomb();
-        }
+        UseBomb();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PickUpItem();
             // 주사위 사용으로 발생하는 리롤 효과 추가
         }
     }
-
+    public void UpdateHeadAnimator()
+    {
+        _headAnimator.SetBool("Up", Input.GetKey(KeyCode.UpArrow));
+        _headAnimator.SetBool("Down", Input.GetKey(KeyCode.DownArrow));
+        _headAnimator.SetBool("Left", Input.GetKey(KeyCode.LeftArrow));
+        _headAnimator.SetBool("Right", Input.GetKey(KeyCode.RightArrow));
+    }
+    public void UpdateBodyAnimator()
+    {
+        _bodyAnimator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        _bodyAnimator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+    }
     #region 피격, 사망, 아이템 픽업 상태 구현
     public void GetHit()
     {
@@ -170,11 +172,9 @@ public class IsaacController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // 주사위 스프라이트를 머리 위에 띄움
             _pickupSpriteRenderer.sprite = DiceSprite;
         }
         yield return new WaitForSeconds(1.0f);
-        // 애니메이터를 비활성화하여 스프라이트 랜더러가 표시되도록 수정한다
         _totalAnimator.enabled = false;
 
         _head.gameObject.SetActive(true);
@@ -191,13 +191,20 @@ public class IsaacController : MonoBehaviour
     #endregion
     public void UseBomb()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Bomb();
+        }
+    }
+    public void Bomb()
+    {
         if (playerStats.bomb > 0)
         {
             playerStats.bomb--;
             Instantiate(BombPrefab, transform.position, Quaternion.identity);
         }
     }
-    public void PlayerMove()
+    public void Move()
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         _vertical = Input.GetAxisRaw("Vertical");
@@ -250,6 +257,13 @@ public class IsaacController : MonoBehaviour
             }
         }
     }
+    public void Attack()
+    {
+        if (_isAttack == false)
+        {
+            AttackDirection();
+        }
+    }
     public void AttackDirection()
     {
         Vector2 ranVec = new Vector2(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
@@ -270,7 +284,7 @@ public class IsaacController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            FrontBackBullet(Vector2.up + ranVec);
+            FrontBackBullet(Vector2.up);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -278,14 +292,14 @@ public class IsaacController : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            ShootBullet(Vector2.right + ranVec);
+            LeftRightBullet(Vector2.right + ranVec);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            ShootBullet(Vector2.left + ranVec);
+            LeftRightBullet(Vector2.left + ranVec);
         }
     }
-    public void ShootBullet(Vector2 direction)
+    public void LeftRightBullet(Vector2 direction)
     {
         _isAttack = true;
         Managers.Sound.EffectSoundChange("Sound_Player_AttackTears");
@@ -296,7 +310,6 @@ public class IsaacController : MonoBehaviour
         _playerBullet = PlayerBulletPool.instance.Pool.Get();
         _playerBullet.transform.position = _head.transform.position;
 
-        Debug.Log("눈물 레이어 변경");
         _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
 
@@ -307,17 +320,20 @@ public class IsaacController : MonoBehaviour
         _isAttack = true;
         Managers.Sound.EffectSoundChange("Sound_Player_AttackTears");
 
+        int orderInLayer;
         Transform selectedFirePoint = _useFirstPoint ? _firePoint1 : _firePoint2;
         _useFirstPoint = !_useFirstPoint;
 
         _playerBullet = PlayerBulletPool.instance.Pool.Get();
         _playerBullet.transform.position = selectedFirePoint.position;
-        Debug.Log("번갈아가며 눈물 발사");
         if (direction == Vector2.up)
         {
-            Debug.Log("위쪽 공격");
-            int orderInLayer = 3;
+            orderInLayer = 3;
             _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+        }
+        else
+        {
+            orderInLayer = 6;
         }
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
 
