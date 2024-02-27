@@ -84,7 +84,7 @@ public class PauseMenu : MonoBehaviour
         if (pauseActive == true)
         {
             pauseActive = false;
-            SceneManager.LoadScene(0);  // 메인메뉴로 이동
+            SceneManager.LoadScene(2);  // 메인메뉴로 이동
         }
     }
 
@@ -103,4 +103,6 @@ public class PauseMenu : MonoBehaviour
         Screen.SetResolution(1920, 1080, false);
         Debug.Log("풀스크린OFF");
     }
+
+
 }

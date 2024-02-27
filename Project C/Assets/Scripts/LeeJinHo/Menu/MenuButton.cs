@@ -21,7 +21,7 @@ public class MenuButton : MonoBehaviour
 
         if(gameObject.name.Equals("EndButton"))
         {
-            //Application.Quit();
+            Application.Quit();
         }
     }
 }
