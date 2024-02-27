@@ -14,7 +14,6 @@ public class MonstroController : MonoBehaviour
 
     public Transform bulletPoint;
     [SerializeField] private float shockwaveTime = 0.75f;
-
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
@@ -154,6 +153,8 @@ public class MonstroController : MonoBehaviour
                     yield return null;
                 }
                 transform.position = new Vector2(targetPos.x, targetPos.y); // 완전한 착지
+                Managers.Sound.EffectSoundChange("Sound_Enemy_BossDiveAttack");
+                // audio Dive
 
                 int spawnBullet = Random.Range(30, 35);
 
@@ -187,6 +188,8 @@ public class MonstroController : MonoBehaviour
     IEnumerator attackReady()
     {
         animaotr.SetTrigger("SpitReady");
+        Managers.Sound.EffectSoundChange("Sound_Enemy_BossIdle");
+        //Idle audio
         yield return new WaitForSeconds(1f);
 
         int randomJump = Random.Range(0, 2);
@@ -216,7 +219,8 @@ public class MonstroController : MonoBehaviour
     {
         animaotr.SetTrigger("Spit");
         yield return new WaitForSeconds(1.0f);  // 원거리 공격 전 대기 동작
-        
+        Managers.Sound.EffectSoundChange("Sound_Enemy_BossAttack");
+        //audio attack
         int spawnBullet = Random.Range(30, 35);
 
         while (true)

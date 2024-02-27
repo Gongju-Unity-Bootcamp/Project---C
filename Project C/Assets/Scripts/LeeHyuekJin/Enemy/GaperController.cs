@@ -9,7 +9,6 @@ public class GaperController : MonoBehaviour
     private new SpriteRenderer renderer;
     private Animator _animator;
     private Rigidbody2D _rb;
-    private AudioSource _audioSource;   
     
     private Vector2 direction;
     
@@ -24,7 +23,6 @@ public class GaperController : MonoBehaviour
         renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
-        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -33,6 +31,7 @@ public class GaperController : MonoBehaviour
        
         if (!OnAttak && distanceToPlayer < detectionRange)
         {
+            StartCoroutine("AttakSound");
             _animator.SetTrigger("OnHit");
             OnAttak = true;
             Move();
@@ -55,6 +54,14 @@ public class GaperController : MonoBehaviour
         }
     }
 
+    IEnumerator AttakSound()
+    {
+        while (true)
+        {
+            Managers.Sound.EffectSoundChange("Sound_Enemy_GaperAttak");
+            yield return new WaitForSeconds(3f);
+        }
+    }
     private void FixedUpdate()
     {
         Flip();
@@ -69,7 +76,6 @@ public class GaperController : MonoBehaviour
     }
     private void Move()
     {
-        _audioSource.Play();
         direction = player.transform.position - transform.position;
         _rb.velocity = direction.normalized * moveSpeed;
     }

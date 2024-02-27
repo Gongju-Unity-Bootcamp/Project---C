@@ -13,9 +13,12 @@ public class MoveRoom : MonoBehaviour
         m_doorCol = GetComponent<BoxCollider2D>();
 
         playerInPosition = transform.Find("Position");
-
-        Transform subDoor_Transfrom = transform.Find("Doors");
-        subDoor = subDoor_Transfrom.gameObject;
+        string name = gameObject.name.Substring(0, 4);
+        if (name != "Boss")
+        {
+            Transform subDoor_Transfrom = transform.Find("Doors");
+            subDoor = subDoor_Transfrom.gameObject;
+        }
     }
 
 
@@ -24,6 +27,8 @@ public class MoveRoom : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.position = playerInPosition.position;
+            Managers.Sound.EffectSoundChange("Sound_Map_DoorClose");
+            
         }
 
     }
@@ -36,10 +41,12 @@ public class MoveRoom : MonoBehaviour
             if (RoomManager.enemyCount == 0)
             {
                 subDoor.SetActive(false);
+                
             }
             else
             {
                 subDoor.SetActive(true);
+                
             }
         }
     }

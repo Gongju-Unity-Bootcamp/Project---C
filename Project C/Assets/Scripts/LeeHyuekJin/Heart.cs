@@ -11,15 +11,9 @@ public class Heart : MonoBehaviour
 {
     public HeartType heartType;
     private PlayerStats playerStats;
-    private AudioSource audio;
-    private Collider2D collider2D;
-    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     private void Start()
     {
-        audio = GetComponent<AudioSource>();
-        collider2D = GetComponent<Collider2D>();
-        spriteRenderer= GetComponent<SpriteRenderer>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
     }
 
@@ -35,17 +29,9 @@ public class Heart : MonoBehaviour
             {
                 playerStats.GetHp(2);
             }
-            collider2D.enabled = false;
-            spriteRenderer.enabled = false;
-            audio.Play();
-            Invoke("Destroyed", 1f);
+            Managers.Sound.EffectSoundChange("Item_Get_ConsumableItem");
+            Destroy(gameObject);
         }
     }
 
-    private void Destroyed()
-    {
-        Destroy(gameObject);
-    }
-
-    
 }

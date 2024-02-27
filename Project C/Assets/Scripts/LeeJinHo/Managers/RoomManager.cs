@@ -175,9 +175,6 @@ public class RoomManager : MonoBehaviour
         else if (enemyCount == 0 && isEnemy)
         {
             RoomAppearance = RoomState.Clear;
-            GameObject player = GameObject.FindWithTag("Player");
-            PlayerStats _playerStats = player.GetComponent<PlayerStats>();
-            _playerStats.ClearRoom();
         }
     }
 
@@ -222,12 +219,15 @@ public class RoomManager : MonoBehaviour
                     Instantiate(normalBox, transform.position, Quaternion.identity);
                 }
             }
+            GameObject player = GameObject.FindWithTag("Player");
+            PlayerStats _playerStats = player.GetComponent<PlayerStats>();
+            _playerStats.ClearRoom();
         }
+
         isOpenBox = true;
     }
     private void OpenDoor()
     {
-
         doors = transform.GetComponentsInChildren<Transform>()
                .Where(child => child.CompareTag("Door"))
                .Select(child => child.gameObject)
@@ -264,5 +264,6 @@ public class RoomManager : MonoBehaviour
         {
             doorColliders[i].isTrigger = true;
         }
+        
     }
 }
