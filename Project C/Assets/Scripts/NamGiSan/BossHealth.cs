@@ -104,13 +104,13 @@ public class BossHealth : MonoBehaviour
 
     private void DistroyBoss()
     {
+        GameObject BloodExprosion = transform.GetChild(3).gameObject;
+        BloodExprosion.SetActive(true);
         Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.parent.position);
         Managers.UI.BossHp.SetActive(false);
-        
-        
+
+
         Destroy(gameObject);
-        
-        
     }  
 
 
