@@ -20,27 +20,29 @@ public class DataManager : MonoBehaviour
 
     public void Init()
     {
-        // Item 데이터 로드
-        string itemPath = Path.Combine(Application.streamingAssetsPath, "Data", "Item.csv");
-        Item = ParseToDict<ItemID, ItemData>(itemPath, data => data.Id);
+#if UNITY_EDITOR
+        Item = ParseToDict<ItemID, ItemData>("Assets/Resources/Data/Item.csv", data => data.Id);
+        Sound = ParseToDict<SoundID, SoundData>("Assets/Resources/Data/Sound.csv", data => data.Id);
+#else
+        TextAsset itemCSV = Resources.Load<TextAsset>("Data/Item");
+        Debug.Log(itemCSV);
+        Item = ParseToDict<ItemID, ItemData>(itemCSV.text, data => data.Id);
 
-        // Sound 데이터 로드
-        string soundPath = Path.Combine(Application.streamingAssetsPath, "Data", "Sound.csv");
-        Sound = ParseToDict<SoundID, SoundData>(soundPath, data => data.Id);
+        TextAsset soundCSV = Resources.Load<TextAsset>("Data/Sound");
+        Debug.Log(soundCSV);
+        Sound = ParseToDict<SoundID, SoundData>(soundCSV.text, data => data.Id);
+#endif
 
-        Debug.Log("파싱완료");
     }
 
     private Dictionary<TKey, TItem> ParseToDict<TKey, TItem>([NotNull] string path, Func<TItem, TKey> KeySelector)
     {
-        // 에디터에서 실행 중이면 StreamingAssetsPath를 사용하여 읽고, 그 외에는 Application.dataPath를 사용
-#if UNITY_EDITOR
         string fullPath = path;
-#else
-        string fullPath = Path.Combine(Application.dataPath, "StreamingAssets", "Data", Path.GetFileName(path));
-#endif
-
+#if UNITY_EDITOR
         using (var reader = new StreamReader(fullPath))
+#else
+        using (var reader = new StringReader(fullPath))
+#endif
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
             return csv.GetRecords<TItem>().ToDictionary(KeySelector);

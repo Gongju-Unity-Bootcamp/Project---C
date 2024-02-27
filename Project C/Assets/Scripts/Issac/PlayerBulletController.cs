@@ -7,13 +7,16 @@ public class PlayerBulletController : MonoBehaviour
 {
     public IObjectPool<GameObject> Pool { get; set; }
 
+    // SpriteRenderer _bulletSprite;
     Rigidbody2D _bulletRbody;
     Animator _bulletAnimator;
     public float attakDamage;
     bool iscoroutine;
+    // int bulOrderInLayer = 6;
 
     void Start()
     {
+        // _bulletSprite = GetComponent<SpriteRenderer>();
         _bulletRbody = GetComponent<Rigidbody2D>();
         _bulletAnimator = GetComponent<Animator>();
     }
@@ -55,6 +58,8 @@ public class PlayerBulletController : MonoBehaviour
         _bulletAnimator.SetTrigger("Pop");
 
         yield return new WaitForSeconds(0.5f);
+        // _bulletSprite.sortingOrder = bulOrderInLayer;
+
         iscoroutine = false;
         Pool.Release(gameObject);
     }
@@ -77,6 +82,7 @@ public class PlayerBulletController : MonoBehaviour
         _bulletAnimator.SetTrigger("Pop");
 
         yield return new WaitForSeconds(0.5f);
+        // _bulletSprite.sortingOrder = bulOrderInLayer;
 
         iscoroutine = false;
         Pool.Release(gameObject);

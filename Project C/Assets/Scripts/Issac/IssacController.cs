@@ -172,6 +172,8 @@ public class IsaacController : MonoBehaviour
             _pickupSpriteRenderer.sprite = DiceSprite;
         }
         yield return new WaitForSeconds(1.0f);
+        // 애니메이터를 비활성화하여 스프라이트 랜더러가 표시되도록 수정한다
+        _totalAnimator.enabled = false;
 
         _head.gameObject.SetActive(true);
         _body.gameObject.SetActive(true);
@@ -272,12 +274,13 @@ public class IsaacController : MonoBehaviour
         _isAttack = true;
         Managers.Sound.EffectSoundChange("Sound_Player_AttackTears");
 
-        int orderInLayer = _isOrderInLayer ? 5 : 3;
+        int orderInLayer = _isOrderInLayer ? 6 : 3;
         _isOrderInLayer = !_isOrderInLayer;
 
-        _playerBullet = PlayerBulletPool.instance.Pool.Get(); // 오브젝트 풀링
+        _playerBullet = PlayerBulletPool.instance.Pool.Get();
         _playerBullet.transform.position = _head.transform.position;
 
+        Debug.Log("눈물 레이어 변경");
         _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
 
@@ -291,11 +294,12 @@ public class IsaacController : MonoBehaviour
         Transform selectedFirePoint = _useFirstPoint ? _firePoint1 : _firePoint2;
         _useFirstPoint = !_useFirstPoint;
 
-        _playerBullet = PlayerBulletPool.instance.Pool.Get(); // 오브젝트 풀링
+        _playerBullet = PlayerBulletPool.instance.Pool.Get();
         _playerBullet.transform.position = selectedFirePoint.position;
-
+        Debug.Log("번갈아가며 눈물 발사");
         if (direction == Vector2.up)
         {
+            Debug.Log("위쪽 공격");
             int orderInLayer = 3;
             _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         }
@@ -316,8 +320,12 @@ public class IsaacController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Item"))
         {
-            _pickupSpriteRenderer.sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
-            PickUpItem();
+            Item go = collision.transform.GetComponent<Item>();
+            if (go.itemType == ItemType.Active)
+            {
+                _pickupSpriteRenderer.sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
+                PickUpItem();
+            }
             Destroy(collision.gameObject);
         }
     }
