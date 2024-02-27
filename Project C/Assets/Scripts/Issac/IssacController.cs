@@ -13,10 +13,15 @@ public class IsaacController : MonoBehaviour
     public Sprite LeftHeadSprite;
     public Sprite RightHeadSprite;
     public Sprite DiceSprite;
+
     public GameObject BulletPrefab;
     public GameObject BombPrefab;
+
     public Transform _firePoint1;
     public Transform _firePoint2;
+
+    public RuntimeAnimatorController _deadAnimController;
+    public RuntimeAnimatorController _pickupAnimController;
 
     Transform _head;
     Transform _body;
@@ -141,6 +146,8 @@ public class IsaacController : MonoBehaviour
         _body.gameObject.SetActive(false);
 
         _total.gameObject.SetActive(true);
+
+        _totalAnimator.runtimeAnimatorController = _deadAnimController;
         _totalAnimator.enabled = true;
         _totalAnimator.Play("Dead");
         _isAttack = true;
@@ -157,7 +164,8 @@ public class IsaacController : MonoBehaviour
         _total.gameObject.SetActive(true);
         _pickup.gameObject.SetActive(true);
 
-        _totalSpriteRenderer.sprite = PickUpSprite;
+        PickUpAnim();
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // 주사위 스프라이트를 머리 위에 띄움
@@ -169,6 +177,12 @@ public class IsaacController : MonoBehaviour
         _body.gameObject.SetActive(true);
         _total.gameObject.SetActive(false);
         _pickup.gameObject.SetActive(false);
+    }
+    public void PickUpAnim()
+    {
+        _totalAnimator.enabled = true;
+        _totalAnimator.runtimeAnimatorController = _pickupAnimController;
+        _totalAnimator.Play("Pickup");
     }
     #endregion
     public void UseBomb()
