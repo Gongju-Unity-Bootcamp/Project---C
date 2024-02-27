@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1930388362, guid: 2569f56c2f118784eb4665cf782254a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   bloodPop: {fileID: 7248108769101199608, guid: 09b99e6970c7ef64885ecdc5127f874e, type: 3}
+  bloodPopoffset: 0
 --- !u!114 &4376078521322564123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3acd59e5a7107eb4bb49c632e0b420e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blood: {fileID: 7627540823390837481, guid: 0046b9df3aeaf534d95de519f863c42b, type: 3}
   heart:
   - {fileID: 1652427791571332555, guid: 3d85dafec2c70c84cae376850cdf1126, type: 3}
   - {fileID: 7751864998892106970, guid: 0c68fad5dd565e44394c299c70b1fc0d, type: 3}
