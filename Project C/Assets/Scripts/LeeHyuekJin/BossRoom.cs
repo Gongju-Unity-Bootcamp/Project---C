@@ -29,17 +29,9 @@ public class BossRoom : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        /*if (!isGetItem && roomManager.RoomAppearance == RoomState.Clear)
-        {
-            Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.position);
-            isGetItem = true;
-            Managers.UI.BossHp.SetActive(false);
-        }*/
-    }
     IEnumerator CreateBoss()
     {
+        Managers.Sound.EffectSoundChange("Sound_Map_BossIntro");
         cutScean.SetActive(true);
         yield return new WaitForSeconds(4.2f);
         cutScean.SetActive(false);
