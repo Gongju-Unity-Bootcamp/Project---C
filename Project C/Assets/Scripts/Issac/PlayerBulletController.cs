@@ -7,16 +7,13 @@ public class PlayerBulletController : MonoBehaviour
 {
     public IObjectPool<GameObject> Pool { get; set; }
 
-    // SpriteRenderer _bulletSprite;
     Rigidbody2D _bulletRbody;
     Animator _bulletAnimator;
     public float attakDamage;
     bool iscoroutine;
-    // int bulOrderInLayer = 6;
 
     void Start()
     {
-        // _bulletSprite = GetComponent<SpriteRenderer>();
         _bulletRbody = GetComponent<Rigidbody2D>();
         _bulletAnimator = GetComponent<Animator>();
     }
@@ -46,19 +43,17 @@ public class PlayerBulletController : MonoBehaviour
             enemyHealth.TakeDamage(attakDamage);
         }
         
-        StartCoroutine(OnColBullet());
+        StartCoroutine(OnColBulAnim());
     }
 
-    IEnumerator OnColBullet()
+    IEnumerator OnColBulAnim()
     {
         StopCoroutine("DestroyBulAnim");
 
-        Debug.Log("충돌 파괴");
         _bulletRbody.velocity = Vector2.zero;
         _bulletAnimator.SetTrigger("Pop");
 
         yield return new WaitForSeconds(0.5f);
-        // _bulletSprite.sortingOrder = bulOrderInLayer;
 
         iscoroutine = false;
         Pool.Release(gameObject);
@@ -69,7 +64,6 @@ public class PlayerBulletController : MonoBehaviour
         _bulletRbody.gravityScale = 0;
         float lifeTime = Managers.PlayerStats.bulletSurviveTime + 0.5f;
 
-        Debug.Log("사거리 코루틴 진입");
         yield return new WaitForSeconds(lifeTime - 0.6f);
         _bulletRbody.gravityScale = 5;
 
@@ -82,7 +76,6 @@ public class PlayerBulletController : MonoBehaviour
         _bulletAnimator.SetTrigger("Pop");
 
         yield return new WaitForSeconds(0.5f);
-        // _bulletSprite.sortingOrder = bulOrderInLayer;
 
         iscoroutine = false;
         Pool.Release(gameObject);
