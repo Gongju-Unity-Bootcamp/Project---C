@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UIElements;
@@ -43,7 +44,21 @@ public class ResourceManager : MonoBehaviour
         return dic[path];
     }
 
+    /*private string LoadFile(string fileName)
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
 
+        if (File.Exists(filePath))
+        {
+            string fileContent = File.ReadAllText(filePath);
+            return fileContent;
+        }
+        else
+        {
+            Debug.LogError("File not found: " + filePath);
+            return null;
+        }
+    }*/
     //게임 오브젝트 새로 생성시켜주는 메소드
     public GameObject Instantiate(string path, Transform parent = null)
     {
