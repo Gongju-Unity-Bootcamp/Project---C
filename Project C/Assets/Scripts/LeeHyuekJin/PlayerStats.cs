@@ -51,7 +51,7 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         hp = 8;
-        cost = 4;
+        cost = 3;
         key = 1;
         bomb = 1;
         playerAttackStats = 0;
@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour
 
         totalAttackDelayStats = 16 - 6 * Mathf.Sqrt((float)(attakSpeedMulti * (playerAttackDelayStats + attakSpeedAdd) * 1.3 + 1));
         attackDelayTime = totalAttackDelayStats * 0.05f;
-        if(attackDelayTime<0.1)
+        if(attackDelayTime < 0.1f)
         {
             attackDelayTime = 0.1f;
         }
@@ -100,6 +100,7 @@ public class PlayerStats : MonoBehaviour
     public void GetKey()
     {
         key++;
+        Debug.Log($"º¸À¯Å°: {key}");
     }
     public void UseKey()
     {
@@ -115,11 +116,16 @@ public class PlayerStats : MonoBehaviour
     }
     public void ClearRoom()
     {
-        cost++;
+        if(cost<3)
+        {
+            cost++;
+            _UIManager.UpdateCost(cost);
+        }
     }
     public void UseActiveItem()
     {
         cost = 0;
+        _UIManager.UpdateCost(cost);
     }
     public void TakeDamage()
     {

@@ -74,12 +74,13 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !gameObject.CompareTag("Box")) 
         {
+
             Debug.Log("æ∆¿Ã≈€»πµÊ");
             Managers.Sound.EffectSoundChange(AcquireSound);
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
-            _collider2D = GetComponent<Collider2D>();
-            transform.Rotate(90, 0, 0);
-            _collider2D.enabled = false;
+            
+
+            
             if (this.itemType == ItemType.Passive)
             {
                 playerStats.UpdateStats(AttakAdd, AttakMulti, AttakSpeedAdd, AttakSpeedMulti, Speed, Range);

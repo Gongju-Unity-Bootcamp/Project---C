@@ -100,6 +100,7 @@ public class BossHealth : MonoBehaviour
 
     private void DistroyBoss()
     {
+        Managers.Sound.EffectSoundChange("Boss_Death");
         Destroy(gameObject);
     }  
 

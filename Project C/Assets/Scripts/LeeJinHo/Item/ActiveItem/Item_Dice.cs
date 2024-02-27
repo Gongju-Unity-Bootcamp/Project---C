@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 class Item_Dice : MonoBehaviour, IItem
 {
     public IItem m_Iitem { get; set; }
     public ItemType Type { get; set; }
 
+    private PlayerStats playerStats;
+
+    private void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        Debug.Log($"보유 코스트수 : {playerStats.cost}");
+        if (Input.GetKey(KeyCode.Space) && playerStats.cost >= 3)
         {
             UsingItems();
         }
@@ -30,5 +36,7 @@ class Item_Dice : MonoBehaviour, IItem
                 Destroy(child.gameObject);
             }
         }
+        playerStats.UseActiveItem();
+        Debug.Log(playerStats.cost);
     }
 }

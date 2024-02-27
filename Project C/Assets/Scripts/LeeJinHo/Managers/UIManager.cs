@@ -29,16 +29,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text Range;
 
     [SerializeField] private Slider bossHPSlider;
+    [SerializeField] private Slider costSlider;
     public GameObject BossHp { get; set; }
+    public GameObject Cost { get; set; }
     private const int MAX_HP_BAR = 8;
     private int HpBar = MAX_HP_BAR - 1;
-
+    private GameObject fill;
     public void Init(PlayerStats playerStats)
     {
         UIController = GameObject.FindWithTag("UIController");
         Sprites = UIController.transform.Find("Sprites").gameObject;
         Texts   = UIController.transform.Find("Texts").gameObject;
         BossHp = UIController.transform.Find("BoosHp").gameObject;
+        Cost = UIController.transform.Find("Cost").gameObject;
 
         m_Coin = Texts.transform.Find("CoinText").GetComponent<Text>();
         m_Bomb = Texts.transform.Find("BombText").GetComponent<Text>();
@@ -56,8 +59,9 @@ public class UIManager : MonoBehaviour
         AttackCoolTime = Stats.transform.Find("cooltime").GetComponent<Text>();
         Speed = Stats.transform.Find("moveSpeed").GetComponent<Text>();
         Range = Stats.transform.Find("range").GetComponent<Text>();
-
+        fill = Cost.transform.GetChild(1).GetChild(0).gameObject;
         bossHPSlider = BossHp.GetComponent<Slider>();
+        costSlider = Cost.GetComponent<Slider>();
         for (int i = 0; i < MAX_HP_BAR; ++i)
         {
             GameObject go = m_PlayerHp.transform.Find($"Life ({i})").gameObject;
@@ -122,5 +126,27 @@ public class UIManager : MonoBehaviour
     public void UpdateBossHP(float currentHP, float maxHP)
     {
         bossHPSlider.value = Mathf.Clamp01(currentHP / maxHP);
+    }
+
+    public void UpdateCost(int cost)
+    {
+        fill.SetActive(true);
+        switch (cost)
+        {
+            case 0:
+                fill.SetActive(false);
+                break;
+            case 1:
+                costSlider.value = 0.161f;
+                break;
+            case 2:
+                costSlider.value = 0.504f;
+                break;
+            case 3:
+                costSlider.value = 0.952f;
+                break;
+
+
+        }
     }
 }
