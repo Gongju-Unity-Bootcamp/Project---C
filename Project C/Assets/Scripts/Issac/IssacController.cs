@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class IsaacController : MonoBehaviour
 {
@@ -251,7 +253,21 @@ public class IsaacController : MonoBehaviour
     public void AttackDirection()
     {
         Vector2 ranVec = new Vector2(Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 playerPosition = transform.position;
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            float deltaX = mousePosition.x - playerPosition.x;
+            float deltaY = mousePosition.y - playerPosition.y;
+
+            bool isHorizontal = Mathf.Abs(deltaX) > Mathf.Abs(deltaY);
+
+            Vector2 shootDirection = isHorizontal ? (deltaX > 0 ? Vector2.right : Vector2.left) : (deltaY > 0 ? Vector2.up : Vector2.down);
+
+            FrontBackBullet(shootDirection);
+        }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             FrontBackBullet(Vector2.up + ranVec);
