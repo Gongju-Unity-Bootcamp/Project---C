@@ -76,7 +76,7 @@ public class Item : MonoBehaviour
         {
 
             Debug.Log("æ∆¿Ã≈€»πµÊ");
-            Managers.Sound.EffectSoundChange(AcquireSound);
+            Managers.Sound.ChangeGetItemSound(AcquireSound);
             PlayerStats playerStats = collision.gameObject.GetComponent<PlayerStats>();
             
 

@@ -29,7 +29,7 @@ public class Heart : MonoBehaviour
             {
                 playerStats.GetHp(2);
             }
-            Managers.Sound.EffectSoundChange("Item_Get_ConsumableItem");
+            Managers.Sound.ChangeGetItemSound("Item_Get_ConsumableItem");
             Destroy(gameObject);
         }
     }
