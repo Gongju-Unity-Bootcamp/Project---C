@@ -83,8 +83,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseActive == true)
         {
-            pauseActive = false;
-            SceneManager.LoadScene(2);  // 메인메뉴로 이동
+            Application.Quit();
         }
     }
 

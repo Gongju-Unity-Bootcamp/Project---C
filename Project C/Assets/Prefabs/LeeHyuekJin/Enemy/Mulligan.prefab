@@ -332,5 +332,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 15
-  bloodPop: {fileID: 0}
+  bloodPop: {fileID: 6543012353865071247, guid: d53ce63be645d434f9788986a563ddbe, type: 3}
   bloodPopoffset: 0
