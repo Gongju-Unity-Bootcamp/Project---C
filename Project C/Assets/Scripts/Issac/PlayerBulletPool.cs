@@ -33,6 +33,8 @@ public class PlayerBulletPool : MonoBehaviour
         {
             PlayerBulletController bullet = CreatePooledItem().GetComponent<PlayerBulletController>();
             bullet.Pool.Release(bullet.gameObject);
+            // 생성한 오브젝트를 특정 게임 오브젝트의 자식으로 설정한다
+            bullet.transform.parent = GameObject.Find("IsaacPoolManager").transform;
         }
     }
 

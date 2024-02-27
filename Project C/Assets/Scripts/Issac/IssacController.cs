@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class IsaacController : MonoBehaviour
 {
@@ -326,15 +324,16 @@ public class IsaacController : MonoBehaviour
 
         _playerBullet = PlayerBulletPool.instance.Pool.Get();
         _playerBullet.transform.position = selectedFirePoint.position;
+
         if (direction == Vector2.up)
         {
             orderInLayer = 3;
-            _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         }
         else
         {
             orderInLayer = 6;
         }
+        _playerBullet.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
         _playerBullet.GetComponent<Rigidbody2D>().velocity = direction * BulletSpeed;
 
         Invoke("AttackCoolTime", playerStats.attackDelayTime);
@@ -353,7 +352,7 @@ public class IsaacController : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             Item go = collision.transform.GetComponent<Item>();
-            if (go.itemType == ItemType.Active)
+            if (go.itemType == ItemType.Active || go.itemType == ItemType.Passive)
             {
                 _pickupSpriteRenderer.sprite = collision.gameObject.GetComponent<SpriteRenderer>().sprite;
                 PickUpItem();

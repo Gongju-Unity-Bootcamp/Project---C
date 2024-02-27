@@ -34,6 +34,7 @@ public class EnemyBulletPoolManager : MonoBehaviour
         {
             EnemyBullet bullet = CreatePooledItem().GetComponent<EnemyBullet>();
             bullet.Pool.Release(bullet.gameObject);
+            bullet.transform.parent = GameObject.Find("EnemyBulletPool").transform;
         }
     }
 
