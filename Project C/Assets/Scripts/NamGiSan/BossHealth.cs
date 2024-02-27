@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
@@ -93,15 +94,23 @@ public class BossHealth : MonoBehaviour
         _animator.SetTrigger("Dead");
         StartCoroutine(BloodEffect());
         yield return new WaitForSeconds(1.75f);
-        _sprite.color = new Color(0, 0, 0, 0);    
+        _sprite.color = new Color(0, 0, 0, 0);
 
+        Managers.Spawn.SpawnBox(ItemType.GoldenBox, new Vector3(0, 0, 0));
+        Managers.UI.BossHp.SetActive(false);
+        Managers.Sound.EffectSoundChange("Boss_Death");
         Invoke("DistroyBoss", 2.1f);
     }
 
     private void DistroyBoss()
     {
-        Managers.Sound.EffectSoundChange("Boss_Death");
+        Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.parent.position);
+        Managers.UI.BossHp.SetActive(false);
+        
+        
         Destroy(gameObject);
+        
+        
     }  
 
 
