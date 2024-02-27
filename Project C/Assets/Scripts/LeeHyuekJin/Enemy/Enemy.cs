@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject blood;
     public GameObject[] heart;
     public static event Action OnEnemySpawned;
     public static event Action OnEnemyDestroyed;
@@ -20,10 +19,6 @@ public class Enemy : MonoBehaviour
         if (Application.isPlaying)
         {
             int randomNum = UnityEngine.Random.Range(0, 100);
-            if (blood != null)
-            {
-                Instantiate(blood, transform.position, Quaternion.identity);
-            }
             if(heart.Length > 0 && randomNum < 3)
             {
                 Instantiate(heart[0], transform.position, Quaternion.identity);
