@@ -41,6 +41,7 @@ public class Box : MonoBehaviour
                 id = transform.GetComponent<Item>().Id;
                 BoxOpen(itemType);
             }
+            Managers.Sound.EffectSoundChange("Item_Use_Key");
         }
     }
 
@@ -48,5 +49,6 @@ public class Box : MonoBehaviour
     {
         m_isCheck = true;
         Managers.Spawn.SpawnBox(type, transform.position);
+        Debug.Log($"스폰위치{transform.position}");
     }
 }

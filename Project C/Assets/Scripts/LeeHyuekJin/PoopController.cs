@@ -8,8 +8,10 @@ public class PoopController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private int hitCount = 0;
     private Collider2D _collider2D;
+    private AudioSource _audioSource;
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider2D = GetComponent<Collider2D>();
     }
@@ -21,6 +23,7 @@ public class PoopController : MonoBehaviour
             hitCount++;
             if (hitCount == poopSprite.Length)
             {
+                _audioSource.Play();
                 OffCollider();
             }
         }
