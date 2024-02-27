@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class BossHealth : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class BossHealth : MonoBehaviour
     private PlayerStats _playerStats;
     private Vector2 savePos;
     private float maxHp;
+
+
     void Start()
     {
         maxHp = hp;
@@ -29,7 +32,6 @@ public class BossHealth : MonoBehaviour
         _col = GetComponent<Collider2D>();
         _animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -43,6 +45,7 @@ public class BossHealth : MonoBehaviour
             Knockback(collision.transform.position);
         }
     }
+
 
     private void Knockback(Vector3 playerPosition)
     {
@@ -107,10 +110,10 @@ public class BossHealth : MonoBehaviour
     {
         Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.parent.position);
         Managers.UI.BossHp.SetActive(false);
-
+        GameObject go = GameObject.Find("BoosRoom (1)");
+        Managers.Spawn.CreatFlo("NextLevelDoor", go.transform);
 
         Destroy(gameObject);
     }  
-
 
 }

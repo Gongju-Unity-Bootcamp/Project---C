@@ -17,9 +17,9 @@ public class SoundManager : MonoBehaviour
         SoundEffect = gameObject.AddComponent<AudioSource>();
         BossSound = gameObject.AddComponent <AudioSource>();
         GetItemSound = gameObject.AddComponent <AudioSource>();
-        MugicQ();
+        BGMMugicStart();
     }
-    private void MugicQ()
+    private void BGMMugicStart()
     {
         string sd = "basementLoop";
         BGM.clip = Managers.Resource.LoadAudioClips("basementLoop");

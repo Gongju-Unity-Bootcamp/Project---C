@@ -8,10 +8,6 @@ using Util.pool;
 
 public class SpawnManager : MonoBehaviour
 {
-    //ObjectPool<GameObject> ItemPool;
-    //ObjectPool<AudioClip> ClipPool;
-    //ObjectPool<AnimationClip> AinmClip;
-
     public Stack<GameObject> m_Items;
 
     public void Init()
@@ -51,12 +47,16 @@ public class SpawnManager : MonoBehaviour
 
     public void CreatDoor(string name, Transform trans)
     {
-        Debug.Log(name,trans);
         GameObject go = Managers.Resource.Instantiate(name, trans);
         go.AddComponent<MoveRoom>().Init();
-        Debug.Log("CreatDoor");
-        //go.name = name;
         go.transform.parent = trans;
+    }
+
+    public void CreatFlo(string name, Transform trans)
+    {
+
+        GameObject go = Managers.Resource.Instantiate(name, trans);
+
     }
 
 }
