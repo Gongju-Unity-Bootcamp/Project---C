@@ -131,10 +131,15 @@ public class PlayerStats : MonoBehaviour
     {
         hp--;
         _UIManager.HPController(-1);
+        Debug.Log($"현재hp : {hp}");
     }
     public void GetHp(int amount)
     {
         hp += amount;
+
         _UIManager.HPController(amount);
+        Debug.Log($"현재hp : {hp}");
+        if (hp > 8)
+            hp = 8;
     }
 }

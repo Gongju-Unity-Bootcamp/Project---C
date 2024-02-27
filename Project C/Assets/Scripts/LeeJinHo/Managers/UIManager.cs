@@ -106,21 +106,19 @@ public class UIManager : MonoBehaviour
         {
             case -1:
                 m_HpImage[HpBar].SetActive(false);
+                HpBar--;
                 break;
             case 1:
                 HpBar++;
                 m_HpImage[HpBar].SetActive(true);
-                HpBar--;
                 break;
             case 2:
                 HpBar++;
                 m_HpImage[HpBar].SetActive(true);
                 HpBar++;
                 m_HpImage[HpBar].SetActive(true);
-                HpBar -= 2;
                 break;
         }
-        HpBar += hp;
     }
 
     public void UpdateBossHP(float currentHP, float maxHP)
