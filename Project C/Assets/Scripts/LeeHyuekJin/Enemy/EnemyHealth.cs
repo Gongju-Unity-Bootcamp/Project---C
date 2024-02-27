@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private GameObject _player;
     private PlayerStats _playerStats;
     public GameObject bloodPop;
+    public float bloodPopoffset;
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
@@ -32,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
             Collider2D collider = GetComponent<Collider2D>();
             if(bloodPop != null)
             {
-                Instantiate(bloodPop, transform.position, Quaternion.identity);
+                Instantiate(bloodPop, transform.position + Vector3.up * bloodPopoffset, transform.rotation);
             }
             Destroy(gameObject);
             //collider.enabled = false;
