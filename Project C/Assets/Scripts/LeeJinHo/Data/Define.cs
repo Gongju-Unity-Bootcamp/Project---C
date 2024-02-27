@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace Util
 {
-    public class Define : MonoBehaviour
+    public class Define
     {
         public static class Path
         {
             public const string PREFAB    = "Prefab/";
-            //public const string PLAYER  = "Assets/Resource/Player/";
             public const string SPRITE    = "Sprite/";
             public const string AUDIOCLIP = "AudioClip/";
             public const string ANIM      = "Anim/";
+
         }
 
         public static class Layer

@@ -1,7 +1,6 @@
 using CsvHelper;
 using System;
 using System.Collections.Generic;
-//using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
@@ -12,26 +11,39 @@ public class DataManager : MonoBehaviour
 {
     public Dictionary<ItemID, ItemData> Item { get; private set; }
     public Dictionary<IsaacID, IsaacData> Isaac { get; private set; }
-    public Dictionary<SoundID, SoundData> Sound { get; private set; } 
+    public Dictionary<SoundID, SoundData> Sound { get; private set; }
 
     private void Awake()
     {
         Init();
     }
+
     public void Init()
     {
-        Item = ParseToDict<ItemID, ItemData>("Assets/Resources/Data/Item.csv", data => data.Id);
-        //Isaac = ParseToDict<IsaacID, IsaacData>("Assets/Resources/Data/Isaac.csv", data => data.ID);
-        Sound = ParseToDict<SoundID, SoundData>("Assets/Resources/Data/Sound.csv", data => data.Id);
+        // Item 데이터 로드
+        string itemPath = Path.Combine(Application.streamingAssetsPath, "Data", "Item.csv");
+        Item = ParseToDict<ItemID, ItemData>(itemPath, data => data.Id);
+
+        // Sound 데이터 로드
+        string soundPath = Path.Combine(Application.streamingAssetsPath, "Data", "Sound.csv");
+        Sound = ParseToDict<SoundID, SoundData>(soundPath, data => data.Id);
+
         Debug.Log("파싱완료");
     }
 
-    private Dictionary<TKey, TItem> ParseToDict<TKey, TItem>([NotNull] string path,Func<TItem, TKey> KeySelector)
+    private Dictionary<TKey, TItem> ParseToDict<TKey, TItem>([NotNull] string path, Func<TItem, TKey> KeySelector)
     {
-        using var reader = new StreamReader(path);
+        // 에디터에서 실행 중이면 StreamingAssetsPath를 사용하여 읽고, 그 외에는 Application.dataPath를 사용
+#if UNITY_EDITOR
+        string fullPath = path;
+#else
+        string fullPath = Path.Combine(Application.dataPath, "StreamingAssets", "Data", Path.GetFileName(path));
+#endif
 
-        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-        return csv.GetRecords<TItem>().ToDictionary(KeySelector);
+        using (var reader = new StreamReader(fullPath))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        {
+            return csv.GetRecords<TItem>().ToDictionary(KeySelector);
+        }
     }
 }
