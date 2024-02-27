@@ -24,6 +24,7 @@ public class PooterController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.Play();
     }
     private void Update()
     {
@@ -50,6 +51,7 @@ public class PooterController : MonoBehaviour
     {
         animator.SetTrigger("OnAttack");
         yield return new WaitForSeconds(0.4f);
+        Managers.Sound.EffectSoundChange("Sound_Enemy_PooterAttak");
         Vector3 direction = (player.transform.position - transform.position).normalized;
         var Bullet = EnemyBulletPoolManager.instance.Pool.Get();
         Bullet.transform.position = transform.position;

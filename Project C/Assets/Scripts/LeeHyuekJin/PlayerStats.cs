@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour
 
         totalAttackDelayStats = 16 - 6 * Mathf.Sqrt((float)(attakSpeedMulti * (playerAttackDelayStats + attakSpeedAdd) * 1.3 + 1));
         attackDelayTime = totalAttackDelayStats * 0.05f;
-        if(attackDelayTime < 0.1f)
+        if(attackDelayTime < 0.2f)
         {
             attackDelayTime = 0.1f;
         }

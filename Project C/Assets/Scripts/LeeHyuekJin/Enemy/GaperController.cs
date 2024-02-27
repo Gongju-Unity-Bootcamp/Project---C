@@ -16,13 +16,14 @@ public class GaperController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     
     private bool OnAttak = false;
-
+    private AudioSource audio;
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
         renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -52,13 +53,14 @@ public class GaperController : MonoBehaviour
                 _animator.SetTrigger("MoveSide");
             }
         }
+        
     }
 
     IEnumerator AttakSound()
     {
         while (true)
         {
-            Managers.Sound.EffectSoundChange("Sound_Enemy_GaperAttak");
+            audio.Play();
             yield return new WaitForSeconds(3f);
         }
     }
