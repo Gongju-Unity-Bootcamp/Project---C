@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9147781248013292714}
   - component: {fileID: 811293566806650694}
   - component: {fileID: 2046440717527536767}
+  - component: {fileID: 5849626321927733865}
   m_Layer: 6
   m_Name: Isaac
   m_TagString: Player
@@ -141,6 +142,18 @@ MonoBehaviour:
   _firePoint2: {fileID: 2932680480615577248}
   _deadAnimController: {fileID: 9100000, guid: 06ba0edb3623eee41946fe006ee580b4, type: 2}
   _pickupAnimController: {fileID: 9100000, guid: f0a38884fd2496d4b981a3fe9b0247e1, type: 2}
+--- !u!114 &5849626321927733865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914630049908892150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eaaa230e647b7c4ebb2a1d3f6549370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1062275345972140597
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +228,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: -980467746, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -357,7 +370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: -712402503, guid: 496302c857a234e449604aa5105bfa2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

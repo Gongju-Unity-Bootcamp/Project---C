@@ -19,6 +19,7 @@ class Item_Dice : MonoBehaviour, IItem
         Debug.Log($"보유 코스트수 : {playerStats.cost}");
         if (Input.GetKey(KeyCode.Space) && playerStats.cost >= 3)
         {
+            Managers.Sound.EffectSoundChange("Item_Use_Dice");
             UsingItems();
         }
     }
@@ -28,11 +29,11 @@ class Item_Dice : MonoBehaviour, IItem
         Transform go = GameObject.Find(PlayerPrefs.GetString("gameObject")).transform;
 
         Debug.Log(go.name);
-        foreach(Transform child in go)
+        foreach (Transform child in go)
         {
-            if(child.CompareTag("Item"))
+            if (child.CompareTag("Item"))
             {
-                Managers.Spawn.SpawnBox(ItemType.GoldenBox, go.position);
+                Managers.Spawn.SpawnBox(ItemType.GoldenBox, child.position + Vector3.down);
                 Destroy(child.gameObject);
             }
         }
