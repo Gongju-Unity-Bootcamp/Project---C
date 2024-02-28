@@ -33,7 +33,7 @@ public class BombController : MonoBehaviour
             if(collider.CompareTag("Enemy"))
             {
                 EnemyHealth _EnemyHp = collider.GetComponent<EnemyHealth>();
-                _EnemyHp.TakeDamage(10);
+                _EnemyHp.TakeDamage(20);
             }
             if(collider.CompareTag("Player"))
             {

@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,7 +12,8 @@ public class NextstageTest : MonoBehaviour
 
     void Start()
     {
-        transform.position += new Vector3(0, 2, 0);
+        transform.position += new Vector3(0, 2.5f, 0);
+        child1 = transform.Find("BasementDoorOpen").gameObject;
         child2 = transform.Find("BasementDoorGetIn").gameObject;
         child3 = transform.Find("BasementDoorGetIn2").gameObject;
 
@@ -26,6 +26,7 @@ public class NextstageTest : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             child2.SetActive(true);
+            child1.SetActive(false);
             child3.SetActive(true);
             StartCoroutine(NextScene());
         }
@@ -33,8 +34,8 @@ public class NextstageTest : MonoBehaviour
 
     IEnumerator NextScene()
     {
-
         yield return new WaitForSeconds(1.1f);
+        Managers.Sound.ChangeBGM("ClearSound");
         SceneManager.LoadScene(2);
 
     }
