@@ -108,11 +108,13 @@ public class BossHealth : MonoBehaviour
 
     private void DistroyBoss()
     {
-        Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.parent.position);
+        //Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.parent.position);
         Managers.UI.BossHp.SetActive(false);
-        GameObject go = GameObject.Find("BoosRoom (1)");
-        Managers.Spawn.CreatFlo("NextLevelDoor", go.transform);
-
+        GameObject go = GameObject.Find("RandomMap");
+        GameObject ggo = go.transform.Find("BossRoom (1)").gameObject;
+        Debug.Log(go.name);
+        Managers.Spawn.CreatFlo("NextLevelDoor", ggo.transform);
+        Debug.Log(go.name);
         Destroy(gameObject);
     }  
 
