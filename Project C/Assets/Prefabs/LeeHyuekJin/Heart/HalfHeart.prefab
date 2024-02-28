@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6267433435035180033}
   - component: {fileID: 4972323792305745320}
   - component: {fileID: 2119501537746105155}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HalfHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4b5cd2d3e701a4e9f121d00ee1645a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartType: 1
+  heartType: 0
 --- !u!50 &2119501537746105155
 Rigidbody2D:
   serializedVersion: 4

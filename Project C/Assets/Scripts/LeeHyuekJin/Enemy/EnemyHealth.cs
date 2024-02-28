@@ -30,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
         hp -= damage;
         if(hp <= 0)
         {
+            Managers.Sound.BossSoundChange("Boss_Death");
             Collider2D collider = GetComponent<Collider2D>();
             if(bloodPop != null)
             {

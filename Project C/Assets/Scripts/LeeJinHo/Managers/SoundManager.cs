@@ -58,6 +58,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBGM()
     {
         BGM.Play();
+        BGM.loop = true;
     }
 
     public void SetBGMVolume(float volume)

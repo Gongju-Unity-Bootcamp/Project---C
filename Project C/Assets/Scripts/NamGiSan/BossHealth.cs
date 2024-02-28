@@ -100,7 +100,7 @@ public class BossHealth : MonoBehaviour
         yield return new WaitForSeconds(1.75f);
         _sprite.color = new Color(0, 0, 0, 0);
 
-        Managers.Spawn.SpawnBox(ItemType.GoldenBox, new Vector3(0, 0, 0));
+        Managers.Spawn.SpawnBox(ItemType.GoldenBox, transform.position);
         Managers.UI.BossHp.SetActive(false);
         Managers.Sound.EffectSoundChange("Boss_Death");
         Invoke("DistroyBoss", 2.1f);
@@ -113,7 +113,7 @@ public class BossHealth : MonoBehaviour
         GameObject go = GameObject.Find("RandomMap");
         GameObject ggo = go.transform.Find("BossRoom (1)").gameObject;
         Debug.Log(go.name);
-        Managers.Spawn.CreatFlo("NextLevelDoor", ggo.transform);
+        Managers.Spawn.CreatFlo("RealNextLevelDoor", ggo.transform);
         Debug.Log(go.name);
         Destroy(gameObject);
     }  

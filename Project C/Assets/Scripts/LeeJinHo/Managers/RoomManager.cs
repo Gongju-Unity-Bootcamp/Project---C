@@ -90,6 +90,7 @@ public class RoomManager : MonoBehaviour
             enemyCount--;
         }
     }
+
     private void OnDestroy()
     {
         Enemy.OnEnemySpawned -= HandleEnemySpawned;
@@ -172,7 +173,7 @@ public class RoomManager : MonoBehaviour
         {
             RoomAppearance = RoomState.NotClear;
         }
-        else if (enemyCount == 0 && isEnemy)
+        else if (isEnemy && enemyCount == 0)
         {
             RoomAppearance = RoomState.Clear;
         }
@@ -238,7 +239,6 @@ public class RoomManager : MonoBehaviour
         {
             doorColliders[i] = doors[i].GetComponent<Collider2D>();
         }
-        //문 열리는 내용
         for (int i = 0; i < doors.Length; i++)
         {
             doorColliders[i].isTrigger = false;
