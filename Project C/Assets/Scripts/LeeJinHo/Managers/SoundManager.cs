@@ -8,15 +8,15 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] public AudioSource BGM;
     [SerializeField] public AudioSource SoundEffect;
-    [SerializeField] public AudioSource BossSound;
-    [SerializeField] public AudioSource GetItemSound;
+    [SerializeField] public AudioSource MonsterSound;
+    [SerializeField] public AudioSource ItemSound;
 
     public void Init()
     {
         BGM = gameObject.AddComponent<AudioSource>();
         SoundEffect = gameObject.AddComponent<AudioSource>();
-        BossSound = gameObject.AddComponent <AudioSource>();
-        GetItemSound = gameObject.AddComponent <AudioSource>();
+        MonsterSound = gameObject.AddComponent <AudioSource>();
+        ItemSound = gameObject.AddComponent <AudioSource>();
         BGMMugicStart();
     }
     private void BGMMugicStart()
@@ -40,15 +40,15 @@ public class SoundManager : MonoBehaviour
     }
     public void BossSoundChange(string sound)
     {
-        BossSound.Stop();
-        BossSound.clip = Managers.Resource.LoadAudioClips(sound);
-        BossSound.Play();
+        MonsterSound.Stop();
+        MonsterSound.clip = Managers.Resource.LoadAudioClips(sound);
+        MonsterSound.Play();
         BGM.loop = true;
     }
     public void ChangeGetItemSound(string sound)
     {
-        GetItemSound.clip = Managers.Resource.LoadAudioClips(sound);
-        GetItemSound.Play();
+        ItemSound.clip = Managers.Resource.LoadAudioClips(sound);
+        ItemSound.Play();
     }
     public void StopBGM()
     {
@@ -70,7 +70,7 @@ public class SoundManager : MonoBehaviour
     {
         float sfxVolume = Mathf.Clamp01(volume);
         SoundEffect.volume = sfxVolume;
-        BossSound.volume = sfxVolume;
-        GetItemSound.volume = sfxVolume;
+        MonsterSound.volume = sfxVolume;
+        ItemSound.volume = sfxVolume;
     }
 }

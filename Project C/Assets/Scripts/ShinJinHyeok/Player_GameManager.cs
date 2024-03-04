@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 // 플레이어 사망(게임오버) 기능을 구현하기 위해 임시로 만든 GameManager
 public class Player_GameManager : MonoBehaviour

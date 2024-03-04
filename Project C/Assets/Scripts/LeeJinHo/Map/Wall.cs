@@ -22,29 +22,33 @@ public class Wall : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("BossWall"))
+        if (transform.childCount == 0)
         {
-            Managers.Spawn.CreatDoor(gameObject.name, transform);
-            
-        }
-
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            if (transform.childCount == 0)
+            if (collision.gameObject.CompareTag("BossWall"))
             {
-                gameObject.name = gameObject.name switch
+                Managers.Spawn.CreatDoor(gameObject.name, transform);
+
+            }
+
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                if (transform.childCount == 0)
                 {
-                    "UpDoor" => "UpDoor",
-                    "DownDoor" => "DownDoor",
-                    "RightDoor" => "RightDoor",
-                    "LeftDoor" => "LeftDoor",
-                    "BossUpDoor" => "UpDoor",
-                    "BossDownDoor" => "DownDoor",
-                    "BossRightDoor" => "RightDoor",
-                    "BossLeftDoor" => "LeftDoor"
-                };
-                Managers.Spawn.CreatDoor(name, transform);
+                    gameObject.name = gameObject.name switch
+                    {
+                        "UpDoor" => "UpDoor",
+                        "DownDoor" => "DownDoor",
+                        "RightDoor" => "RightDoor",
+                        "LeftDoor" => "LeftDoor",
+                        "BossUpDoor" => "UpDoor",
+                        "BossDownDoor" => "DownDoor",
+                        "BossRightDoor" => "RightDoor",
+                        "BossLeftDoor" => "LeftDoor"
+                    };
+                    Managers.Spawn.CreatDoor(name, transform);
+                }
             }
         }
+        
     }
 }

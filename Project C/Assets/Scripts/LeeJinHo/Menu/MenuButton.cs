@@ -7,11 +7,13 @@ public class MenuButton : MonoBehaviour
 {
     public void OnClick()
     {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         Debug.Log("Å¬¸¯");
         if (gameObject.name.Equals("StartButton"))
         {
-            Debug.Log("¾À");
             SceneManager.LoadScene(1);
+
+            
         }
 
         if (gameObject.name.Equals("SettingButton"))
